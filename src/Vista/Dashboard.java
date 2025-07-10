@@ -213,7 +213,7 @@ public class Dashboard extends javax.swing.JPanel {
         btnDashboard.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnDashboard.setForeground(new java.awt.Color(255, 255, 255));
         btnDashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png"))); // NOI18N
-        btnDashboard.setText("  Inici");
+        btnDashboard.setText("  Inicio");
         btnDashboard.setBorder(null);
         btnDashboard.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnDashboard.setOpaque(true);
