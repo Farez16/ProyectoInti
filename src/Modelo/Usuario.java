@@ -292,4 +292,31 @@ public static String obtenerCedulaPorCorreo(String correo) {
     }
     return null;
 }
+public static int obtenerIdPorCorreo(String correo) {
+    if (correo == null) {
+        System.err.println("[ERROR] El parámetro correo es null en obtenerIdPorCorreo");
+        return -1;
+    }
+    
+    int id = -1;
+    String sql = "SELECT id_usuario FROM usuarios WHERE correo = ?";
+    try (Connection conn = Conexion.conectar();
+         PreparedStatement ps = conn.prepareStatement(sql)) {
+        
+        String correoLimpio = correo.trim();
+        ps.setString(1, correoLimpio);
+        
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            id = rs.getInt("id_usuario");
+            System.out.println("[INFO] ID de usuario encontrado para correo '" + correoLimpio + "': " + id);
+        } else {
+            System.out.println("[WARN] No se encontró usuario para el correo: '" + correoLimpio + "'");
+        }
+    } catch (SQLException e) {
+        System.err.println("[ERROR] SQLException en obtenerIdPorCorreo: " + e.getMessage());
+        e.printStackTrace();
+    }
+    return id;
+}
 }
