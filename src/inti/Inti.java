@@ -28,6 +28,7 @@ public class Inti {
 
                 // Mostrar la vista
                 vistaLogin.setVisible(true);
+                System.out.println("Hola");
             }
         });
     }
