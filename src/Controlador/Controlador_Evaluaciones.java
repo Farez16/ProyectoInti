@@ -18,17 +18,17 @@ public class Controlador_Evaluaciones {
     private final Vista_EvaluacionU1 vista;
     private final ControladorDashboard controladorDashboard;
     private final Connection conn;
-    private final String cedula;
+    private final String correo;
     private final int idUnidad;
 
     private List<Modelo_Evaluaciones> preguntas; // Lista de preguntas seleccionadas
     private final List<ButtonGroup> gruposBotones; // Lista de ButtonGroups para validar respuestas
 
-    public Controlador_Evaluaciones(Vista_EvaluacionU1 vista, ControladorDashboard controladorDashboard, Connection conn, String cedula, int idUnidad) {
+    public Controlador_Evaluaciones(Vista_EvaluacionU1 vista, ControladorDashboard controladorDashboard, Connection conn, String correo, int idUnidad) {
         this.vista = vista;
         this.controladorDashboard = controladorDashboard;
         this.conn = conn;
-        this.cedula = cedula;
+        this.correo = correo;
         this.idUnidad = idUnidad;
 
         // Inicializar la lista de ButtonGroups con los grupos de la vista en orden
@@ -66,13 +66,13 @@ public class Controlador_Evaluaciones {
 
         // Evento para completar evaluación y actualizar progreso
         vista.jButtonCOMPLETOEVALUACION1.addActionListener(e -> {
-            int idUsuario = Usuario.obtenerIdPorCedula(cedula);
+            int idUsuario = Usuario.obtenerIdPorCorreo(correo);
             Modelo_Progreso_Usuario progreso = ControladorProgresoUsuario.obtenerProgreso(idUsuario, idUnidad);
             boolean actualizado = ControladorProgresoUsuario.aprobarEvaluacion(progreso, 100);
             if (actualizado) {
                 JOptionPane.showMessageDialog(vista, "Evaluación aprobada. Puedes continuar con la siguiente unidad.");
                 Vista_Unidad1 vistaUnidad1 = new Vista_Unidad1();
-                new Controlador_Unidad1(vistaUnidad1, conn, controladorDashboard, cedula);
+                new Controlador_Unidad1(vistaUnidad1, conn, controladorDashboard, correo);
                 controladorDashboard.getVista().mostrarVista(vistaUnidad1);
             } else {
                 JOptionPane.showMessageDialog(vista, "Error al actualizar el progreso.");

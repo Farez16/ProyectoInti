@@ -11,23 +11,28 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 
-public class Controlador_Actividades {
+
+
+  public class Controlador_Actividades {
 
     private final javax.swing.JPanel vista;
     private final ControladorDashboard controladorDashboard;
     private final Connection conn;
-    private final String cedula;
+    private final String correo;  // Cambiado de cedula a correo
     private final int idActividad;
     private Modelo_Actividades actividad;
-    private Modelo_Actividades actividadActual;
-
 
     public Controlador_Actividades(javax.swing.JPanel vista, ControladorDashboard controladorDashboard,
-            Connection conn, String cedula, int idActividad) {
+            Connection conn, String correo, int idActividad) {
         this.vista = vista;
         this.controladorDashboard = controladorDashboard;
         this.conn = conn;
-        this.cedula = cedula;
+
+        if (correo == null || correo.trim().isEmpty()) {
+            throw new IllegalArgumentException("El correo no puede ser nulo o vacío");
+        }
+        this.correo = correo.trim();
+
         this.idActividad = idActividad;
 
         agregarEventoCompletar();
@@ -91,7 +96,7 @@ private void validarRespuesta(Vista_Actividad1U1 act1) {
 
 
     private void agregarEventoCompletar() {
-        int idUsuario = Usuario.obtenerIdPorCedula(cedula);
+        int idUsuario = Usuario.obtenerIdPorCorreo(correo);
 
         if (vista instanceof Vista_Actividad1U1 act1) {
             act1.jButtonCOMPLETOACTV1.addActionListener(e -> completarActividad(idUsuario));
@@ -110,7 +115,7 @@ private void validarRespuesta(Vista_Actividad1U1 act1) {
 
         // Volver a la vista unidad, o a donde corresponda
         Vista_Unidad1 vistaUnidad1 = new Vista_Unidad1();
-        new Controlador_Unidad1(vistaUnidad1, conn, controladorDashboard, cedula);
+        new Controlador_Unidad1(vistaUnidad1, conn, controladorDashboard, correo);
         controladorDashboard.getVista().mostrarVista(vistaUnidad1);
     }
 }

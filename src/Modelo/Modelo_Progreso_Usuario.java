@@ -134,39 +134,81 @@ public class Modelo_Progreso_Usuario {
 
    // Método para insertar nuevo progreso
    public static boolean guardarProgreso(Modelo_Progreso_Usuario progreso) {
-       String sql = "INSERT INTO progreso_usuario (id_usuario, id_unidad, lecciones_completadas, actividades_completadas, evaluacion_aprobada, calificacion, fecha_actualizacion) VALUES (?, ?, ?, ?, ?, ?, ?)";
-       try (Connection conn = Conexion.conectar();
-            PreparedStatement ps = conn.prepareStatement(sql)) {
-           ps.setInt(1, progreso.getIdUsuario());
-           ps.setInt(2, progreso.getIdUnidad());
-           ps.setInt(3, progreso.getLeccionesCompletadas());
-           ps.setInt(4, progreso.getActividadesCompletadas());
-           ps.setBoolean(5, progreso.isEvaluacionAprobada());
-           ps.setInt(6, progreso.getCalificacion());
-           ps.setTimestamp(7, Timestamp.valueOf(progreso.getFechaActualizacion()));
-           return ps.executeUpdate() > 0;
-       } catch (SQLException e) {
-           e.printStackTrace();
-       }
-       return false;
-   }
+    // Validaciones previas
+    if (progreso.getIdUsuario() <= 0) {
+        System.out.println("❌ ERROR: ID de usuario inválido: " + progreso.getIdUsuario());
+        return false;
+    }
+    if (progreso.getIdUnidad() <= 0) {
+        System.out.println("❌ ERROR: ID de unidad inválido: " + progreso.getIdUnidad());
+        return false;
+    }
+
+    String sql = "INSERT INTO progreso_usuario (id_usuario, id_unidad, lecciones_completadas, actividades_completadas, evaluacion_aprobada, calificacion, fecha_actualizacion) VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+    try (Connection conn = Conexion.conectar();
+         PreparedStatement ps = conn.prepareStatement(sql)) {
+
+        // Depuración
+        System.out.println("✅ GUARDANDO PROGRESO → id_usuario=" + progreso.getIdUsuario() + ", id_unidad=" + progreso.getIdUnidad());
+
+        // Asignación de valores
+        ps.setInt(1, progreso.getIdUsuario());
+        ps.setInt(2, progreso.getIdUnidad());
+        ps.setInt(3, progreso.getLeccionesCompletadas());
+        ps.setInt(4, progreso.getActividadesCompletadas());
+        ps.setBoolean(5, progreso.isEvaluacionAprobada());
+        ps.setInt(6, progreso.getCalificacion());
+        ps.setTimestamp(7, Timestamp.valueOf(progreso.getFechaActualizacion()));
+
+        return ps.executeUpdate() > 0;
+
+    } catch (SQLException e) {
+        System.out.println("❌ ERROR al guardar progreso:");
+        e.printStackTrace();
+    }
+
+    return false;
+}
+
 
    // Método para actualizar progreso existente
-   public static boolean actualizarProgreso(Modelo_Progreso_Usuario progreso) {
-       String sql = "UPDATE progreso_usuario SET lecciones_completadas = ?, actividades_completadas = ?, evaluacion_aprobada = ?, calificacion = ?, fecha_actualizacion = ? WHERE id_usuario = ? AND id_unidad = ?";
-       try (Connection conn = Conexion.conectar();
-            PreparedStatement ps = conn.prepareStatement(sql)) {
-           ps.setInt(1, progreso.getLeccionesCompletadas());
-           ps.setInt(2, progreso.getActividadesCompletadas());
-           ps.setBoolean(3, progreso.isEvaluacionAprobada());
-           ps.setInt(4, progreso.getCalificacion());
-           ps.setTimestamp(5, Timestamp.valueOf(progreso.getFechaActualizacion()));
-           ps.setInt(6, progreso.getIdUsuario());
-           ps.setInt(7, progreso.getIdUnidad());
-           return ps.executeUpdate() > 0;
-       } catch (SQLException e) {
-           e.printStackTrace();
-       }
-       return false;
-   }
+  public static boolean actualizarProgreso(Modelo_Progreso_Usuario progreso) {
+    // Validaciones previas
+    if (progreso.getIdUsuario() <= 0) {
+        System.out.println("❌ ERROR: ID de usuario inválido: " + progreso.getIdUsuario());
+        return false;
+    }
+    if (progreso.getIdUnidad() <= 0) {
+        System.out.println("❌ ERROR: ID de unidad inválido: " + progreso.getIdUnidad());
+        return false;
+    }
+
+    String sql = "UPDATE progreso_usuario SET lecciones_completadas = ?, actividades_completadas = ?, evaluacion_aprobada = ?, calificacion = ?, fecha_actualizacion = ? WHERE id_usuario = ? AND id_unidad = ?";
+
+    try (Connection conn = Conexion.conectar();
+         PreparedStatement ps = conn.prepareStatement(sql)) {
+
+        // Depuración
+        System.out.println("✏️ ACTUALIZANDO PROGRESO → id_usuario=" + progreso.getIdUsuario() + ", id_unidad=" + progreso.getIdUnidad());
+
+        // Asignación de valores
+        ps.setInt(1, progreso.getLeccionesCompletadas());
+        ps.setInt(2, progreso.getActividadesCompletadas());
+        ps.setBoolean(3, progreso.isEvaluacionAprobada());
+        ps.setInt(4, progreso.getCalificacion());
+        ps.setTimestamp(5, Timestamp.valueOf(progreso.getFechaActualizacion()));
+        ps.setInt(6, progreso.getIdUsuario());
+        ps.setInt(7, progreso.getIdUnidad());
+
+        return ps.executeUpdate() > 0;
+
+    } catch (SQLException e) {
+        System.out.println("❌ ERROR al actualizar progreso:");
+        e.printStackTrace();
+    }
+
+    return false;
+}
+
 }

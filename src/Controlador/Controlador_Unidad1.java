@@ -15,18 +15,26 @@ public class Controlador_Unidad1 {
 
     private final ControladorDashboard controladorDashboard;
     private final Dashboard dashboard;
-    private final String cedula;
+    private final String correo;  // Cambié de cedula a correo
 
-    public Controlador_Unidad1(Vista_Unidad1 vista, Connection conn, ControladorDashboard controladorDashboard, String cedula) {
+    public Controlador_Unidad1(Vista_Unidad1 vista, Connection conn, ControladorDashboard controladorDashboard, String correo) {
         this.vista = vista;
         this.conn = conn;
         this.controladorDashboard = controladorDashboard;
         this.dashboard = controladorDashboard.getVista();
-        this.cedula = cedula;
-        this.idUsuario = Usuario.obtenerIdPorCedula(cedula);
+        this.correo = correo;
+        this.idUsuario = Usuario.obtenerIdPorCorreo(correo);
+        if (correo == null || correo.trim().isEmpty()) {
+            System.err.println("ERROR: El correo recibido es nulo o vacío");
+            throw new IllegalArgumentException("El correo no puede ser nulo o vacío");
+        }
+
+        if (idUsuario <= 0) {
+            System.err.println("ERROR: No se encontró usuario con correo: " + correo);
+            throw new IllegalArgumentException("Usuario no encontrado con el correo: " + correo);
+        }
 
         inicializarVista();
-
         agregarListeners();
     }
 
@@ -65,7 +73,6 @@ public class Controlador_Unidad1 {
             controladorDashboard.getVista().mostrarVista(controladorDashboard.getPanelUnidades());
         });
 
-        // Aquí el botón FINALIZAR vuelve a mostrar el panel unidades original (con listeners activos)
         vista.jButtonFINALIZARUNIDAD1.addActionListener(e -> {
             controladorDashboard.getVista().mostrarVista(controladorDashboard.getPanelUnidades());
         });
@@ -94,62 +101,46 @@ public class Controlador_Unidad1 {
         return progreso;
     }
 
-    // ----- MÉTODOS PARA ABRIR VISTAS -----
-    // MODIFICACIÓN EN EL MÉTODO abrirLeccionSaludos:
     private void abrirLeccionSaludos() {
         System.out.println("=== Abriendo lección de saludos ===");
-
-        // Crear nueva instancia para evitar problemas de reutilización
         Vista_LeccionSALUDOS vistaLeccionSaludos = new Vista_LeccionSALUDOS();
-
-        // Crear el controlador de lecciones
-        new Controlador_Lecciones(vistaLeccionSaludos, controladorDashboard, conn, cedula,
+        new Controlador_Lecciones(vistaLeccionSaludos, controladorDashboard, conn, correo,
                 Controlador_Lecciones.LECCION_SALUDOS);
-
-        // Mostrar la vista en el panel principal
         controladorDashboard.getVista().mostrarVista(vistaLeccionSaludos);
-
         System.out.println("=== Lección de saludos abierta ===");
     }
 
     private void abrirLeccionFonetica() {
         Vista_LeccionFONOLOGIA vistaLeccion = new Vista_LeccionFONOLOGIA();
-        new Controlador_Lecciones(vistaLeccion, controladorDashboard, conn, cedula, 2);
+        new Controlador_Lecciones(vistaLeccion, controladorDashboard, conn, correo, 2);
         controladorDashboard.getVista().mostrarVista(vistaLeccion);
     }
 
     private void abrirLeccionPronombres() {
         Vista_LeccionPRONOMBRES vistaLeccion = new Vista_LeccionPRONOMBRES();
-        new Controlador_Lecciones(vistaLeccion, controladorDashboard, conn, cedula, 3);
+        new Controlador_Lecciones(vistaLeccion, controladorDashboard, conn, correo, 3);
         controladorDashboard.getVista().mostrarVista(vistaLeccion);
     }
 
-private void abrirActividad1() {
-    int idActividad = 1;  // ID de la actividad que quieres abrir
-    Vista_Actividad1U1 vistaActividad = new Vista_Actividad1U1();
-    Controlador_Actividades controladorAct = new Controlador_Actividades(vistaActividad, controladorDashboard, conn, cedula, idActividad);
+    private void abrirActividad1() {
+        int idActividad = 1;
+        Vista_Actividad1U1 vistaActividad = new Vista_Actividad1U1();
+        Controlador_Actividades controladorAct = new Controlador_Actividades(vistaActividad, controladorDashboard, conn, correo, idActividad);
+        controladorAct.cargarActividad();
+        controladorDashboard.getVista().mostrarVista(vistaActividad);
+    }
 
-    // Carga la actividad desde la base y prepara la vista
-    controladorAct.cargarActividad();
-
-    // Muestra la vista en el dashboard
-    controladorDashboard.getVista().mostrarVista(vistaActividad);
-}
-
-private void abrirActividad2() {
-    int idActividad = 2;  // ID de la segunda actividad
-    Vista_Actividad2U1 vistaActividad = new Vista_Actividad2U1();
-    Controlador_Actividades controladorAct = new Controlador_Actividades(vistaActividad, controladorDashboard, conn, cedula, idActividad);
-
-    controladorAct.cargarActividad();
-
-    controladorDashboard.getVista().mostrarVista(vistaActividad);
-}
-
+    private void abrirActividad2() {
+        int idActividad = 2;
+        Vista_Actividad2U1 vistaActividad = new Vista_Actividad2U1();
+        Controlador_Actividades controladorAct = new Controlador_Actividades(vistaActividad, controladorDashboard, conn, correo, idActividad);
+        controladorAct.cargarActividad();
+        controladorDashboard.getVista().mostrarVista(vistaActividad);
+    }
 
     private void abrirEvaluacion() {
         Vista_EvaluacionU1 vistaEvaluacion = new Vista_EvaluacionU1();
-        new Controlador_Evaluaciones(vistaEvaluacion, controladorDashboard, conn, cedula, ID_UNIDAD);
+        new Controlador_Evaluaciones(vistaEvaluacion, controladorDashboard, conn, correo, ID_UNIDAD);
         controladorDashboard.getVista().mostrarVista(vistaEvaluacion);
     }
 

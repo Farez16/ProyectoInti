@@ -22,7 +22,7 @@ public class Controlador_Lecciones {
     private final JPanel vistaLeccion;
     private final ControladorDashboard controladorDashboard;
     private final Connection conn;
-    private final String cedula;
+    private final String correo;
     private final int numeroLeccion;
     private final int idUsuario;
     private final int ID_UNIDAD = 1;
@@ -35,16 +35,27 @@ public class Controlador_Lecciones {
     public static final int LECCION_PRONOMBRES = 3;
 
     public Controlador_Lecciones(JPanel vistaLeccion, ControladorDashboard controladorDashboard,
-            Connection conn, String cedula, int numeroLeccion) {
+            Connection conn, String correo, int numeroLeccion) {
         this.vistaLeccion = vistaLeccion;
         this.controladorDashboard = controladorDashboard;
         this.conn = conn;
-        this.cedula = cedula;
+
+        if (correo == null || correo.trim().isEmpty()) {
+            throw new IllegalArgumentException("El correo no puede ser nulo o vacío");
+        }
+        this.correo = correo.trim();
+
         this.numeroLeccion = numeroLeccion;
-        this.idUsuario = Usuario.obtenerIdPorCedula(cedula);
+
+        // Obtener idUsuario a partir del correo
+        this.idUsuario = Usuario.obtenerIdPorCorreo(this.correo);
+
+        if (this.idUsuario <= 0) {
+            throw new IllegalArgumentException("Usuario no encontrado con el correo: " + this.correo);
+        }
 
         System.out.println("=== Inicializando Controlador_Lecciones ===");
-        System.out.println("Lección: " + numeroLeccion + " | Usuario: " + cedula);
+        System.out.println("Lección: " + numeroLeccion + " | Usuario (correo): " + this.correo);
 
         configurarVistaLeccion();
         agregarListeners();
@@ -225,7 +236,7 @@ public class Controlador_Lecciones {
 
         // Crear nueva instancia de la vista de unidad
         Vista_Unidad1 vistaUnidad1 = new Vista_Unidad1();
-        new Controlador_Unidad1(vistaUnidad1, conn, controladorDashboard, cedula);
+        new Controlador_Unidad1(vistaUnidad1, conn, controladorDashboard, correo);
         controladorDashboard.getVista().mostrarVista(vistaUnidad1);
     }
 
