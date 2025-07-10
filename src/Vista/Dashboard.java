@@ -175,11 +175,6 @@ public class Dashboard extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         PanelVistas = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         LblSaludo = new javax.swing.JLabel();
         LblimagenPrincipal = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
@@ -197,22 +192,6 @@ public class Dashboard extends javax.swing.JPanel {
 
         PanelVistas.setBackground(new java.awt.Color(255, 255, 255));
         PanelVistas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/unidad4_bounce_suave.gif"))); // NOI18N
-        PanelVistas.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 470, -1, 180));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/unidad3_bounce_suave.gif"))); // NOI18N
-        PanelVistas.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 330, -1, 170));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/unidad2_bounce_suave.gif"))); // NOI18N
-        PanelVistas.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 80, -1, 170));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/unidad1_bounce_suave.gif"))); // NOI18N
-        PanelVistas.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 150, 160));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo_mapa_1190x660.png"))); // NOI18N
-        PanelVistas.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 660));
-
         jPanel1.add(PanelVistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 1190, 660));
 
         LblSaludo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -353,11 +332,6 @@ public class Dashboard extends javax.swing.JPanel {
     public javax.swing.JButton btnDashboard;
     public javax.swing.JButton btnJuegos;
     public javax.swing.JButton btnSalir;
-    public javax.swing.JLabel jLabel1;
-    public javax.swing.JLabel jLabel2;
-    public javax.swing.JLabel jLabel3;
-    public javax.swing.JLabel jLabel4;
-    public javax.swing.JLabel jLabel5;
     public javax.swing.JPanel jPanel1;
     public javax.swing.JLabel lblNombre;
     // End of variables declaration//GEN-END:variables
