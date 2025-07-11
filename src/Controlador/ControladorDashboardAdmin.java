@@ -123,7 +123,7 @@ private void abrirCuenta() {
                 img = ImageIO.read(new File(ruta));
             }
 
-            int size = 120;
+            int size = 100;
             BufferedImage circleBuffer = new BufferedImage(size, size, BufferedImage.TYPE_INT_ARGB);
             Graphics2D g2 = circleBuffer.createGraphics();
             Ellipse2D.Double circle = new Ellipse2D.Double(0, 0, size, size);
