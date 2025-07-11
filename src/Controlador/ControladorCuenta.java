@@ -241,12 +241,17 @@ public class ControladorCuenta {
 
     private void actualizarImagen(String nuevaRuta) {
         try {
+            // Update database first
             Usuario.actualizarImagenUsuario(correoUsuario, nuevaRuta);
             usuario.setRutaImagen(nuevaRuta);
             mostrarImagen(nuevaRuta);
 
+            // Update both dashboards
             if (dashboard != null) {
                 actualizarImagenEnDashboard(nuevaRuta);
+            }
+            if (dashboardAdmin != null) {
+                actualizarImagenEnDashboardAdmin(nuevaRuta);
             }
 
             JOptionPane.showMessageDialog(vista,
@@ -261,23 +266,32 @@ public class ControladorCuenta {
     }
 
     private void actualizarImagenEnDashboard(String ruta) {
-    try {
-        if (dashboard != null && dashboard.LblimagenPrincipal != null) {
-            // Lógica para Dashboard normal
-            BufferedImage img = cargarImagenDesdeRuta(ruta);
-            BufferedImage circleBuffer = crearImagenCircular(img);
-            dashboard.LblimagenPrincipal.setIcon(new ImageIcon(circleBuffer));
-        } 
-        else if (dashboardAdmin != null && dashboardAdmin.LblimagenPrincipal != null) {
-            // Lógica para DashboardAdmin
-            BufferedImage img = cargarImagenDesdeRuta(ruta);
-            BufferedImage circleBuffer = crearImagenCircular(img);
-            dashboardAdmin.LblimagenPrincipal.setIcon(new ImageIcon(circleBuffer));
+        try {
+            if (dashboard != null && dashboard.LblimagenPrincipal != null) {
+                BufferedImage img = cargarImagenDesdeRuta(ruta);
+                BufferedImage circleBuffer = crearImagenCircular(img);
+                dashboard.LblimagenPrincipal.setIcon(new ImageIcon(circleBuffer));
+                dashboard.LblimagenPrincipal.revalidate();
+                dashboard.LblimagenPrincipal.repaint();
+            }
+        } catch (Exception ex) {
+            System.err.println("Error actualizando imagen en Dashboard: " + ex.getMessage());
         }
-    } catch (Exception ex) {
-        System.err.println("Error al actualizar imagen en Dashboard: " + ex.getMessage());
     }
-}
+    
+    private void actualizarImagenEnDashboardAdmin(String ruta) {
+        try {
+            if (dashboardAdmin != null && dashboardAdmin.LblimagenPrincipal != null) {
+                BufferedImage img = cargarImagenDesdeRuta(ruta);
+                BufferedImage circleBuffer = crearImagenCircular(img);
+                dashboardAdmin.LblimagenPrincipal.setIcon(new ImageIcon(circleBuffer));
+                dashboardAdmin.LblimagenPrincipal.revalidate();
+                dashboardAdmin.LblimagenPrincipal.repaint();
+            }
+        } catch (Exception ex) {
+            System.err.println("Error actualizando imagen en DashboardAdmin: " + ex.getMessage());
+        }
+    }
 
 private BufferedImage cargarImagenDesdeRuta(String ruta) throws Exception {
     if (ruta.startsWith("http")) {

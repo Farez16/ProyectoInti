@@ -112,13 +112,20 @@ public class Usuario {
     }
 
     // Actualiza imagen en la base de datos
-    public static boolean actualizarImagenUsuario(String correo, String ruta) {
+        public static boolean actualizarImagenUsuario(String correo, String ruta) {
         try (Connection conn = Conexion.conectar()) {
             String sql = "UPDATE usuarios SET ruta_imagen = ? WHERE correo = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, ruta);
             stmt.setString(2, correo);
-            return stmt.executeUpdate() > 0;
+            int updated = stmt.executeUpdate();
+            
+            // Update cache only if database update was successful
+            if (updated > 0) {
+                imagenesUsuarios.put(correo.toLowerCase(), ruta);
+                return true;
+            }
+            return false;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
