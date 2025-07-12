@@ -31,6 +31,16 @@ public class Vista_PanelUnidades extends javax.swing.JPanel {
         jLabelUNIDAD3 = new javax.swing.JLabel();
         jLabelUNIDAD2 = new javax.swing.JLabel();
         jLabelUNIDAD1 = new javax.swing.JLabel();
+        jLabelProgresoGeneral = new javax.swing.JLabel();
+        jProgressBarGeneral = new javax.swing.JProgressBar();
+        jLabelProgresoU1 = new javax.swing.JLabel();
+        jLabelProgresoU2 = new javax.swing.JLabel();
+        jLabelProgresoU3 = new javax.swing.JLabel();
+        jLabelProgresoU4 = new javax.swing.JLabel();
+        jLabelEstadoU1 = new javax.swing.JLabel();
+        jLabelEstadoU2 = new javax.swing.JLabel();
+        jLabelEstadoU3 = new javax.swing.JLabel();
+        jLabelEstadoU4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(1190, 660));
@@ -52,9 +62,35 @@ public class Vista_PanelUnidades extends javax.swing.JPanel {
 
         jLabelUNIDAD1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/unidad1_bounce_suave.gif"))); // NOI18N
         PanelVistas.add(jLabelUNIDAD1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 150, 160));
+        PanelVistas.add(jLabelProgresoGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 110, 100, 70));
+        PanelVistas.add(jProgressBarGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 60, 190, 30));
+
+        jLabelProgresoU1.setText("jLabel1");
+        PanelVistas.add(jLabelProgresoU1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, 130, 90));
+
+        jLabelProgresoU2.setText("jLabel1");
+        PanelVistas.add(jLabelProgresoU2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 130, 90));
+
+        jLabelProgresoU3.setText("jLabel1");
+        PanelVistas.add(jLabelProgresoU3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, 110, 90));
+
+        jLabelProgresoU4.setText("jLabel1");
+        PanelVistas.add(jLabelProgresoU4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 310, 90, 90));
+
+        jLabelEstadoU1.setText("jLabel1");
+        PanelVistas.add(jLabelEstadoU1, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 200, 120, 90));
+
+        jLabelEstadoU2.setText("jLabel1");
+        PanelVistas.add(jLabelEstadoU2, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 310, 100, 70));
+
+        jLabelEstadoU3.setText("jLabel1");
+        PanelVistas.add(jLabelEstadoU3, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 400, 110, 70));
+
+        jLabelEstadoU4.setText("jLabel1");
+        PanelVistas.add(jLabelEstadoU4, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 480, 130, 80));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo_mapa_1190x660.png"))); // NOI18N
-        PanelVistas.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 660));
+        PanelVistas.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1190, 660));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -82,9 +118,19 @@ public class Vista_PanelUnidades extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelVistas;
     public javax.swing.JLabel jLabel2;
+    public javax.swing.JLabel jLabelEstadoU1;
+    public javax.swing.JLabel jLabelEstadoU2;
+    public javax.swing.JLabel jLabelEstadoU3;
+    public javax.swing.JLabel jLabelEstadoU4;
+    public javax.swing.JLabel jLabelProgresoGeneral;
+    public javax.swing.JLabel jLabelProgresoU1;
+    public javax.swing.JLabel jLabelProgresoU2;
+    public javax.swing.JLabel jLabelProgresoU3;
+    public javax.swing.JLabel jLabelProgresoU4;
     public javax.swing.JLabel jLabelUNIDAD1;
     public javax.swing.JLabel jLabelUNIDAD2;
     public javax.swing.JLabel jLabelUNIDAD3;
     public javax.swing.JLabel jLabelUNIDAD4;
+    public javax.swing.JProgressBar jProgressBarGeneral;
     // End of variables declaration//GEN-END:variables
 }

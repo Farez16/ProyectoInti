@@ -11,6 +11,7 @@ import Modelo.Usuario; // ← IMPORTANTE
 import Vista.Cuenta;
 import Vista.Login;
 import Vista.Vista_PanelUnidades;
+import com.sun.jdi.connect.spi.Connection;
 import java.awt.Graphics2D;
 import java.awt.event.ActionListener;
 import java.awt.geom.Ellipse2D;
@@ -32,15 +33,17 @@ public class ControladorDashboard {
 
     private Vista_PanelUnidades panelUnidades;
     private Controlador_Unidades controladorUnidades;
+    private Connection conn;
 
     public ControladorDashboard(Dashboard vista, Login loginFrame) {
         this.vista = vista;
         this.loginFrame = loginFrame;
         agregarEventos();
-        
-        // Crear UNA vez el panel unidades y su controlador
+
+        // CORREGIR: Pasar los 4 parámetros correctos
         panelUnidades = new Vista_PanelUnidades();
-        controladorUnidades = new Controlador_Unidades(panelUnidades, this, vista.getCorreoUsuario());
+        controladorUnidades = new Controlador_Unidades(panelUnidades, vista, this, vista.getCorreoUsuario());
+
         // Mostrar panel unidades por defecto
         vista.mostrarVista(panelUnidades);
 
@@ -50,6 +53,11 @@ public class ControladorDashboard {
         cargarImagenUsuario();
         //Mostrar Botones Animados
         configurarBotonesAnimados();
+
+    }
+
+    public Connection getConnection() {
+        return conn;
     }
 
     private void agregarEventos() {

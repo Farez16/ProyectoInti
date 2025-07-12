@@ -271,34 +271,7 @@ public static String getContrasenaActual(String correo) {
     }
     return null;
 }
-public static int obtenerIdPorCedula(String cedula) {
-        String sql = "SELECT id_usuario FROM usuarios WHERE cedula = ?";
-        try (Connection conn = Conexion.conectar(); PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, cedula);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                return rs.getInt("id_usuario");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return -1; // No encontrado
-    }
-public static String obtenerCedulaPorCorreo(String correo) {
-    String sql = "SELECT cedula FROM usuarios WHERE correo = ?";
-    try (Connection conn = Conexion.conectar();
-         PreparedStatement ps = conn.prepareStatement(sql)) {
-        ps.setString(1, correo);
-        try (ResultSet rs = ps.executeQuery()) {
-            if (rs.next()) {
-                return rs.getString("cedula");
-            }
-        }
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-    return null;
-}
+
 public static int obtenerIdPorCorreo(String correo) {
     if (correo == null) {
         System.err.println("[ERROR] El parámetro correo es null en obtenerIdPorCorreo");
