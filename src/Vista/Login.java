@@ -144,7 +144,7 @@ public class Login extends javax.swing.JFrame {
         btnCodigo.setBackground(new java.awt.Color(171, 52, 2));
         btnCodigo.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnCodigo.setForeground(new java.awt.Color(255, 255, 255));
-        btnCodigo.setText("VALIDAR/CREAR CUENTA");
+        btnCodigo.setText("CREAR CUENTA");
         btnCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCodigoActionPerformed(evt);
