@@ -11,9 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 
-
-
-  public class Controlador_Actividades {
+public class Controlador_Actividades {
 
     private final javax.swing.JPanel vista;
     private final ControladorDashboard controladorDashboard;
@@ -21,9 +19,11 @@ import java.sql.Connection;
     private final String correo;  // Cambiado de cedula a correo
     private final int idActividad;
     private Modelo_Actividades actividad;
+    private final Controlador_Unidad1 controladorUnidad1; // Cambiado a Controlador_Unidad1
 
+    // Constructor actualizado para recibir Controlador_Unidad1
     public Controlador_Actividades(javax.swing.JPanel vista, ControladorDashboard controladorDashboard,
-            Connection conn, String correo, int idActividad) {
+            Connection conn, String correo, int idActividad, Controlador_Unidad1 controladorUnidad1) {
         this.vista = vista;
         this.controladorDashboard = controladorDashboard;
         this.conn = conn;
@@ -34,13 +34,19 @@ import java.sql.Connection;
         this.correo = correo.trim();
 
         this.idActividad = idActividad;
+        this.controladorUnidad1 = controladorUnidad1; // Asignar el controlador
 
         agregarEventoCompletar();
     }
 
+    // Constructor de compatibilidad (opcional, por si lo necesitas en otro lugar)
+    public Controlador_Actividades(javax.swing.JPanel vista, ControladorDashboard controladorDashboard,
+            Connection conn, String correo, int idActividad) {
+        this(vista, controladorDashboard, conn, correo, idActividad, null);
+    }
+
     public void cargarActividad() {
         actividad = Modelo_Actividades.obtenerPorId(conn, idActividad);
-         
 
         if (actividad == null) {
             System.out.println("No se encontró la actividad con ID " + idActividad);
@@ -67,33 +73,31 @@ import java.sql.Connection;
         }
     }
 
-private void validarRespuesta(Vista_Actividad1U1 act1) {
-    String respuestaSeleccionada = null;
+    private void validarRespuesta(Vista_Actividad1U1 act1) {
+        String respuestaSeleccionada = null;
 
-    if (act1.jRadioButtonOpcion1.isSelected()) {
-        respuestaSeleccionada = "A";
-    } else if (act1.jRadioButtonOpcion2.isSelected()) {
-        respuestaSeleccionada = "B";
-    } else if (act1.jRadioButtonOpcion3.isSelected()) {
-        respuestaSeleccionada = "C";
+        if (act1.jRadioButtonOpcion1.isSelected()) {
+            respuestaSeleccionada = "A";
+        } else if (act1.jRadioButtonOpcion2.isSelected()) {
+            respuestaSeleccionada = "B";
+        } else if (act1.jRadioButtonOpcion3.isSelected()) {
+            respuestaSeleccionada = "C";
+        }
+
+        if (respuestaSeleccionada == null) {
+            act1.jLabelMensajeRespuesta.setText("Por favor, selecciona una respuesta.");
+            return;
+        }
+
+        // Validar si la respuesta es correcta
+        if (respuestaSeleccionada.equalsIgnoreCase(actividad.getRespuestaCorrecta() + "")) {
+            act1.jLabelMensajeRespuesta.setText("¡Correcto!");
+            act1.jButtonCOMPLETOACTV1.setEnabled(true);  // Solo se habilita si responde bien
+        } else {
+            act1.jLabelMensajeRespuesta.setText("Incorrecto. Inténtalo de nuevo.");
+            act1.jButtonCOMPLETOACTV1.setEnabled(false); // Desactiva el botón si responde mal
+        }
     }
-
-    if (respuestaSeleccionada == null) {
-        act1.jLabelMensajeRespuesta.setText("Por favor, selecciona una respuesta.");
-        return;
-    }
-
-    // Validar si la respuesta es correcta
-    if (respuestaSeleccionada.equalsIgnoreCase(actividad.getRespuestaCorrecta() + "")) {
-        act1.jLabelMensajeRespuesta.setText("¡Correcto!");
-        act1.jButtonCOMPLETOACTV1.setEnabled(true);  // Solo se habilita si responde bien
-    } else {
-        act1.jLabelMensajeRespuesta.setText("Incorrecto. Inténtalo de nuevo.");
-        act1.jButtonCOMPLETOACTV1.setEnabled(false); // Desactiva el botón si responde mal
-    }
-}
-
-
 
     private void agregarEventoCompletar() {
         int idUsuario = Usuario.obtenerIdPorCorreo(correo);
@@ -102,7 +106,7 @@ private void validarRespuesta(Vista_Actividad1U1 act1) {
             act1.jButtonCOMPLETOACTV1.addActionListener(e -> completarActividad(idUsuario));
         }
         if(vista instanceof Vista_Actividad2U1 act2){
-        act2.jButtonCOMPLETOACTV2.addActionListener(e -> completarActividad(idUsuario) );
+            act2.jButtonCOMPLETOACTV2.addActionListener(e -> completarActividad(idUsuario) );
         }
     }
 
@@ -113,9 +117,21 @@ private void validarRespuesta(Vista_Actividad1U1 act1) {
             System.out.println("Actividad " + idActividad + " completada");
         }
 
-        // Volver a la vista unidad, o a donde corresponda
-        Vista_Unidad1 vistaUnidad1 = new Vista_Unidad1();
-        new Controlador_Unidad1(vistaUnidad1, conn, controladorDashboard, correo);
-        controladorDashboard.getVista().mostrarVista(vistaUnidad1);
+        // Volver a la vista unidad1 usando el controlador existente
+        if (controladorUnidad1 != null) {
+            // Actualizar el controlador de unidades para reflejar el progreso
+            controladorUnidad1.actualizarVista(); // Necesitarás crear este método
+            
+            // Volver a la vista de unidad1
+            Vista_Unidad1 vistaUnidad1 = new Vista_Unidad1();
+            new Controlador_Unidad1(vistaUnidad1, conn, controladorDashboard, correo, 
+                                   controladorUnidad1.getControladorUnidades()); // Necesitarás crear este getter
+            controladorDashboard.getVista().mostrarVista(vistaUnidad1);
+        } else {
+            // Fallback si no hay controlador disponible
+            Vista_Unidad1 vistaUnidad1 = new Vista_Unidad1();
+            // Aquí necesitarías obtener el controlador de unidades de alguna manera
+            controladorDashboard.getVista().mostrarVista(vistaUnidad1);
+        }
     }
 }
