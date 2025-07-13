@@ -11,13 +11,13 @@ public class OTPService {
 
     // Genera el código y lo guarda en la base de datos
     public static String generarYEnviarCodigo(String correo) {
-        correo = correo.trim().toLowerCase();  // Unificar formato
-        String codigo = String.format("%06d", new Random().nextInt(1000000));
+    correo = correo.trim().toLowerCase();
+    String codigo = String.format("%06d", new Random().nextInt(1000000));
+    guardarCodigoEnBaseDeDatos(correo, codigo);
+    System.out.println("DEBUG: Código OTP para " + correo + ": " + codigo);
+    return codigo;
+}
 
-        guardarCodigoEnBaseDeDatos(correo, codigo);
-        System.out.println("DEBUG: Código OTP para " + correo + ": " + codigo);
-        return codigo;
-    }
 
     // Guarda o actualiza el código OTP en la tabla `otp`
     private static void guardarCodigoEnBaseDeDatos(String correo, String codigo) {
@@ -36,10 +36,13 @@ public class OTPService {
 
     // Verifica si el código ingresado es correcto
     public static boolean validarCodigo(String correo, String codigoIngresado) {
-        correo = correo.trim().toLowerCase();
-        String codigoGuardado = getCodigo(correo);
-        return codigoGuardado != null && codigoGuardado.equals(codigoIngresado);
-    }
+    correo = correo.trim().toLowerCase();
+    codigoIngresado = codigoIngresado.trim();
+    String codigoGuardado = getCodigo(correo);
+    System.out.println("DEBUG: Código guardado: '" + codigoGuardado + "', Código ingresado: '" + codigoIngresado + "'");
+    return codigoGuardado != null && codigoGuardado.equals(codigoIngresado);
+}
+
 
     // Obtiene el código desde la base de datos
     public static String getCodigo(String correo) {
