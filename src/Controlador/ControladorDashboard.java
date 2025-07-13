@@ -11,7 +11,6 @@ import Modelo.Usuario; // ← IMPORTANTE
 import Vista.Cuenta;
 import Vista.Login;
 import Vista.Vista_PanelUnidades;
-import com.sun.jdi.connect.spi.Connection;
 import java.awt.Graphics2D;
 import java.awt.event.ActionListener;
 import java.awt.geom.Ellipse2D;
@@ -24,6 +23,8 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import java.sql.Connection;
+
 
 public class ControladorDashboard {
 
@@ -33,11 +34,19 @@ public class ControladorDashboard {
 
     private Vista_PanelUnidades panelUnidades;
     private Controlador_Unidades controladorUnidades;
-    private Connection conn;
+     private Connection conn;
 
     public ControladorDashboard(Dashboard vista, Login loginFrame) {
         this.vista = vista;
         this.loginFrame = loginFrame;
+
+        // Inicializar la conexión aquí:
+        
+        this.conn = Conexion.conectar();
+        if (this.conn == null) {
+            System.err.println("Error: No se pudo establecer conexión con la base de datos");
+            // Podrías lanzar una excepción o manejar el error
+        }
         agregarEventos();
 
         // CORREGIR: Pasar los 4 parámetros correctos

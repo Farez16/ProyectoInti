@@ -90,7 +90,7 @@ public class Vista_PanelUnidades extends javax.swing.JPanel {
         PanelVistas.add(jLabelEstadoU4, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 480, 130, 80));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo_mapa_1190x660.png"))); // NOI18N
-        PanelVistas.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1190, 660));
+        PanelVistas.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 660));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

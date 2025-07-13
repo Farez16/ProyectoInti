@@ -28,6 +28,7 @@ public class Controlador_Lecciones {
     private final int ID_UNIDAD = 1;
     private ImageIcon imagen1Original;
     private ImageIcon imagen2Original;
+        private final Controlador_Unidades controladorUnidades;
 
     // Tipos de lecciones
     public static final int LECCION_SALUDOS = 1;
@@ -59,6 +60,7 @@ public class Controlador_Lecciones {
 
         configurarVistaLeccion();
         agregarListeners();
+        this.controladorUnidades = null;
     }
 
     private void configurarVistaLeccion() {
@@ -236,7 +238,7 @@ public class Controlador_Lecciones {
 
         // Crear nueva instancia de la vista de unidad
         Vista_Unidad1 vistaUnidad1 = new Vista_Unidad1();
-        new Controlador_Unidad1(vistaUnidad1, conn, controladorDashboard, correo);
+        new Controlador_Unidad1(vistaUnidad1, conn, controladorDashboard, correo,controladorUnidades);
         controladorDashboard.getVista().mostrarVista(vistaUnidad1);
     }
 
