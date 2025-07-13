@@ -73,6 +73,8 @@ public class ControladorDashboard {
         vista.btnJuegos.addActionListener((ActionEvent e) -> {
             abrirVistaJuego();
         });
+        vista.btnDashboard.addActionListener(e -> abrirPanelUnidades());
+
         vista.btnCuenta.addActionListener(e -> abrirCuenta());
 
         vista.btnSalir.addActionListener(e -> {
@@ -86,6 +88,11 @@ public class ControladorDashboard {
                 loginFrame.limpiarCampos();
             }
         });
+    }
+
+    private void abrirPanelUnidades() {
+        Vista_PanelUnidades vp = new Vista_PanelUnidades();
+                vista.mostrarVista(vp);
     }
 
     private void abrirCuenta() {

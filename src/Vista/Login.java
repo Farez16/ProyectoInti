@@ -99,14 +99,12 @@ public class Login extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(50, 10, 10));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        TxtUsuario.setBackground(new java.awt.Color(255, 255, 255));
         TxtUsuario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         TxtUsuario.setForeground(new java.awt.Color(102, 102, 102));
         TxtUsuario.setText(" Usuario");
         TxtUsuario.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
         jPanel1.add(TxtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 125, 330, 30));
 
-        TxtContraseña.setBackground(new java.awt.Color(255, 255, 255));
         TxtContraseña.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         TxtContraseña.setForeground(new java.awt.Color(102, 102, 102));
         TxtContraseña.setText(" Contraseña");
@@ -114,12 +112,10 @@ public class Login extends javax.swing.JFrame {
         jPanel1.add(TxtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 330, 30));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel3.setForeground(null);
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, 230, 40));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel4.setForeground(null);
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, 230, 40));
 
         btnCodigo.setBackground(new java.awt.Color(171, 52, 2));

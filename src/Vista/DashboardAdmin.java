@@ -7,7 +7,9 @@ import java.util.Map;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 public class DashboardAdmin extends javax.swing.JPanel {
 
@@ -96,10 +98,13 @@ public class DashboardAdmin extends javax.swing.JPanel {
     }
 
     public void mostrarVista(JPanel nuevaVista) {
+        System.out.println("[DEBUG] Mostrando vista. Tamaño PanelVistas: " + PanelVistas.getSize());
+        System.out.println("[DEBUG] Nueva vista: " + nuevaVista.getClass().getSimpleName());
         PanelVistas.removeAll(); // Elimina lo que haya
         PanelVistas.add(nuevaVista, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, PanelVistas.getWidth(), PanelVistas.getHeight()));
         PanelVistas.revalidate(); // Refresca el layout
         PanelVistas.repaint();    // Vuelve a dibujar
+        System.out.println("[DEBUG] Componentes en PanelVistas: " + PanelVistas.getComponentCount());
     }
 
     public void setNombreUsuario(String nombre) {
@@ -122,10 +127,6 @@ public class DashboardAdmin extends javax.swing.JPanel {
         return LblSaludo;
     }
 
-    public JTable getTablaDatos() {
-        return TablaDatos;
-    }
-
     public JButton getBtnGraficos1() {
         return btnGraficos1;
     }
@@ -137,7 +138,10 @@ public class DashboardAdmin extends javax.swing.JPanel {
     public JButton getBtnCrearAdmin() {
         return btnCrearAdmin;
     }
-    
+
+    public JButton getBtnMenu1() {
+        return btnMenu1;
+    }
 
     private void iniciarEfectosBotones() {
         // 1. Crear el mapa de botones
@@ -161,14 +165,10 @@ public class DashboardAdmin extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         PanelVistas = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        TablaDatos = new javax.swing.JTable();
         LblSaludo = new javax.swing.JLabel();
         LblimagenPrincipal = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
         LblRol = new javax.swing.JLabel();
-        TxtBuscar = new javax.swing.JTextField();
-        btnBuscar = new javax.swing.JButton();
         btnMenu1 = new javax.swing.JButton();
         btnCuenta1 = new javax.swing.JButton();
         btnGraficos1 = new javax.swing.JButton();
@@ -181,23 +181,8 @@ public class DashboardAdmin extends javax.swing.JPanel {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         PanelVistas.setBackground(new java.awt.Color(255, 255, 255));
+        PanelVistas.setPreferredSize(new java.awt.Dimension(1190, 660));
         PanelVistas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        TablaDatos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(TablaDatos);
-
-        PanelVistas.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 800, 510));
-
         jPanel1.add(PanelVistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 1190, 660));
 
         LblSaludo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -214,10 +199,6 @@ public class DashboardAdmin extends javax.swing.JPanel {
         LblRol.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         LblRol.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(LblRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 60, 130, 30));
-        jPanel1.add(TxtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 50, 160, -1));
-
-        btnBuscar.setText("Buscar");
-        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 50, 90, -1));
 
         btnMenu1.setBackground(new java.awt.Color(102, 102, 102));
         btnMenu1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -337,16 +318,12 @@ public class DashboardAdmin extends javax.swing.JPanel {
     public javax.swing.JLabel LblSaludo;
     public javax.swing.JLabel LblimagenPrincipal;
     public javax.swing.JPanel PanelVistas;
-    public javax.swing.JTable TablaDatos;
-    public javax.swing.JTextField TxtBuscar;
-    public javax.swing.JButton btnBuscar;
     public javax.swing.JButton btnCrearAdmin;
     public javax.swing.JButton btnCuenta1;
     public javax.swing.JButton btnGraficos1;
     public javax.swing.JButton btnMenu1;
     public javax.swing.JButton btnSalir1;
     public javax.swing.JPanel jPanel1;
-    public javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JLabel lblNombre;
     // End of variables declaration//GEN-END:variables
 }

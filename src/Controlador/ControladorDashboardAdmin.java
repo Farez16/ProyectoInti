@@ -7,9 +7,12 @@ import Modelo.Usuario;
 import Conexion.Conexion;
 import javax.swing.JOptionPane;
 import Controlador.ControladorSaludo;
+import Modelo.MostrarDatosAdmin;
 import Modelo.TextoBotones;
 import Vista.Cuenta;
 import Vista.RegistrarAdmin;
+import Vista.VistaMostrarAdmin;
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
@@ -36,11 +39,22 @@ public class ControladorDashboardAdmin {
         cargarImagenUsuario();
         //Mostrar Botones Animados
         configurarBotonesAnimados();
+        // Mostrar VistaMostrarAdmin al iniciar
+        mostrarVistaInicial();
+
+        // Configuración inicial
+        vista.getPanelVistas().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        // Carga diferida
+        javax.swing.SwingUtilities.invokeLater(() -> {
+            mostrarVistaInicial();
+        });
     }
 
     private void agregarEventos() {
+        //Boton para abrir el panel de inicio
+        vista.btnMenu1.addActionListener(e -> AbrirVistaInicio());
         //Boton para abrir el panel de Registrar Administradores
-        vista.btnCrearAdmin.addActionListener(e  -> AbrirVistaRegistrar() );
+        vista.btnCrearAdmin.addActionListener(e -> AbrirVistaRegistrar());
         //Boton para abrir el panel de la Cuenta
         vista.btnCuenta1.addActionListener(e -> abrirCuenta());
         // Botón Salir (igual que en Dashboard)
@@ -58,6 +72,23 @@ public class ControladorDashboardAdmin {
             }
         });
     }
+
+    private void mostrarVistaInicial() {
+        VistaMostrarAdmin vistaInicial = new VistaMostrarAdmin();
+        Conexion conexion = new Conexion();
+        MostrarDatosAdmin modelo = new MostrarDatosAdmin(conexion.getConexion());
+        ControladorMostrar controlador = new ControladorMostrar(vistaInicial, modelo);
+        vista.mostrarVista(vistaInicial);
+    }
+
+    private void AbrirVistaInicio() {
+        VistaMostrarAdmin vistaInicio = new VistaMostrarAdmin();
+        Conexion conexion = new Conexion();
+        MostrarDatosAdmin modelo = new MostrarDatosAdmin(conexion.getConexion());
+        ControladorMostrar controlador = new ControladorMostrar(vistaInicio, modelo);
+        vista.mostrarVista(vistaInicio);
+    }
+
     private void AbrirVistaRegistrar() {
         RegistrarAdmin va  = new RegistrarAdmin();
         Conexion conexion = new Conexion();
@@ -65,7 +96,8 @@ public class ControladorDashboardAdmin {
         ControladorRegistrarAdmin controlador = new ControladorRegistrarAdmin(va, modeloUsuario);
         vista.mostrarVista(va);
     }
-private void abrirCuenta() {
+
+    private void abrirCuenta() {
         System.out.println("Intentando abrir panel de cuenta...");
         try {
             Cuenta cuentaPanel = new Cuenta();
@@ -81,6 +113,7 @@ private void abrirCuenta() {
             e.printStackTrace();
         }
     }
+
     private void cargarDatosUsuario(String correo) {
         String[] datos = Usuario.obtenerNombreYRol(correo);
         if (datos[0] != null && datos[1] != null) {
@@ -107,6 +140,7 @@ private void abrirCuenta() {
             controladorSaludo = null;
         }
     }
+
     private void cargarImagenUsuario() {
         String rutaImagen = Usuario.obtenerImagenUsuario(vista.getCorreoUsuario());
         if (rutaImagen != null && !rutaImagen.isEmpty()) {

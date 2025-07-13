@@ -42,7 +42,7 @@ public class RegistrarAdmin extends javax.swing.JPanel {
     }
 
     public JLabel getjLabel1() {
-        return jLabel1;
+        return LblTitulo;
     }
 
     public JPasswordField getjPassword() {
@@ -55,7 +55,7 @@ public class RegistrarAdmin extends javax.swing.JPanel {
     private void initComponents() {
 
         PanelRegistrarAdmin = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        LblTitulo = new javax.swing.JLabel();
         LblNombre = new javax.swing.JLabel();
         LblCorreo = new javax.swing.JLabel();
         TxtCorreo = new javax.swing.JTextField();
@@ -63,70 +63,40 @@ public class RegistrarAdmin extends javax.swing.JPanel {
         LblContraseña = new javax.swing.JLabel();
         jPassword = new javax.swing.JPasswordField();
         btnRegistrarAd = new javax.swing.JButton();
+        LblimagenFondo = new javax.swing.JLabel();
+
+        setPreferredSize(new java.awt.Dimension(1160, 660));
 
         PanelRegistrarAdmin.setBackground(new java.awt.Color(255, 255, 255));
+        PanelRegistrarAdmin.setMinimumSize(new java.awt.Dimension(1190, 660));
+        PanelRegistrarAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setText("Registrar Administrador");
+        LblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        LblTitulo.setText("Registrar Administrador");
+        PanelRegistrarAdmin.add(LblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(464, 119, -1, -1));
 
         LblNombre.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         LblNombre.setText("Nombre:");
+        PanelRegistrarAdmin.add(LblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 218, -1, -1));
 
         LblCorreo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         LblCorreo.setText("Correo:");
+        PanelRegistrarAdmin.add(LblCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 172, -1, -1));
+        PanelRegistrarAdmin.add(TxtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 172, 156, -1));
+        PanelRegistrarAdmin.add(TxtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 218, 156, -1));
 
+        LblContraseña.setBackground(new java.awt.Color(0, 0, 0));
         LblContraseña.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         LblContraseña.setText("Contraseña:");
+        PanelRegistrarAdmin.add(LblContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 279, -1, -1));
+        PanelRegistrarAdmin.add(jPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 279, 156, -1));
 
         btnRegistrarAd.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnRegistrarAd.setText("Registrar");
+        PanelRegistrarAdmin.add(btnRegistrarAd, new org.netbeans.lib.awtextra.AbsoluteConstraints(517, 428, -1, -1));
 
-        javax.swing.GroupLayout PanelRegistrarAdminLayout = new javax.swing.GroupLayout(PanelRegistrarAdmin);
-        PanelRegistrarAdmin.setLayout(PanelRegistrarAdminLayout);
-        PanelRegistrarAdminLayout.setHorizontalGroup(
-            PanelRegistrarAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelRegistrarAdminLayout.createSequentialGroup()
-                .addGroup(PanelRegistrarAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelRegistrarAdminLayout.createSequentialGroup()
-                        .addGap(428, 428, 428)
-                        .addComponent(jLabel1))
-                    .addGroup(PanelRegistrarAdminLayout.createSequentialGroup()
-                        .addGap(214, 214, 214)
-                        .addGroup(PanelRegistrarAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LblCorreo)
-                            .addComponent(LblNombre)
-                            .addComponent(LblContraseña))
-                        .addGap(38, 38, 38)
-                        .addGroup(PanelRegistrarAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TxtCorreo)
-                            .addComponent(TxtNombre)
-                            .addComponent(jPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)))
-                    .addGroup(PanelRegistrarAdminLayout.createSequentialGroup()
-                        .addGap(533, 533, 533)
-                        .addComponent(btnRegistrarAd)))
-                .addContainerGap(576, Short.MAX_VALUE))
-        );
-        PanelRegistrarAdminLayout.setVerticalGroup(
-            PanelRegistrarAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelRegistrarAdminLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jLabel1)
-                .addGap(33, 33, 33)
-                .addGroup(PanelRegistrarAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LblCorreo)
-                    .addComponent(TxtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addGroup(PanelRegistrarAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LblNombre)
-                    .addComponent(TxtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addGroup(PanelRegistrarAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LblContraseña)
-                    .addComponent(jPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(127, 127, 127)
-                .addComponent(btnRegistrarAd)
-                .addContainerGap(297, Short.MAX_VALUE))
-        );
+        LblimagenFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lbl.jpg"))); // NOI18N
+        PanelRegistrarAdmin.add(LblimagenFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 660));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -145,11 +115,12 @@ public class RegistrarAdmin extends javax.swing.JPanel {
     public javax.swing.JLabel LblContraseña;
     public javax.swing.JLabel LblCorreo;
     public javax.swing.JLabel LblNombre;
+    public javax.swing.JLabel LblTitulo;
+    public javax.swing.JLabel LblimagenFondo;
     public javax.swing.JPanel PanelRegistrarAdmin;
     public javax.swing.JTextField TxtCorreo;
     public javax.swing.JTextField TxtNombre;
     public javax.swing.JButton btnRegistrarAd;
-    public javax.swing.JLabel jLabel1;
     public javax.swing.JPasswordField jPassword;
     // End of variables declaration//GEN-END:variables
 }
