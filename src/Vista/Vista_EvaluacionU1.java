@@ -105,6 +105,7 @@ public class Vista_EvaluacionU1 extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(1190, 660));
         setPreferredSize(new java.awt.Dimension(1190, 660));
 
+        jPanelPreguntas.setPreferredSize(new java.awt.Dimension(1190, 660));
         jPanelPreguntas.setLayout(new javax.swing.BoxLayout(jPanelPreguntas, javax.swing.BoxLayout.Y_AXIS));
 
         jPanelPregunta1.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));

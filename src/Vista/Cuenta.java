@@ -209,12 +209,15 @@ public class Cuenta extends JPanel {
         jTextField1Contraseña1 = new javax.swing.JTextField();
         jLabelMisCertificados = new javax.swing.JLabel();
         jButton1Miscertificados = new javax.swing.JButton();
+        LblimagenFondo = new javax.swing.JLabel();
         LblSaludo = new javax.swing.JLabel();
         LabelPerfildelUsuario = new javax.swing.JLabel();
 
+        jPanel1.setPreferredSize(new java.awt.Dimension(1190, 660));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         PanelVistas.setBackground(new java.awt.Color(255, 255, 255));
+        PanelVistas.setPreferredSize(new java.awt.Dimension(1190, 660));
         PanelVistas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1Usuario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -241,11 +244,11 @@ public class Cuenta extends JPanel {
 
         jLabel1loginactivity.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1loginactivity.setText("<html>     <span style=\"font-size:14px; font-family:Segoe UI; color:#2a4365;\"><b>Login activity</b></span><br><br>          <span style=\"font-size:13px; font-family:Segoe UI; color:#2a4365;\"><b>First access to site</b></span><br>     <span style=\"font-size:13px; font-family:Segoe UI;\">Monday, 22 May 2023, 9:54 PM <i>(2 years 42 days)</i></span><br><br>          <span style=\"font-size:13px; font-family:Segoe UI; color:#2a4365;\"><b>Last access to site</b></span><br>     <span style=\"font-size:13px; font-family:Segoe UI;\">Thursday, 3 July 2025, 12:11 AM <i>(now)</i></span> </html> ");
-        PanelVistas.add(jLabel1loginactivity, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 570, 510, -1));
+        PanelVistas.add(jLabel1loginactivity, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 450, 510, -1));
 
         jLabel1FechayHora1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1FechayHora1.setText("<html>     <span style=\"font-size:14px; font-family:Segoe UI; color:#2a4365;\">         <b>Fecha y Hora:</b><br>         02 de julio de 2025 - 18:45:30     </span> </html> ");
-        PanelVistas.add(jLabel1FechayHora1, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 0, 380, -1));
+        PanelVistas.add(jLabel1FechayHora1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, 380, -1));
 
         jLabel1Contra1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1Contra1.setText("<html>     <span style=\"font-size:16px; font-family:Segoe UI; color:#2a4365;\"><b>Contraseña:</b></span> </html> ");
@@ -260,7 +263,11 @@ public class Cuenta extends JPanel {
         jButton1Miscertificados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         PanelVistas.add(jButton1Miscertificados, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 160, 20));
 
-        jPanel1.add(PanelVistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 770));
+        LblimagenFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lbl.jpg"))); // NOI18N
+        LblimagenFondo.setPreferredSize(new java.awt.Dimension(1190, 660));
+        PanelVistas.add(LblimagenFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jPanel1.add(PanelVistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 660));
 
         LblSaludo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         LblSaludo.setForeground(new java.awt.Color(255, 255, 255));
@@ -292,6 +299,7 @@ public class Cuenta extends JPanel {
     public javax.swing.JLabel LabelPerfildelUsuario;
     public javax.swing.JLabel LblSaludo;
     public javax.swing.JLabel Lblimagen;
+    public javax.swing.JLabel LblimagenFondo;
     public javax.swing.JPanel PanelVistas;
     public javax.swing.JButton jButton1CambiarContraseña;
     public javax.swing.JButton jButton1Miscertificados;

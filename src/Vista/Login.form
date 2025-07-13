@@ -71,9 +71,6 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="TxtUsuario">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
@@ -97,9 +94,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="TxtContrase&#xf1;a">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
@@ -126,9 +120,6 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="18" style="1"/>
                     </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color type="null"/>
-                    </Property>
                     <Property name="horizontalTextPosition" type="int" value="4"/>
                   </Properties>
                   <Constraints>
@@ -141,9 +132,6 @@
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="16" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color type="null"/>
                     </Property>
                   </Properties>
                   <Constraints>

@@ -8,10 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Modelo/DAO para gestionar las unidades y su progreso
- * Maneja todas las operaciones de base de datos relacionadas con unidades
- */
+
 public class Modelo_Unidades {
     private int idUnidad;
     private String nombreUnidad;
@@ -21,7 +18,12 @@ public class Modelo_Unidades {
     private int progresoActividades;
     private boolean evaluacionAprobada;
     private int calificacion;
+    
+ private Connection conn;
 
+    public Modelo_Unidades(Connection conn) {
+        this.conn = conn;
+    }
     // Constructores
     public Modelo_Unidades() {
         this.disponible = false;
@@ -30,6 +32,7 @@ public class Modelo_Unidades {
         this.evaluacionAprobada = false;
         this.calificacion = 0;
     }
+    
 
     public Modelo_Unidades(int idUnidad, String nombreUnidad, String descripcion) {
         this();

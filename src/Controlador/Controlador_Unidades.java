@@ -26,12 +26,13 @@ import Conexion.Conexion;
  * interacción entre la vista y el modelo de datos
  */
 public class Controlador_Unidades {
-
+   
     private final Vista_PanelUnidades vista;
     private final ControladorDashboard controladorDashboard;
     private final Dashboard dashboard;
     private final String correo;
     private boolean[] unidadesDisponibles;
+
 
     /**
      * Constructor del controlador
