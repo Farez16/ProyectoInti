@@ -91,9 +91,9 @@ public class ControladorDashboard {
     }
 
     private void abrirPanelUnidades() {
-        Vista_PanelUnidades vp = new Vista_PanelUnidades();
-                vista.mostrarVista(vp);
-    }
+    // Usar la instancia existente que ya tiene su controlador
+    vista.mostrarVista(panelUnidades);
+}
 
     private void abrirCuenta() {
         System.out.println("Intentando abrir panel de cuenta...");
