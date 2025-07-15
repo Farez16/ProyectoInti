@@ -7,9 +7,11 @@ import Modelo.Usuario;
 import Conexion.Conexion;
 import javax.swing.JOptionPane;
 import Controlador.ControladorSaludo;
+import Modelo.Grafico;
 import Modelo.MostrarDatosAdmin;
 import Modelo.TextoBotones;
 import Vista.Cuenta;
+import Vista.Graficos;
 import Vista.RegistrarAdmin;
 import Vista.VistaMostrarAdmin;
 import java.awt.Color;
@@ -51,6 +53,7 @@ public class ControladorDashboardAdmin {
     }
 
     private void agregarEventos() {
+        vista.btnGraficos1.addActionListener(e -> AbrirVistaGraficos());
         //Boton para abrir el panel de inicio
         vista.btnMenu1.addActionListener(e -> AbrirVistaInicio());
         //Boton para abrir el panel de Registrar Administradores
@@ -59,6 +62,7 @@ public class ControladorDashboardAdmin {
         vista.btnCuenta1.addActionListener(e -> abrirCuenta());
         // Botón Salir (igual que en Dashboard)
         vista.btnSalir1.addActionListener(e -> {
+            
             int confirm = JOptionPane.showConfirmDialog(
                     null,
                     "¿Deseas cerrar sesión?",
@@ -72,7 +76,13 @@ public class ControladorDashboardAdmin {
             }
         });
     }
-
+private void AbrirVistaGraficos(){
+        Graficos graficos= new Graficos();
+        Conexion conexion = new Conexion();
+        Grafico grafico = new Grafico(conexion.getConexion());
+        ControladorGrafico controlador = new ControladorGrafico(graficos, grafico);
+        vista.mostrarVista(graficos);
+    }
     private void mostrarVistaInicial() {
         VistaMostrarAdmin vistaInicial = new VistaMostrarAdmin();
         Conexion conexion = new Conexion();
