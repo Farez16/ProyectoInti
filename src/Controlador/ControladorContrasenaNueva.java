@@ -48,18 +48,27 @@ public class ControladorContrasenaNueva {
     // ENVÍA EL CÓDIGO AL CORREO
     private void enviarCodigo() {
     String correo = vista.getTextFieldIngresarCorreo().getText().trim().toLowerCase();
-    if (correo.isEmpty() || correo.equals("correo")) {
-        JOptionPane.showMessageDialog(vista, "Ingrese un correo válido para registrar.");
+    if (correo.isEmpty() || !esCorreoPermitido(correo)) {
+        JOptionPane.showMessageDialog(vista, "Ingrese un correo válido de: Gmail, Hotmail, Outlook o institucional.");
+        vista.getTextFieldIngresarCorreo().requestFocus();
         return;
     }
     if (OTPService.codigoEnviado(correo)) {
-        JOptionPane.showMessageDialog(vista, "Ya se ha enviado un código a este correo. Por favor, revise su correo o espere para solicitar otro.");
+        JOptionPane.showMessageDialog(vista, "Ya se ha enviado un código a este correo. Por favor revise su correo o espere para solicitar otro.");
         return;
     }
     String codigo = OTPService.generarYEnviarCodigo(correo);
     EmailSender.enviarCodigo(correo, codigo);
     JOptionPane.showMessageDialog(vista, "Se ha enviado el código al correo.");
 }
+
+// Métodos de validación igual que en la vista
+private boolean esCorreoPermitido(String correo) {
+    correo = correo.toLowerCase();
+    return correo.matches("^[A-Za-z0-9._%+-]+@(gmail|hotmail|outlook)\\.com$")
+        || correo.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.(edu|edu\\.ec|edu\\.mx|edu\\.ar|edu\\.pe|edu\\.co|edu\\.es)$");
+}
+
 
 
 
@@ -141,4 +150,5 @@ public class ControladorContrasenaNueva {
             JOptionPane.showMessageDialog(vista, "Error en el cambio");
         }
     }
+    
 }

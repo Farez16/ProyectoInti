@@ -19,6 +19,9 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         TxtContraseña.setEnabled(false);
         campoUsuario();
+        campoUsuario();
+        campoContraseña();
+
 
         // Desbloquear contraseña al escribir usuario
         TxtUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -89,8 +92,6 @@ public class Login extends javax.swing.JFrame {
         TxtContraseña.setEnabled(false);
         TxtUsuario.requestFocus();
     }
-
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -209,24 +210,50 @@ public class Login extends javax.swing.JFrame {
         });
     }
 
-           private void campoUsuario() {
-        TxtUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
-            @Override
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                if (TxtUsuario.getText().equals(" Usuario")) {
-                    TxtUsuario.setText("");
-                    TxtUsuario.setForeground(Color.BLACK);
-                }
+          private void campoUsuario() {
+    TxtUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
+        @Override
+        public void focusGained(java.awt.event.FocusEvent evt) {
+            TxtUsuario.setText("");
+            TxtUsuario.setForeground(Color.BLACK);
+        }
+        @Override
+        public void focusLost(java.awt.event.FocusEvent evt) {
+            String correo = TxtUsuario.getText().trim();
+            if (correo.isEmpty()) {
+                TxtUsuario.setText(" Usuario");
+                TxtUsuario.setForeground(new Color(187, 187, 187));
+            } else if (!esCorreoPermitido(correo)) {
+                JOptionPane.showMessageDialog(Login.this, "Ingrese un correo válido de: Gmail, Hotmail, Outlook o institucional.", "Correo inválido", JOptionPane.ERROR_MESSAGE);
+                TxtUsuario.requestFocus();
+                TxtUsuario.selectAll();
             }
-            @Override
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                if (TxtUsuario.getText().isEmpty()) {
-                    TxtUsuario.setText(" Usuario");
-                    TxtUsuario.setForeground(new Color(187,187,187));
-                }
+        }
+    });
+}
+
+private boolean esCorreoPermitido(String correo) {
+    correo = correo.toLowerCase();
+    return correo.matches("^[A-Za-z0-9._%+-]+@(gmail|hotmail|outlook)\\.com$")
+        || correo.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.(edu|edu\\.ec|edu\\.mx|edu\\.ar|edu\\.pe|edu\\.co|edu\\.es)$");
+}
+
+           private void campoContraseña() {
+    TxtContraseña.addFocusListener(new java.awt.event.FocusAdapter() {
+        @Override
+        public void focusGained(java.awt.event.FocusEvent evt) {
+            TxtContraseña.setText("");
+            TxtContraseña.setForeground(Color.BLACK);
+        }
+        @Override
+        public void focusLost(java.awt.event.FocusEvent evt) {
+            if (TxtContraseña.getText().isEmpty()) {
+                TxtContraseña.setText("");
+                TxtContraseña.setForeground(new Color(187, 187, 187));
             }
-        });
-    }
+        }
+    });
+}
         
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JPanel Panel1;

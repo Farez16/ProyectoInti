@@ -3,6 +3,7 @@ package Vista;
 import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
@@ -44,7 +45,6 @@ public JTextField getTextFieldIngresarCodigoRecibido() { return TextFieldIngresa
 public JTextField getTextFieldIngresarNuevaContraseña() { return TextFieldIngresarNuevaContraseña; }
 public JTextField getTextFieldConfirmarContraseña() { return TextFieldConfirmarContraseña; }
 public JTextField getTxtNombre() { return TxtNombre; }
-
 
 
     @SuppressWarnings("unchecked")
@@ -150,24 +150,34 @@ public JTextField getTxtNombre() { return TxtNombre; }
 
     }//GEN-LAST:event_btnGuardarContraseñaActionPerformed
 
-        private void camposIngresarCorreo() {
-        TextFieldIngresarCorreo.addFocusListener(new java.awt.event.FocusAdapter() {
-            @Override
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                if (TextFieldIngresarCorreo.getText().equals("Correo")) {
-                    TextFieldIngresarCorreo.setText("");
-                    TextFieldIngresarCorreo.setForeground(Color.BLACK);
-                }
+         private void camposIngresarCorreo() {
+    TextFieldIngresarCorreo.addFocusListener(new java.awt.event.FocusAdapter() {
+        @Override
+        public void focusGained(java.awt.event.FocusEvent evt) {
+            TextFieldIngresarCorreo.setText("");
+            TextFieldIngresarCorreo.setForeground(Color.BLACK);
+        }
+        @Override
+        public void focusLost(java.awt.event.FocusEvent evt) {
+            String correo = TextFieldIngresarCorreo.getText().trim();
+            if (correo.isEmpty()) {
+                TextFieldIngresarCorreo.setText("Correo");
+                TextFieldIngresarCorreo.setForeground(new Color(187, 187, 187));
+            } else if (!esCorreoPermitido(correo)) {
+                JOptionPane.showMessageDialog(ContrasenaNueva.this, "Ingrese un correo válido de: Gmail, Hotmail, Outlook o institucional.", "Correo inválido", JOptionPane.ERROR_MESSAGE);
+                TextFieldIngresarCorreo.requestFocus();
+                TextFieldIngresarCorreo.selectAll();
             }
-            @Override
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                if (TextFieldIngresarCorreo.getText().isEmpty()) {
-                    TextFieldIngresarCorreo.setText("Correo");
-                    TextFieldIngresarCorreo.setForeground(new Color(187, 187, 187));
-                }
-            }
-        });
-    }
+        }
+    });
+}
+private boolean esCorreoPermitido(String correo) {
+    correo = correo.toLowerCase();
+    // Dominios permitidos
+    return correo.matches("^[A-Za-z0-9._%+-]+@(gmail|hotmail|outlook)\\.com$")
+        || correo.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.(edu|edu\\.ec|edu\\.mx|edu\\.ar|edu\\.pe|edu\\.co|edu\\.es)$");
+}
+
 
     private void camposIngresarCodigo() {
         TextFieldIngresarCodigoRecibido1.addFocusListener(new java.awt.event.FocusAdapter() {
