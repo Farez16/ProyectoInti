@@ -200,11 +200,10 @@ public class DashboardAdmin extends javax.swing.JPanel {
         LblRol.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(LblRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 60, 130, 30));
 
-        btnMenu1.setBackground(new java.awt.Color(102, 102, 102));
+        btnMenu1.setBackground(new java.awt.Color(153, 153, 153));
         btnMenu1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnMenu1.setForeground(new java.awt.Color(255, 255, 255));
-        btnMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png"))); // NOI18N
-        btnMenu1.setText("  Inicio");
+        btnMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Menuadmin.png"))); // NOI18N
         btnMenu1.setBorder(null);
         btnMenu1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnMenu1.setOpaque(true);
@@ -218,8 +217,7 @@ public class DashboardAdmin extends javax.swing.JPanel {
         btnCuenta1.setBackground(new java.awt.Color(102, 102, 102));
         btnCuenta1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnCuenta1.setForeground(new java.awt.Color(255, 255, 255));
-        btnCuenta1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono-usuario.png"))); // NOI18N
-        btnCuenta1.setText("  Cuenta");
+        btnCuenta1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cuentaadmin.png"))); // NOI18N
         btnCuenta1.setBorder(null);
         btnCuenta1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnCuenta1.setOpaque(true);
@@ -233,8 +231,7 @@ public class DashboardAdmin extends javax.swing.JPanel {
         btnGraficos1.setBackground(new java.awt.Color(102, 102, 102));
         btnGraficos1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnGraficos1.setForeground(new java.awt.Color(255, 255, 255));
-        btnGraficos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/certificado.png"))); // NOI18N
-        btnGraficos1.setText(" Graficos");
+        btnGraficos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Estaadmin.png"))); // NOI18N
         btnGraficos1.setBorder(null);
         btnGraficos1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnGraficos1.setOpaque(true);
@@ -243,8 +240,7 @@ public class DashboardAdmin extends javax.swing.JPanel {
         btnCrearAdmin.setBackground(new java.awt.Color(102, 102, 102));
         btnCrearAdmin.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnCrearAdmin.setForeground(new java.awt.Color(255, 255, 255));
-        btnCrearAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/play.png"))); // NOI18N
-        btnCrearAdmin.setText("  Interactivo");
+        btnCrearAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AñadirAdmin.png"))); // NOI18N
         btnCrearAdmin.setBorder(null);
         btnCrearAdmin.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnCrearAdmin.setOpaque(true);
@@ -267,16 +263,17 @@ public class DashboardAdmin extends javax.swing.JPanel {
         btnSalir1.setBackground(new java.awt.Color(102, 102, 102));
         btnSalir1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnSalir1.setForeground(new java.awt.Color(255, 255, 255));
-        btnSalir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cierre-de-sesión.png"))); // NOI18N
-        btnSalir1.setText("  Salir");
+        btnSalir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/SalirAdmin.png"))); // NOI18N
+        btnSalir1.setToolTipText("");
         btnSalir1.setBorder(null);
+        btnSalir1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnSalir1.setOpaque(true);
         btnSalir1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalir1ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSalir1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 620, 168, 42));
+        jPanel1.add(btnSalir1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 681, 160, 42));
 
         LblPanelSuperior.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo dashboard.png"))); // NOI18N
         jPanel1.add(LblPanelSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 770));

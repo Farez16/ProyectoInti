@@ -214,7 +214,6 @@ public class Dashboard extends javax.swing.JPanel {
         btnDashboard.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnDashboard.setForeground(new java.awt.Color(255, 255, 255));
         btnDashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png"))); // NOI18N
-        btnDashboard.setText("  Inicio");
         btnDashboard.setBorder(null);
         btnDashboard.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnDashboard.setOpaque(true);
@@ -229,7 +228,6 @@ public class Dashboard extends javax.swing.JPanel {
         btnCuenta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnCuenta.setForeground(new java.awt.Color(255, 255, 255));
         btnCuenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono-usuario.png"))); // NOI18N
-        btnCuenta.setText("  Cuenta");
         btnCuenta.setBorder(null);
         btnCuenta.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnCuenta.setOpaque(true);
@@ -244,7 +242,6 @@ public class Dashboard extends javax.swing.JPanel {
         btnCertificado.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnCertificado.setForeground(new java.awt.Color(255, 255, 255));
         btnCertificado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/certificado.png"))); // NOI18N
-        btnCertificado.setText("  Certificado");
         btnCertificado.setBorder(null);
         btnCertificado.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnCertificado.setOpaque(true);
@@ -254,7 +251,6 @@ public class Dashboard extends javax.swing.JPanel {
         btnJuegos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnJuegos.setForeground(new java.awt.Color(255, 255, 255));
         btnJuegos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/play.png"))); // NOI18N
-        btnJuegos.setText("  Interactivo");
         btnJuegos.setBorder(null);
         btnJuegos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnJuegos.setOpaque(true);
@@ -278,15 +274,15 @@ public class Dashboard extends javax.swing.JPanel {
         btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(255, 255, 255));
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cierre-de-sesión.png"))); // NOI18N
-        btnSalir.setText("  Salir");
         btnSalir.setBorder(null);
+        btnSalir.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnSalir.setOpaque(true);
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, 168, 42));
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 681, 160, 42));
 
         LblPanelSuperior.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo dashboard.png"))); // NOI18N
         jPanel1.add(LblPanelSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 770));

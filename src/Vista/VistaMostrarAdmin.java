@@ -52,6 +52,9 @@ public class VistaMostrarAdmin extends javax.swing.JPanel {
 
         PanelVistas.setBackground(new java.awt.Color(255, 255, 255));
 
+        btnBuscar.setBackground(new java.awt.Color(255, 102, 0));
+        btnBuscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscar.setText("Buscar");
 
         TablaDatos.setModel(new javax.swing.table.DefaultTableModel(

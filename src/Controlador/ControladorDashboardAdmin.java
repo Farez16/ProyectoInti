@@ -180,7 +180,7 @@ public class ControladorDashboardAdmin {
         botonesAdmin.put("btnMenu1", vista.getBtnCuenta1());
         botonesAdmin.put("btnCuenta1", vista.getBtnCuenta1());
         botonesAdmin.put("btnGraficos1", vista.getBtnGraficos1());
-        botonesAdmin.put("btnJuegos1", vista.getBtnJuegos1());
+        botonesAdmin.put("btnCrearAdmin", vista.getBtnCrearAdmin());
         botonesAdmin.put("btnSalir1", vista.getBtnSalir1());
 
         TextoBotones textos = new TextoBotones();

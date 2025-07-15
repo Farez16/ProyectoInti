@@ -21,7 +21,7 @@ public class TextoBotones {
         textosAlternativos.put("btnMenu1", new String[]{"Inicio", "Ñawpa"});
         textosAlternativos.put("btnCuenta1", new String[]{"Cuenta", "Kunta"});
         textosAlternativos.put("btnGraficos1", new String[]{"Graficos", "ShuyoKuna"});
-        textosAlternativos.put("btnCrearAdmin", new String[]{"Juegos", "Pukllaykuna"});
+        textosAlternativos.put("btnCrearAdmin", new String[]{"Registrar", "Killkakuna"});
         textosAlternativos.put("btnSalir1", new String[]{"Salir", "Llukshina"});
     }
 
