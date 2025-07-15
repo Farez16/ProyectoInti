@@ -15,6 +15,8 @@ public class Vista_EvaluacionU1 extends javax.swing.JPanel {
      */
     public Vista_EvaluacionU1() {
         initComponents();
+        jScrollPane1.getVerticalScrollBar().setUnitIncrement(20);
+
     }
 
     /**
@@ -62,18 +64,18 @@ public class Vista_EvaluacionU1 extends javax.swing.JPanel {
         jRadioButtonP4Opcion1 = new javax.swing.JRadioButton();
         jRadioButtonP4Opcion2 = new javax.swing.JRadioButton();
         jRadioButtonP4Opcion3 = new javax.swing.JRadioButton();
-        jPanelPregunta5 = new javax.swing.JPanel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTextAreaPregunta5 = new javax.swing.JTextArea();
-        jRadioButtonP5Opcion1 = new javax.swing.JRadioButton();
-        jRadioButtonP5Opcion2 = new javax.swing.JRadioButton();
-        jRadioButtonP5Opcion3 = new javax.swing.JRadioButton();
         jPanelPregunta6 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         jTextAreaPregunta6 = new javax.swing.JTextArea();
         jRadioButtonP6Opcion1 = new javax.swing.JRadioButton();
         jRadioButtonP6Opcion2 = new javax.swing.JRadioButton();
         jRadioButtonP6Opcion3 = new javax.swing.JRadioButton();
+        jPanelPregunta5 = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTextAreaPregunta5 = new javax.swing.JTextArea();
+        jRadioButtonP5Opcion1 = new javax.swing.JRadioButton();
+        jRadioButtonP5Opcion2 = new javax.swing.JRadioButton();
+        jRadioButtonP5Opcion3 = new javax.swing.JRadioButton();
         jPanelPregunta7 = new javax.swing.JPanel();
         jScrollPane8 = new javax.swing.JScrollPane();
         jTextAreaPregunta7 = new javax.swing.JTextArea();
@@ -105,7 +107,9 @@ public class Vista_EvaluacionU1 extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(1190, 660));
         setPreferredSize(new java.awt.Dimension(1190, 660));
 
-        jPanelPreguntas.setPreferredSize(new java.awt.Dimension(1190, 660));
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
         jPanelPreguntas.setLayout(new javax.swing.BoxLayout(jPanelPreguntas, javax.swing.BoxLayout.Y_AXIS));
 
         jPanelPregunta1.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -290,7 +294,7 @@ public class Vista_EvaluacionU1 extends javax.swing.JPanel {
         jPanelPregunta4Layout.setHorizontalGroup(
             jPanelPregunta4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPregunta4Layout.createSequentialGroup()
-                .addContainerGap(117, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(129, 129, 129))
             .addGroup(jPanelPregunta4Layout.createSequentialGroup()
@@ -316,6 +320,54 @@ public class Vista_EvaluacionU1 extends javax.swing.JPanel {
         );
 
         jPanelPreguntas.add(jPanelPregunta4);
+
+        jPanelPregunta6.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        jPanelPregunta6.setMaximumSize(new java.awt.Dimension(500, 500));
+        jPanelPregunta6.setMinimumSize(new java.awt.Dimension(500, 500));
+        jPanelPregunta6.setPreferredSize(new java.awt.Dimension(500, 500));
+
+        jTextAreaPregunta6.setColumns(20);
+        jTextAreaPregunta6.setRows(5);
+        jScrollPane7.setViewportView(jTextAreaPregunta6);
+
+        jRadioButtonP6Opcion1.setText("jRadioButton1");
+
+        jRadioButtonP6Opcion2.setText("jRadioButton2");
+
+        jRadioButtonP6Opcion3.setText("jRadioButton3");
+
+        javax.swing.GroupLayout jPanelPregunta6Layout = new javax.swing.GroupLayout(jPanelPregunta6);
+        jPanelPregunta6.setLayout(jPanelPregunta6Layout);
+        jPanelPregunta6Layout.setHorizontalGroup(
+            jPanelPregunta6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPregunta6Layout.createSequentialGroup()
+                .addGroup(jPanelPregunta6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelPregunta6Layout.createSequentialGroup()
+                        .addGap(111, 111, 111)
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelPregunta6Layout.createSequentialGroup()
+                        .addGap(146, 146, 146)
+                        .addGroup(jPanelPregunta6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jRadioButtonP6Opcion2)
+                            .addComponent(jRadioButtonP6Opcion1)
+                            .addComponent(jRadioButtonP6Opcion3))))
+                .addContainerGap(135, Short.MAX_VALUE))
+        );
+        jPanelPregunta6Layout.setVerticalGroup(
+            jPanelPregunta6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPregunta6Layout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
+                .addComponent(jRadioButtonP6Opcion1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jRadioButtonP6Opcion2)
+                .addGap(18, 18, 18)
+                .addComponent(jRadioButtonP6Opcion3)
+                .addContainerGap(198, Short.MAX_VALUE))
+        );
+
+        jPanelPreguntas.add(jPanelPregunta6);
 
         jPanelPregunta5.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         jPanelPregunta5.setMaximumSize(new java.awt.Dimension(500, 500));
@@ -368,54 +420,6 @@ public class Vista_EvaluacionU1 extends javax.swing.JPanel {
         );
 
         jPanelPreguntas.add(jPanelPregunta5);
-
-        jPanelPregunta6.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        jPanelPregunta6.setMaximumSize(new java.awt.Dimension(500, 500));
-        jPanelPregunta6.setMinimumSize(new java.awt.Dimension(500, 500));
-        jPanelPregunta6.setPreferredSize(new java.awt.Dimension(500, 500));
-
-        jTextAreaPregunta6.setColumns(20);
-        jTextAreaPregunta6.setRows(5);
-        jScrollPane7.setViewportView(jTextAreaPregunta6);
-
-        jRadioButtonP6Opcion1.setText("jRadioButton1");
-
-        jRadioButtonP6Opcion2.setText("jRadioButton2");
-
-        jRadioButtonP6Opcion3.setText("jRadioButton3");
-
-        javax.swing.GroupLayout jPanelPregunta6Layout = new javax.swing.GroupLayout(jPanelPregunta6);
-        jPanelPregunta6.setLayout(jPanelPregunta6Layout);
-        jPanelPregunta6Layout.setHorizontalGroup(
-            jPanelPregunta6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelPregunta6Layout.createSequentialGroup()
-                .addGroup(jPanelPregunta6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelPregunta6Layout.createSequentialGroup()
-                        .addGap(111, 111, 111)
-                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelPregunta6Layout.createSequentialGroup()
-                        .addGap(146, 146, 146)
-                        .addGroup(jPanelPregunta6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jRadioButtonP6Opcion2)
-                            .addComponent(jRadioButtonP6Opcion1)
-                            .addComponent(jRadioButtonP6Opcion3))))
-                .addContainerGap(135, Short.MAX_VALUE))
-        );
-        jPanelPregunta6Layout.setVerticalGroup(
-            jPanelPregunta6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelPregunta6Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
-                .addComponent(jRadioButtonP6Opcion1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButtonP6Opcion2)
-                .addGap(18, 18, 18)
-                .addComponent(jRadioButtonP6Opcion3)
-                .addContainerGap(198, Short.MAX_VALUE))
-        );
-
-        jPanelPreguntas.add(jPanelPregunta6);
 
         jPanelPregunta7.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         jPanelPregunta7.setMaximumSize(new java.awt.Dimension(500, 500));
@@ -634,11 +638,13 @@ public class Vista_EvaluacionU1 extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1190, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1190, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
