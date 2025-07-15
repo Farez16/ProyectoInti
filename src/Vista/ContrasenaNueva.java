@@ -76,8 +76,8 @@ public JTextField getTxtNombre() { return TxtNombre; }
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("   Guardar Contraseña");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, 180, 40));
+        jLabel2.setText("Registrar Usuario");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, 140, 40));
 
         btnGuardarContraseña.setBackground(new java.awt.Color(171, 52, 2));
         btnGuardarContraseña.addActionListener(new java.awt.event.ActionListener() {
@@ -124,10 +124,10 @@ public JTextField getTxtNombre() { return TxtNombre; }
         jButton1VerificarCodigo.setText("Verificar Codigo");
         jPanel2.add(jButton1VerificarCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 160, -1, -1));
 
-        jButton1REnviarCodigo1.setText("Recibir Codigo");
+        jButton1REnviarCodigo1.setText("Enviar Codigo");
         jPanel2.add(jButton1REnviarCodigo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, -1, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 580, 430));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 580, 460));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo l,d.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-8, 0, 660, 510));

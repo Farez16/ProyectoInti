@@ -54,7 +54,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="30" y="40" width="580" height="430"/>
+              <AbsoluteConstraints x="30" y="40" width="580" height="460"/>
             </Constraint>
           </Constraints>
 
@@ -70,11 +70,11 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="   Guardar Contrase&#xf1;a"/>
+                <Property name="text" type="java.lang.String" value="Registrar Usuario"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="210" y="390" width="180" height="40"/>
+                  <AbsoluteConstraints x="230" y="390" width="140" height="40"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -236,7 +236,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButton1REnviarCodigo1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Recibir Codigo"/>
+                <Property name="text" type="java.lang.String" value="Enviar Codigo"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

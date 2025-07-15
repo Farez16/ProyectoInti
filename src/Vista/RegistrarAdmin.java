@@ -11,6 +11,12 @@ public class RegistrarAdmin extends javax.swing.JPanel {
 
     public RegistrarAdmin() {
         initComponents();
+         // Deshabilitar campos inicialmente
+         deshabilitarCampos();
+    }
+
+    public JLabel getLblCodigoOTP() {
+        return LblCodigoOTP;
     }
 
     public JLabel getLblContraseña() {
@@ -25,8 +31,20 @@ public class RegistrarAdmin extends javax.swing.JPanel {
         return LblNombre;
     }
 
+    public JLabel getLblTitulo() {
+        return LblTitulo;
+    }
+
+    public JLabel getLblimagenFondo() {
+        return LblimagenFondo;
+    }
+
     public JPanel getPanelRegistrarAdmin() {
         return PanelRegistrarAdmin;
+    }
+
+    public JTextField getTxtCodigoOTP() {
+        return TxtCodigoOTP;
     }
 
     public JTextField getTxtCorreo() {
@@ -37,19 +55,26 @@ public class RegistrarAdmin extends javax.swing.JPanel {
         return TxtNombre;
     }
 
+    public JButton getBtnEnviarCodigo() {
+        return btnEnviarCodigo;
+    }
+
     public JButton getBtnRegistrarAd() {
         return btnRegistrarAd;
     }
 
-    public JLabel getjLabel1() {
-        return LblTitulo;
+    public JButton getBtnVerificarCodigo() {
+        return btnVerificarCodigo;
     }
 
     public JPasswordField getjPassword() {
         return jPassword;
     }
-
-
+public void deshabilitarCampos() {
+    TxtNombre.setEnabled(false);
+    jPassword.setEnabled(false);
+    btnRegistrarAd.setEnabled(false);
+}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -63,6 +88,10 @@ public class RegistrarAdmin extends javax.swing.JPanel {
         LblContraseña = new javax.swing.JLabel();
         jPassword = new javax.swing.JPasswordField();
         btnRegistrarAd = new javax.swing.JButton();
+        btnEnviarCodigo = new javax.swing.JButton();
+        LblCodigoOTP = new javax.swing.JLabel();
+        TxtCodigoOTP = new javax.swing.JTextField();
+        btnVerificarCodigo = new javax.swing.JButton();
         LblimagenFondo = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1160, 660));
@@ -77,23 +106,34 @@ public class RegistrarAdmin extends javax.swing.JPanel {
 
         LblNombre.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         LblNombre.setText("Nombre:");
-        PanelRegistrarAdmin.add(LblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 218, -1, -1));
+        PanelRegistrarAdmin.add(LblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 260, -1, -1));
 
         LblCorreo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         LblCorreo.setText("Correo:");
         PanelRegistrarAdmin.add(LblCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 172, -1, -1));
-        PanelRegistrarAdmin.add(TxtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 172, 156, -1));
-        PanelRegistrarAdmin.add(TxtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 218, 156, -1));
+        PanelRegistrarAdmin.add(TxtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 156, -1));
+        PanelRegistrarAdmin.add(TxtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 260, 156, -1));
 
         LblContraseña.setBackground(new java.awt.Color(0, 0, 0));
         LblContraseña.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         LblContraseña.setText("Contraseña:");
-        PanelRegistrarAdmin.add(LblContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 279, -1, -1));
-        PanelRegistrarAdmin.add(jPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 279, 156, -1));
+        PanelRegistrarAdmin.add(LblContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 310, -1, -1));
+        PanelRegistrarAdmin.add(jPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, 156, -1));
 
         btnRegistrarAd.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnRegistrarAd.setText("Registrar");
-        PanelRegistrarAdmin.add(btnRegistrarAd, new org.netbeans.lib.awtextra.AbsoluteConstraints(517, 428, -1, -1));
+        PanelRegistrarAdmin.add(btnRegistrarAd, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 420, -1, -1));
+
+        btnEnviarCodigo.setText("Enviar Codigo");
+        PanelRegistrarAdmin.add(btnEnviarCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 170, -1, -1));
+
+        LblCodigoOTP.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        LblCodigoOTP.setText("Codigo OTP:");
+        PanelRegistrarAdmin.add(LblCodigoOTP, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, -1, -1));
+        PanelRegistrarAdmin.add(TxtCodigoOTP, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 210, 160, -1));
+
+        btnVerificarCodigo.setText("Verificar Codigo");
+        PanelRegistrarAdmin.add(btnVerificarCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 210, -1, -1));
 
         LblimagenFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lbl.jpg"))); // NOI18N
         PanelRegistrarAdmin.add(LblimagenFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 660));
@@ -112,15 +152,19 @@ public class RegistrarAdmin extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JLabel LblCodigoOTP;
     public javax.swing.JLabel LblContraseña;
     public javax.swing.JLabel LblCorreo;
     public javax.swing.JLabel LblNombre;
     public javax.swing.JLabel LblTitulo;
     public javax.swing.JLabel LblimagenFondo;
     public javax.swing.JPanel PanelRegistrarAdmin;
+    public javax.swing.JTextField TxtCodigoOTP;
     public javax.swing.JTextField TxtCorreo;
     public javax.swing.JTextField TxtNombre;
+    public javax.swing.JButton btnEnviarCodigo;
     public javax.swing.JButton btnRegistrarAd;
+    public javax.swing.JButton btnVerificarCodigo;
     public javax.swing.JPasswordField jPassword;
     // End of variables declaration//GEN-END:variables
 }
