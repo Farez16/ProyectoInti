@@ -138,12 +138,12 @@ public class Vista_Actividad1U1 extends javax.swing.JPanel {
     public javax.swing.ButtonGroup buttonGroupOpciones;
     public javax.swing.JButton jButtonCOMPLETOACTV1;
     public javax.swing.JButton jButtonResponder;
-    private javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabelMensajeRespuesta;
     public javax.swing.JRadioButton jRadioButtonOpcion1;
     public javax.swing.JRadioButton jRadioButtonOpcion2;
     public javax.swing.JRadioButton jRadioButtonOpcion3;
-    private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTextArea jTextAreaPregunta;
     // End of variables declaration//GEN-END:variables
 }

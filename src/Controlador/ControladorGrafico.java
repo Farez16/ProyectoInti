@@ -63,11 +63,11 @@ public class ControladorGrafico {
         String filtro = (String) vista.getjComboBox1().getSelectedItem();
         
         if (filtro.equals("Estudiantes por unidad")) {
-            dataset = modelo.obtenerUsuariosPorUnidad();
+           // dataset = modelo.obtenerUsuariosPorUnidad();
         } else if (filtro.equals("Promedio de actividades por unidad")) {
-            dataset = modelo.obtenerPromedioActividadesPorUnidad();
+           // dataset = modelo.obtenerPromedioActividadesPorUnidad();
         }else if (filtro.equals("Usuarios sin progreso")){
-            dataset = modelo.obtenerUsuariosSinProgreso();
+            //dataset = modelo.obtenerUsuariosSinProgreso();
         }
 
         // Determinar tipo de gráfico seleccionado

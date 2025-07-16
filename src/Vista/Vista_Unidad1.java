@@ -36,6 +36,7 @@ public class Vista_Unidad1 extends javax.swing.JPanel {
         jButtonACTIVIDAD2 = new javax.swing.JButton();
         jButtonREINICIARU1 = new javax.swing.JButton();
         jButtonBack = new javax.swing.JButton();
+        jButtonHistorial = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(1190, 660));
@@ -94,6 +95,9 @@ public class Vista_Unidad1 extends javax.swing.JPanel {
         });
         add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, 150, 50));
 
+        jButtonHistorial.setText("Ver Historial");
+        add(jButtonHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 180, 100, 40));
+
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoUnidad1.jpg"))); // NOI18N
         add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 660));
     }// </editor-fold>//GEN-END:initComponents
@@ -114,6 +118,7 @@ public class Vista_Unidad1 extends javax.swing.JPanel {
     public javax.swing.JButton jButtonBack;
     public javax.swing.JButton jButtonEVALUACION;
     public javax.swing.JButton jButtonFINALIZARUNIDAD1;
+    public javax.swing.JButton jButtonHistorial;
     public javax.swing.JButton jButtonLECCIONFONOLOGIA;
     public javax.swing.JButton jButtonLECCIONPRONOMBRES;
     public javax.swing.JButton jButtonLECCIONSALUDOS;

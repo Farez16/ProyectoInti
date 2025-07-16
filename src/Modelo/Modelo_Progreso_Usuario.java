@@ -7,6 +7,8 @@ package Modelo;
 import Conexion.Conexion;
 import java.sql.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -22,6 +24,7 @@ public class Modelo_Progreso_Usuario {
     private boolean evaluacionAprobada;
     private int calificacion;
     private LocalDateTime fechaActualizacion;
+    private String nombreUnidad;
 
     public Modelo_Progreso_Usuario() {
     }
@@ -102,6 +105,15 @@ public class Modelo_Progreso_Usuario {
     public void setFechaActualizacion(LocalDateTime fechaActualizacion) {
         this.fechaActualizacion = fechaActualizacion;
     }    
+    
+    public String getNombreUnidad() {
+    return nombreUnidad;
+}
+
+public void setNombreUnidad(String nombreUnidad) {
+    this.nombreUnidad = nombreUnidad;
+}
+
     // Método para obtener el progreso desde BD
    public static Modelo_Progreso_Usuario obtenerProgreso(int idUsuario, int idUnidad) {
        String sql = "SELECT * FROM progreso_usuario WHERE id_usuario = ? AND id_unidad = ?";
@@ -172,8 +184,7 @@ public class Modelo_Progreso_Usuario {
 }
 
 
-   // Método para actualizar progreso existente
-  public static boolean actualizarProgreso(Modelo_Progreso_Usuario progreso) {
+public static boolean actualizarProgreso(Modelo_Progreso_Usuario progreso) {
     // Validaciones previas
     if (progreso.getIdUsuario() <= 0) {
         System.out.println("❌ ERROR: ID de usuario inválido: " + progreso.getIdUsuario());
@@ -184,15 +195,16 @@ public class Modelo_Progreso_Usuario {
         return false;
     }
 
-    String sql = "UPDATE progreso_usuario SET lecciones_completadas = ?, actividades_completadas = ?, evaluacion_aprobada = ?, calificacion = ?, fecha_actualizacion = ? WHERE id_usuario = ? AND id_unidad = ?";
+    String sql = "UPDATE progreso_usuario " +
+                 "SET lecciones_completadas = ?, actividades_completadas = ?, evaluacion_aprobada = ?, " +
+                 "calificacion = ?, fecha_actualizacion = ? " +
+                 "WHERE id_usuario = ? AND id_unidad = ?";
 
     try (Connection conn = Conexion.conectar();
          PreparedStatement ps = conn.prepareStatement(sql)) {
 
-        // Depuración
         System.out.println("✏️ ACTUALIZANDO PROGRESO → id_usuario=" + progreso.getIdUsuario() + ", id_unidad=" + progreso.getIdUnidad());
 
-        // Asignación de valores
         ps.setInt(1, progreso.getLeccionesCompletadas());
         ps.setInt(2, progreso.getActividadesCompletadas());
         ps.setBoolean(3, progreso.isEvaluacionAprobada());
@@ -201,7 +213,8 @@ public class Modelo_Progreso_Usuario {
         ps.setInt(6, progreso.getIdUsuario());
         ps.setInt(7, progreso.getIdUnidad());
 
-        return ps.executeUpdate() > 0;
+        int filasActualizadas = ps.executeUpdate();
+        return filasActualizadas > 0;
 
     } catch (SQLException e) {
         System.out.println("❌ ERROR al actualizar progreso:");
@@ -209,6 +222,42 @@ public class Modelo_Progreso_Usuario {
     }
 
     return false;
+}
+public static List<Modelo_Progreso_Usuario> obtenerHistorialPorUsuario(int idUsuario) {
+    List<Modelo_Progreso_Usuario> historial = new ArrayList<>();
+    String sql = "SELECT p.*, u.nombre_unidad FROM progreso_usuario p " +
+                 "JOIN unidades u ON p.id_unidad = u.id_unidad " +
+                 "WHERE p.id_usuario = ? ORDER BY p.fecha_actualizacion DESC";
+
+    try (Connection conn = Conexion.conectar();
+         PreparedStatement ps = conn.prepareStatement(sql)) {
+        
+        ps.setInt(1, idUsuario);
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            Modelo_Progreso_Usuario progreso = new Modelo_Progreso_Usuario();
+            progreso.setIdProgreso(rs.getInt("id_progreso"));
+            progreso.setIdUsuario(rs.getInt("id_usuario"));
+            progreso.setIdUnidad(rs.getInt("id_unidad"));
+            progreso.setLeccionesCompletadas(rs.getInt("lecciones_completadas"));
+            progreso.setActividadesCompletadas(rs.getInt("actividades_completadas"));
+            progreso.setEvaluacionAprobada(rs.getBoolean("evaluacion_aprobada"));
+            progreso.setCalificacion(rs.getInt("calificacion"));
+            Timestamp ts = rs.getTimestamp("fecha_actualizacion");
+            if (ts != null) {
+                progreso.setFechaActualizacion(ts.toLocalDateTime());
+            }
+            // Si quieres el nombre de la unidad, agrega un atributo extra temporal
+            progreso.setNombreUnidad(rs.getString("nombre_unidad"));
+
+            historial.add(progreso);
+        }
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return historial;
 }
 
 }

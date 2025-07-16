@@ -19,43 +19,42 @@ public class Controlador_Unidad1 {
     private final String correo;  // Cambié de cedula a correo
     private final Controlador_Unidades controladorUnidades;
 
-   // Modificar la validación en el constructor de Controlador_Unidad1:
+    // Modificar la validación en el constructor de Controlador_Unidad1:
+    public Controlador_Unidad1(Vista_Unidad1 vista, Connection conn, ControladorDashboard controladorDashboard, String correo, Controlador_Unidades controladorUnidades) {
+        // Validaciones más detalladas
+        if (vista == null) {
+            throw new IllegalArgumentException("La vista no puede ser null");
+        }
+        if (conn == null) {
+            throw new IllegalArgumentException("La conexión no puede ser null");
+        }
+        if (controladorDashboard == null) {
+            throw new IllegalArgumentException("El controladorDashboard no puede ser null");
+        }
+        if (correo == null || correo.trim().isEmpty()) {
+            throw new IllegalArgumentException("El correo no puede ser null o vacío");
+        }
 
-public Controlador_Unidad1(Vista_Unidad1 vista, Connection conn, ControladorDashboard controladorDashboard, String correo, Controlador_Unidades controladorUnidades) {
-    // Validaciones más detalladas
-    if (vista == null) {
-        throw new IllegalArgumentException("La vista no puede ser null");
-    }
-    if (conn == null) {
-        throw new IllegalArgumentException("La conexión no puede ser null");
-    }
-    if (controladorDashboard == null) {
-        throw new IllegalArgumentException("El controladorDashboard no puede ser null");
-    }
-    if (correo == null || correo.trim().isEmpty()) {
-        throw new IllegalArgumentException("El correo no puede ser null o vacío");
-    }
-    
-    // CAMBIO: Permitir null temporalmente pero advertir
-    if (controladorUnidades == null) {
-        System.err.println("ADVERTENCIA: El controladorUnidades es null");
-        System.err.println("Esto puede causar problemas de navegación al usar los botones Back y Finalizar");
-        System.err.println("Stack trace para debug:");
-        Thread.dumpStack();
-    }
+        // CAMBIO: Permitir null temporalmente pero advertir
+        if (controladorUnidades == null) {
+            System.err.println("ADVERTENCIA: El controladorUnidades es null");
+            System.err.println("Esto puede causar problemas de navegación al usar los botones Back y Finalizar");
+            System.err.println("Stack trace para debug:");
+            Thread.dumpStack();
+        }
 
-    System.out.println("=== DEBUG: Todos los parámetros del constructor son válidos ===");
+        System.out.println("=== DEBUG: Todos los parámetros del constructor son válidos ===");
 
-    this.vista = vista;
-    this.conn = conn;
-    this.controladorDashboard = controladorDashboard;
-    this.correo = correo;
-    this.controladorUnidades = controladorUnidades; // Puede ser null temporalmente
-    this.dashboard = controladorDashboard.getVista();
-    this.idUsuario = Usuario.obtenerIdPorCorreo(correo);
-    inicializarVista();
-    agregarListeners();
-}
+        this.vista = vista;
+        this.conn = conn;
+        this.controladorDashboard = controladorDashboard;
+        this.correo = correo;
+        this.controladorUnidades = controladorUnidades; // Puede ser null temporalmente
+        this.dashboard = controladorDashboard.getVista();
+        this.idUsuario = Usuario.obtenerIdPorCorreo(correo);
+        inicializarVista();
+        agregarListeners();
+    }
 
     private void inicializarVista() {
         Modelo_Progreso_Usuario progreso = Modelo_Progreso_Usuario.obtenerProgreso(idUsuario, ID_UNIDAD);
@@ -81,40 +80,40 @@ public Controlador_Unidad1(Vista_Unidad1 vista, Connection conn, ControladorDash
     }
 
     // Reemplazar los listeners en agregarListeners() para manejar null:
+    private void agregarListeners() {
+        vista.jButtonLECCIONSALUDOS.addActionListener(e -> abrirLeccionSaludos());
+        vista.jButtonLECCIONFONOLOGIA.addActionListener(e -> abrirLeccionFonetica());
+        vista.jButtonLECCIONPRONOMBRES.addActionListener(e -> abrirLeccionPronombres());
+        vista.jButtonACTIIVIDAD1.addActionListener(e -> abrirActividad1());
+        vista.jButtonACTIVIDAD2.addActionListener(e -> abrirActividad2());
+        vista.jButtonEVALUACION.addActionListener(e -> abrirEvaluacion());
+        vista.jButtonREINICIARU1.addActionListener(e -> reiniciarProgresoUnidad1());
+        vista.jButtonHistorial.addActionListener(e -> abrirHistorialEvaluaciones());
 
-private void agregarListeners() {
-    vista.jButtonLECCIONSALUDOS.addActionListener(e -> abrirLeccionSaludos());
-    vista.jButtonLECCIONFONOLOGIA.addActionListener(e -> abrirLeccionFonetica());
-    vista.jButtonLECCIONPRONOMBRES.addActionListener(e -> abrirLeccionPronombres());
-    vista.jButtonACTIIVIDAD1.addActionListener(e -> abrirActividad1());
-    vista.jButtonACTIVIDAD2.addActionListener(e -> abrirActividad2());
-    vista.jButtonEVALUACION.addActionListener(e -> abrirEvaluacion());
-    vista.jButtonREINICIARU1.addActionListener(e -> reiniciarProgresoUnidad1());
+        vista.jButtonBack.addActionListener(e -> {
+            if (controladorUnidades != null) {
+                controladorUnidades.actualizarVista();
+                controladorDashboard.getVista().mostrarVista(controladorDashboard.getPanelUnidades());
+            } else {
+                System.err.println("ERROR: controladorUnidades es null en jButtonBack");
+                System.err.println("Navegando directamente al panel de unidades...");
+                // Navegación de respaldo
+                controladorDashboard.getVista().mostrarVista(controladorDashboard.getPanelUnidades());
+            }
+        });
 
-    vista.jButtonBack.addActionListener(e -> {
-        if (controladorUnidades != null) {
-            controladorUnidades.actualizarVista();
-            controladorDashboard.getVista().mostrarVista(controladorDashboard.getPanelUnidades());
-        } else {
-            System.err.println("ERROR: controladorUnidades es null en jButtonBack");
-            System.err.println("Navegando directamente al panel de unidades...");
-            // Navegación de respaldo
-            controladorDashboard.getVista().mostrarVista(controladorDashboard.getPanelUnidades());
-        }
-    });
-
-    vista.jButtonFINALIZARUNIDAD1.addActionListener(e -> {
-        if (controladorUnidades != null) {
-            controladorUnidades.actualizarVista();
-            controladorDashboard.getVista().mostrarVista(controladorDashboard.getPanelUnidades());
-        } else {
-            System.err.println("ERROR: controladorUnidades es null en jButtonFINALIZARUNIDAD1");
-            System.err.println("Navegando directamente al panel de unidades...");
-            // Navegación de respaldo
-            controladorDashboard.getVista().mostrarVista(controladorDashboard.getPanelUnidades());
-        }
-    });
-}
+        vista.jButtonFINALIZARUNIDAD1.addActionListener(e -> {
+            if (controladorUnidades != null) {
+                controladorUnidades.actualizarVista();
+                controladorDashboard.getVista().mostrarVista(controladorDashboard.getPanelUnidades());
+            } else {
+                System.err.println("ERROR: controladorUnidades es null en jButtonFINALIZARUNIDAD1");
+                System.err.println("Navegando directamente al panel de unidades...");
+                // Navegación de respaldo
+                controladorDashboard.getVista().mostrarVista(controladorDashboard.getPanelUnidades());
+            }
+        });
+    }
 
     private int calcularProgreso(int lecciones, int actividades, boolean evaluacion) {
         int progreso = 0;
@@ -176,11 +175,18 @@ private void agregarListeners() {
         controladorDashboard.getVista().mostrarVista(vistaActividad);
     }
 
-  private void abrirEvaluacion() {
-    Vista_EvaluacionU1 vistaEvaluacion = new Vista_EvaluacionU1();
-    new Controlador_Evaluaciones(vistaEvaluacion, controladorDashboard, conn, correo, ID_UNIDAD, controladorUnidades);
-    controladorDashboard.getVista().mostrarVista(vistaEvaluacion);
+    private void abrirEvaluacion() {
+        Vista_EvaluacionU1 vistaEvaluacion = new Vista_EvaluacionU1();
+        new Controlador_Evaluaciones(vistaEvaluacion, controladorDashboard, conn, correo, ID_UNIDAD, controladorUnidades);
+        controladorDashboard.getVista().mostrarVista(vistaEvaluacion);
+    }
+
+  private void abrirHistorialEvaluaciones() {
+    Vista_Historial_Evaluaciones vistaHistorial = new Vista_Historial_Evaluaciones();
+    Controlador_HistorialEvaluaciones controladorHistorial = new Controlador_HistorialEvaluaciones(vistaHistorial, conn, correo);
+    controladorDashboard.getVista().mostrarVista(vistaHistorial);
 }
+
 
     private void reiniciarProgresoUnidad1() {
         int confirmacion = javax.swing.JOptionPane.showConfirmDialog(
