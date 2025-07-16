@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package Vista;
 
 import java.awt.Dimension;
@@ -34,7 +30,7 @@ public class Graficos extends javax.swing.JPanel {
     }
 
     public JComboBox<String> getjComboBox1() {
-        return jComboBox1;
+        return comboBoxFiltro;
     }
 
     public JLabel getjLabel1() {
@@ -70,7 +66,7 @@ public class Graficos extends javax.swing.JPanel {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         PanelGraficos = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comboBoxFiltro = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         rdBarras = new javax.swing.JRadioButton();
         rdLineas = new javax.swing.JRadioButton();
@@ -91,7 +87,7 @@ public class Graficos extends javax.swing.JPanel {
             .addGap(0, 600, Short.MAX_VALUE)
         );
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estudiantes por unidad", "Promedio de actividades por unidad", "Usuarios sin progreso", "Contenido completado por los estudiantes" }));
 
         jLabel1.setText("Filtrar por:");
 
@@ -114,10 +110,10 @@ public class Graficos extends javax.swing.JPanel {
                 .addComponent(PanelGraficos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(245, 245, 245)
+                .addGap(49, 49, 49)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboBoxFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -126,14 +122,14 @@ public class Graficos extends javax.swing.JPanel {
                 .addComponent(rdLineas)
                 .addGap(29, 29, 29)
                 .addComponent(rdAreas)
-                .addGap(168, 168, 168))
+                .addGap(59, 59, 59))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBoxFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(rdBarras)
                     .addComponent(rdLineas)
@@ -148,7 +144,7 @@ public class Graficos extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JPanel PanelGraficos;
     public javax.swing.ButtonGroup buttonGroup1;
-    public javax.swing.JComboBox<String> jComboBox1;
+    public javax.swing.JComboBox<String> comboBoxFiltro;
     public javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel2;
     public javax.swing.JRadioButton rdAreas;
