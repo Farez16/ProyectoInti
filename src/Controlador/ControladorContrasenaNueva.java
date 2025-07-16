@@ -123,7 +123,7 @@ private boolean esCorreoPermitido(String correo) {
                 String asunto = "¡Gracias por registrarte en nuestra app!";
                 String mensaje = "Bienvenido/a " + nombre + ",\n\n"
                     + "Tu registro fue exitoso. Puedes iniciar sesión con:\n"
-                    + "Usuario: " + nombre + "\n"
+                    + "Usuario: " + correoUsuario + "\n"
                     + "Correo: " + correoUsuario + "\n"
                     + "Contraseña: " + nuevaContrasena + "\n\n"
                     + "¡Gracias por registrarte en nuestra app!";
