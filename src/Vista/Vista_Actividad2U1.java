@@ -26,16 +26,158 @@ public class Vista_Actividad2U1 extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanelDragDrop = new javax.swing.JPanel();
+        jLabelDestino = new javax.swing.JLabel();
+        jLabelDragDropOpcionA = new javax.swing.JLabel();
+        jLabelDragDropOpcionB = new javax.swing.JLabel();
+        jLabelDragDropOpcionC = new javax.swing.JLabel();
+        jButtonValidarDragDrop = new javax.swing.JButton();
         jButtonCOMPLETOACTV2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabelPregunta = new javax.swing.JLabel();
+        jLabelPista = new javax.swing.JLabel();
+        jPanelEmparejar = new javax.swing.JPanel();
+        jComboBoxEmparejarOpcionA = new javax.swing.JComboBox<>();
+        jComboBoxEmparejarOpcionB = new javax.swing.JComboBox<>();
+        jComboBoxEmparejarOpcionC = new javax.swing.JComboBox<>();
+        jLabelEmaprejar1 = new javax.swing.JLabel();
+        jLabelEmaprejar2 = new javax.swing.JLabel();
+        jLabelEmaprejar3 = new javax.swing.JLabel();
+        jButtonValidarEmparejar = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(1190, 660));
         setMinimumSize(new java.awt.Dimension(1190, 660));
         setPreferredSize(new java.awt.Dimension(1190, 660));
 
+        jPanelDragDrop.setMaximumSize(new java.awt.Dimension(691, 587));
+        jPanelDragDrop.setMinimumSize(new java.awt.Dimension(691, 587));
+        jPanelDragDrop.setPreferredSize(new java.awt.Dimension(500, 500));
+
+        jLabelDestino.setText("jLabel2");
+
+        jLabelDragDropOpcionA.setText("jLabel2");
+
+        jLabelDragDropOpcionB.setText("jLabel2");
+
+        jLabelDragDropOpcionC.setText("jLabel2");
+
+        jButtonValidarDragDrop.setText("Validar");
+
+        javax.swing.GroupLayout jPanelDragDropLayout = new javax.swing.GroupLayout(jPanelDragDrop);
+        jPanelDragDrop.setLayout(jPanelDragDropLayout);
+        jPanelDragDropLayout.setHorizontalGroup(
+            jPanelDragDropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelDragDropLayout.createSequentialGroup()
+                .addGroup(jPanelDragDropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelDragDropLayout.createSequentialGroup()
+                        .addGap(447, 447, 447)
+                        .addComponent(jLabelDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelDragDropLayout.createSequentialGroup()
+                        .addGap(98, 98, 98)
+                        .addComponent(jLabelDragDropOpcionA, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(179, 179, 179)
+                        .addGroup(jPanelDragDropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonValidarDragDrop, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelDragDropLayout.createSequentialGroup()
+                                .addComponent(jLabelDragDropOpcionB, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(126, 126, 126)
+                                .addComponent(jLabelDragDropOpcionC, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(341, Short.MAX_VALUE))
+        );
+        jPanelDragDropLayout.setVerticalGroup(
+            jPanelDragDropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelDragDropLayout.createSequentialGroup()
+                .addGroup(jPanelDragDropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelDragDropLayout.createSequentialGroup()
+                        .addGap(130, 130, 130)
+                        .addComponent(jLabelDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(109, 109, 109)
+                        .addComponent(jLabelDragDropOpcionA, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelDragDropLayout.createSequentialGroup()
+                        .addGap(271, 271, 271)
+                        .addGroup(jPanelDragDropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelDragDropOpcionB, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelDragDropOpcionC, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(44, 44, 44)
+                .addComponent(jButtonValidarDragDrop, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                .addGap(244, 244, 244))
+        );
+
         jButtonCOMPLETOACTV2.setText("TERMINADO");
+        jButtonCOMPLETOACTV2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCOMPLETOACTV2ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Actividad 2");
+
+        jLabelPregunta.setText("jLabel2");
+
+        jLabelPista.setText("jLabel2");
+
+        jPanelEmparejar.setMaximumSize(new java.awt.Dimension(691, 587));
+        jPanelEmparejar.setMinimumSize(new java.awt.Dimension(691, 587));
+        jPanelEmparejar.setPreferredSize(new java.awt.Dimension(691, 587));
+        jPanelEmparejar.setRequestFocusEnabled(false);
+
+        jComboBoxEmparejarOpcionA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jComboBoxEmparejarOpcionB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jComboBoxEmparejarOpcionC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabelEmaprejar1.setText("jLabel2");
+
+        jLabelEmaprejar2.setText("jLabel3");
+
+        jLabelEmaprejar3.setText("jLabel4");
+
+        jButtonValidarEmparejar.setText("jButton1");
+
+        javax.swing.GroupLayout jPanelEmparejarLayout = new javax.swing.GroupLayout(jPanelEmparejar);
+        jPanelEmparejar.setLayout(jPanelEmparejarLayout);
+        jPanelEmparejarLayout.setHorizontalGroup(
+            jPanelEmparejarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelEmparejarLayout.createSequentialGroup()
+                .addContainerGap(564, Short.MAX_VALUE)
+                .addGroup(jPanelEmparejarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelEmparejarLayout.createSequentialGroup()
+                        .addGroup(jPanelEmparejarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelEmaprejar2, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelEmaprejar1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelEmaprejar3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(80, 80, 80)
+                        .addGroup(jPanelEmparejarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jComboBoxEmparejarOpcionA, 0, 161, Short.MAX_VALUE)
+                            .addComponent(jComboBoxEmparejarOpcionB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBoxEmparejarOpcionC, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(160, 160, 160))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelEmparejarLayout.createSequentialGroup()
+                        .addComponent(jButtonValidarEmparejar)
+                        .addGap(59, 59, 59))))
+        );
+        jPanelEmparejarLayout.setVerticalGroup(
+            jPanelEmparejarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelEmparejarLayout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addGroup(jPanelEmparejarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jComboBoxEmparejarOpcionA, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelEmaprejar1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
+                .addGroup(jPanelEmparejarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jComboBoxEmparejarOpcionB, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelEmaprejar2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(51, 51, 51)
+                .addGroup(jPanelEmparejarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBoxEmparejarOpcionC, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelEmparejarLayout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabelEmaprejar3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 248, Short.MAX_VALUE)
+                .addComponent(jButtonValidarEmparejar)
+                .addGap(44, 44, 44))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -43,28 +185,55 @@ public class Vista_Actividad2U1 extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(jButtonCOMPLETOACTV2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(1013, Short.MAX_VALUE))
+                    .addComponent(jPanelDragDrop, javax.swing.GroupLayout.PREFERRED_SIZE, 1190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanelEmparejar, javax.swing.GroupLayout.PREFERRED_SIZE, 1190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelPista, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(368, 368, 368)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonCOMPLETOACTV2, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabel1)
-                .addGap(148, 148, 148)
-                .addComponent(jButtonCOMPLETOACTV2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(431, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabelPista, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanelDragDrop, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanelEmparejar, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtonCOMPLETOACTV2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(89, 89, 89))
+            .addComponent(jLabelPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonCOMPLETOACTV2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCOMPLETOACTV2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonCOMPLETOACTV2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton jButtonCOMPLETOACTV2;
+    public javax.swing.JButton jButtonValidarDragDrop;
+    public javax.swing.JButton jButtonValidarEmparejar;
+    public javax.swing.JComboBox<String> jComboBoxEmparejarOpcionA;
+    public javax.swing.JComboBox<String> jComboBoxEmparejarOpcionB;
+    public javax.swing.JComboBox<String> jComboBoxEmparejarOpcionC;
     private javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabelDestino;
+    public javax.swing.JLabel jLabelDragDropOpcionA;
+    public javax.swing.JLabel jLabelDragDropOpcionB;
+    public javax.swing.JLabel jLabelDragDropOpcionC;
+    public javax.swing.JLabel jLabelEmaprejar1;
+    public javax.swing.JLabel jLabelEmaprejar2;
+    public javax.swing.JLabel jLabelEmaprejar3;
+    public javax.swing.JLabel jLabelPista;
+    public javax.swing.JLabel jLabelPregunta;
+    public javax.swing.JPanel jPanelDragDrop;
+    public javax.swing.JPanel jPanelEmparejar;
     // End of variables declaration//GEN-END:variables
 }
