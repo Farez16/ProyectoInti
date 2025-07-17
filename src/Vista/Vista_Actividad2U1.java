@@ -4,6 +4,24 @@
  */
 package Vista;
 
+import java.awt.CardLayout;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.StringSelection;
+import java.awt.dnd.DnDConstants;
+import java.awt.dnd.DragGestureEvent;
+import java.awt.dnd.DragGestureListener;
+import java.awt.dnd.DragSource;
+import java.awt.dnd.DragSourceDragEvent;
+import java.awt.dnd.DragSourceDropEvent;
+import java.awt.dnd.DragSourceEvent;
+import java.awt.dnd.DragSourceListener;
+import java.awt.dnd.DropTarget;
+import java.awt.dnd.DropTargetDragEvent;
+import java.awt.dnd.DropTargetDropEvent;
+import java.awt.dnd.DropTargetEvent;
+import java.awt.dnd.DropTargetListener;
+import javax.swing.JLabel;
+
 /**
  *
  * @author Jhony Espinoza
@@ -15,6 +33,75 @@ public class Vista_Actividad2U1 extends javax.swing.JPanel {
      */
     public Vista_Actividad2U1() {
         initComponents();
+        configurarCardLayout();
+        configurarDragAndDrop();
+    }
+
+    private void configurarCardLayout() {
+        CardLayout cl = new CardLayout();
+        jPanelContenedor.setLayout(cl);
+
+        jPanelContenedor.add(jPanelEmparejar, "Emparejar");
+        jPanelContenedor.add(jPanelDragDrop, "DragDrop");
+    }
+
+    private void configurarDragAndDrop() {
+        // Listener para iniciar el drag
+        DragSourceListener dragSourceListener = new DragSourceListener() {
+            public void dragEnter(DragSourceDragEvent dsde) {
+            }
+
+            public void dragOver(DragSourceDragEvent dsde) {
+            }
+
+            public void dropActionChanged(DragSourceDragEvent dsde) {
+            }
+
+            public void dragExit(DragSourceEvent dse) {
+            }
+
+            public void dragDropEnd(DragSourceDropEvent dsde) {
+            }
+        };
+
+        DragGestureListener dragGestureListener = new DragGestureListener() {
+            public void dragGestureRecognized(DragGestureEvent dge) {
+                JLabel label = (JLabel) dge.getComponent();
+                StringSelection text = new StringSelection(label.getText());
+                dge.startDrag(DragSource.DefaultCopyDrop, text, dragSourceListener);
+            }
+        };
+
+        DragSource ds = new DragSource();
+        ds.createDefaultDragGestureRecognizer(jLabelDragDropOpcionA, DnDConstants.ACTION_COPY, dragGestureListener);
+        ds.createDefaultDragGestureRecognizer(jLabelDragDropOpcionB, DnDConstants.ACTION_COPY, dragGestureListener);
+        ds.createDefaultDragGestureRecognizer(jLabelDragDropOpcionC, DnDConstants.ACTION_COPY, dragGestureListener);
+
+        // Receptor (DropTarget) para el destino
+        new DropTarget(jLabelDestino, new DropTargetListener() {
+            public void dragEnter(DropTargetDragEvent dtde) {
+            }
+
+            public void dragOver(DropTargetDragEvent dtde) {
+            }
+
+            public void dropActionChanged(DropTargetDragEvent dtde) {
+            }
+
+            public void dragExit(DropTargetEvent dte) {
+            }
+
+            public void drop(DropTargetDropEvent dtde) {
+                try {
+                    dtde.acceptDrop(DnDConstants.ACTION_COPY);
+                    String data = (String) dtde.getTransferable().getTransferData(DataFlavor.stringFlavor);
+                    jLabelDestino.setText(data);
+                    dtde.dropComplete(true);
+                } catch (Exception ex) {
+                    dtde.dropComplete(false);
+                }
+            }
+        });
     }
 
     /**
@@ -26,16 +113,18 @@ public class Vista_Actividad2U1 extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabelPista = new javax.swing.JLabel();
+        jLabelPregunta = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jButtonCOMPLETOACTV2 = new javax.swing.JButton();
+        jLabelMensajeRespuesta = new javax.swing.JLabel();
+        jPanelContenedor = new javax.swing.JPanel();
         jPanelDragDrop = new javax.swing.JPanel();
         jLabelDestino = new javax.swing.JLabel();
         jLabelDragDropOpcionA = new javax.swing.JLabel();
         jLabelDragDropOpcionB = new javax.swing.JLabel();
         jLabelDragDropOpcionC = new javax.swing.JLabel();
         jButtonValidarDragDrop = new javax.swing.JButton();
-        jButtonCOMPLETOACTV2 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabelPregunta = new javax.swing.JLabel();
-        jLabelPista = new javax.swing.JLabel();
         jPanelEmparejar = new javax.swing.JPanel();
         jComboBoxEmparejarOpcionA = new javax.swing.JComboBox<>();
         jComboBoxEmparejarOpcionB = new javax.swing.JComboBox<>();
@@ -49,59 +138,11 @@ public class Vista_Actividad2U1 extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(1190, 660));
         setPreferredSize(new java.awt.Dimension(1190, 660));
 
-        jPanelDragDrop.setMaximumSize(new java.awt.Dimension(691, 587));
-        jPanelDragDrop.setMinimumSize(new java.awt.Dimension(691, 587));
-        jPanelDragDrop.setPreferredSize(new java.awt.Dimension(500, 500));
+        jLabelPista.setText("Pista");
 
-        jLabelDestino.setText("jLabel2");
+        jLabelPregunta.setText("Pregunta");
 
-        jLabelDragDropOpcionA.setText("jLabel2");
-
-        jLabelDragDropOpcionB.setText("jLabel2");
-
-        jLabelDragDropOpcionC.setText("jLabel2");
-
-        jButtonValidarDragDrop.setText("Validar");
-
-        javax.swing.GroupLayout jPanelDragDropLayout = new javax.swing.GroupLayout(jPanelDragDrop);
-        jPanelDragDrop.setLayout(jPanelDragDropLayout);
-        jPanelDragDropLayout.setHorizontalGroup(
-            jPanelDragDropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelDragDropLayout.createSequentialGroup()
-                .addGroup(jPanelDragDropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelDragDropLayout.createSequentialGroup()
-                        .addGap(447, 447, 447)
-                        .addComponent(jLabelDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelDragDropLayout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addComponent(jLabelDragDropOpcionA, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(179, 179, 179)
-                        .addGroup(jPanelDragDropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonValidarDragDrop, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanelDragDropLayout.createSequentialGroup()
-                                .addComponent(jLabelDragDropOpcionB, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(126, 126, 126)
-                                .addComponent(jLabelDragDropOpcionC, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(341, Short.MAX_VALUE))
-        );
-        jPanelDragDropLayout.setVerticalGroup(
-            jPanelDragDropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelDragDropLayout.createSequentialGroup()
-                .addGroup(jPanelDragDropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelDragDropLayout.createSequentialGroup()
-                        .addGap(130, 130, 130)
-                        .addComponent(jLabelDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(109, 109, 109)
-                        .addComponent(jLabelDragDropOpcionA, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelDragDropLayout.createSequentialGroup()
-                        .addGap(271, 271, 271)
-                        .addGroup(jPanelDragDropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelDragDropOpcionB, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelDragDropOpcionC, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(44, 44, 44)
-                .addComponent(jButtonValidarDragDrop, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                .addGap(244, 244, 244))
-        );
+        jLabel1.setText("Actividad 2");
 
         jButtonCOMPLETOACTV2.setText("TERMINADO");
         jButtonCOMPLETOACTV2.addActionListener(new java.awt.event.ActionListener() {
@@ -110,11 +151,68 @@ public class Vista_Actividad2U1 extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setText("Actividad 2");
+        jLabelMensajeRespuesta.setText("Respuesta");
 
-        jLabelPregunta.setText("jLabel2");
+        jPanelContenedor.setLayout(new java.awt.CardLayout());
 
-        jLabelPista.setText("jLabel2");
+        jPanelDragDrop.setMaximumSize(new java.awt.Dimension(691, 587));
+        jPanelDragDrop.setMinimumSize(new java.awt.Dimension(691, 587));
+        jPanelDragDrop.setPreferredSize(new java.awt.Dimension(500, 500));
+
+        jLabelDestino.setText("jLabel2");
+        jLabelDestino.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabelDragDropOpcionA.setText("jLabel2");
+        jLabelDragDropOpcionA.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabelDragDropOpcionB.setText("jLabel2");
+        jLabelDragDropOpcionB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabelDragDropOpcionC.setText("jLabel2");
+        jLabelDragDropOpcionC.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jButtonValidarDragDrop.setText("Validar");
+
+        javax.swing.GroupLayout jPanelDragDropLayout = new javax.swing.GroupLayout(jPanelDragDrop);
+        jPanelDragDrop.setLayout(jPanelDragDropLayout);
+        jPanelDragDropLayout.setHorizontalGroup(
+            jPanelDragDropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelDragDropLayout.createSequentialGroup()
+                .addGap(98, 98, 98)
+                .addComponent(jLabelDragDropOpcionA, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(179, 179, 179)
+                .addGroup(jPanelDragDropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonValidarDragDrop, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelDragDropLayout.createSequentialGroup()
+                        .addComponent(jLabelDragDropOpcionB, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                        .addComponent(jLabelDragDropOpcionC, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(50, 50, 50))
+            .addGroup(jPanelDragDropLayout.createSequentialGroup()
+                .addGap(315, 315, 315)
+                .addComponent(jLabelDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanelDragDropLayout.setVerticalGroup(
+            jPanelDragDropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelDragDropLayout.createSequentialGroup()
+                .addGroup(jPanelDragDropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelDragDropLayout.createSequentialGroup()
+                        .addGap(107, 107, 107)
+                        .addComponent(jLabelDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(109, 109, 109)
+                        .addComponent(jLabelDragDropOpcionA, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelDragDropLayout.createSequentialGroup()
+                        .addGap(271, 271, 271)
+                        .addGroup(jPanelDragDropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelDragDropOpcionB, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelDragDropOpcionC, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addComponent(jButtonValidarDragDrop, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(159, 159, 159))
+        );
+
+        jPanelContenedor.add(jPanelDragDrop, "card5");
 
         jPanelEmparejar.setMaximumSize(new java.awt.Dimension(691, 587));
         jPanelEmparejar.setMinimumSize(new java.awt.Dimension(691, 587));
@@ -140,7 +238,7 @@ public class Vista_Actividad2U1 extends javax.swing.JPanel {
         jPanelEmparejarLayout.setHorizontalGroup(
             jPanelEmparejarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelEmparejarLayout.createSequentialGroup()
-                .addContainerGap(564, Short.MAX_VALUE)
+                .addContainerGap(65, Short.MAX_VALUE)
                 .addGroup(jPanelEmparejarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelEmparejarLayout.createSequentialGroup()
                         .addGroup(jPanelEmparejarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,40 +272,49 @@ public class Vista_Actividad2U1 extends javax.swing.JPanel {
                     .addGroup(jPanelEmparejarLayout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(jLabelEmaprejar3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 248, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonValidarEmparejar)
                 .addGap(44, 44, 44))
         );
+
+        jPanelContenedor.add(jPanelEmparejar, "card6");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelDragDrop, javax.swing.GroupLayout.PREFERRED_SIZE, 1190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanelEmparejar, javax.swing.GroupLayout.PREFERRED_SIZE, 1190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelPista, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(368, 368, 368)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonCOMPLETOACTV2, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(272, 272, 272)
+                .addComponent(jLabelPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelPista, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addComponent(jPanelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelMensajeRespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(440, 440, 440)
+                .addComponent(jButtonCOMPLETOACTV2)
+                .addGap(19, 19, 19))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jLabelPista, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jPanelDragDrop, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jPanelEmparejar, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButtonCOMPLETOACTV2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(89, 89, 89))
-            .addComponent(jLabelPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabelPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelPista, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jButtonCOMPLETOACTV2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelMensajeRespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -231,8 +338,10 @@ public class Vista_Actividad2U1 extends javax.swing.JPanel {
     public javax.swing.JLabel jLabelEmaprejar1;
     public javax.swing.JLabel jLabelEmaprejar2;
     public javax.swing.JLabel jLabelEmaprejar3;
+    public javax.swing.JLabel jLabelMensajeRespuesta;
     public javax.swing.JLabel jLabelPista;
     public javax.swing.JLabel jLabelPregunta;
+    public javax.swing.JPanel jPanelContenedor;
     public javax.swing.JPanel jPanelDragDrop;
     public javax.swing.JPanel jPanelEmparejar;
     // End of variables declaration//GEN-END:variables

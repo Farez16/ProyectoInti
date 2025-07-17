@@ -67,7 +67,9 @@ public class ControladorGrafico {
         } else if (filtro.equals("Promedio de actividades por unidad")) {
            // dataset = modelo.obtenerPromedioActividadesPorUnidad();
         }else if (filtro.equals("Usuarios sin progreso")){
-            //dataset = modelo.obtenerUsuariosSinProgreso();
+            dataset = modelo.obtenerUsuariosSinProgreso();
+        }else if (filtro.equals("Contenido completado por los estudiantes")){
+            dataset = modelo.obtenerContenidoCompletado();
         }
 
         // Determinar tipo de gráfico seleccionado

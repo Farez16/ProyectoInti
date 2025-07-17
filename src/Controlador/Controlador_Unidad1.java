@@ -162,8 +162,14 @@ public class Controlador_Unidad1 {
     private void abrirActividad1() {
         int idActividad = 1;
         Vista_Actividad1U1 vistaActividad = new Vista_Actividad1U1();
-        Controlador_Actividades controladorAct = new Controlador_Actividades(vistaActividad, controladorDashboard, conn, correo, idActividad, this); // <-- PASA "this"
-        controladorAct.cargarActividad();
+        Controlador_Actividad_PreguntaRespuesta controlador = new Controlador_Actividad_PreguntaRespuesta(
+                vistaActividad,
+                conn,
+                idActividad,
+                controladorDashboard,
+                this, // 'this' es el Controlador_Unidad1 actual
+                correo
+        );
         controladorDashboard.getVista().mostrarVista(vistaActividad);
     }
 
@@ -181,12 +187,11 @@ public class Controlador_Unidad1 {
         controladorDashboard.getVista().mostrarVista(vistaEvaluacion);
     }
 
-  private void abrirHistorialEvaluaciones() {
-    Vista_Historial_Evaluaciones vistaHistorial = new Vista_Historial_Evaluaciones();
-    Controlador_HistorialEvaluaciones controladorHistorial = new Controlador_HistorialEvaluaciones(vistaHistorial, conn, correo);
-    controladorDashboard.getVista().mostrarVista(vistaHistorial);
-}
-
+    private void abrirHistorialEvaluaciones() {
+        Vista_Historial_Evaluaciones vistaHistorial = new Vista_Historial_Evaluaciones();
+        Controlador_HistorialEvaluaciones controladorHistorial = new Controlador_HistorialEvaluaciones(vistaHistorial, conn, correo);
+        controladorDashboard.getVista().mostrarVista(vistaHistorial);
+    }
 
     private void reiniciarProgresoUnidad1() {
         int confirmacion = javax.swing.JOptionPane.showConfirmDialog(
