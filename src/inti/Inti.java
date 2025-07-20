@@ -18,17 +18,13 @@ public class Inti {
 
         // Ejecutar en el Event Dispatch Thread
         java.awt.EventQueue.invokeLater(new Runnable() {
-
             public void run() {
-// Crear la vista
+                // Crear la vista
                 Login vistaLogin = new Login();
-
-                // Crear el controlador con la vista
-                ControladorLogin controlador = new ControladorLogin(vistaLogin);
-
+                // Crear el controlador
+                ControladorLogin controladorLogin = new ControladorLogin(vistaLogin);
                 // Mostrar la vista
                 vistaLogin.setVisible(true);
-                System.out.println("Hola");
             }
         });
     }

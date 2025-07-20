@@ -44,6 +44,7 @@ public class Controlador_Unidad1 {
         }
 
         System.out.println("=== DEBUG: Todos los parámetros del constructor son válidos ===");
+        System.out.println("[DEBUG Unidad1] Constructor ejecutado. Inicializando vista y listeners...");
 
         this.vista = vista;
         this.conn = conn;
@@ -81,6 +82,7 @@ public class Controlador_Unidad1 {
 
     // Reemplazar los listeners en agregarListeners() para manejar null:
     private void agregarListeners() {
+        System.out.println("[DEBUG Unidad1] Registrando listeners para los botones de la unidad 1...");
         vista.jButtonLECCIONSALUDOS.addActionListener(e -> abrirLeccionSaludos());
         vista.jButtonLECCIONFONOLOGIA.addActionListener(e -> abrirLeccionFonetica());
         vista.jButtonLECCIONPRONOMBRES.addActionListener(e -> abrirLeccionPronombres());

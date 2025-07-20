@@ -1,13 +1,7 @@
 package Vista;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import java.awt.event.HierarchyEvent;
-import java.awt.event.HierarchyListener;
-import java.io.File;
-import java.net.MalformedURLException; // Importación necesaria para URL
+
 
 public class Vista_LeccionSALUDOS extends JPanel {
 
@@ -28,59 +22,236 @@ public class Vista_LeccionSALUDOS extends JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButtonCOMPLETOSALUDOS = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jPanelContenedor = new javax.swing.JPanel();
+        jPanelPag1 = new javax.swing.JPanel();
+        jPanelVideo = new javax.swing.JPanel();
+        jButtonSiguientePag = new javax.swing.JButton();
+        jButtonPlay = new javax.swing.JButton();
+        jButtonPausa = new javax.swing.JButton();
+        jSliderProgresoVideo = new javax.swing.JSlider();
+        jButtonVoliumen = new javax.swing.JButton();
+        jSliderSubirBajarVolumen = new javax.swing.JSlider();
+        jLabelTiempoV = new javax.swing.JLabel();
+        jPanelPag2 = new javax.swing.JPanel();
         jLabelImagen1Saludos = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextAreaTexto1 = new javax.swing.JTextArea();
+        jButtonSiguientePag2 = new javax.swing.JButton();
+        jPanelPag3 = new javax.swing.JPanel();
         jLabelImagen2Saludos = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextAreaTexto1Saludos = new javax.swing.JTextArea();
-        jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaTexto2Saludos = new javax.swing.JTextArea();
+        jButtonCOMPLETOSALUDOS = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(1190, 660));
         setMinimumSize(new java.awt.Dimension(1190, 660));
         setPreferredSize(new java.awt.Dimension(1190, 660));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButtonCOMPLETOSALUDOS.setText("SIGUIENTE");
-        add(jButtonCOMPLETOSALUDOS, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 580, 180, 70));
+        jPanelContenedor.setMaximumSize(new java.awt.Dimension(1190, 660));
+        jPanelContenedor.setMinimumSize(new java.awt.Dimension(1190, 660));
+        jPanelContenedor.setPreferredSize(new java.awt.Dimension(1190, 660));
+        jPanelContenedor.setLayout(new java.awt.CardLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("Saludos");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 70, 40));
+        jPanelVideo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanelVideo.setMaximumSize(new java.awt.Dimension(750, 400));
+        jPanelVideo.setMinimumSize(new java.awt.Dimension(750, 400));
+        jPanelVideo.setPreferredSize(new java.awt.Dimension(750, 400));
 
-        jLabelImagen1Saludos.setText("jLabel2");
-        add(jLabelImagen1Saludos, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 260, 220));
+        javax.swing.GroupLayout jPanelVideoLayout = new javax.swing.GroupLayout(jPanelVideo);
+        jPanelVideo.setLayout(jPanelVideoLayout);
+        jPanelVideoLayout.setHorizontalGroup(
+            jPanelVideoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 748, Short.MAX_VALUE)
+        );
+        jPanelVideoLayout.setVerticalGroup(
+            jPanelVideoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 398, Short.MAX_VALUE)
+        );
 
-        jLabelImagen2Saludos.setText("jLabel2");
-        add(jLabelImagen2Saludos, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, 290, 260));
+        jButtonSiguientePag.setText("Siguiente");
 
-        jTextAreaTexto1Saludos.setColumns(20);
-        jTextAreaTexto1Saludos.setLineWrap(true);
-        jTextAreaTexto1Saludos.setRows(5);
-        jTextAreaTexto1Saludos.setWrapStyleWord(true);
-        jScrollPane2.setViewportView(jTextAreaTexto1Saludos);
+        jButtonPlay.setText("jButton1");
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 280, 240));
+        jButtonPausa.setText("jButton2");
+
+        jButtonVoliumen.setText("jButton1");
+
+        jSliderSubirBajarVolumen.setOrientation(javax.swing.JSlider.VERTICAL);
+
+        jLabelTiempoV.setText("jLabel1");
+
+        javax.swing.GroupLayout jPanelPag1Layout = new javax.swing.GroupLayout(jPanelPag1);
+        jPanelPag1.setLayout(jPanelPag1Layout);
+        jPanelPag1Layout.setHorizontalGroup(
+            jPanelPag1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPag1Layout.createSequentialGroup()
+                .addGap(148, 148, 148)
+                .addGroup(jPanelPag1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelPag1Layout.createSequentialGroup()
+                        .addComponent(jButtonPlay)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonPausa)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonSiguientePag, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35))
+                    .addGroup(jPanelPag1Layout.createSequentialGroup()
+                        .addGroup(jPanelPag1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanelVideo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelPag1Layout.createSequentialGroup()
+                                .addComponent(jSliderProgresoVideo, javax.swing.GroupLayout.PREFERRED_SIZE, 694, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabelTiempoV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelPag1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonVoliumen)
+                            .addGroup(jPanelPag1Layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(jSliderSubirBajarVolumen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(199, Short.MAX_VALUE))))
+        );
+        jPanelPag1Layout.setVerticalGroup(
+            jPanelPag1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPag1Layout.createSequentialGroup()
+                .addGroup(jPanelPag1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelPag1Layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(jPanelVideo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPag1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jSliderSubirBajarVolumen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
+                .addGroup(jPanelPag1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jSliderProgresoVideo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonVoliumen)
+                    .addComponent(jLabelTiempoV, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelPag1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonSiguientePag, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonPlay)
+                    .addComponent(jButtonPausa))
+                .addGap(137, 137, 137))
+        );
+
+        jPanelContenedor.add(jPanelPag1, "card2");
+
+        jLabelImagen1Saludos.setText("jLabel1");
+
+        jTextAreaTexto1.setColumns(20);
+        jTextAreaTexto1.setRows(5);
+        jScrollPane1.setViewportView(jTextAreaTexto1);
+
+        jButtonSiguientePag2.setText("Next");
+
+        javax.swing.GroupLayout jPanelPag2Layout = new javax.swing.GroupLayout(jPanelPag2);
+        jPanelPag2.setLayout(jPanelPag2Layout);
+        jPanelPag2Layout.setHorizontalGroup(
+            jPanelPag2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPag2Layout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addComponent(jLabelImagen1Saludos, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(79, 79, 79)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(122, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPag2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonSiguientePag2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
+        );
+        jPanelPag2Layout.setVerticalGroup(
+            jPanelPag2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPag2Layout.createSequentialGroup()
+                .addGroup(jPanelPag2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelPag2Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabelImagen1Saludos, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelPag2Layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addComponent(jButtonSiguientePag2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
+        );
+
+        jPanelContenedor.add(jPanelPag2, "card3");
+
+        jPanelPag3.setMaximumSize(new java.awt.Dimension(1190, 660));
+        jPanelPag3.setMinimumSize(new java.awt.Dimension(1190, 660));
+
+        jLabelImagen2Saludos.setText("jLabel1");
 
         jTextAreaTexto2Saludos.setColumns(20);
-        jTextAreaTexto2Saludos.setLineWrap(true);
         jTextAreaTexto2Saludos.setRows(5);
-        jTextAreaTexto2Saludos.setWrapStyleWord(true);
-        jScrollPane1.setViewportView(jTextAreaTexto2Saludos);
+        jScrollPane2.setViewportView(jTextAreaTexto2Saludos);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 130, 330, 260));
+        jButtonCOMPLETOSALUDOS.setText("Completar");
+
+        javax.swing.GroupLayout jPanelPag3Layout = new javax.swing.GroupLayout(jPanelPag3);
+        jPanelPag3.setLayout(jPanelPag3Layout);
+        jPanelPag3Layout.setHorizontalGroup(
+            jPanelPag3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPag3Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(jLabelImagen2Saludos, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelPag3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelPag3Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPag3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 348, Short.MAX_VALUE)
+                        .addComponent(jButtonCOMPLETOSALUDOS, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(98, 98, 98))))
+        );
+        jPanelPag3Layout.setVerticalGroup(
+            jPanelPag3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPag3Layout.createSequentialGroup()
+                .addContainerGap(46, Short.MAX_VALUE)
+                .addComponent(jLabelImagen2Saludos, javax.swing.GroupLayout.PREFERRED_SIZE, 599, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
+            .addGroup(jPanelPag3Layout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonCOMPLETOSALUDOS, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
+        );
+
+        jPanelContenedor.add(jPanelPag3, "card4");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton jButtonCOMPLETOSALUDOS;
-    private javax.swing.JLabel jLabel1;
+    public javax.swing.JButton jButtonPausa;
+    public javax.swing.JButton jButtonPlay;
+    public javax.swing.JButton jButtonSiguientePag;
+    public javax.swing.JButton jButtonSiguientePag2;
+    public javax.swing.JButton jButtonVoliumen;
     public javax.swing.JLabel jLabelImagen1Saludos;
     public javax.swing.JLabel jLabelImagen2Saludos;
+    public javax.swing.JLabel jLabelTiempoV;
+    public javax.swing.JPanel jPanelContenedor;
+    public javax.swing.JPanel jPanelPag1;
+    public javax.swing.JPanel jPanelPag2;
+    public javax.swing.JPanel jPanelPag3;
+    public javax.swing.JPanel jPanelVideo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    public javax.swing.JTextArea jTextAreaTexto1Saludos;
+    public javax.swing.JSlider jSliderProgresoVideo;
+    public javax.swing.JSlider jSliderSubirBajarVolumen;
+    public javax.swing.JTextArea jTextAreaTexto1;
     public javax.swing.JTextArea jTextAreaTexto2Saludos;
     // End of variables declaration//GEN-END:variables
 }
