@@ -26,45 +26,246 @@ public class Vista_LeccionPRONOMBRES extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanelContenedorP = new javax.swing.JPanel();
+        jPanelPag1P = new javax.swing.JPanel();
+        jPanelVideoP = new javax.swing.JPanel();
+        jLabelTiempoVP = new javax.swing.JLabel();
+        jButtonPlay = new javax.swing.JButton();
+        jButtonPausa = new javax.swing.JButton();
+        jSliderProgresoVideoP = new javax.swing.JSlider();
+        jSliderSubirBajarVolumenP = new javax.swing.JSlider();
+        jButtonSiguientePag2P = new javax.swing.JButton();
+        jButtonVolumenP = new javax.swing.JButton();
+        jPanelPag2P = new javax.swing.JPanel();
+        jLabelImagen1Pronombres = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextAreaTexto1P = new javax.swing.JTextArea();
+        jButtonSiguientePag3 = new javax.swing.JButton();
+        jPanelPag3P = new javax.swing.JPanel();
         jButtonCOMPLETOPRONOMBRES = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jLabelImagen2Pronombres = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextAreaTexto2P = new javax.swing.JTextArea();
 
         setMaximumSize(new java.awt.Dimension(1190, 660));
         setMinimumSize(new java.awt.Dimension(1190, 660));
         setPreferredSize(new java.awt.Dimension(1190, 660));
 
+        jPanelContenedorP.setLayout(new java.awt.CardLayout());
+
+        jPanelPag1P.setMaximumSize(new java.awt.Dimension(1190, 660));
+        jPanelPag1P.setMinimumSize(new java.awt.Dimension(1190, 660));
+
+        jPanelVideoP.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout jPanelVideoPLayout = new javax.swing.GroupLayout(jPanelVideoP);
+        jPanelVideoP.setLayout(jPanelVideoPLayout);
+        jPanelVideoPLayout.setHorizontalGroup(
+            jPanelVideoPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 987, Short.MAX_VALUE)
+        );
+        jPanelVideoPLayout.setVerticalGroup(
+            jPanelVideoPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 568, Short.MAX_VALUE)
+        );
+
+        jLabelTiempoVP.setText("jLabel2");
+
+        jButtonPlay.setText("Play");
+
+        jButtonPausa.setText("Pause");
+
+        jSliderSubirBajarVolumenP.setOrientation(javax.swing.JSlider.VERTICAL);
+
+        jButtonSiguientePag2P.setText("Siguiente Pag");
+
+        jButtonVolumenP.setText("jButton1");
+
+        javax.swing.GroupLayout jPanelPag1PLayout = new javax.swing.GroupLayout(jPanelPag1P);
+        jPanelPag1P.setLayout(jPanelPag1PLayout);
+        jPanelPag1PLayout.setHorizontalGroup(
+            jPanelPag1PLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPag1PLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(jPanelPag1PLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelPag1PLayout.createSequentialGroup()
+                        .addComponent(jButtonPlay)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonPausa)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPag1PLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanelPag1PLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanelVideoP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPag1PLayout.createSequentialGroup()
+                                .addComponent(jSliderProgresoVideoP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabelTiempoVP)))))
+                .addGroup(jPanelPag1PLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelPag1PLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jSliderSubirBajarVolumenP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonVolumenP)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPag1PLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addComponent(jButtonSiguientePag2P, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35))))
+        );
+        jPanelPag1PLayout.setVerticalGroup(
+            jPanelPag1PLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPag1PLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanelPag1PLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPag1PLayout.createSequentialGroup()
+                        .addGroup(jPanelPag1PLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanelVideoP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSliderSubirBajarVolumenP, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanelPag1PLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelPag1PLayout.createSequentialGroup()
+                                .addComponent(jLabelTiempoVP)
+                                .addGap(11, 11, 11))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPag1PLayout.createSequentialGroup()
+                                .addComponent(jSliderProgresoVideoP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPag1PLayout.createSequentialGroup()
+                        .addComponent(jButtonVolumenP)
+                        .addGap(62, 62, 62)))
+                .addGroup(jPanelPag1PLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonPlay)
+                    .addComponent(jButtonPausa)
+                    .addComponent(jButtonSiguientePag2P))
+                .addGap(472, 472, 472))
+        );
+
+        jPanelContenedorP.add(jPanelPag1P, "card4");
+
+        jPanelPag2P.setMaximumSize(new java.awt.Dimension(1190, 660));
+        jPanelPag2P.setMinimumSize(new java.awt.Dimension(1190, 660));
+
+        jLabelImagen1Pronombres.setText("jLabel2");
+
+        jTextAreaTexto1P.setColumns(20);
+        jTextAreaTexto1P.setRows(5);
+        jScrollPane1.setViewportView(jTextAreaTexto1P);
+
+        jButtonSiguientePag3.setText("Siguiente Pag");
+
+        javax.swing.GroupLayout jPanelPag2PLayout = new javax.swing.GroupLayout(jPanelPag2P);
+        jPanelPag2P.setLayout(jPanelPag2PLayout);
+        jPanelPag2PLayout.setHorizontalGroup(
+            jPanelPag2PLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPag2PLayout.createSequentialGroup()
+                .addGap(84, 84, 84)
+                .addComponent(jLabelImagen1Pronombres, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addComponent(jButtonSiguientePag3, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
+        );
+        jPanelPag2PLayout.setVerticalGroup(
+            jPanelPag2PLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPag2PLayout.createSequentialGroup()
+                .addContainerGap(71, Short.MAX_VALUE)
+                .addGroup(jPanelPag2PLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPag2PLayout.createSequentialGroup()
+                        .addGroup(jPanelPag2PLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabelImagen1Pronombres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE))
+                        .addGap(76, 76, 76))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPag2PLayout.createSequentialGroup()
+                        .addComponent(jButtonSiguientePag3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(63, 63, 63))))
+        );
+
+        jPanelContenedorP.add(jPanelPag2P, "card3");
+
+        jPanelPag3P.setMaximumSize(new java.awt.Dimension(1190, 660));
+        jPanelPag3P.setMinimumSize(new java.awt.Dimension(1190, 660));
+
         jButtonCOMPLETOPRONOMBRES.setText("SIGUIENTE");
 
-        jLabel1.setText("PRONOMBRES");
+        jLabelImagen2Pronombres.setText("jLabel2");
+
+        jTextAreaTexto2P.setColumns(20);
+        jTextAreaTexto2P.setRows(5);
+        jScrollPane2.setViewportView(jTextAreaTexto2P);
+
+        javax.swing.GroupLayout jPanelPag3PLayout = new javax.swing.GroupLayout(jPanelPag3P);
+        jPanelPag3P.setLayout(jPanelPag3PLayout);
+        jPanelPag3PLayout.setHorizontalGroup(
+            jPanelPag3PLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPag3PLayout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jLabelImagen2Pronombres, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(733, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPag3PLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonCOMPLETOPRONOMBRES, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
+            .addGroup(jPanelPag3PLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelPag3PLayout.createSequentialGroup()
+                    .addGap(525, 525, 525)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(240, Short.MAX_VALUE)))
+        );
+        jPanelPag3PLayout.setVerticalGroup(
+            jPanelPag3PLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPag3PLayout.createSequentialGroup()
+                .addContainerGap(57, Short.MAX_VALUE)
+                .addComponent(jLabelImagen2Pronombres, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonCOMPLETOPRONOMBRES, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
+            .addGroup(jPanelPag3PLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelPag3PLayout.createSequentialGroup()
+                    .addGap(68, 68, 68)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(80, Short.MAX_VALUE)))
+        );
+
+        jPanelContenedorP.add(jPanelPag3P, "card4");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(jButtonCOMPLETOPRONOMBRES, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(937, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanelContenedorP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(197, 197, 197)
-                .addComponent(jButtonCOMPLETOPRONOMBRES, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(293, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanelContenedorP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
+//Componentes del editor visual de netbeans de la Vista leccion Pronombres
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton jButtonCOMPLETOPRONOMBRES;
-    private javax.swing.JLabel jLabel1;
+    public javax.swing.JButton jButtonPausa;
+    public javax.swing.JButton jButtonPlay;
+    public javax.swing.JButton jButtonSiguientePag2P;
+    public javax.swing.JButton jButtonSiguientePag3;
+    public javax.swing.JButton jButtonVolumenP;
+    public javax.swing.JLabel jLabelImagen1Pronombres;
+    public javax.swing.JLabel jLabelImagen2Pronombres;
+    public javax.swing.JLabel jLabelTiempoVP;
+    public javax.swing.JPanel jPanelContenedorP;
+    public javax.swing.JPanel jPanelPag1P;
+    public javax.swing.JPanel jPanelPag2P;
+    public javax.swing.JPanel jPanelPag3P;
+    public javax.swing.JPanel jPanelVideoP;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    public javax.swing.JSlider jSliderProgresoVideoP;
+    public javax.swing.JSlider jSliderSubirBajarVolumenP;
+    public javax.swing.JTextArea jTextAreaTexto1P;
+    public javax.swing.JTextArea jTextAreaTexto2P;
     // End of variables declaration//GEN-END:variables
 }

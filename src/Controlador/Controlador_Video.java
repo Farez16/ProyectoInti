@@ -9,8 +9,8 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.util.Duration;
-
 import javax.swing.*;
+import java.awt.*;
 import java.io.File;
 
 public class Controlador_Video {
@@ -18,302 +18,162 @@ public class Controlador_Video {
     private JFXPanel fxPanel;
     private MediaPlayer mediaPlayer;
     private MediaView mediaView;
-    private JPanel contenedorVideo;
-    private Scene placeholderScene; // Escena para mostrar cuando no hay video
-    private StackPane videoRoot; // Root para el video actual
+    private final JPanel contenedorVideo;
+    private Scene placeholderScene;
+    private StackPane videoRoot;
     private boolean isInitialized = false;
-
     private Runnable onVideoCompletedCallback;
 
     public Controlador_Video(JPanel contenedorVideo) {
         this.contenedorVideo = contenedorVideo;
         this.fxPanel = new JFXPanel();
-        contenedorVideo.setLayout(new java.awt.BorderLayout());
-        contenedorVideo.add(fxPanel, java.awt.BorderLayout.CENTER);
-
+        configurarContenedor();
         Platform.runLater(this::initializeFX);
-        System.out.println("JavaFX inicializado correctamente");
+    }
+
+    private void configurarContenedor() {
+        contenedorVideo.setLayout(new BorderLayout());
+        contenedorVideo.removeAll();
+        contenedorVideo.add(fxPanel, BorderLayout.CENTER);
+        contenedorVideo.revalidate();
+        contenedorVideo.repaint();
     }
 
     private void initializeFX() {
-        // Crear la escena placeholder inicial
-        StackPane placeholderRoot = new StackPane();
-        Label placeholderLabel = new Label("Aquí debería verse el video");
-        placeholderRoot.getChildren().add(placeholderLabel);
-        placeholderScene = new Scene(placeholderRoot);
+        StackPane placeholderRoot = new StackPane(new Label("Cargando video..."));
+        placeholderScene = new Scene(placeholderRoot, 640, 480);
         fxPanel.setScene(placeholderScene);
         isInitialized = true;
-        
-        System.out.println("JavaFX inicializado correctamente");
     }
 
     public void cargarVideo(String rutaVideo) {
+        if (mediaPlayer != null) {
+            mediaPlayer.dispose();
+        }
         if (!isInitialized) {
-            System.out.println("JavaFX no está inicializado aún, esperando...");
-            Platform.runLater(() -> {
-                // Esperar un poco más y reintentar
-                new Thread(() -> {
-                    try {
-                        Thread.sleep(100);
-                        Platform.runLater(() -> cargarVideo(rutaVideo));
-                    } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt();
-                    }
-                }).start();
-            });
+            Platform.runLater(() -> cargarVideo(rutaVideo));
             return;
         }
 
         Platform.runLater(() -> {
             try {
-                System.out.println("Intentando cargar video con ruta: " + rutaVideo);
-
                 File videoFile = new File(rutaVideo);
                 if (!videoFile.exists()) {
-                    mostrarError("No se encontró el archivo de video: " + rutaVideo);
+                    mostrarError("Archivo no encontrado: " + rutaVideo);
                     return;
                 }
 
-                // IMPORTANTE: Liberar recursos completamente ANTES de crear nuevos
                 liberarRecursosMediaPlayer();
 
-                // Crear nuevos objetos para el video
                 Media media = new Media(videoFile.toURI().toString());
                 mediaPlayer = new MediaPlayer(media);
-                
-                // Configurar eventos ANTES de crear MediaView
                 configurarEventosReproductor();
-                
+
                 mediaView = new MediaView(mediaPlayer);
-                videoRoot = new StackPane();
-                videoRoot.getChildren().add(mediaView);
+                videoRoot = new StackPane(mediaView);
+                configurarMediaView();
 
-                // Bind para que el video se adapte al tamaño del contenedor
-                mediaView.fitWidthProperty().bind(videoRoot.widthProperty());
-                mediaView.fitHeightProperty().bind(videoRoot.heightProperty());
-                mediaView.setPreserveRatio(true);
-                mediaView.setSmooth(true);
-
-                // Crear nueva escena para el video
                 Scene videoScene = new Scene(videoRoot);
                 fxPanel.setScene(videoScene);
-
-                System.out.println("Video cargado exitosamente: " + rutaVideo);
-
             } catch (Exception e) {
-                System.err.println("Error al cargar video: " + e.getMessage());
-                e.printStackTrace();
-                mostrarError("Error al cargar el video: " + e.getMessage());
-                // Volver a la escena placeholder en caso de error
-                mostrarPlaceholder();
+                mostrarError("Error al cargar video: " + e.getMessage());
             }
         });
     }
-    
 
-
- public void reiniciarYCargarVideo(String rutaVideo) {
-    Platform.runLater(() -> {
-        try {
-            System.out.println("Reiniciando Controlador de Video y cargando video...");
-
-            // Liberar recursos del MediaPlayer actual
-            liberarRecursosMediaPlayer();
-
-            // Mostrar escena placeholder mientras carga el nuevo video
-            if (fxPanel != null && placeholderScene != null) {
-                fxPanel.setScene(placeholderScene);
-            }
-
-            // Verificar si el archivo de video existe
-            File videoFile = new File(rutaVideo);
-            if (!videoFile.exists()) {
-                mostrarError("No se encontró el archivo de video: " + rutaVideo);
-                return;
-            }
-
-            // Crear y configurar nuevo MediaPlayer y MediaView
-            Media media = new Media(videoFile.toURI().toString());
-            mediaPlayer = new MediaPlayer(media);
-            configurarEventosReproductor();
-
-            mediaView = new MediaView(mediaPlayer);
-            videoRoot = new StackPane();
-            videoRoot.getChildren().add(mediaView);
-
-            mediaView.fitWidthProperty().bind(videoRoot.widthProperty());
-            mediaView.fitHeightProperty().bind(videoRoot.heightProperty());
-            mediaView.setPreserveRatio(true);
-            mediaView.setSmooth(true);
-
-            // Crear la nueva escena con el video y establecerla en el fxPanel
-            Scene videoScene = new Scene(videoRoot);
-            fxPanel.setScene(videoScene);
-
-            System.out.println("Video cargado exitosamente: " + rutaVideo);
-
-        } catch (Exception e) {
-            System.err.println("Error al reiniciar y cargar video: " + e.getMessage());
-            mostrarError("Error al reiniciar y cargar el video: " + e.getMessage());
-            mostrarPlaceholder();
-        }
-    });
-}
- public void runWhenInitialized(Runnable task) {
-    if (isInitialized) {
-        Platform.runLater(task);
-    } else {
-        // Intenta esperar o reintentar hasta que isInitialized sea true
-        new Thread(() -> {
-            while (!isInitialized) {
-                try {
-                    Thread.sleep(50);
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                }
-            }
-            Platform.runLater(task);
-        }).start();
+    private void configurarMediaView() {
+        mediaView.fitWidthProperty().bind(videoRoot.widthProperty());
+        mediaView.fitHeightProperty().bind(videoRoot.heightProperty());
+        mediaView.setPreserveRatio(true);
+        mediaView.setSmooth(true);
     }
-}
 
-
+    public void reiniciarYCargarVideo(String rutaVideo) {
+        Platform.runLater(() -> {
+            liberarRecursosMediaPlayer();
+            mostrarPlaceholder();
+            cargarVideo(rutaVideo);
+        });
+    }
 
     private void liberarRecursosMediaPlayer() {
-        try {
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+            mediaPlayer.dispose();
+            mediaPlayer = null;
+        }
+        if (mediaView != null) {
+            mediaView = null;
+        }
+    }
+
+    public void liberarRecursos() {
+        Platform.runLater(() -> {
+            liberarRecursosMediaPlayer();
+            mostrarPlaceholder();
+        });
+    }
+
+    public void prepararParaReuso() {
+        Platform.runLater(() -> {
             if (mediaPlayer != null) {
                 mediaPlayer.stop();
-                mediaPlayer.dispose();
-                mediaPlayer = null;
-                System.out.println("MediaPlayer liberado correctamente");
+                mediaPlayer.seek(Duration.ZERO);
             }
-            if (mediaView != null) {
-                mediaView = null;
-                System.out.println("MediaView liberado correctamente");
-            }
-            if (videoRoot != null) {
-                videoRoot.getChildren().clear();
-                videoRoot = null;
-                System.out.println("VideoRoot liberado correctamente");
-            }
-        } catch (Exception e) {
-            System.err.println("Error al liberar recursos del MediaPlayer: " + e.getMessage());
-        }
+            mostrarPlaceholder();
+        });
     }
 
     private void mostrarPlaceholder() {
-        Platform.runLater(() -> {
-            if (placeholderScene != null && fxPanel != null) {
-                fxPanel.setScene(placeholderScene);
-            }
-        });
+        if (placeholderScene != null) {
+            fxPanel.setScene(placeholderScene);
+        }
     }
 
     private void configurarEventosReproductor() {
-        if (mediaPlayer == null) {
-            return;
-        }
-
-        mediaPlayer.setOnReady(() -> {
-            System.out.println("Video listo para reproducir");
-            mediaPlayer.play();
-        });
-
+        mediaPlayer.setOnReady(() -> mediaPlayer.play());
         mediaPlayer.setOnEndOfMedia(() -> {
-            System.out.println("Video completado");
             if (onVideoCompletedCallback != null) {
                 SwingUtilities.invokeLater(onVideoCompletedCallback);
             }
         });
-
         mediaPlayer.setOnError(() -> {
-            String errorMsg = "Error desconocido";
-            if (mediaPlayer.getError() != null) {
-                errorMsg = mediaPlayer.getError().getMessage();
-            }
-            System.err.println("Error en el reproductor: " + errorMsg);
-            mostrarError("Error al reproducir el video: " + errorMsg);
-            mostrarPlaceholder();
-        });
-
-        // Agregar evento para detectar cuando el MediaPlayer se ha liberado
-        mediaPlayer.setOnHalted(() -> {
-            System.out.println("MediaPlayer se ha detenido completamente");
+            String errorMsg = mediaPlayer.getError() != null ? 
+                mediaPlayer.getError().getMessage() : "Error desconocido";
+            mostrarError("Error en video: " + errorMsg);
         });
     }
 
-    // Métodos para control externo
+    public void runWhenInitialized(Runnable task) {
+        if (isInitialized) {
+            Platform.runLater(task);
+        } else {
+            new Thread(() -> {
+                while (!isInitialized) {
+                    try { Thread.sleep(50); } 
+                    catch (InterruptedException e) { return; }
+                }
+                Platform.runLater(task);
+            }).start();
+        }
+    }
+
+    // Métodos de control básico
     public void reproducir() {
         if (mediaPlayer != null) {
-            Platform.runLater(() -> {
-                try {
-                    mediaPlayer.play();
-                } catch (Exception e) {
-                    System.err.println("Error al reproducir: " + e.getMessage());
-                }
-            });
+            Platform.runLater(() -> mediaPlayer.play());
         }
     }
 
     public void pausar() {
         if (mediaPlayer != null) {
-            Platform.runLater(() -> {
-                try {
-                    mediaPlayer.pause();
-                } catch (Exception e) {
-                    System.err.println("Error al pausar: " + e.getMessage());
-                }
-            });
-        }
-    }
-
-    public void detener() {
-        if (mediaPlayer != null) {
-            Platform.runLater(() -> {
-                try {
-                    mediaPlayer.stop();
-                } catch (Exception e) {
-                    System.err.println("Error al detener: " + e.getMessage());
-                }
-            });
+            Platform.runLater(() -> mediaPlayer.pause());
         }
     }
 
     public void setVolume(double volume) {
         if (mediaPlayer != null) {
-            Platform.runLater(() -> {
-                try {
-                    mediaPlayer.setVolume(Math.max(0.0, Math.min(1.0, volume)));
-                } catch (Exception e) {
-                    System.err.println("Error al cambiar volumen: " + e.getMessage());
-                }
-            });
-        }
-    }
-
-    public double getDurationSeconds() {
-        if (mediaPlayer != null && mediaPlayer.getTotalDuration() != null) {
-            return mediaPlayer.getTotalDuration().toSeconds();
-        }
-        return 0;
-    }
-
-    public double getCurrentTimeSeconds() {
-        if (mediaPlayer != null && mediaPlayer.getCurrentTime() != null) {
-            return mediaPlayer.getCurrentTime().toSeconds();
-        }
-        return 0;
-    }
-
-    public void seek(double seconds) {
-        if (mediaPlayer != null) {
-            Platform.runLater(() -> {
-                try {
-                    mediaPlayer.seek(Duration.seconds(seconds));
-                } catch (Exception e) {
-                    System.err.println("Error al hacer seek: " + e.getMessage());
-                }
-            });
+            Platform.runLater(() -> mediaPlayer.setVolume(volume));
         }
     }
 
@@ -321,60 +181,33 @@ public class Controlador_Video {
         this.onVideoCompletedCallback = callback;
     }
 
-  public void liberarRecursos() {
-    Platform.runLater(() -> {
-        try {
-            liberarRecursosMediaPlayer();
-
-            if (fxPanel != null && placeholderScene != null) {
-                fxPanel.setScene(placeholderScene);
-            }
-
-            System.out.println("Recursos del video liberados y placeholder restaurado");
-        } catch (Exception e) {
-            System.err.println("Error al liberar recursos: " + e.getMessage());
-        }
-    });
-}
-
-
-    // Método para reiniciar completamente el controlador de video
-public void reiniciarControladorVideo() {
-    Platform.runLater(() -> {
-        try {
-            System.out.println("Reiniciando Controlador de Video...");
-            liberarRecursosMediaPlayer();
-
-            // Restaurar el placeholder por defecto
-            if (fxPanel != null && placeholderScene != null) {
-                fxPanel.setScene(placeholderScene);
-            }
-
-            System.out.println("Controlador de video reiniciado completamente");
-        } catch (Exception e) {
-            System.err.println("Error al reiniciar controlador de video: " + e.getMessage());
-        }
-    });
-}
-
-
-
-    // Método para verificar si el video está cargado y listo
-    public boolean isVideoListo() {
-        return mediaPlayer != null && mediaPlayer.getStatus() == MediaPlayer.Status.READY;
+    public double getDurationSeconds() {
+        return mediaPlayer != null && mediaPlayer.getTotalDuration() != null ? 
+            mediaPlayer.getTotalDuration().toSeconds() : 0;
     }
 
-    // Método para obtener el estado actual del MediaPlayer
-    public String getEstadoMediaPlayer() {
-        if (mediaPlayer == null) {
-            return "MediaPlayer no inicializado";
-        }
-        return "Estado: " + mediaPlayer.getStatus().toString();
+    public double getCurrentTimeSeconds() {
+        return mediaPlayer != null && mediaPlayer.getCurrentTime() != null ? 
+            mediaPlayer.getCurrentTime().toSeconds() : 0;
     }
+
+    public void seek(double seconds) {
+        if (mediaPlayer != null) {
+            Platform.runLater(() -> mediaPlayer.seek(Duration.seconds(seconds)));
+        }
+    }
+     public void detenerVideo() {
+        // Implementa la lógica para detener el video
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+        }
+    }
+    
+   
 
     private void mostrarError(String mensaje) {
-        SwingUtilities.invokeLater(() -> {
-            JOptionPane.showMessageDialog(contenedorVideo, mensaje, "Error de Video", JOptionPane.ERROR_MESSAGE);
-        });
+        SwingUtilities.invokeLater(() -> 
+            JOptionPane.showMessageDialog(contenedorVideo, mensaje, 
+                "Error de Video", JOptionPane.ERROR_MESSAGE));
     }
 }

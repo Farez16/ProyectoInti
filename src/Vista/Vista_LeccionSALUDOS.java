@@ -150,9 +150,9 @@ public class Vista_LeccionSALUDOS extends JPanel {
             .addGroup(jPanelPag2Layout.createSequentialGroup()
                 .addGap(62, 62, 62)
                 .addComponent(jLabelImagen1Saludos, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79)
+                .addGap(69, 69, 69)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPag2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonSiguientePag2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -164,11 +164,12 @@ public class Vista_LeccionSALUDOS extends JPanel {
                 .addGroup(jPanelPag2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelPag2Layout.createSequentialGroup()
                         .addGap(32, 32, 32)
-                        .addComponent(jLabelImagen1Saludos, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelPag2Layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                        .addComponent(jLabelImagen1Saludos, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPag2Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)))
                 .addComponent(jButtonSiguientePag2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
         );
@@ -185,6 +186,11 @@ public class Vista_LeccionSALUDOS extends JPanel {
         jScrollPane2.setViewportView(jTextAreaTexto2Saludos);
 
         jButtonCOMPLETOSALUDOS.setText("Completar");
+        jButtonCOMPLETOSALUDOS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCOMPLETOSALUDOSActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelPag3Layout = new javax.swing.GroupLayout(jPanelPag3);
         jPanelPag3.setLayout(jPanelPag3Layout);
@@ -230,6 +236,10 @@ public class Vista_LeccionSALUDOS extends JPanel {
             .addComponent(jPanelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonCOMPLETOSALUDOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCOMPLETOSALUDOSActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonCOMPLETOSALUDOSActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

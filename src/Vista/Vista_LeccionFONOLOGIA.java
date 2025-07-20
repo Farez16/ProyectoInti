@@ -26,19 +26,177 @@ public class Vista_LeccionFONOLOGIA extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jPanelContenedorF = new javax.swing.JPanel();
+        jPanelPag1F = new javax.swing.JPanel();
+        jPanelVideoF = new javax.swing.JPanel();
+        jLabelTiempoVF = new javax.swing.JLabel();
+        jSliderProgresoVideoF = new javax.swing.JSlider();
+        jSliderSubirBajarVolumenF = new javax.swing.JSlider();
+        jButtonVolumenF = new javax.swing.JButton();
+        jButtonPlayF = new javax.swing.JButton();
+        jButtonPausaF = new javax.swing.JButton();
+        jButtonSiguientePag2F = new javax.swing.JButton();
+        jPanelPag2F = new javax.swing.JPanel();
+        jLabelImagen1F = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextAreaTexto1F = new javax.swing.JTextArea();
+        jButtonSiguientePag3F = new javax.swing.JButton();
+        jPanelPag3F = new javax.swing.JPanel();
         jButtonCOMPLETOFONOLOGIA = new javax.swing.JButton();
+        jLabelImagen2F = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextAreaTexto2F = new javax.swing.JTextArea();
 
         setMaximumSize(new java.awt.Dimension(1190, 660));
         setMinimumSize(new java.awt.Dimension(1190, 660));
         setPreferredSize(new java.awt.Dimension(1190, 660));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setText("FONOLOGIA");
+        jPanelContenedorF.setLayout(new java.awt.CardLayout());
 
-        jLabel2.setBackground(new java.awt.Color(153, 255, 153));
-        jLabel2.setForeground(new java.awt.Color(204, 102, 255));
+        jPanelPag1F.setMaximumSize(new java.awt.Dimension(1190, 660));
+        jPanelPag1F.setMinimumSize(new java.awt.Dimension(1190, 660));
+        jPanelPag1F.setPreferredSize(new java.awt.Dimension(1190, 660));
+
+        jPanelVideoF.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout jPanelVideoFLayout = new javax.swing.GroupLayout(jPanelVideoF);
+        jPanelVideoF.setLayout(jPanelVideoFLayout);
+        jPanelVideoFLayout.setHorizontalGroup(
+            jPanelVideoFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 898, Short.MAX_VALUE)
+        );
+        jPanelVideoFLayout.setVerticalGroup(
+            jPanelVideoFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 492, Short.MAX_VALUE)
+        );
+
+        jLabelTiempoVF.setText("jLabel1");
+        jLabelTiempoVF.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jSliderSubirBajarVolumenF.setOrientation(javax.swing.JSlider.VERTICAL);
+
+        jButtonVolumenF.setText("Sonido");
+
+        jButtonPlayF.setText("Play");
+
+        jButtonPausaF.setText("Pausa");
+        jButtonPausaF.setToolTipText("");
+
+        jButtonSiguientePag2F.setText("Siguiente Pag");
+        jButtonSiguientePag2F.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSiguientePag2FActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelPag1FLayout = new javax.swing.GroupLayout(jPanelPag1F);
+        jPanelPag1F.setLayout(jPanelPag1FLayout);
+        jPanelPag1FLayout.setHorizontalGroup(
+            jPanelPag1FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPag1FLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(jPanelPag1FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelPag1FLayout.createSequentialGroup()
+                        .addGroup(jPanelPag1FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanelPag1FLayout.createSequentialGroup()
+                                .addComponent(jSliderProgresoVideoF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabelTiempoVF))
+                            .addComponent(jPanelVideoF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanelPag1FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelPag1FLayout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addComponent(jSliderSubirBajarVolumenF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelPag1FLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonVolumenF)))
+                        .addContainerGap(179, Short.MAX_VALUE))
+                    .addGroup(jPanelPag1FLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonSiguientePag2F, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40))))
+            .addGroup(jPanelPag1FLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jButtonPlayF)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonPausaF)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanelPag1FLayout.setVerticalGroup(
+            jPanelPag1FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPag1FLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanelPag1FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelVideoF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelPag1FLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jSliderSubirBajarVolumenF, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonVolumenF)))
+                .addGroup(jPanelPag1FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelPag1FLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelPag1FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelTiempoVF, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSliderProgresoVideoF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelPag1FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonPausaF)
+                            .addComponent(jButtonPlayF))
+                        .addContainerGap(82, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPag1FLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonSiguientePag2F, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23))))
+        );
+
+        jPanelContenedorF.add(jPanelPag1F, "card3");
+
+        jPanelPag2F.setMaximumSize(new java.awt.Dimension(1190, 660));
+        jPanelPag2F.setMinimumSize(new java.awt.Dimension(1190, 660));
+        jPanelPag2F.setPreferredSize(new java.awt.Dimension(1190, 660));
+
+        jLabelImagen1F.setText("jLabel1");
+        jLabelImagen1F.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jTextAreaTexto1F.setColumns(20);
+        jTextAreaTexto1F.setRows(5);
+        jScrollPane1.setViewportView(jTextAreaTexto1F);
+
+        jButtonSiguientePag3F.setText("Siguiente Pag");
+
+        javax.swing.GroupLayout jPanelPag2FLayout = new javax.swing.GroupLayout(jPanelPag2F);
+        jPanelPag2F.setLayout(jPanelPag2FLayout);
+        jPanelPag2FLayout.setHorizontalGroup(
+            jPanelPag2FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPag2FLayout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(jLabelImagen1F, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(246, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPag2FLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonSiguientePag3F, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56))
+        );
+        jPanelPag2FLayout.setVerticalGroup(
+            jPanelPag2FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPag2FLayout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addGroup(jPanelPag2FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabelImagen1F, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE))
+                .addGap(9, 9, 9)
+                .addComponent(jButtonSiguientePag3F, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(35, Short.MAX_VALUE))
+        );
+
+        jPanelContenedorF.add(jPanelPag2F, "card2");
+
+        jPanelPag3F.setMaximumSize(new java.awt.Dimension(1190, 660));
+        jPanelPag3F.setMinimumSize(new java.awt.Dimension(1190, 660));
+        jPanelPag3F.setPreferredSize(new java.awt.Dimension(1190, 660));
 
         jButtonCOMPLETOFONOLOGIA.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButtonCOMPLETOFONOLOGIA.setText("SIGUIENTE");
@@ -48,35 +206,55 @@ public class Vista_LeccionFONOLOGIA extends javax.swing.JPanel {
             }
         });
 
+        jLabelImagen2F.setText("jLabel1");
+        jLabelImagen2F.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jTextAreaTexto2F.setColumns(20);
+        jTextAreaTexto2F.setRows(5);
+        jScrollPane2.setViewportView(jTextAreaTexto2F);
+
+        javax.swing.GroupLayout jPanelPag3FLayout = new javax.swing.GroupLayout(jPanelPag3F);
+        jPanelPag3F.setLayout(jPanelPag3FLayout);
+        jPanelPag3FLayout.setHorizontalGroup(
+            jPanelPag3FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPag3FLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonCOMPLETOFONOLOGIA, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
+            .addGroup(jPanelPag3FLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jLabelImagen2F, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(225, Short.MAX_VALUE))
+        );
+        jPanelPag3FLayout.setVerticalGroup(
+            jPanelPag3FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPag3FLayout.createSequentialGroup()
+                .addContainerGap(27, Short.MAX_VALUE)
+                .addGroup(jPanelPag3FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
+                    .addComponent(jLabelImagen2F, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(23, 23, 23)
+                .addComponent(jButtonCOMPLETOFONOLOGIA)
+                .addGap(17, 17, 17))
+        );
+
+        jPanelContenedorF.add(jPanelPag3F, "card4");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(jButtonCOMPLETOFONOLOGIA, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(631, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanelContenedorF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(89, 89, 89)
-                .addComponent(jButtonCOMPLETOFONOLOGIA, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(273, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanelContenedorF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -84,10 +262,31 @@ public class Vista_LeccionFONOLOGIA extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonCOMPLETOFONOLOGIAActionPerformed
 
+    private void jButtonSiguientePag2FActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguientePag2FActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonSiguientePag2FActionPerformed
 
+//Componentes del editor visual de netbeans de la Vista leccion Fonologia
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton jButtonCOMPLETOFONOLOGIA;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    public javax.swing.JButton jButtonPausaF;
+    public javax.swing.JButton jButtonPlayF;
+    public javax.swing.JButton jButtonSiguientePag2F;
+    public javax.swing.JButton jButtonSiguientePag3F;
+    public javax.swing.JButton jButtonVolumenF;
+    public javax.swing.JLabel jLabelImagen1F;
+    public javax.swing.JLabel jLabelImagen2F;
+    public javax.swing.JLabel jLabelTiempoVF;
+    public javax.swing.JPanel jPanelContenedorF;
+    public javax.swing.JPanel jPanelPag1F;
+    public javax.swing.JPanel jPanelPag2F;
+    public javax.swing.JPanel jPanelPag3F;
+    public javax.swing.JPanel jPanelVideoF;
+    public javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JScrollPane jScrollPane2;
+    public javax.swing.JSlider jSliderProgresoVideoF;
+    public javax.swing.JSlider jSliderSubirBajarVolumenF;
+    public javax.swing.JTextArea jTextAreaTexto1F;
+    public javax.swing.JTextArea jTextAreaTexto2F;
     // End of variables declaration//GEN-END:variables
 }
