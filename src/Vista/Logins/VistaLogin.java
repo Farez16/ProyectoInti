@@ -148,10 +148,8 @@ public class VistaLogin extends javax.swing.JPanel {
         PanelDatosLoginLayout.setHorizontalGroup(
             PanelDatosLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDatosLoginLayout.createSequentialGroup()
-                .addContainerGap(149, Short.MAX_VALUE)
-                .addGroup(PanelDatosLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(LblSlogan)
-                    .addComponent(LblLogoINTI))
+                .addContainerGap(217, Short.MAX_VALUE)
+                .addComponent(LblLogoINTI)
                 .addGap(145, 145, 145))
             .addGroup(PanelDatosLoginLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -165,6 +163,10 @@ public class VistaLogin extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(70, 70, 70))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDatosLoginLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LblSlogan)
+                .addGap(107, 107, 107))
         );
         PanelDatosLoginLayout.setVerticalGroup(
             PanelDatosLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
