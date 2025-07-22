@@ -4,17 +4,35 @@
  */
 package Vista;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author Jhony Espinoza
  */
 public class Vista_LeccionFONOLOGIA extends javax.swing.JPanel {
-
+private String rutaAudio;
     /**
      * Creates new form Vista_LeccionFONOLOGIA
      */
     public Vista_LeccionFONOLOGIA() {
         initComponents();
+        
+    }
+
+    public JButton getBtnAudio() {
+        return btnAudio;
+    }
+    
+
+
+    // ✅ Estos son los métodos para guardar y recuperar la ruta del audio:
+    public void setRutaAudio(String rutaAudio) {
+        this.rutaAudio = rutaAudio;
+    }
+
+    public String getRutaAudio() {
+        return rutaAudio;
     }
 
     /**
@@ -36,6 +54,7 @@ public class Vista_LeccionFONOLOGIA extends javax.swing.JPanel {
         jButtonPlayF = new javax.swing.JButton();
         jButtonPausaF = new javax.swing.JButton();
         jButtonSiguientePag2F = new javax.swing.JButton();
+        btnAudio = new javax.swing.JButton();
         jPanelPag2F = new javax.swing.JPanel();
         jLabelImagen1F = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -89,6 +108,8 @@ public class Vista_LeccionFONOLOGIA extends javax.swing.JPanel {
             }
         });
 
+        btnAudio.setText("Audio");
+
         javax.swing.GroupLayout jPanelPag1FLayout = new javax.swing.GroupLayout(jPanelPag1F);
         jPanelPag1F.setLayout(jPanelPag1FLayout);
         jPanelPag1FLayout.setHorizontalGroup(
@@ -96,6 +117,10 @@ public class Vista_LeccionFONOLOGIA extends javax.swing.JPanel {
             .addGroup(jPanelPag1FLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(jPanelPag1FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelPag1FLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonSiguientePag2F, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40))
                     .addGroup(jPanelPag1FLayout.createSequentialGroup()
                         .addGroup(jPanelPag1FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanelPag1FLayout.createSequentialGroup()
@@ -105,16 +130,18 @@ public class Vista_LeccionFONOLOGIA extends javax.swing.JPanel {
                             .addComponent(jPanelVideoF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanelPag1FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelPag1FLayout.createSequentialGroup()
-                                .addGap(35, 35, 35)
-                                .addComponent(jSliderSubirBajarVolumenF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelPag1FLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButtonVolumenF)))
-                        .addContainerGap(179, Short.MAX_VALUE))
-                    .addGroup(jPanelPag1FLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonSiguientePag2F, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40))))
+                                .addGroup(jPanelPag1FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanelPag1FLayout.createSequentialGroup()
+                                        .addGap(35, 35, 35)
+                                        .addComponent(jSliderSubirBajarVolumenF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanelPag1FLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jButtonVolumenF)))
+                                .addContainerGap(179, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPag1FLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnAudio)
+                                .addGap(77, 77, 77))))))
             .addGroup(jPanelPag1FLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jButtonPlayF)
@@ -132,7 +159,9 @@ public class Vista_LeccionFONOLOGIA extends javax.swing.JPanel {
                         .addGap(34, 34, 34)
                         .addComponent(jSliderSubirBajarVolumenF, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButtonVolumenF)))
+                        .addComponent(jButtonVolumenF)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                        .addComponent(btnAudio)))
                 .addGroup(jPanelPag1FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelPag1FLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -143,7 +172,7 @@ public class Vista_LeccionFONOLOGIA extends javax.swing.JPanel {
                         .addGroup(jPanelPag1FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonPausaF)
                             .addComponent(jButtonPlayF))
-                        .addContainerGap(82, Short.MAX_VALUE))
+                        .addContainerGap(76, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPag1FLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonSiguientePag2F, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -268,6 +297,7 @@ public class Vista_LeccionFONOLOGIA extends javax.swing.JPanel {
 
 //Componentes del editor visual de netbeans de la Vista leccion Fonologia
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnAudio;
     public javax.swing.JButton jButtonCOMPLETOFONOLOGIA;
     public javax.swing.JButton jButtonPausaF;
     public javax.swing.JButton jButtonPlayF;
