@@ -118,15 +118,13 @@ public class VistaLogin extends javax.swing.JPanel {
         btnRegresar = new javax.swing.JButton();
         LblImagenfondoLogin = new javax.swing.JLabel();
 
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         PanelContenedorLogin.setBackground(new java.awt.Color(255, 255, 255));
         PanelContenedorLogin.setPreferredSize(new java.awt.Dimension(1370, 770));
         PanelContenedorLogin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         PanelDatosLogin.setBackground(new java.awt.Color(255, 255, 255));
 
-        LblLogoINTI.setIcon(new javax.swing.ImageIcon("C:\\Users\\farez\\OneDrive\\Pictures\\NuevasImagenes\\X1.png")); // NOI18N
+        LblLogoINTI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/X1.png"))); // NOI18N
 
         LblSlogan.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         LblSlogan.setText("Despierta la lengua ancestral");
@@ -188,10 +186,19 @@ public class VistaLogin extends javax.swing.JPanel {
 
         PanelContenedorLogin.add(PanelDatosLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 0, 540, 770));
 
-        LblImagenfondoLogin.setIcon(new javax.swing.ImageIcon("C:\\Users\\farez\\OneDrive\\Pictures\\Screenshots\\Whisk_421cbaaf9d (1).jpg")); // NOI18N
+        LblImagenfondoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Whisk_421cbaaf9d (1).jpg"))); // NOI18N
         PanelContenedorLogin.add(LblImagenfondoLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 770));
 
-        add(PanelContenedorLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(PanelContenedorLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(PanelContenedorLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
     }// </editor-fold>//GEN-END:initComponents
 
 
