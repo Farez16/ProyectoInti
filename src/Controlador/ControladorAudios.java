@@ -5,7 +5,6 @@ import javazoom.jl.player.Player;
 import javax.swing.*;
 import java.io.BufferedInputStream;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.HashMap;
 import modelo.Audios;
 
@@ -13,7 +12,6 @@ public class ControladorAudios {
 
     private final Vista_LeccionFONOLOGIA vista;
     private final Audios modelo;
-    private ArrayList<HashMap<String, String>> Audios;
 
     public ControladorAudios(Vista_LeccionFONOLOGIA vista, Audios modelo) {
         this.vista = vista;
