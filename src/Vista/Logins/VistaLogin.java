@@ -124,21 +124,22 @@ public class VistaLogin extends javax.swing.JPanel {
 
         PanelDatosLogin.setBackground(new java.awt.Color(255, 255, 255));
 
-        LblLogoINTI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/X1.png"))); // NOI18N
+        LblLogoINTI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Logo178x174.png"))); // NOI18N
 
         LblSlogan.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        LblSlogan.setForeground(new java.awt.Color(217, 104, 0));
         LblSlogan.setText("Despierta la lengua ancestral");
 
         TxtUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         jPasswordLogin.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
-        btnIniciarSesion.setBackground(new java.awt.Color(255, 122, 0));
+        btnIniciarSesion.setBackground(new java.awt.Color(217, 104, 0));
         btnIniciarSesion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
         btnIniciarSesion.setText("Iniciar Sesion");
 
-        btnRegresar.setBackground(new java.awt.Color(255, 122, 0));
+        btnRegresar.setBackground(new java.awt.Color(217, 104, 0));
         btnRegresar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnRegresar.setForeground(new java.awt.Color(255, 255, 255));
         btnRegresar.setText("Regresar");
@@ -147,33 +148,31 @@ public class VistaLogin extends javax.swing.JPanel {
         PanelDatosLogin.setLayout(PanelDatosLoginLayout);
         PanelDatosLoginLayout.setHorizontalGroup(
             PanelDatosLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDatosLoginLayout.createSequentialGroup()
-                .addContainerGap(217, Short.MAX_VALUE)
-                .addComponent(LblLogoINTI)
-                .addGap(145, 145, 145))
-            .addGroup(PanelDatosLoginLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(PanelDatosLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(TxtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
-                    .addComponent(jPasswordLogin))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(PanelDatosLoginLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(btnIniciarSesion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
                 .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(70, 70, 70))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDatosLoginLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(LblSlogan)
-                .addGap(107, 107, 107))
+                .addComponent(LblLogoINTI)
+                .addGap(175, 175, 175))
+            .addGroup(PanelDatosLoginLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(PanelDatosLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(LblSlogan)
+                    .addGroup(PanelDatosLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(TxtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+                        .addComponent(jPasswordLogin)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelDatosLoginLayout.setVerticalGroup(
             PanelDatosLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelDatosLoginLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(29, 29, 29)
                 .addComponent(LblLogoINTI)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(LblSlogan)
                 .addGap(80, 80, 80)
                 .addComponent(TxtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -188,7 +187,7 @@ public class VistaLogin extends javax.swing.JPanel {
 
         PanelContenedorLogin.add(PanelDatosLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 0, 540, 770));
 
-        LblImagenfondoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Whisk_421cbaaf9d (1).jpg"))); // NOI18N
+        LblImagenfondoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoLogin.jpg"))); // NOI18N
         PanelContenedorLogin.add(LblImagenfondoLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 770));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
