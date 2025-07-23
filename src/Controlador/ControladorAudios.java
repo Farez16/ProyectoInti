@@ -1,6 +1,6 @@
 package Controlador;
 
-import Vista.Vista_LeccionFONOLOGIA;
+import Vista.Vistas_Unidad1.Vista_LeccionFONOLOGIA;
 import javazoom.jl.player.Player;
 import javax.swing.*;
 import java.io.BufferedInputStream;
@@ -28,6 +28,7 @@ public class ControladorAudios {
         if (recurso != null) {
             String ruta = recurso.get("ruta_recurso");
             vista.setRutaAudio(ruta); // Guardamos la ruta en la vista para poder usarla al hacer clic
+            System.out.println("Ruta: " +ruta);
         } else {
             JOptionPane.showMessageDialog(vista, "No se encontró el recurso de audio.");
         }
@@ -36,6 +37,7 @@ public class ControladorAudios {
     private void configurarEventos() {
         vista.getBtnAudio().addActionListener(e -> {
             String ruta = vista.getRutaAudio();
+            System.out.println("Ruta Obtenida: " +ruta);
             if (ruta != null && !ruta.isEmpty()) {
                 reproducirAudio(ruta);
             } else {

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package Vista;
+package Vista.Vistas_Unidad1;
 
 import javax.swing.JButton;
 
@@ -109,6 +109,11 @@ private String rutaAudio;
         });
 
         btnAudio.setText("Audio");
+        btnAudio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAudioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelPag1FLayout = new javax.swing.GroupLayout(jPanelPag1F);
         jPanelPag1F.setLayout(jPanelPag1FLayout);
@@ -294,6 +299,10 @@ private String rutaAudio;
     private void jButtonSiguientePag2FActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguientePag2FActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonSiguientePag2FActionPerformed
+
+    private void btnAudioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAudioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAudioActionPerformed
 
 //Componentes del editor visual de netbeans de la Vista leccion Fonologia
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1,4 +1,4 @@
-package Vista;
+package Vista.Vistas_Unidad1;
 
 import javax.swing.*;
 
