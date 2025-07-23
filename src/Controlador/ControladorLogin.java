@@ -2,10 +2,10 @@ package Controlador;
 
 import Modelo.EmailSender;
 import Modelo.Usuario;
-import Vista.ContrasenaNueva;
+import Vista.Logins.CrearUsuario;
 import Vista.Dashboard;
 import Vista.DashboardAdmin;
-import Vista.Login;
+import Vista.Logins.Login;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -81,7 +81,7 @@ public class ControladorLogin implements ActionListener {
 
     private void abrirPanelRegistro() {
         String correo = vista.TxtUsuario.getText().trim();
-        ContrasenaNueva panelCambio = new ContrasenaNueva(correo);
+        CrearUsuario panelCambio = new CrearUsuario(correo);
         JDialog dialog = new JDialog(vista, "Registrar nueva cuenta", true);
         dialog.setContentPane(panelCambio);
         dialog.pack();

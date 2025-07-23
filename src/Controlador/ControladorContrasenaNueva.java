@@ -3,20 +3,20 @@ package Controlador;
 import Modelo.EmailSender;
 import Modelo.OTPService;
 import Modelo.Usuario;
-import Vista.ContrasenaNueva;
+import Vista.Logins.CrearUsuario;
 import Vista.Dashboard;
 import Vista.DashboardAdmin;
-import Vista.Login;
+import Vista.Logins.Login;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 public class ControladorContrasenaNueva {
 
-    private final ContrasenaNueva vista;
+    private final CrearUsuario vista;
     private final JDialog dialog;
     private final Login login;
 
-    public ControladorContrasenaNueva(ContrasenaNueva vista, String correoUsuario, JDialog dialog, Login login) {
+    public ControladorContrasenaNueva(CrearUsuario vista, String correoUsuario, JDialog dialog, Login login) {
         this.vista = vista;
         this.dialog = dialog;
         this.login = login;

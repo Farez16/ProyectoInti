@@ -9,7 +9,7 @@ import Modelo.Saludo;
 import Modelo.TextoBotones;
 import Modelo.Usuario; // ← IMPORTANTE
 import Vista.Cuenta;
-import Vista.Login;
+import Vista.Logins.Login;
 import Vista.Vista_PanelUnidades;
 import java.awt.Graphics2D;
 import java.awt.event.ActionListener;

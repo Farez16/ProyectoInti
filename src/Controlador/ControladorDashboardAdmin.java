@@ -2,7 +2,7 @@ package Controlador;
 
 import Modelo.Saludo;
 import Vista.DashboardAdmin;
-import Vista.Login;
+import Vista.Logins.Login;
 import Modelo.Usuario;
 import Conexion.Conexion;
 import javax.swing.JOptionPane;
