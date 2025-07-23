@@ -1,5 +1,12 @@
 package Controlador;
 
+import Vista.Vistas_Unidad1.Vista_EvaluacionU1;
+import Vista.Vistas_Unidad1.Vista_Actividad1U1;
+import Vista.Vistas_Unidad1.Vista_LeccionFONOLOGIA;
+import Vista.Vistas_Unidad1.Vista_Actividad2U1;
+import Vista.Vistas_Unidad1.Vista_Unidad1;
+import Vista.Vistas_Unidad1.Vista_LeccionPRONOMBRES;
+import Vista.Vistas_Unidad1.Vista_LeccionSALUDOS;
 import Vista.*;
 import Modelo.Usuario;
 import Modelo.Modelo_Progreso_Usuario;
@@ -161,19 +168,17 @@ public class Controlador_Unidad1 {
         controladorDashboard.getVista().mostrarVista(vistaLeccion);
     }
 
-    private void abrirActividad1() {
-        int idActividad = 1;
-        Vista_Actividad1U1 vistaActividad = new Vista_Actividad1U1();
-        Controlador_Actividad_PreguntaRespuesta controlador = new Controlador_Actividad_PreguntaRespuesta(
-                vistaActividad,
-                conn,
-                idActividad,
-                controladorDashboard,
-                this, // 'this' es el Controlador_Unidad1 actual
-                correo
-        );
-        controladorDashboard.getVista().mostrarVista(vistaActividad);
-    }
+   private void abrirActividad1() {
+    Vista_Actividad1U1 vistaActividad = new Vista_Actividad1U1();
+    Controlador_Actividad_PreguntaRespuesta controlador = new Controlador_Actividad_PreguntaRespuesta(
+            vistaActividad,
+            conn,
+            controladorDashboard,
+            this, // 'this' es el Controlador_Unidad1 actual
+            correo
+    );
+    controladorDashboard.getVista().mostrarVista(vistaActividad);
+}
 
     private void abrirActividad2() {
         int idActividad = 2;
