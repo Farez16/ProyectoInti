@@ -320,7 +320,7 @@ public class Vista_Actividad2U1 extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonCOMPLETOACTV2ActionPerformed
 
-
+//Variables  Vista_Actividad2U1
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton jButtonCOMPLETOACTV2;
     public javax.swing.JButton jButtonValidarDragDrop;

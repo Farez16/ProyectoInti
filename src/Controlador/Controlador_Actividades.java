@@ -1,8 +1,8 @@
 package Controlador;
 
 import Modelo.*;
-import Vista.Vista_Actividad2U1;
-import Vista.Vista_Unidad1;
+import Vista.Vistas_Unidad1.Vista_Actividad2U1;
+import Vista.Vistas_Unidad1.Vista_Unidad1;
 import java.awt.CardLayout;
 import java.sql.Connection;
 import java.util.List;
