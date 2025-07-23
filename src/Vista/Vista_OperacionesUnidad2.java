@@ -4,6 +4,11 @@
  */
 package Vista;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
 /**
  *
  * @author Jhony Espinoza
@@ -15,6 +20,46 @@ public class Vista_OperacionesUnidad2 extends javax.swing.JPanel {
      */
     public Vista_OperacionesUnidad2() {
         initComponents();
+    }
+
+    public void setjButton1CONTINUAR(JButton jButton1CONTINUAR) {
+        this.jButton1CONTINUAR = jButton1CONTINUAR;
+    }
+
+    public void setjLabel1entrada3(JLabel jLabel1entrada3) {
+        this.jLabel1entrada3 = jLabel1entrada3;
+    }
+
+    public void setjLabel2debeaparecer1(JLabel jLabel2debeaparecer1) {
+        this.jLabel2debeaparecer1 = jLabel2debeaparecer1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public void setjTextArea1(JTextArea jTextArea1) {
+        this.jTextArea1 = jTextArea1;
+    }
+
+    public JButton getjButton1CONTINUAR() {
+        return jButton1CONTINUAR;
+    }
+
+    public JLabel getjLabel1entrada3() {
+        return jLabel1entrada3;
+    }
+
+    public JLabel getjLabel2debeaparecer1() {
+        return jLabel2debeaparecer1;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public JTextArea getjTextArea1() {
+        return jTextArea1;
     }
 
     /**

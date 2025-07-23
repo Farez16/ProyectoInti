@@ -305,7 +305,8 @@ public class Controlador_Unidades {
             // Crear vista según la unidad
             switch (idUnidad) {
                 case 1 -> abrirUnidad1();
-                case 2, 3, 4 -> mostrarUnidadEnDesarrollo(idUnidad, nombreUnidad);
+                case 2 -> abrirUnidad2();
+                case 3, 4 -> mostrarUnidadEnDesarrollo(idUnidad, nombreUnidad);
                 default -> System.err.println("ID de unidad no válido: " + idUnidad);
             }
 
@@ -344,6 +345,13 @@ public class Controlador_Unidades {
             mostrarError("Error al abrir la unidad 1. Por favor, intenta de nuevo.");
         }
     }
+        // In Controlador_Unidades.java
+    private void abrirUnidad2() {
+    Vista_Unidad2 unidad2 = new Vista_Unidad2();
+    new ControladorUnidad2(unidad2, dashboard);
+    dashboard.mostrarVista(unidad2);
+}
+
 
     /**
      * Muestra mensaje para unidades en desarrollo

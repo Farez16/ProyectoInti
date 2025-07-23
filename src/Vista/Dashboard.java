@@ -19,6 +19,8 @@ public class Dashboard extends javax.swing.JPanel {
 
     private String correoUsuario;
     private ControladorBotones controladorBotones;
+    private int idUsuario;
+
 
     public Dashboard(String correoUsuario) {
         initComponents();
@@ -94,6 +96,13 @@ public class Dashboard extends javax.swing.JPanel {
 
     public JButton getBtnCuenta() {
         return btnCuenta;
+    }
+     public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public JButton getBtnDashboard() {

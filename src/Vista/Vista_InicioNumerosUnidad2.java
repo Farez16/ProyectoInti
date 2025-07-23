@@ -4,17 +4,41 @@
  */
 package Vista;
 
-/**
- *
- * @author Jhony Espinoza
- */
+import javax.swing.JButton;
+
 public class Vista_InicioNumerosUnidad2 extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Vista_Actividad1U1
-     */
     public Vista_InicioNumerosUnidad2() {
         initComponents();
+        inicializarVisibilidad();
+    }
+
+    private void inicializarVisibilidad() {
+        jLabel2debeaparecer1.setVisible(false);
+        jLabel3debeaparecersegundo.setVisible(false);
+        jLabel1debeaparecertercero1.setVisible(false);
+        jLabel1debeaparecercuarto.setVisible(false);
+        jLabel1debeaparecerquinto.setVisible(false);
+        jLabel1debeaparecersexto.setVisible(false);
+    }
+
+    public javax.swing.JLabel[] getLabelsOrdenados() {
+        return new javax.swing.JLabel[]{
+            jLabel2debeaparecer1,
+            jLabel3debeaparecersegundo,
+            jLabel1debeaparecertercero1,
+            jLabel1debeaparecercuarto,
+            jLabel1debeaparecerquinto,
+            jLabel1debeaparecersexto
+        };
+    }
+
+    public JButton getjButton1CONTINUAR() {
+        return jButton1CONTINUAR;
+    }
+
+    public void setjButton1CONTINUAR(JButton jButton1CONTINUAR) {
+        this.jButton1CONTINUAR = jButton1CONTINUAR;
     }
 
     /**
@@ -32,6 +56,7 @@ public class Vista_InicioNumerosUnidad2 extends javax.swing.JPanel {
         jLabel1debeaparecertercero1 = new javax.swing.JLabel();
         jLabel1debeaparecercuarto = new javax.swing.JLabel();
         jLabel1debeaparecerquinto = new javax.swing.JLabel();
+        jButton1CONTINUAR = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(1190, 660));
@@ -61,10 +86,14 @@ public class Vista_InicioNumerosUnidad2 extends javax.swing.JPanel {
         jLabel1debeaparecerquinto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1debeaparecerquinto.setText("2. UNANCHA YUPAYKUNA ");
         add(jLabel1debeaparecerquinto, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 270, -1, -1));
+
+        jButton1CONTINUAR.setText("CONTINUAR");
+        add(jButton1CONTINUAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 610, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1CONTINUAR;
     private javax.swing.JLabel jLabel1debeaparecercuarto;
     private javax.swing.JLabel jLabel1debeaparecerquinto;
     private javax.swing.JLabel jLabel1debeaparecersexto;

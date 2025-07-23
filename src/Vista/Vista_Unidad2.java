@@ -4,6 +4,10 @@
  */
 package Vista;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JProgressBar;
+
 /**
  *
  * @author Jhony Espinoza
@@ -15,6 +19,50 @@ public class Vista_Unidad2 extends javax.swing.JPanel {
      */
     public Vista_Unidad2() {
         initComponents();
+    }
+
+    public JLabel getFondo() {
+        return Fondo;
+    }
+
+    public JButton getjButtonAnimales() {
+        return jButtonAnimales;
+    }
+
+    public JButton getjButtonBack() {
+        return jButtonBack;
+    }
+
+    public JButton getjButtonEvaluacion() {
+        return jButtonEvaluacion;
+    }
+
+    public JButton getjButtonFINALIZARUNIDAD1() {
+        return jButtonFINALIZARUNIDAD1;
+    }
+
+    public JButton getjButtonHistorial() {
+        return jButtonHistorial;
+    }
+
+    public JButton getjButtonMorfemas() {
+        return jButtonMorfemas;
+    }
+
+    public JButton getjButtonNumeros() {
+        return jButtonNumeros;
+    }
+
+    public JButton getjButtonOperaciones() {
+        return jButtonOperaciones;
+    }
+
+    public JButton getjButtonREINICIARU1() {
+        return jButtonREINICIARU1;
+    }
+
+    public JProgressBar getjProgressBarUNIDAD1() {
+        return jProgressBarUNIDAD1;
     }
 
     /**
@@ -67,10 +115,10 @@ public class Vista_Unidad2 extends javax.swing.JPanel {
         add(jButtonOperaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, 120, 70));
 
         jButtonAnimales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PronombresU1.png"))); // NOI18N
-        add(jButtonAnimales, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 330, 120, 70));
+        add(jButtonAnimales, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 320, 120, 70));
 
         jButtonMorfemas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ActividadU1.png"))); // NOI18N
-        add(jButtonMorfemas, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 310, 120, 70));
+        add(jButtonMorfemas, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 340, 120, 70));
 
         jButtonEvaluacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ActividadU1.png"))); // NOI18N
         jButtonEvaluacion.addActionListener(new java.awt.event.ActionListener() {

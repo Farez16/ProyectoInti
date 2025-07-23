@@ -576,4 +576,37 @@ public class Modelo_Unidades {
     public int hashCode() {
         return Integer.hashCode(idUnidad);
     }
+    public static void registrarActividadCompletadaUnidad2(String correo) {
+try (Connection conn = Conexion.conectar()) {
+String queryUsuario = "SELECT id_usuario FROM usuarios WHERE correo = ?";
+PreparedStatement stmtUsuario = conn.prepareStatement(queryUsuario);
+stmtUsuario.setString(1, correo);
+ResultSet rs = stmtUsuario.executeQuery();
+    if (rs.next()) {
+        int idUsuario = rs.getInt("id_usuario");
+
+        // Verificar si ya existe progreso para unidad 2
+        String checkSql = "SELECT * FROM progreso_usuario WHERE id_usuario = ? AND id_unidad = 2";
+        PreparedStatement checkStmt = conn.prepareStatement(checkSql);
+        checkStmt.setInt(1, idUsuario);
+        ResultSet checkRs = checkStmt.executeQuery();
+
+        if (checkRs.next()) {
+            // Ya existe, actualizar
+            String updateSql = "UPDATE progreso_usuario SET actividades_completadas = 1, fecha_actualizacion = NOW() WHERE id_usuario = ? AND id_unidad = 2";
+            PreparedStatement updateStmt = conn.prepareStatement(updateSql);
+            updateStmt.setInt(1, idUsuario);
+            updateStmt.executeUpdate();
+        } else {
+            // No existe, insertar
+            String insertSql = "INSERT INTO progreso_usuario (id_usuario, id_unidad, actividades_completadas) VALUES (?, 2, 1)";
+            PreparedStatement insertStmt = conn.prepareStatement(insertSql);
+            insertStmt.setInt(1, idUsuario);
+            insertStmt.executeUpdate();
+        }
+    }
+} catch (SQLException e) {
+    System.err.println("❌ Error al registrar actividad unidad 2: " + e.getMessage());
+}
+    }
 }
