@@ -46,7 +46,7 @@ public class Vista_NumerosUnidad2 extends javax.swing.JPanel {
         jTextArea1.setText("KALLARINKAPAK  \n=  \nPara comenzar  \n\n¡Bienvenido! En esta unidad aprenderás \nsobre los números en kichwa (yupaykuna). \n \nComenzaremos con los números del 1 al 10,\nsu pronunciación y cómo escribirlos correctamente.  \n\nTambién podrás escuchar cómo se dicen los números, \nver ejemplos visuales y practicar con juegos.\n\nVeamos esto para aprender más sobre los números:  \n\nYupaykuna yachankapak kayta rikushun.  \n\n(Vamos a ver esto para aprender los números).  \n\n\n📹 Videos recomendados:  \n\nhttps://www.youtube.com/watch?v=uqotZ0H8Sa8  \n\nhttps://www.youtube.com/watch?v=61CTnmW3ZIC  \n\n¡Listo! Empecemos tu aprendizaje ✨\n");
         jScrollPane1.setViewportView(jTextArea1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 320, 330));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 320, 330));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad2/1-100.png"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 80, -1, -1));
