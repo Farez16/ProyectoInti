@@ -1,5 +1,9 @@
 package Controlador;
 
+import Vista.Vistas_Unidad1.Vista_LeccionFONOLOGIA;
+import Vista.Vistas_Unidad1.Vista_Unidad1;
+import Vista.Vistas_Unidad1.Vista_LeccionPRONOMBRES;
+import Vista.Vistas_Unidad1.Vista_LeccionSALUDOS;
 import Modelo.Modelo_Lecciones;
 import Modelo.Usuario;
 import Modelo.Modelo_Progreso_Usuario;
@@ -209,6 +213,7 @@ public class Controlador_Lecciones {
             Vista_LeccionFONOLOGIA vista = (Vista_LeccionFONOLOGIA) vistaLeccion;
             vista.jButtonCOMPLETOFONOLOGIA.setText("COMPLETAR LECCIÓN DE FONOLOGÍA");
         }
+        
     }
 
     private void configurarLeccionPronombres() {
