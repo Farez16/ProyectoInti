@@ -22,7 +22,13 @@ public class Controlador_Video {
     private Scene placeholderScene;
     private StackPane videoRoot;
     private boolean isInitialized = false;
+    private boolean isDisposed = false;
+    private String currentVideoPath;
     private Runnable onVideoCompletedCallback;
+    
+    // Estados para evitar conflictos de recarga
+    private volatile boolean isLoadingVideo = false;
+    private volatile boolean needsReload = false;
 
     public Controlador_Video(JPanel contenedorVideo) {
         this.contenedorVideo = contenedorVideo;
@@ -46,36 +52,67 @@ public class Controlador_Video {
         isInitialized = true;
     }
 
+    /**
+     * Carga un video de forma segura, evitando conflictos de recarga.
+     * 
+     * @param rutaVideo Ruta del archivo de video a cargar
+     */
     public void cargarVideo(String rutaVideo) {
-        if (mediaPlayer != null) {
-            mediaPlayer.dispose();
+        if (isDisposed) {
+            System.err.println("Controlador de video ya fue liberado, no se puede cargar video");
+            return;
         }
+        
+        if (isLoadingVideo) {
+            needsReload = true;
+            currentVideoPath = rutaVideo;
+            return;
+        }
+        
         if (!isInitialized) {
             Platform.runLater(() -> cargarVideo(rutaVideo));
             return;
         }
 
+        isLoadingVideo = true;
+        currentVideoPath = rutaVideo;
+        
         Platform.runLater(() -> {
             try {
                 File videoFile = new File(rutaVideo);
                 if (!videoFile.exists()) {
                     mostrarError("Archivo no encontrado: " + rutaVideo);
+                    isLoadingVideo = false;
                     return;
                 }
 
-                liberarRecursosMediaPlayer();
+                // Liberar recursos anteriores de forma segura
+                liberarRecursosMediaPlayerSeguro();
 
+                // Crear nuevo reproductor
                 Media media = new Media(videoFile.toURI().toString());
                 mediaPlayer = new MediaPlayer(media);
                 configurarEventosReproductor();
 
+                // Configurar vista
                 mediaView = new MediaView(mediaPlayer);
                 videoRoot = new StackPane(mediaView);
                 configurarMediaView();
 
+                // Establecer escena
                 Scene videoScene = new Scene(videoRoot);
                 fxPanel.setScene(videoScene);
+                
+                isLoadingVideo = false;
+                
+                // Si hay una recarga pendiente, ejecutarla
+                if (needsReload && !currentVideoPath.equals(rutaVideo)) {
+                    needsReload = false;
+                    cargarVideo(currentVideoPath);
+                }
+                
             } catch (Exception e) {
+                isLoadingVideo = false;
                 mostrarError("Error al cargar video: " + e.getMessage());
             }
         });
@@ -88,39 +125,111 @@ public class Controlador_Video {
         mediaView.setSmooth(true);
     }
 
+    /**
+     * Reinicia completamente el controlador y carga un nuevo video.
+     * Útil cuando hay problemas de estado o conflictos.
+     * 
+     * @param rutaVideo Ruta del video a cargar
+     */
     public void reiniciarYCargarVideo(String rutaVideo) {
+        if (isDisposed) {
+            System.err.println("No se puede reiniciar un controlador liberado");
+            return;
+        }
+        
+        // Resetear estados
+        isLoadingVideo = false;
+        needsReload = false;
+        
         Platform.runLater(() -> {
-            liberarRecursosMediaPlayer();
-            mostrarPlaceholder();
-            cargarVideo(rutaVideo);
+            try {
+                liberarRecursosMediaPlayerSeguro();
+                mostrarPlaceholder();
+                
+                // Pequeña pausa para asegurar limpieza completa
+                Platform.runLater(() -> {
+                    cargarVideo(rutaVideo);
+                });
+            } catch (Exception e) {
+                System.err.println("Error al reiniciar video: " + e.getMessage());
+                mostrarError("Error al reiniciar el video: " + e.getMessage());
+            }
         });
     }
 
+    /**
+     * Libera los recursos del MediaPlayer de forma segura.
+     */
     private void liberarRecursosMediaPlayer() {
         if (mediaPlayer != null) {
-            mediaPlayer.stop();
-            mediaPlayer.dispose();
-            mediaPlayer = null;
+            try {
+                mediaPlayer.stop();
+                mediaPlayer.dispose();
+            } catch (Exception e) {
+                System.err.println("Error al liberar MediaPlayer: " + e.getMessage());
+            } finally {
+                mediaPlayer = null;
+            }
         }
         if (mediaView != null) {
             mediaView = null;
         }
     }
+    
+    /**
+     * Versión segura de liberación de recursos que maneja estados de carga.
+     */
+    private void liberarRecursosMediaPlayerSeguro() {
+        if (isLoadingVideo) {
+            // Esperar un momento si está cargando
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+        liberarRecursosMediaPlayer();
+    }
 
+    /**
+     * Libera todos los recursos del controlador de video.
+     */
     public void liberarRecursos() {
+        isDisposed = true;
+        isLoadingVideo = false;
+        needsReload = false;
+        
         Platform.runLater(() -> {
-            liberarRecursosMediaPlayer();
-            mostrarPlaceholder();
+            try {
+                liberarRecursosMediaPlayer();
+                mostrarPlaceholder();
+            } catch (Exception e) {
+                System.err.println("Error al liberar recursos: " + e.getMessage());
+            }
         });
     }
 
+    /**
+     * Prepara el controlador para ser reutilizado sin liberar completamente los recursos.
+     */
     public void prepararParaReuso() {
+        if (isDisposed) {
+            return;
+        }
+        
+        isLoadingVideo = false;
+        needsReload = false;
+        
         Platform.runLater(() -> {
-            if (mediaPlayer != null) {
-                mediaPlayer.stop();
-                mediaPlayer.seek(Duration.ZERO);
+            try {
+                if (mediaPlayer != null) {
+                    mediaPlayer.stop();
+                    mediaPlayer.seek(Duration.ZERO);
+                }
+                mostrarPlaceholder();
+            } catch (Exception e) {
+                System.err.println("Error al preparar para reuso: " + e.getMessage());
             }
-            mostrarPlaceholder();
         });
     }
 
@@ -159,21 +268,50 @@ public class Controlador_Video {
     }
 
     // Métodos de control básico
+    /**
+     * Reproduce el video actual si está cargado.
+     */
     public void reproducir() {
-        if (mediaPlayer != null) {
-            Platform.runLater(() -> mediaPlayer.play());
+        if (mediaPlayer != null && !isDisposed && !isLoadingVideo) {
+            Platform.runLater(() -> {
+                try {
+                    mediaPlayer.play();
+                } catch (Exception e) {
+                    System.err.println("Error al reproducir video: " + e.getMessage());
+                }
+            });
         }
     }
 
+    /**
+     * Pausa el video actual si está reproduciéndose.
+     */
     public void pausar() {
-        if (mediaPlayer != null) {
-            Platform.runLater(() -> mediaPlayer.pause());
+        if (mediaPlayer != null && !isDisposed && !isLoadingVideo) {
+            Platform.runLater(() -> {
+                try {
+                    mediaPlayer.pause();
+                } catch (Exception e) {
+                    System.err.println("Error al pausar video: " + e.getMessage());
+                }
+            });
         }
     }
 
+    /**
+     * Establece el volumen del video.
+     * 
+     * @param volume Volumen entre 0.0 y 1.0
+     */
     public void setVolume(double volume) {
-        if (mediaPlayer != null) {
-            Platform.runLater(() -> mediaPlayer.setVolume(volume));
+        if (mediaPlayer != null && !isDisposed && !isLoadingVideo) {
+            Platform.runLater(() -> {
+                try {
+                    mediaPlayer.setVolume(Math.max(0.0, Math.min(1.0, volume)));
+                } catch (Exception e) {
+                    System.err.println("Error al establecer volumen: " + e.getMessage());
+                }
+            });
         }
     }
 
@@ -181,25 +319,66 @@ public class Controlador_Video {
         this.onVideoCompletedCallback = callback;
     }
 
+    /**
+     * Obtiene la duración total del video en segundos.
+     * 
+     * @return Duración en segundos, 0 si no hay video cargado
+     */
     public double getDurationSeconds() {
-        return mediaPlayer != null && mediaPlayer.getTotalDuration() != null ? 
-            mediaPlayer.getTotalDuration().toSeconds() : 0;
+        if (mediaPlayer != null && !isDisposed && mediaPlayer.getTotalDuration() != null) {
+            try {
+                return mediaPlayer.getTotalDuration().toSeconds();
+            } catch (Exception e) {
+                System.err.println("Error al obtener duración: " + e.getMessage());
+            }
+        }
+        return 0;
     }
 
+    /**
+     * Obtiene el tiempo actual de reproducción en segundos.
+     * 
+     * @return Tiempo actual en segundos, 0 si no hay video reproduciéndose
+     */
     public double getCurrentTimeSeconds() {
-        return mediaPlayer != null && mediaPlayer.getCurrentTime() != null ? 
-            mediaPlayer.getCurrentTime().toSeconds() : 0;
+        if (mediaPlayer != null && !isDisposed && mediaPlayer.getCurrentTime() != null) {
+            try {
+                return mediaPlayer.getCurrentTime().toSeconds();
+            } catch (Exception e) {
+                System.err.println("Error al obtener tiempo actual: " + e.getMessage());
+            }
+        }
+        return 0;
     }
 
+    /**
+     * Busca una posición específica en el video.
+     * 
+     * @param seconds Segundos desde el inicio del video
+     */
     public void seek(double seconds) {
-        if (mediaPlayer != null) {
-            Platform.runLater(() -> mediaPlayer.seek(Duration.seconds(seconds)));
+        if (mediaPlayer != null && !isDisposed && !isLoadingVideo) {
+            Platform.runLater(() -> {
+                try {
+                    mediaPlayer.seek(Duration.seconds(Math.max(0, seconds)));
+                } catch (Exception e) {
+                    System.err.println("Error al buscar posición en video: " + e.getMessage());
+                }
+            });
         }
     }
-     public void detenerVideo() {
-        // Implementa la lógica para detener el video
-        if (mediaPlayer != null) {
-            mediaPlayer.stop();
+    /**
+     * Detiene completamente el video.
+     */
+    public void detenerVideo() {
+        if (mediaPlayer != null && !isDisposed && !isLoadingVideo) {
+            Platform.runLater(() -> {
+                try {
+                    mediaPlayer.stop();
+                } catch (Exception e) {
+                    System.err.println("Error al detener video: " + e.getMessage());
+                }
+            });
         }
     }
     

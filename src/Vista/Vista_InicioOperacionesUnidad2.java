@@ -4,6 +4,9 @@
  */
 package Vista;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+
 /**
  *
  * @author Jhony Espinoza
@@ -15,7 +18,115 @@ public class Vista_InicioOperacionesUnidad2 extends javax.swing.JPanel {
      */
     public Vista_InicioOperacionesUnidad2() {
         initComponents();
+        jLabel1debeaparecercdecimo.setVisible(false);
+jLabel1debeaparecercquinto1.setVisible(false);
+jLabel1debeaparecercseptimo1.setVisible(false);
+jLabel1debeaparecercsexto1.setVisible(false);
+jLabel1debeaparecercsoctavo1.setVisible(false);
+jLabel1debeaparecercsonoveno.setVisible(false);
+jLabel1debeaparecercuarto.setVisible(false);
+jLabel1debeaparecertercero.setVisible(false);
+jLabel1debeaparecertercero2.setVisible(false);
+jLabel2debeaparecer1.setVisible(false);
+jLabel3debeaparecersegundo.setVisible(false);
     }
+
+    public JButton getjButton1() {
+        return jButton1;
+    }
+
+    public JLabel getjLabel1debeaparecercdecimo() {
+        return jLabel1debeaparecercdecimo;
+    }
+
+    public JLabel getjLabel1debeaparecercquinto1() {
+        return jLabel1debeaparecercquinto1;
+    }
+
+    public JLabel getjLabel1debeaparecercseptimo1() {
+        return jLabel1debeaparecercseptimo1;
+    }
+
+    public JLabel getjLabel1debeaparecercsexto1() {
+        return jLabel1debeaparecercsexto1;
+    }
+
+    public JLabel getjLabel1debeaparecercsoctavo1() {
+        return jLabel1debeaparecercsoctavo1;
+    }
+
+    public JLabel getjLabel1debeaparecercsonoveno() {
+        return jLabel1debeaparecercsonoveno;
+    }
+
+    public JLabel getjLabel1debeaparecercuarto() {
+        return jLabel1debeaparecercuarto;
+    }
+
+    public JLabel getjLabel1debeaparecertercero() {
+        return jLabel1debeaparecertercero;
+    }
+
+    public JLabel getjLabel1debeaparecertercero2() {
+        return jLabel1debeaparecertercero2;
+    }
+
+    public JLabel getjLabel2debeaparecer1() {
+        return jLabel2debeaparecer1;
+    }
+
+    public JLabel getjLabel3debeaparecersegundo() {
+        return jLabel3debeaparecersegundo;
+    }
+
+    public void setjButton1(JButton jButton1) {
+        this.jButton1 = jButton1;
+    }
+
+    public void setjLabel1debeaparecercdecimo(JLabel jLabel1debeaparecercdecimo) {
+        this.jLabel1debeaparecercdecimo = jLabel1debeaparecercdecimo;
+    }
+
+    public void setjLabel1debeaparecercquinto1(JLabel jLabel1debeaparecercquinto1) {
+        this.jLabel1debeaparecercquinto1 = jLabel1debeaparecercquinto1;
+    }
+
+    public void setjLabel1debeaparecercseptimo1(JLabel jLabel1debeaparecercseptimo1) {
+        this.jLabel1debeaparecercseptimo1 = jLabel1debeaparecercseptimo1;
+    }
+
+    public void setjLabel1debeaparecercsexto1(JLabel jLabel1debeaparecercsexto1) {
+        this.jLabel1debeaparecercsexto1 = jLabel1debeaparecercsexto1;
+    }
+
+    public void setjLabel1debeaparecercsoctavo1(JLabel jLabel1debeaparecercsoctavo1) {
+        this.jLabel1debeaparecercsoctavo1 = jLabel1debeaparecercsoctavo1;
+    }
+
+    public void setjLabel1debeaparecercsonoveno(JLabel jLabel1debeaparecercsonoveno) {
+        this.jLabel1debeaparecercsonoveno = jLabel1debeaparecercsonoveno;
+    }
+
+    public void setjLabel1debeaparecercuarto(JLabel jLabel1debeaparecercuarto) {
+        this.jLabel1debeaparecercuarto = jLabel1debeaparecercuarto;
+    }
+
+    public void setjLabel1debeaparecertercero(JLabel jLabel1debeaparecertercero) {
+        this.jLabel1debeaparecertercero = jLabel1debeaparecertercero;
+    }
+
+    public void setjLabel1debeaparecertercero2(JLabel jLabel1debeaparecertercero2) {
+        this.jLabel1debeaparecertercero2 = jLabel1debeaparecertercero2;
+    }
+
+    public void setjLabel2debeaparecer1(JLabel jLabel2debeaparecer1) {
+        this.jLabel2debeaparecer1 = jLabel2debeaparecer1;
+    }
+
+    public void setjLabel3debeaparecersegundo(JLabel jLabel3debeaparecersegundo) {
+        this.jLabel3debeaparecersegundo = jLabel3debeaparecersegundo;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

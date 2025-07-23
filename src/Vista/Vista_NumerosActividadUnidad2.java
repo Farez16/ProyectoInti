@@ -4,6 +4,9 @@
  */
 package Vista;
 
+import javax.swing.JButton;
+import javax.swing.text.*;
+import javax.swing.*;
 /**
  *
  * @author Jhony Espinoza
@@ -15,7 +18,71 @@ public class Vista_NumerosActividadUnidad2 extends javax.swing.JPanel {
      */
     public Vista_NumerosActividadUnidad2() {
         initComponents();
+         forzarMayusculas();
     }
+    private void forzarMayusculas() {
+        DocumentFilter upperCaseFilter = new DocumentFilter() {
+            @Override
+            public void insertString(FilterBypass fb, int offset, String text, AttributeSet attr)
+                    throws BadLocationException {
+                fb.insertString(offset, text.toUpperCase(), attr);
+            }
+
+            @Override
+            public void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attrs)
+                    throws BadLocationException {
+                fb.replace(offset, length, text.toUpperCase(), attrs);
+            }
+        };
+
+        PlainDocument[] docs = new PlainDocument[]{
+            (PlainDocument) jTextField1Numero1.getDocument(),
+            (PlainDocument) jTextField1Numero2.getDocument(),
+            (PlainDocument) jTextField1Numero3.getDocument(),
+            (PlainDocument) jTextField1Numero4.getDocument(),
+            (PlainDocument) jTextField1Numero5.getDocument(),
+            (PlainDocument) jTextField1Numero6.getDocument(),
+            (PlainDocument) jTextField1Numero7.getDocument(),
+            (PlainDocument) jTextField1Numero8.getDocument(),
+            (PlainDocument) jTextField1Numero9.getDocument(),
+            (PlainDocument) jTextField1Numero10.getDocument()
+        };
+
+        for (PlainDocument doc : docs) {
+            doc.setDocumentFilter(upperCaseFilter);
+        }
+    }
+
+    public JButton getjButton1ComprobarAudios() {
+        return jButton1ComprobarAudios;
+    }
+
+    public JButton getjButton1Continuar() {
+        return jButton1Continuar;
+    }
+
+    public JButton[] getBotonesAudio() {
+        return new JButton[]{
+            jButton1audio1, jButton1audio2, jButton1audio3, jButton1audio4, jButton1audio5,
+            jButton1audio6, jButton1audio7, jButton1audio8, jButton1audio9, jButton1audio10
+        };
+    }
+
+public String[] getRespuestasIngresadas() {
+    return new String[]{
+        jTextField1Numero1.getText(),
+        jTextField1Numero2.getText(),
+        jTextField1Numero3.getText(),
+        jTextField1Numero4.getText(),
+        jTextField1Numero5.getText(),
+        jTextField1Numero6.getText(),
+        jTextField1Numero7.getText(),
+        jTextField1Numero8.getText(),
+        jTextField1Numero9.getText(),
+        jTextField1Numero10.getText()
+    };
+}
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -59,6 +126,7 @@ public class Vista_NumerosActividadUnidad2 extends javax.swing.JPanel {
         jTextField1Numero10 = new javax.swing.JTextField();
         jButton1audio10 = new javax.swing.JButton();
         jButton1ComprobarAudios = new javax.swing.JButton();
+        jButton1Continuar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(1190, 660));
@@ -150,6 +218,9 @@ public class Vista_NumerosActividadUnidad2 extends javax.swing.JPanel {
 
         jButton1ComprobarAudios.setText("Comprobar");
         add(jButton1ComprobarAudios, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 460, -1, -1));
+
+        jButton1Continuar.setText("Continuar");
+        add(jButton1Continuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 580, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1audio10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1audio10ActionPerformed
@@ -159,6 +230,7 @@ public class Vista_NumerosActividadUnidad2 extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1ComprobarAudios;
+    private javax.swing.JButton jButton1Continuar;
     private javax.swing.JButton jButton1audio1;
     private javax.swing.JButton jButton1audio10;
     private javax.swing.JButton jButton1audio2;

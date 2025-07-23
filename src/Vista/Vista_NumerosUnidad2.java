@@ -4,6 +4,8 @@
  */
 package Vista;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author Jhony Espinoza
@@ -15,6 +17,9 @@ public class Vista_NumerosUnidad2 extends javax.swing.JPanel {
      */
     public Vista_NumerosUnidad2() {
         initComponents();
+    }
+        public JButton getjButton1CONTINUAR() {
+        return jButton1CONTINUAR;
     }
 
     /**
@@ -31,6 +36,7 @@ public class Vista_NumerosUnidad2 extends javax.swing.JPanel {
         jTextArea1 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jButton1CONTINUAR = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(1190, 660));
@@ -53,10 +59,14 @@ public class Vista_NumerosUnidad2 extends javax.swing.JPanel {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad2/1-20.png"))); // NOI18N
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 70, -1, -1));
+
+        jButton1CONTINUAR.setText("CONTINUAR");
+        add(jButton1CONTINUAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 610, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1CONTINUAR;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel2debeaparecer1;
