@@ -3,10 +3,10 @@ package Controlador;
 import Modelo.EmailSender;
 import Modelo.OTPService;
 import Modelo.Usuario;
-import Vista.Logins.CrearUsuario;
-import Vista.Dashboard;
-import Vista.DashboardAdmin;
-import Vista.Logins.Login;
+import Vista.Login.CrearUsuario;
+import Vista.Estudiante.Dashboard;
+import Vista.Admin.DashboardAdmin;
+import Vista.Login.Login;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 

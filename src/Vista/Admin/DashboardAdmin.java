@@ -1,4 +1,4 @@
-package Vista;
+package Vista.Admin;
 
 import Controlador.ControladorBotones;
 import Modelo.TextoBotones;
@@ -47,14 +47,6 @@ public class DashboardAdmin extends javax.swing.JPanel {
 
     public JLabel getLblLogo() {
         return LblLogo;
-    }
-
-    public JLabel getLblNombreProyecto() {
-        return LblNombreProyecto;
-    }
-
-    public JLabel getLblPanelSuperior() {
-        return LblPanelSuperior;
     }
 
     public JLabel getLblRol() {
@@ -173,36 +165,36 @@ public class DashboardAdmin extends javax.swing.JPanel {
         btnCuenta1 = new javax.swing.JButton();
         btnGraficos1 = new javax.swing.JButton();
         btnCrearAdmin = new javax.swing.JButton();
-        LblNombreProyecto = new javax.swing.JLabel();
         LblLogo = new javax.swing.JLabel();
         btnSalir1 = new javax.swing.JButton();
-        LblPanelSuperior = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        PanelVistas.setBackground(new java.awt.Color(255, 255, 255));
+        PanelVistas.setBackground(new java.awt.Color(247, 249, 252));
         PanelVistas.setPreferredSize(new java.awt.Dimension(1190, 660));
         PanelVistas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(PanelVistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 1190, 660));
 
-        LblSaludo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        LblSaludo.setForeground(new java.awt.Color(255, 255, 255));
+        LblSaludo.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        LblSaludo.setForeground(new java.awt.Color(55, 65, 81));
         jPanel1.add(LblSaludo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 24, 380, 60));
 
         LblimagenPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Users.png"))); // NOI18N
         jPanel1.add(LblimagenPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 10, 90, 90));
 
-        lblNombre.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblNombre.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombre.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        lblNombre.setForeground(new java.awt.Color(55, 65, 81));
         jPanel1.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 20, 130, 40));
 
-        LblRol.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        LblRol.setForeground(new java.awt.Color(255, 255, 255));
+        LblRol.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        LblRol.setForeground(new java.awt.Color(55, 65, 81));
         jPanel1.add(LblRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 60, 130, 30));
 
-        btnMenu1.setBackground(new java.awt.Color(153, 153, 153));
-        btnMenu1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnMenu1.setForeground(new java.awt.Color(255, 255, 255));
+        btnMenu1.setBackground(new java.awt.Color(255, 122, 0));
+        btnMenu1.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        btnMenu1.setForeground(new java.awt.Color(55, 65, 81));
         btnMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Menuadmin.png"))); // NOI18N
         btnMenu1.setBorder(null);
         btnMenu1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -214,9 +206,9 @@ public class DashboardAdmin extends javax.swing.JPanel {
         });
         jPanel1.add(btnMenu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 160, 42));
 
-        btnCuenta1.setBackground(new java.awt.Color(102, 102, 102));
-        btnCuenta1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnCuenta1.setForeground(new java.awt.Color(255, 255, 255));
+        btnCuenta1.setBackground(new java.awt.Color(255, 122, 0));
+        btnCuenta1.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        btnCuenta1.setForeground(new java.awt.Color(55, 65, 81));
         btnCuenta1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cuentaadmin.png"))); // NOI18N
         btnCuenta1.setBorder(null);
         btnCuenta1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -228,18 +220,18 @@ public class DashboardAdmin extends javax.swing.JPanel {
         });
         jPanel1.add(btnCuenta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 160, 42));
 
-        btnGraficos1.setBackground(new java.awt.Color(102, 102, 102));
-        btnGraficos1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnGraficos1.setForeground(new java.awt.Color(255, 255, 255));
+        btnGraficos1.setBackground(new java.awt.Color(255, 122, 0));
+        btnGraficos1.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        btnGraficos1.setForeground(new java.awt.Color(55, 65, 81));
         btnGraficos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Estaadmin.png"))); // NOI18N
         btnGraficos1.setBorder(null);
         btnGraficos1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnGraficos1.setOpaque(true);
         jPanel1.add(btnGraficos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 160, 42));
 
-        btnCrearAdmin.setBackground(new java.awt.Color(102, 102, 102));
-        btnCrearAdmin.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnCrearAdmin.setForeground(new java.awt.Color(255, 255, 255));
+        btnCrearAdmin.setBackground(new java.awt.Color(255, 122, 0));
+        btnCrearAdmin.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        btnCrearAdmin.setForeground(new java.awt.Color(55, 65, 81));
         btnCrearAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AñadirAdmin.png"))); // NOI18N
         btnCrearAdmin.setBorder(null);
         btnCrearAdmin.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -251,18 +243,13 @@ public class DashboardAdmin extends javax.swing.JPanel {
         });
         jPanel1.add(btnCrearAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 160, 42));
 
-        LblNombreProyecto.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        LblNombreProyecto.setForeground(new java.awt.Color(255, 255, 255));
-        LblNombreProyecto.setText("INTI");
-        jPanel1.add(LblNombreProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, -1, -1));
-
         LblLogo.setForeground(new java.awt.Color(255, 255, 255));
-        LblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Logo 90 x90.png"))); // NOI18N
-        jPanel1.add(LblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
+        LblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Logo135x132.png"))); // NOI18N
+        jPanel1.add(LblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 23, -1, -1));
 
-        btnSalir1.setBackground(new java.awt.Color(102, 102, 102));
-        btnSalir1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnSalir1.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalir1.setBackground(new java.awt.Color(255, 122, 0));
+        btnSalir1.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        btnSalir1.setForeground(new java.awt.Color(55, 65, 81));
         btnSalir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/SalirAdmin.png"))); // NOI18N
         btnSalir1.setToolTipText("");
         btnSalir1.setBorder(null);
@@ -275,8 +262,37 @@ public class DashboardAdmin extends javax.swing.JPanel {
         });
         jPanel1.add(btnSalir1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 681, 160, 42));
 
-        LblPanelSuperior.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo dashboard.png"))); // NOI18N
-        jPanel1.add(LblPanelSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 770));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 176, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 766, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 770));
+
+        jPanel3.setBackground(new java.awt.Color(255, 122, 0));
+        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1186, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 106, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 1190, 110));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -309,8 +325,6 @@ public class DashboardAdmin extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel LblLogo;
-    public javax.swing.JLabel LblNombreProyecto;
-    public javax.swing.JLabel LblPanelSuperior;
     public javax.swing.JLabel LblRol;
     public javax.swing.JLabel LblSaludo;
     public javax.swing.JLabel LblimagenPrincipal;
@@ -321,6 +335,8 @@ public class DashboardAdmin extends javax.swing.JPanel {
     public javax.swing.JButton btnMenu1;
     public javax.swing.JButton btnSalir1;
     public javax.swing.JPanel jPanel1;
+    public javax.swing.JPanel jPanel2;
+    public javax.swing.JPanel jPanel3;
     public javax.swing.JLabel lblNombre;
     // End of variables declaration//GEN-END:variables
 }

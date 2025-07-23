@@ -4,6 +4,7 @@
  */
 package Controlador;
 
+import Vista.Estudiante.Dashboard;
 import Vista.*;
 import Modelo.Modelo_Unidades;
 import javax.swing.*;

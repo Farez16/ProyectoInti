@@ -1,7 +1,7 @@
 package Controlador;
 
 import Modelo.MostrarDatosAdmin;
-import Vista.VistaMostrarAdmin;
+import Vista.Admin.VistaMostrarAdmin;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.table.DefaultTableModel;

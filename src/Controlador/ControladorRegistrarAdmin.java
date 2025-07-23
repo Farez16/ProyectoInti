@@ -4,7 +4,7 @@ import Conexion.Conexion;
 import Modelo.EmailSender;
 import Modelo.OTPService;
 import Modelo.Usuario;
-import Vista.RegistrarAdmin;
+import Vista.Admin.RegistrarAdmin;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
 import java.sql.SQLException;

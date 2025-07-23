@@ -1,4 +1,4 @@
-package Vista.Logins;
+package Vista.Login;
 
 import java.awt.Color;
 import javax.swing.JButton;

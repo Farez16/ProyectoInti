@@ -1,4 +1,4 @@
-package Vista;
+package Vista.Estudiante;
 
 import Controlador.ControladorBotones;
 import Modelo.TextoBotones;
@@ -214,7 +214,7 @@ public class Dashboard extends javax.swing.JPanel {
 
         btnDashboard.setBackground(new java.awt.Color(255, 122, 0));
         btnDashboard.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
-        btnDashboard.setForeground(new java.awt.Color(107, 114, 128));
+        btnDashboard.setForeground(new java.awt.Color(55, 65, 81));
         btnDashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png"))); // NOI18N
         btnDashboard.setBorder(null);
         btnDashboard.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -228,7 +228,7 @@ public class Dashboard extends javax.swing.JPanel {
 
         btnCuenta.setBackground(new java.awt.Color(255, 122, 0));
         btnCuenta.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
-        btnCuenta.setForeground(new java.awt.Color(107, 114, 128));
+        btnCuenta.setForeground(new java.awt.Color(55, 65, 81));
         btnCuenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono-usuario.png"))); // NOI18N
         btnCuenta.setBorder(null);
         btnCuenta.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -242,7 +242,7 @@ public class Dashboard extends javax.swing.JPanel {
 
         btnCertificado.setBackground(new java.awt.Color(255, 122, 0));
         btnCertificado.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
-        btnCertificado.setForeground(new java.awt.Color(107, 114, 128));
+        btnCertificado.setForeground(new java.awt.Color(55, 65, 81));
         btnCertificado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/certificado.png"))); // NOI18N
         btnCertificado.setBorder(null);
         btnCertificado.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -251,7 +251,7 @@ public class Dashboard extends javax.swing.JPanel {
 
         btnJuegos.setBackground(new java.awt.Color(255, 122, 0));
         btnJuegos.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
-        btnJuegos.setForeground(new java.awt.Color(107, 114, 128));
+        btnJuegos.setForeground(new java.awt.Color(55, 65, 81));
         btnJuegos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/play.png"))); // NOI18N
         btnJuegos.setBorder(null);
         btnJuegos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -265,7 +265,7 @@ public class Dashboard extends javax.swing.JPanel {
 
         btnSalir.setBackground(new java.awt.Color(255, 122, 0));
         btnSalir.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
-        btnSalir.setForeground(new java.awt.Color(107, 114, 128));
+        btnSalir.setForeground(new java.awt.Color(55, 65, 81));
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cierre-de-sesión.png"))); // NOI18N
         btnSalir.setBorder(null);
         btnSalir.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -279,26 +279,11 @@ public class Dashboard extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         LblLogo.setForeground(new java.awt.Color(255, 255, 255));
         LblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Logo135x132.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(LblLogo)
-                .addContainerGap(21, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(LblLogo)
-                .addContainerGap(613, Short.MAX_VALUE))
-        );
+        jPanel2.add(LblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 23, -1, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 770));
 

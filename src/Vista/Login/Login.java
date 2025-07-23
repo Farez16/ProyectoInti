@@ -1,4 +1,4 @@
-package Vista.Logins;
+package Vista.Login;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

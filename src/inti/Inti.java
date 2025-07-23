@@ -1,7 +1,7 @@
 package inti;
 
 import Controlador.ControladorLogin;
-import Vista.Logins.Login;
+import Vista.Login.Login;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 import javax.swing.UIManager;

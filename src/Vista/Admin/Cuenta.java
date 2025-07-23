@@ -1,4 +1,4 @@
-package Vista;
+package Vista.Admin;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -92,9 +92,6 @@ public class Cuenta extends JPanel {
         return jLabel1loginactivity;
     }
 
-    public JLabel getjLabelMisCertificados() {
-        return jLabelMisCertificados;
-    }
 
     public JPanel getjPanel1() {
         return jPanel1;
@@ -176,9 +173,6 @@ public class Cuenta extends JPanel {
         this.jLabel1loginactivity = jLabel1loginactivity;
     }
 
-    public void setjLabelMisCertificados(JLabel jLabelMisCertificados) {
-        this.jLabelMisCertificados = jLabelMisCertificados;
-    }
 
     public void setjPanel1(JPanel jPanel1) {
         this.jPanel1 = jPanel1;
@@ -207,7 +201,6 @@ public class Cuenta extends JPanel {
         jLabel1FechayHora1 = new javax.swing.JLabel();
         jLabel1Contra1 = new javax.swing.JLabel();
         jTextField1Contraseña1 = new javax.swing.JTextField();
-        jLabelMisCertificados = new javax.swing.JLabel();
         jButton1Miscertificados = new javax.swing.JButton();
         LblimagenFondo = new javax.swing.JLabel();
         LblSaludo = new javax.swing.JLabel();
@@ -220,51 +213,61 @@ public class Cuenta extends JPanel {
         PanelVistas.setPreferredSize(new java.awt.Dimension(1190, 660));
         PanelVistas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1Usuario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1Usuario.setText("<html>     <span style=\"font-size:16px; font-family:Segoe UI; color:#2a4365;\"><b>Usuario:</b></span> </html> ");
-        PanelVistas.add(jLabel1Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, -1, -1));
-        PanelVistas.add(jTextField1MostrarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 210, -1));
+        jLabel1Usuario.setFont(new java.awt.Font("Montserrat", 1, 15)); // NOI18N
+        jLabel1Usuario.setForeground(new java.awt.Color(55, 65, 81));
+        jLabel1Usuario.setText("Usuario:");
+        PanelVistas.add(jLabel1Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, -1, -1));
+
+        jTextField1MostrarUsuario.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
+        PanelVistas.add(jTextField1MostrarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 210, 210, 30));
 
         Lblimagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Users.png"))); // NOI18N
-        PanelVistas.add(Lblimagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
+        PanelVistas.add(Lblimagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 100, 100));
 
-        jButton1SubirImagen.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton1SubirImagen.setBackground(new java.awt.Color(255, 122, 0));
+        jButton1SubirImagen.setFont(new java.awt.Font("Montserrat", 1, 16)); // NOI18N
+        jButton1SubirImagen.setForeground(new java.awt.Color(255, 255, 255));
         jButton1SubirImagen.setText("Subir Imagen");
-        jButton1SubirImagen.setBorder(null);
         jButton1SubirImagen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1SubirImagenActionPerformed(evt);
             }
         });
-        PanelVistas.add(jButton1SubirImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, -1, -1));
+        PanelVistas.add(jButton1SubirImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 180, 40));
 
+        jButton1CambiarContraseña.setBackground(new java.awt.Color(255, 122, 0));
+        jButton1CambiarContraseña.setFont(new java.awt.Font("Montserrat", 1, 16)); // NOI18N
+        jButton1CambiarContraseña.setForeground(new java.awt.Color(255, 255, 255));
         jButton1CambiarContraseña.setText("Cambiar Contraseña");
         jButton1CambiarContraseña.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        PanelVistas.add(jButton1CambiarContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 320, -1, -1));
+        PanelVistas.add(jButton1CambiarContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 380, 210, 40));
 
-        jLabel1loginactivity.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1loginactivity.setText("<html>     <span style=\"font-size:14px; font-family:Segoe UI; color:#2a4365;\"><b>Login activity</b></span><br><br>          <span style=\"font-size:13px; font-family:Segoe UI; color:#2a4365;\"><b>First access to site</b></span><br>     <span style=\"font-size:13px; font-family:Segoe UI;\">Monday, 22 May 2023, 9:54 PM <i>(2 years 42 days)</i></span><br><br>          <span style=\"font-size:13px; font-family:Segoe UI; color:#2a4365;\"><b>Last access to site</b></span><br>     <span style=\"font-size:13px; font-family:Segoe UI;\">Thursday, 3 July 2025, 12:11 AM <i>(now)</i></span> </html> ");
-        PanelVistas.add(jLabel1loginactivity, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 450, 510, -1));
+        jLabel1loginactivity.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1loginactivity.setForeground(new java.awt.Color(55, 65, 81));
+        jLabel1loginactivity.setText("<html>\n    <span style=\"font-size:14px; font-family:Montserrat; color:#000000;\"><b>Actividad de la cuenta</b></span><br><br>\n    <span style=\"font-size:13px; font-family:Montserrat; color:#000000;\"><b>Primer acceso al sitio</b></span><br>\n    <span style=\"font-size:13px; font-family:Montserrat;\">Monday, 22 May 2023, 9:54 PM <i>(2 years 42 days)</i></span><br><br>\n    <span style=\"font-size:13px; font-family:Montserrat; color:#000000;\"><b>Último acceso al sitio</b></span><br>\n    <span style=\"font-size:13px; font-family:Montserrat;\">Thursday, 3 July 2025, 12:11 AM <i>(now)</i></span>\n</html>");
+        PanelVistas.add(jLabel1loginactivity, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 470, 430, -1));
 
-        jLabel1FechayHora1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1FechayHora1.setText("<html>     <span style=\"font-size:14px; font-family:Segoe UI; color:#2a4365;\">         <b>Fecha y Hora:</b><br>         02 de julio de 2025 - 18:45:30     </span> </html> ");
-        PanelVistas.add(jLabel1FechayHora1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, 380, -1));
+        jLabel1FechayHora1.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
+        jLabel1FechayHora1.setForeground(new java.awt.Color(55, 65, 81));
+        jLabel1FechayHora1.setText("<html>     <span style=\"font-size:14px; font-family:Montserrat; color:#000000;\">         <b>Fecha y Hora:</b><br>         <span style=\"color:rgb(55,65,81);\">02 de julio de 2025 - 18:45:30</span>     </span> </html>");
+        PanelVistas.add(jLabel1FechayHora1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 20, 280, -1));
 
-        jLabel1Contra1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1Contra1.setText("<html>     <span style=\"font-size:16px; font-family:Segoe UI; color:#2a4365;\"><b>Contraseña:</b></span> </html> ");
-        PanelVistas.add(jLabel1Contra1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, -1, -1));
-        PanelVistas.add(jTextField1Contraseña1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 320, 210, -1));
+        jLabel1Contra1.setFont(new java.awt.Font("Montserrat", 1, 15)); // NOI18N
+        jLabel1Contra1.setForeground(new java.awt.Color(55, 65, 81));
+        jLabel1Contra1.setText("Contraseña: ");
+        PanelVistas.add(jLabel1Contra1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 270, -1, -1));
 
-        jLabelMisCertificados.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabelMisCertificados.setText("<html>     <span style=\"font-size:16px; font-family:Segoe UI; color:#2a4365;\"><b>Mis Certificados</b></span> </html> ");
-        PanelVistas.add(jLabelMisCertificados, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 380, -1, -1));
+        jTextField1Contraseña1.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
+        PanelVistas.add(jTextField1Contraseña1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, 210, 30));
 
-        jButton1Miscertificados.setBorder(null);
+        jButton1Miscertificados.setBackground(new java.awt.Color(255, 122, 0));
+        jButton1Miscertificados.setFont(new java.awt.Font("Montserrat", 1, 16)); // NOI18N
+        jButton1Miscertificados.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1Miscertificados.setText("Certificado");
         jButton1Miscertificados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        PanelVistas.add(jButton1Miscertificados, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 160, 20));
+        PanelVistas.add(jButton1Miscertificados, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 520, 180, 40));
 
         LblimagenFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lbl.jpg"))); // NOI18N
-        LblimagenFondo.setPreferredSize(new java.awt.Dimension(1190, 660));
         PanelVistas.add(LblimagenFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jPanel1.add(PanelVistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 660));
@@ -308,7 +311,6 @@ public class Cuenta extends JPanel {
     public javax.swing.JLabel jLabel1FechayHora1;
     public javax.swing.JLabel jLabel1Usuario;
     public javax.swing.JLabel jLabel1loginactivity;
-    public javax.swing.JLabel jLabelMisCertificados;
     public javax.swing.JPanel jPanel1;
     public javax.swing.JTextField jTextField1Contraseña1;
     public javax.swing.JTextField jTextField1MostrarUsuario;

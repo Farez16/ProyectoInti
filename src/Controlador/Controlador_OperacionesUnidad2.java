@@ -4,7 +4,7 @@
  */
 package Controlador;
 
-import Vista.Dashboard;
+import Vista.Estudiante.Dashboard;
 import Vista.Vista_ActividadOperacionesUnidad2;
 import Vista.Vista_OperacionesUnidad2;
 import java.awt.event.ActionEvent;

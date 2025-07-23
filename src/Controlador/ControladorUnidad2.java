@@ -1,11 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controlador;
 
 import Modelo.Modelo_AnimacionEntradaUnidad2;
-import Vista.Dashboard;
+import Vista.Estudiante.Dashboard;
 import Vista.Vista_ActividadMorfemasUnidad2;
 import Vista.Vista_InicioNumerosUnidad2;
 import Vista.Vista_InicioOperacionesUnidad2;

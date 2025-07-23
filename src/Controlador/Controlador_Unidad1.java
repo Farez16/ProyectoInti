@@ -1,5 +1,6 @@
 package Controlador;
 
+import Vista.Estudiante.Dashboard;
 import Vista.Vistas_Unidad1.Vista_EvaluacionU1;
 import Vista.Vistas_Unidad1.Vista_Actividad1U1;
 import Vista.Vistas_Unidad1.Vista_LeccionFONOLOGIA;

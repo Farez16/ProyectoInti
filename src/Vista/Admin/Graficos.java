@@ -1,4 +1,4 @@
-package Vista;
+package Vista.Admin;
 
 import com.toedter.calendar.JDateChooser;
 import java.awt.Dimension;
@@ -86,6 +86,9 @@ public class Graficos extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(247, 249, 252));
+
+        PanelGraficos.setBackground(new java.awt.Color(255, 255, 255));
         PanelGraficos.setMaximumSize(new java.awt.Dimension(1190, 600));
         PanelGraficos.setMinimumSize(new java.awt.Dimension(1190, 600));
 
@@ -100,27 +103,31 @@ public class Graficos extends javax.swing.JPanel {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        comboBoxFiltro.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         comboBoxFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Registros de usuarios", "Actividad por unidad", "Progreso completado", "Resultados de evaluaciones", "Usuarios inactivos" }));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
         jLabel1.setText("Filtrar por:");
 
         buttonGroup1.add(rdBarras);
+        rdBarras.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         rdBarras.setText("Barras");
 
         buttonGroup1.add(rdPastel);
+        rdPastel.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         rdPastel.setText("Pastel");
 
         buttonGroup1.add(rdAreas);
+        rdAreas.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         rdAreas.setText("Areas");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
         jLabel2.setText("Tipo de grafico:");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
         jLabel3.setText("Filtrar por fecha desde:");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
         jLabel5.setText("Hasta:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -160,7 +167,7 @@ public class Graficos extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 19, Short.MAX_VALUE)
+                .addGap(0, 20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboBoxFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)

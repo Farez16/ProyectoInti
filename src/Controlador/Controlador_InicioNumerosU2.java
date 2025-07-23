@@ -6,7 +6,7 @@ package Controlador;
 
 import Vista.Vista_InicioNumerosUnidad2;
 import Vista.Vista_NumerosUnidad2;
-import Vista.Dashboard;
+import Vista.Estudiante.Dashboard;
 import Vista.Vista_NumerosActividadUnidad2;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

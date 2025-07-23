@@ -1,4 +1,4 @@
-package Vista;
+package Vista.Estudiante;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;

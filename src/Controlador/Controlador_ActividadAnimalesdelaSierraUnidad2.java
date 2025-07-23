@@ -4,6 +4,7 @@
  */
 package Controlador;
 
+import Vista.Estudiante.Dashboard;
 import Vista.*;
 import Modelo.Modelo_AnimacionTextoUnidad2;
 import Modelo.Modelo_ProgresoUnidad2;

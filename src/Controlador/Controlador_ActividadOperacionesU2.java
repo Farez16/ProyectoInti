@@ -7,7 +7,7 @@ package Controlador;
 
 import Modelo.Modelo_OperacionesUnidad2;
 import Modelo.Modelo_ProgresoUnidad2;
-import Vista.Dashboard;
+import Vista.Estudiante.Dashboard;
 import Vista.Vista_ActividadOperacionesUnidad2;
 import Vista.Vista_Unidad2;
 

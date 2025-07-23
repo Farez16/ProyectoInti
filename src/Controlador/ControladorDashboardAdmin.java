@@ -1,8 +1,8 @@
 package Controlador;
 
 import Modelo.Saludo;
-import Vista.DashboardAdmin;
-import Vista.Logins.Login;
+import Vista.Admin.DashboardAdmin;
+import Vista.Login.Login;
 import Modelo.Usuario;
 import Conexion.Conexion;
 import javax.swing.JOptionPane;
@@ -10,10 +10,10 @@ import Controlador.ControladorSaludo;
 import Modelo.Grafico;
 import Modelo.MostrarDatosAdmin;
 import Modelo.TextoBotones;
-import Vista.Cuenta;
-import Vista.Graficos;
-import Vista.RegistrarAdmin;
-import Vista.VistaMostrarAdmin;
+import Vista.Admin.Cuenta;
+import Vista.Admin.Graficos;
+import Vista.Admin.RegistrarAdmin;
+import Vista.Admin.VistaMostrarAdmin;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;

@@ -2,7 +2,7 @@ package Controlador;
 
 import Modelo.FadeEfectoBotones;
 import Modelo.TextoBotones;
-import Vista.Dashboard;
+import Vista.Estudiante.Dashboard;
 import javax.swing.Timer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

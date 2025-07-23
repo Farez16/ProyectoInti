@@ -6,7 +6,7 @@
 package Controlador;
 
 import Modelo.Modelo_ProgresoUnidad2;
-import Vista.Dashboard;
+import Vista.Estudiante.Dashboard;
 import Vista.Vista_ActividadMorfemasUnidad2;
 import Vista.Vista_Unidad2;
 import java.awt.Color;

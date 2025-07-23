@@ -6,7 +6,7 @@
 package Controlador;
 
 import Modelo.Modelo_AnimacionTextoUnidad2;
-import Vista.Dashboard;
+import Vista.Estudiante.Dashboard;
 import Vista.Vista_InicioOperacionesUnidad2;
 import Vista.Vista_ActividadOperacionesUnidad2;
 import Vista.Vista_OperacionesUnidad2;

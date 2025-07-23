@@ -5,6 +5,7 @@
 // Controlador_LeccionNumerosU2.java
 package Controlador;
 
+import Vista.Estudiante.Dashboard;
 import Modelo.Modelo_Unidades;
 import Vista.*;
 import java.awt.event.*;

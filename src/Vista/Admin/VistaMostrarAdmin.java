@@ -1,4 +1,4 @@
-package Vista;
+package Vista.Admin;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -12,10 +12,6 @@ public class VistaMostrarAdmin extends javax.swing.JPanel {
 
     public VistaMostrarAdmin() {
         initComponents();
-    }
-
-    public JLabel getLblimagenfondoVista() {
-        return LblimagenfondoVista;
     }
 
     public JPanel getPanelVistas() {
@@ -48,15 +44,21 @@ public class VistaMostrarAdmin extends javax.swing.JPanel {
         btnBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaDatos = new javax.swing.JTable();
-        LblimagenfondoVista = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
-        PanelVistas.setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(1190, 660));
+
+        PanelVistas.setBackground(new java.awt.Color(247, 249, 252));
+        PanelVistas.setPreferredSize(new java.awt.Dimension(1190, 660));
+
+        TxtBuscar.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
 
         btnBuscar.setBackground(new java.awt.Color(255, 102, 0));
-        btnBuscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnBuscar.setFont(new java.awt.Font("Montserrat", 1, 16)); // NOI18N
         btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscar.setText("Buscar");
 
+        TablaDatos.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
         TablaDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -70,35 +72,39 @@ public class VistaMostrarAdmin extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(TablaDatos);
 
-        LblimagenfondoVista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lbl.jpg"))); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Montserrat", 1, 15)); // NOI18N
+        jLabel1.setText("Ingrese un correo para Buscar:");
 
         javax.swing.GroupLayout PanelVistasLayout = new javax.swing.GroupLayout(PanelVistas);
         PanelVistas.setLayout(PanelVistasLayout);
         PanelVistasLayout.setHorizontalGroup(
             PanelVistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelVistasLayout.createSequentialGroup()
-                .addGap(390, 390, 390)
-                .addComponent(TxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(PanelVistasLayout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(PanelVistasLayout.createSequentialGroup()
-                .addGap(660, 660, 660)
-                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(LblimagenfondoVista)
+                .addGroup(PanelVistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelVistasLayout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(jLabel1)
+                        .addGap(75, 75, 75)
+                        .addComponent(TxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(70, 70, 70)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelVistasLayout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1094, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(35, 35, 35))
         );
         PanelVistasLayout.setVerticalGroup(
             PanelVistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelVistasLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(TxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(PanelVistasLayout.createSequentialGroup()
-                .addGap(60, 60, 60)
+                .addGap(30, 30, 30)
+                .addGroup(PanelVistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelVistasLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel1))
+                    .addComponent(TxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(45, 45, 45)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(PanelVistasLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(btnBuscar))
-            .addComponent(LblimagenfondoVista)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -115,11 +121,11 @@ public class VistaMostrarAdmin extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JLabel LblimagenfondoVista;
     public javax.swing.JPanel PanelVistas;
     public javax.swing.JTable TablaDatos;
     public javax.swing.JTextField TxtBuscar;
     public javax.swing.JButton btnBuscar;
+    public javax.swing.JLabel jLabel1;
     public javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

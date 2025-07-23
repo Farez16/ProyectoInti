@@ -1,5 +1,7 @@
 package Controlador;
 
+import Vista.Estudiante.Vista_PanelUnidades;
+import Vista.Estudiante.Dashboard;
 import Vista.Vistas_Unidad1.Vista_Unidad1;
 import Vista.*;
 import Modelo.Usuario;

@@ -1,16 +1,16 @@
 package Controlador;
 
 import Conexion.Conexion;
-import Vista.VistaJuego;
+import Vista.Estudiante.VistaJuego;
 import java.awt.event.ActionEvent;
-import Vista.Dashboard;
+import Vista.Estudiante.Dashboard;
 import Modelo.Juego;
 import Modelo.Saludo;
 import Modelo.TextoBotones;
 import Modelo.Usuario; // ← IMPORTANTE
-import Vista.Cuenta;
-import Vista.Logins.Login;
-import Vista.Vista_PanelUnidades;
+import Vista.Admin.Cuenta;
+import Vista.Login.Login;
+import Vista.Estudiante.Vista_PanelUnidades;
 import java.awt.Graphics2D;
 import java.awt.event.ActionListener;
 import java.awt.geom.Ellipse2D;

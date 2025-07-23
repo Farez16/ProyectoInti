@@ -1,7 +1,7 @@
 package Controlador;
 
 import Modelo.Juego;
-import Vista.VistaJuego;
+import Vista.Estudiante.VistaJuego;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;

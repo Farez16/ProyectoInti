@@ -2,10 +2,10 @@ package Controlador;
 
 import Modelo.EmailSender;
 import Modelo.Usuario;
-import Vista.Logins.CrearUsuario;
-import Vista.Dashboard;
-import Vista.DashboardAdmin;
-import Vista.Logins.Login;
+import Vista.Login.CrearUsuario;
+import Vista.Estudiante.Dashboard;
+import Vista.Admin.DashboardAdmin;
+import Vista.Login.Login;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

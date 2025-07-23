@@ -2,11 +2,11 @@ package Controlador;
 
 import Modelo.Usuario;
 import Modelo.UsuarioPerfil;
-import Vista.Cuenta;
+import Vista.Admin.Cuenta;
 import Conexion.Conexion;
 import Modelo.EmailSender;
-import Vista.Dashboard;
-import Vista.DashboardAdmin;
+import Vista.Estudiante.Dashboard;
+import Vista.Admin.DashboardAdmin;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.MediaTracker;

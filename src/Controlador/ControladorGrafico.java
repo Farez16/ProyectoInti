@@ -1,7 +1,7 @@
 package Controlador;
 
 import Modelo.Grafico;
-import Vista.Graficos;
+import Vista.Admin.Graficos;
 
 import org.jfree.chart.*;
 import org.jfree.data.category.DefaultCategoryDataset;
