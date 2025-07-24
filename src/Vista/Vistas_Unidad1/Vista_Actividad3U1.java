@@ -1,4 +1,4 @@
-package Vista;
+package Vista.Vistas_Unidad1;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -6,9 +6,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
-public class VistaJuego extends javax.swing.JPanel {
+public class Vista_Actividad3U1 extends javax.swing.JPanel {
 
-    public VistaJuego() {
+    public Vista_Actividad3U1() {
         initComponents();
     }
         public void mostrarMensaje(String mensaje) {

@@ -19,6 +19,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
@@ -131,37 +132,33 @@ public class Controlador_Unidades {
             boolean disponible = unidadesDisponibles[idUnidad];
 
             // Obtener componentes de la vista
-            JLabel labelUnidad = obtenerLabelUnidad(idUnidad);
-            JLabel labelEstado = obtenerLabelEstado(idUnidad);
-            JLabel labelProgreso = obtenerLabelProgreso(idUnidad);
+            JButton btnUnidad = obtenerBotonUnidad(idUnidad);
+            JProgressBar progresoUnidades = obtenerJProgressProgreso(idUnidad);
 
-            if (labelUnidad != null && labelEstado != null) {
+            if (btnUnidad != null && progresoUnidades != null) {
                 unidad.setDisponible(disponible);
 
                 // Configurar colores y estado
                 String colorEstado = unidad.getColorEstado();
-                String estadoTexto = unidad.getEstadoTexto();
-
-                labelUnidad.setForeground(Color.decode(colorEstado));
-                labelEstado.setText(estadoTexto);
-                labelEstado.setForeground(Color.decode(colorEstado));
 
                 // Calcular y mostrar progreso
                 int progresoUnidad = unidad.calcularProgresoTotal(
                         TOTAL_LECCIONES_POR_UNIDAD, TOTAL_ACTIVIDADES_POR_UNIDAD);
 
-                if (labelProgreso != null) {
-                    labelProgreso.setText(progresoUnidad + "%");
-                    labelProgreso.setForeground(Color.decode(colorEstado));
-                }
+                progresoUnidades.setValue(progresoUnidad); // Valor del progreso
+                progresoUnidades.setString(progresoUnidad + "%"); // Texto mostrado
+                progresoUnidades.setStringPainted(true); // Mostrar texto
+                progresoUnidades.setForeground(Color.decode(colorEstado)); // Color del texto
 
-                // Configurar cursor según disponibilidad
+                // Configurar botón
+                btnUnidad.setForeground(Color.decode(colorEstado));
+
                 if (disponible) {
-                    labelUnidad.setCursor(new Cursor(Cursor.HAND_CURSOR));
-                    labelUnidad.setEnabled(true);
+                    btnUnidad.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                    btnUnidad.setEnabled(true);
                 } else {
-                    labelUnidad.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-                    labelUnidad.setEnabled(false);
+                    btnUnidad.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                    btnUnidad.setEnabled(false);
                 }
             }
         } catch (Exception e) {
@@ -176,13 +173,10 @@ public class Controlador_Unidades {
      */
     private void actualizarProgresoGeneral(int progresoGeneral) {
         try {
-            if (vista.jProgressBarGeneral != null) {
-                vista.jProgressBarGeneral.setValue(progresoGeneral);
-                vista.jProgressBarGeneral.setString(progresoGeneral + "%");
-                vista.jProgressBarGeneral.setStringPainted(true);
-            }
-            if (vista.jLabelProgresoGeneral != null) {
-                vista.jLabelProgresoGeneral.setText(progresoGeneral + "%");
+            if (vista.ProgresoTotal != null) {
+                vista.ProgresoTotal.setValue(progresoGeneral); // Establece el valor numérico
+                vista.ProgresoTotal.setString(progresoGeneral + "%"); // Muestra el texto encima de la barra
+                vista.ProgresoTotal.setStringPainted(true); // Activa la visualización del texto
             }
         } catch (Exception e) {
             System.err.println("Error al actualizar progreso general: " + e.getMessage());
@@ -195,40 +189,19 @@ public class Controlador_Unidades {
      * @param idUnidad ID de la unidad
      * @return JLabel correspondiente o null si no existe
      */
-    private JLabel obtenerLabelUnidad(int idUnidad) {
-        return switch (idUnidad) {
-            case 1 ->
-                vista.jLabelUNIDAD1;
-            case 2 ->
-                vista.jLabelUNIDAD2;
-            case 3 ->
-                vista.jLabelUNIDAD3;
-            case 4 ->
-                vista.jLabelUNIDAD4;
-            default ->
-                null;
-        };
-    }
-
-    /**
-     * Obtiene el label de estado de una unidad específica
-     *
-     * @param idUnidad ID de la unidad
-     * @return JLabel correspondiente al estado o null si no existe
-     */
-    private JLabel obtenerLabelEstado(int idUnidad) {
-        return switch (idUnidad) {
-            case 1 ->
-                vista.jLabelEstadoU1;
-            case 2 ->
-                vista.jLabelEstadoU2;
-            case 3 ->
-                vista.jLabelEstadoU3;
-            case 4 ->
-                vista.jLabelEstadoU4;
-            default ->
-                null;
-        };
+    private JButton obtenerBotonUnidad(int idUnidad) {
+        switch (idUnidad) {
+            case 1:
+                return vista.btnUnidad1;
+            case 2:
+                return vista.btnUnidad2;
+            case 3:
+                return vista.btnUnidad3;
+            case 4:
+                return vista.btnUnidad4;
+            default:
+                return null;
+        }
     }
 
     /**
@@ -237,29 +210,29 @@ public class Controlador_Unidades {
      * @param idUnidad ID de la unidad
      * @return JLabel correspondiente al progreso o null si no existe
      */
-    private JLabel obtenerLabelProgreso(int idUnidad) {
-        return switch (idUnidad) {
-            case 1 ->
-                vista.jLabelProgresoU1;
-            case 2 ->
-                vista.jLabelProgresoU2;
-            case 3 ->
-                vista.jLabelProgresoU3;
-            case 4 ->
-                vista.jLabelProgresoU4;
-            default ->
-                null;
-        };
+    private JProgressBar obtenerJProgressProgreso(int idUnidad) {
+        switch (idUnidad) {
+            case 1:
+                return vista.ProgresoU1;
+            case 2:
+                return vista.ProgresoU2;
+            case 3:
+                return vista.ProgresoU3;
+            case 4:
+                return vista.ProgresoU4;
+            default:
+                return null;
+        }
     }
 
     /**
      * Agrega los eventos de mouse a las unidades
      */
     private void agregarEventos() {
-        configurarEventosUnidad(vista.jLabelUNIDAD1, 1, "Saludos y Presentaciones");
-        configurarEventosUnidad(vista.jLabelUNIDAD2, 2, "Familia y Hogar");
-        configurarEventosUnidad(vista.jLabelUNIDAD3, 3, "Naturaleza y Animales");
-        configurarEventosUnidad(vista.jLabelUNIDAD4, 4, "Números y Colores");
+        configurarEventosUnidad(vista.btnUnidad1, 1, "Saludos y Presentaciones");
+        configurarEventosUnidad(vista.btnUnidad2, 2, "Familia y Hogar");
+        configurarEventosUnidad(vista.btnUnidad3, 3, "Naturaleza y Animales");
+        configurarEventosUnidad(vista.btnUnidad4, 4, "Números y Colores");
     }
 
     /**
@@ -269,22 +242,22 @@ public class Controlador_Unidades {
      * @param idUnidad ID de la unidad
      * @param nombreUnidad Nombre de la unidad
      */
-    private void configurarEventosUnidad(JLabel labelUnidad, int idUnidad, String nombreUnidad) {
-        if (labelUnidad == null) {
+    private void configurarEventosUnidad(JButton botonUnidad, int idUnidad, String nombreUnidad) {
+        if (botonUnidad == null) {
             return;
         }
 
-        labelUnidad.addMouseListener(new MouseAdapter() {
+        botonUnidad.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
                 if (idUnidad < unidadesDisponibles.length && unidadesDisponibles[idUnidad]) {
-                    labelUnidad.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                    botonUnidad.setCursor(new Cursor(Cursor.HAND_CURSOR));
                 }
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                labelUnidad.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                botonUnidad.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
             }
 
             @Override
@@ -326,16 +299,19 @@ public class Controlador_Unidades {
 
             // Crear vista según la unidad
             switch (idUnidad) {
-                case 1 ->
+                case 1:
                     abrirUnidad1();
-                case 2 ->
+                    break;
+                case 2:
                     abrirUnidad2();
-                case 3 ->
-                    abrirunidad3();
-                case 4 ->
+                    break;
+                case 3:
+                case 4:
                     mostrarUnidadEnDesarrollo(idUnidad, nombreUnidad);
-                default ->
+                    break;
+                default:
                     System.err.println("ID de unidad no válido: " + idUnidad);
+                    break;
             }
 
         } catch (Exception e) {
@@ -379,10 +355,10 @@ public class Controlador_Unidades {
         Vista_Unidad2 unidad2 = new Vista_Unidad2();
         new ControladorUnidad2(unidad2, dashboard);
         dashboard.mostrarVista(unidad2);
-        
+
     }
-    
-    private void abrirunidad3(){
+
+    private void abrirunidad3() {
         Vista_Unidad3 unidad3 = new Vista_Unidad3();
         dashboard.mostrarVista(unidad3);
     }
