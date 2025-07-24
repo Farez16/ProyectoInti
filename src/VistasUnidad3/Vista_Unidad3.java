@@ -65,7 +65,7 @@ public class Vista_Unidad3 extends javax.swing.JPanel {
     public JProgressBar getjProgressBarUNIDAD1() {
         return jProgressBarUNIDAD1;
     }
-    
+
 
     /**
      * This method is called from within the constructor to initialize the form.

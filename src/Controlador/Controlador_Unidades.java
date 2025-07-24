@@ -360,9 +360,26 @@ public class Controlador_Unidades {
     }
 
     private void abrirunidad3() {
+    try {
         Vista_Unidad3 unidad3 = new Vista_Unidad3();
+        Connection conn = (Connection) controladorDashboard.getConnection();
+        
+        // Crear el controlador pasando todos los parámetros necesarios
+        Controlador_Unidad3 controlador = new Controlador_Unidad3(
+            unidad3, 
+            conn,
+            controladorDashboard,
+            correo,
+            this  // Pasar esta instancia de Controlador_Unidades
+        );
+        
         dashboard.mostrarVista(unidad3);
+    } catch (Exception e) {
+        System.err.println("Error al abrir unidad 3: " + e.getMessage());
+        e.printStackTrace();
+        mostrarError("Error al abrir la unidad 3. Por favor, intenta de nuevo.");
     }
+}
 
     /**
      * Muestra mensaje para unidades en desarrollo
