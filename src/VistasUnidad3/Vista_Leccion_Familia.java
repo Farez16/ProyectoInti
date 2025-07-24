@@ -41,7 +41,7 @@ public class Vista_Leccion_Familia extends javax.swing.JPanel {
         tia = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        CompletarLeccion = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -115,11 +115,11 @@ public class Vista_Leccion_Familia extends javax.swing.JPanel {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Lecciones/Familia.png"))); // NOI18N
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 70, -1, 560));
 
-        jButton1.setBackground(new java.awt.Color(255, 102, 0));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("<html><center>COMPLETAR<br>LECCION<center></html>");
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 580, 180, -1));
+        CompletarLeccion.setBackground(new java.awt.Color(255, 102, 0));
+        CompletarLeccion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        CompletarLeccion.setForeground(new java.awt.Color(255, 255, 255));
+        CompletarLeccion.setText("<html><center>COMPLETAR<br>LECCION<center></html>");
+        add(CompletarLeccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 580, 180, -1));
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -133,21 +133,21 @@ public class Vista_Leccion_Familia extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel abuela;
-    private javax.swing.JLabel abuelo;
-    private javax.swing.JLabel hermana;
-    private javax.swing.JLabel hermano;
-    private javax.swing.JLabel hija;
-    private javax.swing.JLabel hijo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel2debeaparecer1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel mama;
-    private javax.swing.JLabel papa;
-    private javax.swing.JLabel tia;
-    private javax.swing.JLabel yo;
+    public javax.swing.JButton CompletarLeccion;
+    public javax.swing.JLabel abuela;
+    public javax.swing.JLabel abuelo;
+    public javax.swing.JLabel hermana;
+    public javax.swing.JLabel hermano;
+    public javax.swing.JLabel hija;
+    public javax.swing.JLabel hijo;
+    public javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel2;
+    public javax.swing.JLabel jLabel2debeaparecer1;
+    public javax.swing.JLabel jLabel3;
+    public javax.swing.JLabel jLabel4;
+    public javax.swing.JLabel mama;
+    public javax.swing.JLabel papa;
+    public javax.swing.JLabel tia;
+    public javax.swing.JLabel yo;
     // End of variables declaration//GEN-END:variables
 }

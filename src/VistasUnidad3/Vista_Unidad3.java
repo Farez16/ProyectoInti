@@ -1,10 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package VistasUnidad3;
 
 import Vista.*;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JProgressBar;
 
 /**
  *
@@ -19,6 +18,55 @@ public class Vista_Unidad3 extends javax.swing.JPanel {
         initComponents();
     }
 
+    public JLabel getFondo() {
+        return Fondo;
+    }
+
+    public JButton getjButtonActFamilia() {
+        return jButtonActFamilia;
+    }
+
+    public JButton getjButtonActVestimenta() {
+        return jButtonActVestimenta;
+    }
+
+    public JButton getjButtonBack() {
+        return jButtonBack;
+    }
+
+    public JButton getjButtonEvaluacion() {
+        return jButtonEvaluacion;
+    }
+
+    public JButton getjButtonFINALIZARUNIDAD1() {
+        return jButtonFINALIZARUNIDAD1;
+    }
+
+    public JButton getjButtonFamilia() {
+        return jButtonFamilia;
+    }
+
+    public JButton getjButtonHistorial() {
+        return jButtonHistorial;
+    }
+
+    public JButton getjButtonREINICIARU1() {
+        return jButtonREINICIARU1;
+    }
+
+    public JButton getjButtonVestimenta() {
+        return jButtonVestimenta;
+    }
+
+    public JButton getjButtonVestimenta1() {
+        return jButtonVestimenta1;
+    }
+
+    public JProgressBar getjProgressBarUNIDAD1() {
+        return jProgressBarUNIDAD1;
+    }
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,14 +78,15 @@ public class Vista_Unidad3 extends javax.swing.JPanel {
 
         jProgressBarUNIDAD1 = new javax.swing.JProgressBar();
         jButtonFINALIZARUNIDAD1 = new javax.swing.JButton();
-        jButtonNumeros = new javax.swing.JButton();
-        jButtonOperaciones = new javax.swing.JButton();
-        jButtonAnimales = new javax.swing.JButton();
-        jButtonMorfemas = new javax.swing.JButton();
+        jButtonFamilia = new javax.swing.JButton();
+        jButtonActFamilia = new javax.swing.JButton();
+        jButtonVestimenta = new javax.swing.JButton();
+        jButtonActVestimenta = new javax.swing.JButton();
         jButtonEvaluacion = new javax.swing.JButton();
         jButtonREINICIARU1 = new javax.swing.JButton();
         jButtonBack = new javax.swing.JButton();
         jButtonHistorial = new javax.swing.JButton();
+        jButtonVestimenta1 = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(1190, 660));
@@ -55,24 +104,29 @@ public class Vista_Unidad3 extends javax.swing.JPanel {
         jButtonFINALIZARUNIDAD1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BtnFinalizarU1.png"))); // NOI18N
         add(jButtonFINALIZARUNIDAD1, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 600, 200, 40));
 
-        jButtonNumeros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/SaludosUnidad1.png"))); // NOI18N
-        jButtonNumeros.setMaximumSize(new java.awt.Dimension(80, 20));
-        jButtonNumeros.setMinimumSize(new java.awt.Dimension(80, 20));
-        jButtonNumeros.setPreferredSize(new java.awt.Dimension(80, 20));
-        add(jButtonNumeros, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 110, 70));
+        jButtonFamilia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/SaludosUnidad1.png"))); // NOI18N
+        jButtonFamilia.setMaximumSize(new java.awt.Dimension(80, 20));
+        jButtonFamilia.setMinimumSize(new java.awt.Dimension(80, 20));
+        jButtonFamilia.setPreferredSize(new java.awt.Dimension(80, 20));
+        jButtonFamilia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFamiliaActionPerformed(evt);
+            }
+        });
+        add(jButtonFamilia, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 110, 70));
 
-        jButtonOperaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fonologia.png"))); // NOI18N
-        jButtonOperaciones.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jButtonOperaciones.setMaximumSize(new java.awt.Dimension(120, 70));
-        jButtonOperaciones.setMinimumSize(new java.awt.Dimension(120, 70));
-        jButtonOperaciones.setPreferredSize(new java.awt.Dimension(120, 70));
-        add(jButtonOperaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, 120, 70));
+        jButtonActFamilia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fonologia.png"))); // NOI18N
+        jButtonActFamilia.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jButtonActFamilia.setMaximumSize(new java.awt.Dimension(120, 70));
+        jButtonActFamilia.setMinimumSize(new java.awt.Dimension(120, 70));
+        jButtonActFamilia.setPreferredSize(new java.awt.Dimension(120, 70));
+        add(jButtonActFamilia, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 120, 70));
 
-        jButtonAnimales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PronombresU1.png"))); // NOI18N
-        add(jButtonAnimales, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 330, 120, 70));
+        jButtonVestimenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PronombresU1.png"))); // NOI18N
+        add(jButtonVestimenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 120, 70));
 
-        jButtonMorfemas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ActividadU1.png"))); // NOI18N
-        add(jButtonMorfemas, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 310, 120, 70));
+        jButtonActVestimenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ActividadU1.png"))); // NOI18N
+        add(jButtonActVestimenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 310, 120, 70));
 
         jButtonEvaluacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ActividadU1.png"))); // NOI18N
         jButtonEvaluacion.addActionListener(new java.awt.event.ActionListener() {
@@ -96,6 +150,13 @@ public class Vista_Unidad3 extends javax.swing.JPanel {
         jButtonHistorial.setText("Ver Historial");
         add(jButtonHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 180, 100, 40));
 
+        jButtonVestimenta1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fonologia.png"))); // NOI18N
+        jButtonVestimenta1.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jButtonVestimenta1.setMaximumSize(new java.awt.Dimension(120, 70));
+        jButtonVestimenta1.setMinimumSize(new java.awt.Dimension(120, 70));
+        jButtonVestimenta1.setPreferredSize(new java.awt.Dimension(120, 70));
+        add(jButtonVestimenta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 320, 120, 70));
+
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoUnidad1.jpg"))); // NOI18N
         add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 660));
     }// </editor-fold>//GEN-END:initComponents
@@ -108,18 +169,23 @@ public class Vista_Unidad3 extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonBackActionPerformed
 
+    private void jButtonFamiliaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFamiliaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonFamiliaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel Fondo;
-    public javax.swing.JButton jButtonAnimales;
+    public javax.swing.JButton jButtonActFamilia;
+    public javax.swing.JButton jButtonActVestimenta;
     public javax.swing.JButton jButtonBack;
     public javax.swing.JButton jButtonEvaluacion;
     public javax.swing.JButton jButtonFINALIZARUNIDAD1;
+    public javax.swing.JButton jButtonFamilia;
     public javax.swing.JButton jButtonHistorial;
-    public javax.swing.JButton jButtonMorfemas;
-    public javax.swing.JButton jButtonNumeros;
-    public javax.swing.JButton jButtonOperaciones;
     public javax.swing.JButton jButtonREINICIARU1;
+    public javax.swing.JButton jButtonVestimenta;
+    public javax.swing.JButton jButtonVestimenta1;
     public javax.swing.JProgressBar jProgressBarUNIDAD1;
     // End of variables declaration//GEN-END:variables
 }

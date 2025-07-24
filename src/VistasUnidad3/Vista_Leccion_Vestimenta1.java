@@ -33,12 +33,13 @@ public class Vista_Leccion_Vestimenta1 extends javax.swing.JPanel {
         jLabel2debeaparecer2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -49,76 +50,82 @@ public class Vista_Leccion_Vestimenta1 extends javax.swing.JPanel {
         jLabel2debeaparecer1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2debeaparecer1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2debeaparecer1.setText("Aqui podemos estudiar las prendas de vestir mas comunes");
-        add(jLabel2debeaparecer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, -1, -1));
+        add(jLabel2debeaparecer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, -1, -1));
 
         jButton1.setBackground(new java.awt.Color(255, 102, 0));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("<html><center>COMPLETAR<br>ACTIVIDAD<center></html>");
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 590, 180, -1));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 600, 180, -1));
 
         jLabel2debeaparecer2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2debeaparecer2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2debeaparecer2.setText("VESTIMENTA (CHURANAKUNA)");
-        add(jLabel2debeaparecer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, -1, -1));
+        add(jLabel2debeaparecer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("MUCHIKU");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, -1, -1));
+        jLabel1.setText("RAKU KUSHMA");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 570, -1, 20));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("RUWANA");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, -1, -1));
+        jLabel2.setText("UKU KUSHMA - CAMISETA");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("WARA");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 490, -1, -1));
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("PINTU");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 390, -1, -1));
+        jLabel3.setText("PINTU - CAMISA");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 270, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("ANAKU");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 470, -1, -1));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("WARA - PANTALON");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 270, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("ALPARKATA");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 540, -1, -1));
+        jLabel5.setText("ANAKU - FALDA");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 420, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("ANKU - VESTIDO");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 420, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setText("FAJA");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 390, -1, -1));
+        jLabel7.setText("RAKU KUSHMA - ABRIGO");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 420, -1, 20));
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel8.setText("TALLPA");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 320, -1, -1));
+        jLabel8.setText("CHULLA WARA - SHORT");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 570, -1, 20));
 
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Lecciones/Diseño sin título.png"))); // NOI18N
-        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 470, 350));
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("KUNUKLLI - ABRIGO");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 570, -1, 20));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Lecciones/Vestimenta comun_1.jpg"))); // NOI18N
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 830, 470));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel2debeaparecer1;
-    private javax.swing.JLabel jLabel2debeaparecer2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    public javax.swing.JButton jButton1;
+    public javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel11;
+    public javax.swing.JLabel jLabel2;
+    public javax.swing.JLabel jLabel2debeaparecer1;
+    public javax.swing.JLabel jLabel2debeaparecer2;
+    public javax.swing.JLabel jLabel3;
+    public javax.swing.JLabel jLabel4;
+    public javax.swing.JLabel jLabel5;
+    public javax.swing.JLabel jLabel6;
+    public javax.swing.JLabel jLabel7;
+    public javax.swing.JLabel jLabel8;
+    public javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
 }

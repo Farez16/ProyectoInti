@@ -7,6 +7,8 @@ import Vista.*;
 import Modelo.Usuario;
 import Modelo.Modelo_Unidades;
 import Conexion.Conexion;
+import VistasUnidad3.Vista_Actividad_Familia;
+import VistasUnidad3.Vista_Unidad3;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
@@ -24,8 +26,8 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 
 /**
- * Controlador para gestionar la vista del panel de unidades
- * Maneja la interacción entre la vista y el modelo de datos
+ * Controlador para gestionar la vista del panel de unidades Maneja la
+ * interacción entre la vista y el modelo de datos
  */
 public class Controlador_Unidades {
 
@@ -50,8 +52,8 @@ public class Controlador_Unidades {
      * @param correo Correo del usuario
      */
     public Controlador_Unidades(Vista_PanelUnidades vista, Dashboard dashboard,
-                               ControladorDashboard controladorDashboard, String correo) {
-        
+            ControladorDashboard controladorDashboard, String correo) {
+
         // Validaciones
         if (vista == null) {
             throw new IllegalArgumentException("La vista no puede ser null");
@@ -92,7 +94,7 @@ public class Controlador_Unidades {
         try {
             // Obtener disponibilidad de unidades
             unidadesDisponibles = Modelo_Unidades.obtenerDisponibilidadUnidades(correo);
-            
+
             // Obtener unidades con progreso
             List<Modelo_Unidades> unidades = Modelo_Unidades.obtenerUnidadesConProgreso(correo);
 
@@ -119,7 +121,7 @@ public class Controlador_Unidades {
     private void actualizarVistaUnidad(Modelo_Unidades unidad) {
         try {
             int idUnidad = unidad.getIdUnidad();
-            
+
             // Validar que la unidad esté en el rango válido
             if (idUnidad < 1 || idUnidad > TOTAL_UNIDADES) {
                 System.err.println("ID de unidad inválido: " + idUnidad);
@@ -127,7 +129,7 @@ public class Controlador_Unidades {
             }
 
             boolean disponible = unidadesDisponibles[idUnidad];
-            
+
             // Obtener componentes de la vista
             JLabel labelUnidad = obtenerLabelUnidad(idUnidad);
             JLabel labelEstado = obtenerLabelEstado(idUnidad);
@@ -146,7 +148,7 @@ public class Controlador_Unidades {
 
                 // Calcular y mostrar progreso
                 int progresoUnidad = unidad.calcularProgresoTotal(
-                    TOTAL_LECCIONES_POR_UNIDAD, TOTAL_ACTIVIDADES_POR_UNIDAD);
+                        TOTAL_LECCIONES_POR_UNIDAD, TOTAL_ACTIVIDADES_POR_UNIDAD);
 
                 if (labelProgreso != null) {
                     labelProgreso.setText(progresoUnidad + "%");
@@ -195,11 +197,16 @@ public class Controlador_Unidades {
      */
     private JLabel obtenerLabelUnidad(int idUnidad) {
         return switch (idUnidad) {
-            case 1 -> vista.jLabelUNIDAD1;
-            case 2 -> vista.jLabelUNIDAD2;
-            case 3 -> vista.jLabelUNIDAD3;
-            case 4 -> vista.jLabelUNIDAD4;
-            default -> null;
+            case 1 ->
+                vista.jLabelUNIDAD1;
+            case 2 ->
+                vista.jLabelUNIDAD2;
+            case 3 ->
+                vista.jLabelUNIDAD3;
+            case 4 ->
+                vista.jLabelUNIDAD4;
+            default ->
+                null;
         };
     }
 
@@ -211,11 +218,16 @@ public class Controlador_Unidades {
      */
     private JLabel obtenerLabelEstado(int idUnidad) {
         return switch (idUnidad) {
-            case 1 -> vista.jLabelEstadoU1;
-            case 2 -> vista.jLabelEstadoU2;
-            case 3 -> vista.jLabelEstadoU3;
-            case 4 -> vista.jLabelEstadoU4;
-            default -> null;
+            case 1 ->
+                vista.jLabelEstadoU1;
+            case 2 ->
+                vista.jLabelEstadoU2;
+            case 3 ->
+                vista.jLabelEstadoU3;
+            case 4 ->
+                vista.jLabelEstadoU4;
+            default ->
+                null;
         };
     }
 
@@ -227,11 +239,16 @@ public class Controlador_Unidades {
      */
     private JLabel obtenerLabelProgreso(int idUnidad) {
         return switch (idUnidad) {
-            case 1 -> vista.jLabelProgresoU1;
-            case 2 -> vista.jLabelProgresoU2;
-            case 3 -> vista.jLabelProgresoU3;
-            case 4 -> vista.jLabelProgresoU4;
-            default -> null;
+            case 1 ->
+                vista.jLabelProgresoU1;
+            case 2 ->
+                vista.jLabelProgresoU2;
+            case 3 ->
+                vista.jLabelProgresoU3;
+            case 4 ->
+                vista.jLabelProgresoU4;
+            default ->
+                null;
         };
     }
 
@@ -253,7 +270,9 @@ public class Controlador_Unidades {
      * @param nombreUnidad Nombre de la unidad
      */
     private void configurarEventosUnidad(JLabel labelUnidad, int idUnidad, String nombreUnidad) {
-        if (labelUnidad == null) return;
+        if (labelUnidad == null) {
+            return;
+        }
 
         labelUnidad.addMouseListener(new MouseAdapter() {
             @Override
@@ -285,13 +304,13 @@ public class Controlador_Unidades {
     private void abrirUnidad(int idUnidad, String nombreUnidad) {
         try {
             // Verificar disponibilidad
-            if (idUnidad >= unidadesDisponibles.length || !unidadesDisponibles[idUnidad]) {
-                JOptionPane.showMessageDialog(vista,
-                    "Esta unidad no está disponible aún.\nCompleta la unidad anterior para desbloquearla.",
-                    "Unidad no disponible",
-                    JOptionPane.WARNING_MESSAGE);
-                return;
-            }
+//            if (idUnidad >= unidadesDisponibles.length || !unidadesDisponibles[idUnidad]) {
+//                JOptionPane.showMessageDialog(vista,
+//                        "Esta unidad no está disponible aún.\nCompleta la unidad anterior para desbloquearla.",
+//                        "Unidad no disponible",
+//                        JOptionPane.WARNING_MESSAGE);
+//                return;
+//            }
 
             // Registrar visualización
             Modelo_Unidades.registrarVisualizacionUnidad(idUnidad, correo);
@@ -307,10 +326,16 @@ public class Controlador_Unidades {
 
             // Crear vista según la unidad
             switch (idUnidad) {
-                case 1 -> abrirUnidad1();
-                case 2 -> abrirUnidad2();
-                case 3, 4 -> mostrarUnidadEnDesarrollo(idUnidad, nombreUnidad);
-                default -> System.err.println("ID de unidad no válido: " + idUnidad);
+                case 1 ->
+                    abrirUnidad1();
+                case 2 ->
+                    abrirUnidad2();
+                case 3 ->
+                    abrirunidad3();
+                case 4 ->
+                    mostrarUnidadEnDesarrollo(idUnidad, nombreUnidad);
+                default ->
+                    System.err.println("ID de unidad no válido: " + idUnidad);
             }
 
         } catch (Exception e) {
@@ -325,21 +350,21 @@ public class Controlador_Unidades {
     private void abrirUnidad1() {
         try {
             System.out.println("=== DEBUG: Iniciando abrirUnidad1() ===");
-            
+
             Vista_Unidad1 unidad1 = new Vista_Unidad1();
             System.out.println("Vista_Unidad1 creada: " + (unidad1 != null));
-            
+
             Connection conn = (Connection) controladorDashboard.getConnection();
             System.out.println("Connection obtenida: " + (conn != null));
             System.out.println("ControladorDashboard: " + (controladorDashboard != null));
             System.out.println("Correo: " + correo);
             System.out.println("Controlador_Unidades (this): " + (this != null));
-            
+
             // Pasamos "this" para que Controlador_Unidad1 tenga referencia a este controlador
-            Controlador_Unidad1 controlador = new Controlador_Unidad1(unidad1, conn, 
-                                   controladorDashboard, correo, this);
+            Controlador_Unidad1 controlador = new Controlador_Unidad1(unidad1, conn,
+                    controladorDashboard, correo, this);
             System.out.println("Controlador_Unidad1 creado: " + (controlador != null));
-            
+
             dashboard.mostrarVista(unidad1);
             System.out.println("=== DEBUG: abrirUnidad1() completado ===");
         } catch (Exception e) {
@@ -348,13 +373,19 @@ public class Controlador_Unidades {
             mostrarError("Error al abrir la unidad 1. Por favor, intenta de nuevo.");
         }
     }
-        // In Controlador_Unidades.java
-    private void abrirUnidad2() {
-    Vista_Unidad2 unidad2 = new Vista_Unidad2();
-    new ControladorUnidad2(unidad2, dashboard);
-    dashboard.mostrarVista(unidad2);
-}
+    // In Controlador_Unidades.java
 
+    private void abrirUnidad2() {
+        Vista_Unidad2 unidad2 = new Vista_Unidad2();
+        new ControladorUnidad2(unidad2, dashboard);
+        dashboard.mostrarVista(unidad2);
+        
+    }
+    
+    private void abrirunidad3(){
+        Vista_Unidad3 unidad3 = new Vista_Unidad3();
+        dashboard.mostrarVista(unidad3);
+    }
 
     /**
      * Muestra mensaje para unidades en desarrollo
@@ -363,14 +394,14 @@ public class Controlador_Unidades {
      * @param nombreUnidad Nombre de la unidad
      */
     private void mostrarUnidadEnDesarrollo(int idUnidad, String nombreUnidad) {
-        String mensaje = "La unidad " + idUnidad + ": " + nombreUnidad + 
-                        " está en desarrollo.\n\n" +
-                        "Pronto estará disponible con contenido nuevo y emocionante.\n" +
-                        "¡Mantente atento a las actualizaciones!";
-        
-        JOptionPane.showMessageDialog(vista, mensaje, 
-                                    "Unidad en Desarrollo", 
-                                    JOptionPane.INFORMATION_MESSAGE);
+        String mensaje = "La unidad " + idUnidad + ": " + nombreUnidad
+                + " está en desarrollo.\n\n"
+                + "Pronto estará disponible con contenido nuevo y emocionante.\n"
+                + "¡Mantente atento a las actualizaciones!";
+
+        JOptionPane.showMessageDialog(vista, mensaje,
+                "Unidad en Desarrollo",
+                JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**
@@ -379,13 +410,13 @@ public class Controlador_Unidades {
      * @param nombreUnidad Nombre de la unidad
      */
     private void mostrarMensajeBienvenida(String nombreUnidad) {
-        String mensaje = "¡Bienvenido a la unidad: " + nombreUnidad + "!\n\n" +
-                        "Aquí aprenderás nuevas palabras y conceptos.\n" +
-                        "¡Diviértete aprendiendo!";
-        
-        JOptionPane.showMessageDialog(vista, mensaje, 
-                                    "Bienvenido", 
-                                    JOptionPane.INFORMATION_MESSAGE);
+        String mensaje = "¡Bienvenido a la unidad: " + nombreUnidad + "!\n\n"
+                + "Aquí aprenderás nuevas palabras y conceptos.\n"
+                + "¡Diviértete aprendiendo!";
+
+        JOptionPane.showMessageDialog(vista, mensaje,
+                "Bienvenido",
+                JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**
@@ -434,9 +465,9 @@ public class Controlador_Unidades {
      * @param mensaje Mensaje de error a mostrar
      */
     private void mostrarError(String mensaje) {
-        JOptionPane.showMessageDialog(vista, mensaje, 
-                                    "Error", 
-                                    JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(vista, mensaje,
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
     }
 
     /**
@@ -452,8 +483,8 @@ public class Controlador_Unidades {
     }
 
     /**
-     * Actualiza la vista completa del panel de unidades
-     * Este método es llamado desde otros controladores para refrescar la vista
+     * Actualiza la vista completa del panel de unidades Este método es llamado
+     * desde otros controladores para refrescar la vista
      */
     public void actualizarVista() {
         try {
@@ -562,8 +593,8 @@ public class Controlador_Unidades {
     }
 
     /**
-     * Fuerza la recarga de todas las unidades
-     * Útil cuando se necesita actualizar el estado después de cambios externos
+     * Fuerza la recarga de todas las unidades Útil cuando se necesita
+     * actualizar el estado después de cambios externos
      */
     public void recargarUnidades() {
         try {

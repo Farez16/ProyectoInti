@@ -8,6 +8,7 @@ import Modelo.Modelo_Lecciones;
 import Modelo.Usuario;
 import Modelo.Modelo_Progreso_Usuario;
 import Vista.*;
+import VistasUnidad3.Vista_Leccion_Familia;
 import java.awt.CardLayout;
 import java.awt.Image;
 import javax.swing.*;
@@ -33,6 +34,7 @@ public class Controlador_Lecciones {
     private final int numeroLeccion;
     private final int idUsuario;
     private final int ID_UNIDAD = 1;
+    private final int ID_UNIDAD3 = 3;
     private ImageIcon imagen1Original;
     private ImageIcon imagen2Original;
     private final Controlador_Unidades controladorUnidades;
@@ -54,6 +56,11 @@ public class Controlador_Lecciones {
     public static final int LECCION_SALUDOS = 1;
     public static final int LECCION_FONOLOGIA = 2;
     public static final int LECCION_PRONOMBRES = 3;
+    
+    // Tipos de lecciones
+    public static final int LECCION_FAMILIA = 31;
+    public static final int LECCION_VESTIMENTA = 32;
+    public static final int LECCION_VESTIMENTA1 = 33;
 
     public Controlador_Lecciones(JPanel vistaLeccion, ControladorDashboard controladorDashboard,
             Connection conn, String correo, int numeroLeccion) {
@@ -101,8 +108,13 @@ public class Controlador_Lecciones {
             case LECCION_PRONOMBRES:
                 configurarLeccionPronombres();
                 break;
+            case LECCION_FAMILIA:
+                configurarLeccionFamilia();
+                break;
         }
     }
+    
+    
 
     private void configurarLeccionSaludos() {
         if (vistaLeccion instanceof Vista_LeccionSALUDOS) {
@@ -221,6 +233,14 @@ public class Controlador_Lecciones {
             Vista_LeccionPRONOMBRES vista = (Vista_LeccionPRONOMBRES) vistaLeccion;
             vista.jButtonCOMPLETOPRONOMBRES.setText("COMPLETAR LECCIÓN DE PRONOMBRES");
         }
+    }
+    
+    private void configurarLeccionFamilia() {
+        if (vistaLeccion instanceof Vista_Leccion_Familia) {
+            Vista_Leccion_Familia vista = (Vista_Leccion_Familia) vistaLeccion;
+            vista.CompletarLeccion.setText("COMPLETAR LECCIÓN DE FONOLOGÍA");
+        }
+        
     }
 
     private void agregarListeners() {
