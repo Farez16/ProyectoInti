@@ -306,6 +306,7 @@ public class Controlador_Unidades {
                     abrirUnidad2();
                     break;
                 case 3:
+                    abrirunidad3();
                 case 4:
                     mostrarUnidadEnDesarrollo(idUnidad, nombreUnidad);
                     break;
