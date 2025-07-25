@@ -31,25 +31,7 @@ public class Vista_Actividad3U1 extends javax.swing.JPanel {
         return Lblimagen3;
     }
 
-    public JLabel getLblimagen4() {
-        return Lblimagen4;
-    }
-
-    public JLabel getLblimagen5() {
-        return Lblimagen5;
-    }
-
-    public JLabel getLblimagen6() {
-        return Lblimagen6;
-    }
-
-    public JLabel getLblimagen7() {
-        return Lblimagen7;
-    }
-
-    public JLabel getLblimagen8() {
-        return Lblimagen8;
-    }
+ 
 
     public JButton getBtn1() {
         return btn1;
@@ -75,13 +57,7 @@ public class Vista_Actividad3U1 extends javax.swing.JPanel {
         return btn6;
     }
 
-    public JButton getBtn7() {
-        return btn7;
-    }
-
-    public JButton getBtn8() {
-        return btn8;
-    }
+ 
 
     public JPanel getjPanel1() {
         return jPanel1;
@@ -102,18 +78,11 @@ public class Vista_Actividad3U1 extends javax.swing.JPanel {
         Lblimagen2 = new javax.swing.JLabel();
         Lblimagen1 = new javax.swing.JLabel();
         Lblimagen3 = new javax.swing.JLabel();
-        Lblimagen4 = new javax.swing.JLabel();
-        Lblimagen5 = new javax.swing.JLabel();
-        Lblimagen6 = new javax.swing.JLabel();
-        Lblimagen7 = new javax.swing.JLabel();
-        Lblimagen8 = new javax.swing.JLabel();
         btn2 = new javax.swing.JButton();
         btn3 = new javax.swing.JButton();
         btn4 = new javax.swing.JButton();
         btn5 = new javax.swing.JButton();
         btn6 = new javax.swing.JButton();
-        btn7 = new javax.swing.JButton();
-        btn8 = new javax.swing.JButton();
         btnVerificar = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1190, 660));
@@ -133,24 +102,35 @@ public class Vista_Actividad3U1 extends javax.swing.JPanel {
         LblRespuesta.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         LblRespuesta.setText("Respuestas:");
         jPanel1.add(LblRespuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 480, -1, -1));
-        jPanel1.add(Lblimagen2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, -1, -1));
-        jPanel1.add(Lblimagen1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
-        jPanel1.add(Lblimagen3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, -1, -1));
-        jPanel1.add(Lblimagen4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-        jPanel1.add(Lblimagen5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
-        jPanel1.add(Lblimagen6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, -1, -1));
-        jPanel1.add(Lblimagen7, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 260, -1, -1));
-        jPanel1.add(Lblimagen8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-        jPanel1.add(btn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 590, 90, 30));
-        jPanel1.add(btn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 520, 90, 30));
-        jPanel1.add(btn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 590, 90, 30));
-        jPanel1.add(btn5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 520, 90, 30));
-        jPanel1.add(btn6, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 580, 90, 30));
-        jPanel1.add(btn7, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 520, 90, 30));
-        jPanel1.add(btn8, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 580, 90, 30));
 
-        btnVerificar.setText("Verificar");
-        jPanel1.add(btnVerificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 530, -1, -1));
+        Lblimagen2.setMaximumSize(new java.awt.Dimension(400, 400));
+        Lblimagen2.setMinimumSize(new java.awt.Dimension(400, 400));
+        Lblimagen2.setPreferredSize(new java.awt.Dimension(200, 200));
+        jPanel1.add(Lblimagen2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, -1, -1));
+
+        Lblimagen1.setMaximumSize(new java.awt.Dimension(400, 400));
+        Lblimagen1.setMinimumSize(new java.awt.Dimension(400, 400));
+        Lblimagen1.setPreferredSize(new java.awt.Dimension(200, 200));
+        jPanel1.add(Lblimagen1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, -1, -1));
+
+        Lblimagen3.setMaximumSize(new java.awt.Dimension(400, 400));
+        Lblimagen3.setMinimumSize(new java.awt.Dimension(400, 400));
+        Lblimagen3.setPreferredSize(new java.awt.Dimension(200, 200));
+        jPanel1.add(Lblimagen3, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 60, -1, -1));
+        jPanel1.add(btn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 590, 90, 30));
+        jPanel1.add(btn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 520, 90, 30));
+        jPanel1.add(btn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 590, 90, 30));
+        jPanel1.add(btn5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 520, 90, 30));
+
+        btn6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn6ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 590, 90, 30));
+
+        btnVerificar.setText("Completar ");
+        jPanel1.add(btnVerificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 530, 140, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -168,25 +148,22 @@ public class Vista_Actividad3U1 extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn1ActionPerformed
 
+    private void btn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn6ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel LblRespuesta;
     public javax.swing.JLabel Lblimagen1;
     public javax.swing.JLabel Lblimagen2;
     public javax.swing.JLabel Lblimagen3;
-    public javax.swing.JLabel Lblimagen4;
-    public javax.swing.JLabel Lblimagen5;
-    public javax.swing.JLabel Lblimagen6;
-    public javax.swing.JLabel Lblimagen7;
-    public javax.swing.JLabel Lblimagen8;
     public javax.swing.JButton btn1;
     public javax.swing.JButton btn2;
     public javax.swing.JButton btn3;
     public javax.swing.JButton btn4;
     public javax.swing.JButton btn5;
     public javax.swing.JButton btn6;
-    public javax.swing.JButton btn7;
-    public javax.swing.JButton btn8;
     public javax.swing.JButton btnVerificar;
     public javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

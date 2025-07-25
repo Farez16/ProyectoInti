@@ -18,7 +18,7 @@ public class ControladorAudios {
         this.modelo = modelo;
 
         inicializar();
-        configurarEventos();
+   
     }
 
     private void inicializar() {
@@ -34,17 +34,7 @@ public class ControladorAudios {
         }
     }
 
-    private void configurarEventos() {
-        vista.getBtnAudio().addActionListener(e -> {
-            String ruta = vista.getRutaAudio();
-            System.out.println("Ruta Obtenida: " +ruta);
-            if (ruta != null && !ruta.isEmpty()) {
-                reproducirAudio(ruta);
-            } else {
-                JOptionPane.showMessageDialog(vista, "No hay ruta de audio cargada.");
-            }
-        });
-    }
+  
 
     private void reproducirAudio(String nombreArchivo) {
         new Thread(() -> {

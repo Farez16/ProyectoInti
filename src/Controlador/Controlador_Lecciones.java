@@ -12,14 +12,10 @@ import VistasUnidad3.Vista_Leccion_Familia;
 import java.awt.CardLayout;
 import java.awt.Image;
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.io.File;
-import java.io.IOException;
 import java.sql.Connection;
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -42,10 +38,13 @@ public class Controlador_Lecciones {
     // Controlador de video
     private Controlador_Video controladorVideo;
     private boolean sonidoActivado = true;
+    
+    // Timers para controles de video
+    private Timer timerVideoSaludos;
+    private Timer timerVideoFonologia;
 
     // Control de páginas
     private int paginaActual = 1;
-    private final int TOTAL_PAGINAS = 3;
 
     // Estados de las páginas
     private boolean videoCompletado = false;
@@ -61,6 +60,14 @@ public class Controlador_Lecciones {
     public static final int LECCION_FAMILIA = 31;
     public static final int LECCION_VESTIMENTA = 32;
     public static final int LECCION_VESTIMENTA1 = 33;
+    
+    // Constantes para CardLayout
+    private static final String PAGINA_1 = "pagina1";
+    private static final String PAGINA_2 = "pagina2";
+    private static final String PAGINA_3 = "pagina3";
+    
+    // Constante para timer de video
+    private static final int VIDEO_TIMER_DELAY = 100;
 
     public Controlador_Lecciones(JPanel vistaLeccion, ControladorDashboard controladorDashboard,
             Connection conn, String correo, int numeroLeccion) {
@@ -122,21 +129,22 @@ public class Controlador_Lecciones {
 
             // Configurar el CardLayout para navegación entre páginas
             vista.jPanelContenedor.setLayout(new CardLayout());
-            vista.jPanelContenedor.add(vista.jPanelPag1, "PAGINA1");
-            vista.jPanelContenedor.add(vista.jPanelPag2, "PAGINA2");
-            vista.jPanelContenedor.add(vista.jPanelPag3, "PAGINA3");
+            vista.jPanelContenedor.add(vista.jPanelPag1, PAGINA_1);
+            vista.jPanelContenedor.add(vista.jPanelPag2, PAGINA_2);
+            vista.jPanelContenedor.add(vista.jPanelPag3, PAGINA_3);
 
             // Configurar botones iniciales
             vista.jButtonCOMPLETOSALUDOS.setText("COMPLETAR LECCIÓN DE SALUDOS");
             vista.jButtonSiguientePag.setText("Siguiente página");
             vista.jButtonSiguientePag2.setText("Siguiente Pag");
 
+            // Limpiar recursos anteriores si existen
+            limpiarRecursosVideo();
+            
             // Inicializar controlador de video y controles de video
-            if (controladorVideo == null) {
-                controladorVideo = new Controlador_Video(vista.jPanelVideo);
-                configurarEventosVideo();
-                configurarControlesVideo(vista);
-            }
+            controladorVideo = new Controlador_Video(vista.jPanelVideo);
+            configurarEventosVideo();
+            configurarControlesVideo(vista);
         }
     }
 
@@ -195,8 +203,13 @@ public class Controlador_Lecciones {
             }
         });
 
+        // Detener timer anterior si existe
+        if (timerVideoSaludos != null) {
+            timerVideoSaludos.stop();
+        }
+        
         // Actualizar slider y label de tiempo conforme avanza el video, solo si no se está arrastrando
-        new Timer(500, e -> {
+        timerVideoSaludos = new Timer(VIDEO_TIMER_DELAY, e -> {
             if (controladorVideo != null && !isSliderAdjusting[0]) {
                 double duracion = controladorVideo.getDurationSeconds();
                 double actual = controladorVideo.getCurrentTimeSeconds();
@@ -210,7 +223,8 @@ public class Controlador_Lecciones {
                     vista.jLabelTiempoV.setText(tiempoActual + " / " + tiempoTotal);
                 }
             }
-        }).start();
+        });
+        timerVideoSaludos.start();
     }
 
 // Método auxiliar para convertir segundos a formato mm:ss
@@ -223,15 +237,47 @@ public class Controlador_Lecciones {
     private void configurarLeccionFonologia() {
         if (vistaLeccion instanceof Vista_LeccionFONOLOGIA) {
             Vista_LeccionFONOLOGIA vista = (Vista_LeccionFONOLOGIA) vistaLeccion;
+
+            // Configurar el CardLayout para navegación entre páginas
+            vista.jPanelContenedorF.setLayout(new CardLayout());
+            vista.jPanelContenedorF.add(vista.jPanelPag1F, PAGINA_1);
+            vista.jPanelContenedorF.add(vista.jPanelPag2F, PAGINA_2);
+            vista.jPanelContenedorF.add(vista.jPanelPag3F, PAGINA_3);
+
+            // Configurar botones iniciales
             vista.jButtonCOMPLETOFONOLOGIA.setText("COMPLETAR LECCIÓN DE FONOLOGÍA");
+            vista.jButtonSiguientePag2F.setText("Siguiente página");
+            vista.jButtonSiguientePag3F.setText("Siguiente Pag");
+            
+            // Habilitar navegación directa sin video
+            vista.jButtonSiguientePag2F.setEnabled(true);
         }
-        
     }
+
+
 
     private void configurarLeccionPronombres() {
         if (vistaLeccion instanceof Vista_LeccionPRONOMBRES) {
             Vista_LeccionPRONOMBRES vista = (Vista_LeccionPRONOMBRES) vistaLeccion;
+            
+            // Configurar el CardLayout para navegación entre páginas
+            vista.jPanelContenedorP.setLayout(new CardLayout());
+            vista.jPanelContenedorP.add(vista.jPanelPag1P, PAGINA_1);
+            vista.jPanelContenedorP.add(vista.jPanelPag2P, PAGINA_2);
+            vista.jPanelContenedorP.add(vista.jPanelPag3P, PAGINA_3);
+            
+            // Configurar botones iniciales
             vista.jButtonCOMPLETOPRONOMBRES.setText("COMPLETAR LECCIÓN DE PRONOMBRES");
+            vista.jButtonSiguientePag2P.setText("Siguiente página");
+            vista.jButtonSiguientePag3.setText("Siguiente Pag");
+            
+            // Limpiar recursos anteriores si existen
+            limpiarRecursosVideo();
+            
+            // Inicializar controlador de video y controles de video
+            controladorVideo = new Controlador_Video(vista.jPanelVideoP);
+            configurarEventosVideo();
+            configurarControlesVideoPronombres(vista);
         }
     }
     
@@ -241,6 +287,82 @@ public class Controlador_Lecciones {
             vista.CompletarLeccion.setText("COMPLETAR LECCIÓN DE FONOLOGÍA");
         }
         
+    }
+
+    /**
+     * Configura listeners y lógica para los controles de video de la lección de pronombres
+     */
+    private void configurarControlesVideoPronombres(Vista_LeccionPRONOMBRES vista) {
+        final boolean[] isSliderAdjusting = {false};
+
+        // Play
+        vista.jButtonPlay.addActionListener(e -> controladorVideo.reproducir());
+
+        // Pausa
+        vista.jButtonPausa.addActionListener(e -> controladorVideo.pausar());
+
+        // Mute / Unmute
+        vista.jButtonVolumenP.addActionListener(e -> {
+            if (sonidoActivado) {
+                controladorVideo.setVolume(0);
+                sonidoActivado = false;
+                vista.jButtonVolumenP.setText("Unmute");
+            } else {
+                controladorVideo.setVolume(1);
+                sonidoActivado = true;
+                vista.jButtonVolumenP.setText("Mute");
+            }
+        });
+
+        // Control volumen con slider (valor entre 0 y 100)
+        vista.jSliderSubirBajarVolumenP.addChangeListener(e -> {
+            int valor = vista.jSliderSubirBajarVolumenP.getValue();
+            double volumen = valor / 100.0;
+            controladorVideo.setVolume(volumen);
+            sonidoActivado = volumen > 0;
+            vista.jButtonVolumenP.setText(sonidoActivado ? "Mute" : "Unmute");
+        });
+
+        // Detectar cuando usuario empieza y termina de arrastrar el slider de progreso
+        vista.jSliderProgresoVideoP.addChangeListener(e -> {
+            if (vista.jSliderProgresoVideoP.getValueIsAdjusting()) {
+                isSliderAdjusting[0] = true;
+            } else {
+                if (isSliderAdjusting[0]) {
+                    // Usuario terminó de mover el slider, hacer seek
+                    int valor = vista.jSliderProgresoVideoP.getValue();
+                    double duracion = controladorVideo.getDurationSeconds();
+                    if (duracion > 0) {
+                        double nuevoTiempo = (valor / 100.0) * duracion;
+                        controladorVideo.seek(nuevoTiempo);
+                    }
+                    isSliderAdjusting[0] = false;
+                }
+            }
+        });
+
+        // Detener timer anterior si existe
+        if (timerVideoFonologia != null) {
+            timerVideoFonologia.stop();
+        }
+        
+        // Actualizar slider y label de tiempo conforme avanza el video, solo si no se está arrastrando
+        timerVideoFonologia = new Timer(500, e -> {
+            if (controladorVideo != null && !isSliderAdjusting[0]) {
+                double duracion = controladorVideo.getDurationSeconds();
+                double actual = controladorVideo.getCurrentTimeSeconds();
+                if (duracion > 0) {
+                    int progreso = (int) ((actual / duracion) * 100);
+                    vista.jSliderProgresoVideoP.setValue(progreso);
+
+                    String tiempoActual = formatoTiempo((int) actual);
+                    String tiempoTotal = formatoTiempo((int) duracion);
+
+                    vista.jLabelTiempoVP.setText(tiempoActual + " / " + tiempoTotal);
+                }
+            }
+        });
+        timerVideoFonologia.start();
     }
 
     private void agregarListeners() {
@@ -272,10 +394,24 @@ public class Controlador_Lecciones {
 
         } else if (vistaLeccion instanceof Vista_LeccionFONOLOGIA) {
             Vista_LeccionFONOLOGIA vista = (Vista_LeccionFONOLOGIA) vistaLeccion;
+            
+            // Listener para botón "Siguiente página" desde página 1
+            vista.jButtonSiguientePag2F.addActionListener(e -> avanzarPagina());
+            // Listener para botón "Siguiente página" desde página 2
+            vista.jButtonSiguientePag3F.addActionListener(e -> avanzarPagina());
+            
+            // Listener para botón "Completar lección"
             vista.jButtonCOMPLETOFONOLOGIA.addActionListener(e -> completarLeccion());
 
         } else if (vistaLeccion instanceof Vista_LeccionPRONOMBRES) {
             Vista_LeccionPRONOMBRES vista = (Vista_LeccionPRONOMBRES) vistaLeccion;
+            
+            // Listener para botón "Siguiente página" desde página 1
+            vista.jButtonSiguientePag2P.addActionListener(e -> avanzarPagina());
+            // Listener para botón "Siguiente página" desde página 2
+            vista.jButtonSiguientePag3.addActionListener(e -> avanzarPagina());
+            
+            // Listener para botón "Completar lección"
             vista.jButtonCOMPLETOPRONOMBRES.addActionListener(e -> completarLeccion());
         }
     }
@@ -284,10 +420,16 @@ public class Controlador_Lecciones {
      * PÁGINA 1: Inicializar la primera página con video
      */
     private void inicializarPagina1() {
-        if (!(vistaLeccion instanceof Vista_LeccionSALUDOS)) {
-            return;
+        if (vistaLeccion instanceof Vista_LeccionSALUDOS) {
+            inicializarPagina1Saludos();
+        } else if (vistaLeccion instanceof Vista_LeccionFONOLOGIA) {
+            inicializarPagina1Fonologia();
+        } else if (vistaLeccion instanceof Vista_LeccionPRONOMBRES) {
+            inicializarPagina1Pronombres();
         }
+    }
 
+    private void inicializarPagina1Saludos() {
         Vista_LeccionSALUDOS vista = (Vista_LeccionSALUDOS) vistaLeccion;
 
         // Mostrar mensaje inicial (puedes quitarlo si molesta)
@@ -328,6 +470,93 @@ public class Controlador_Lecciones {
 
         // Cargar video desde la base de datos y reproducir
         cargarVideoDesdeDB();
+    }
+
+    private void inicializarPagina1Fonologia() {
+        Vista_LeccionFONOLOGIA vista = (Vista_LeccionFONOLOGIA) vistaLeccion;
+
+        // Mostrar mensaje inicial
+        JOptionPane.showMessageDialog(
+                vistaLeccion,
+                "Bienvenido a la lección de fonología. Puedes navegar libremente por las páginas.",
+                "Lección de Fonología",
+                JOptionPane.INFORMATION_MESSAGE
+        );
+
+        // Habilitar navegación directa (sin video)
+        vista.jButtonSiguientePag2F.setEnabled(true);
+
+        // Mostrar página 1
+        CardLayout cardLayout = (CardLayout) vista.jPanelContenedorF.getLayout();
+        cardLayout.show(vista.jPanelContenedorF, "PAGINA1");
+    }
+
+    private void inicializarPagina1Pronombres() {
+        Vista_LeccionPRONOMBRES vista = (Vista_LeccionPRONOMBRES) vistaLeccion;
+
+        // Mostrar mensaje inicial
+        JOptionPane.showMessageDialog(
+                vistaLeccion,
+                "Para continuar con la lección de pronombres, debes ver el video completo.",
+                "Instrucciones - Página 1",
+                JOptionPane.INFORMATION_MESSAGE
+        );
+
+        // Deshabilitar botón hasta que termine el video
+        vista.jButtonSiguientePag2P.setEnabled(false);
+
+        // Mostrar página 1
+        CardLayout cardLayout = (CardLayout) vista.jPanelContenedorP.getLayout();
+        cardLayout.show(vista.jPanelContenedorP, "PAGINA1");
+
+        // Liberar recursos previos del video (si existieran)
+        if (controladorVideo != null) {
+            controladorVideo.liberarRecursos();
+            controladorVideo = null;
+        }
+
+        // Crear nuevo controladorVideo con el panel del video
+        controladorVideo = new Controlador_Video(vista.jPanelVideoP);
+
+        // Configurar callback para cuando termine el video
+        controladorVideo.setOnVideoCompletedCallback(() -> {
+            videoCompletado = true;
+            SwingUtilities.invokeLater(() -> {
+                vista.jButtonSiguientePag2P.setEnabled(true);
+                JOptionPane.showMessageDialog(vistaLeccion,
+                        "¡Excelente! Has completado el video. Ahora puedes continuar a la siguiente página.",
+                        "Video Completado",
+                        JOptionPane.INFORMATION_MESSAGE);
+            });
+        });
+
+        // Cargar video desde la base de datos y reproducir
+        cargarVideoDesdeDBPronombres();
+    }
+
+    private void cargarVideoDesdeDBPronombres() {
+        try {
+            // Usar la ruta específica para el video de pronombres
+            String rutaRelativaBD = "/VideosU1/pronombres.mp4";
+            
+            // Para desarrollo (rutas de archivo)
+            String rutaCompleta = "src" + rutaRelativaBD; // Convierte a "src/VideosU1/pronombres.mp4"
+            File archivoVideo = new File(rutaCompleta);
+            
+            if (archivoVideo.exists()) {
+                System.out.println("Cargando video de pronombres desde: " + archivoVideo.getCanonicalPath());
+                
+                if (controladorVideo != null) {
+                    controladorVideo.cargarVideo(archivoVideo.getAbsolutePath());
+                }
+            } else {
+                System.err.println("El video de pronombres no existe en la ruta: " + archivoVideo.getAbsolutePath());
+                System.err.println("Buscando en: " + new File(".").getCanonicalPath());
+            }
+        } catch (Exception e) {
+            System.err.println("Error al cargar video de pronombres: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
 private void cargarVideoDesdeDB() {
@@ -372,6 +601,10 @@ private void cargarVideoDesdeDB() {
                     Vista_LeccionSALUDOS vista = (Vista_LeccionSALUDOS) vistaLeccion;
                     // Habilitar botón "Siguiente página"
                     vista.jButtonSiguientePag.setEnabled(true);
+                } else if (vistaLeccion instanceof Vista_LeccionFONOLOGIA) {
+                    Vista_LeccionFONOLOGIA vista = (Vista_LeccionFONOLOGIA) vistaLeccion;
+                    // Habilitar botón "Siguiente página"
+                    vista.jButtonSiguientePag2F.setEnabled(true);
                 }
 
                 // Mostrar mensaje de video completado (esto se ejecuta en el hilo Swing)
@@ -497,56 +730,7 @@ private void cargarVideoDesdeDB() {
         contenidoVisualizadoPag3 = true;
     }
 
-    /**
-     * Método para avanzar entre páginas
-     */
-    private void avanzarPagina() {
-        System.out.println("Avanzando de página " + paginaActual + " a " + (paginaActual + 1));
 
-        // Validar que se puede avanzar
-        if (!puedeAvanzarPagina()) {
-            return;
-        }
-
-        paginaActual++;
-
-        switch (paginaActual) {
-            case 2:
-                inicializarPagina2();
-                break;
-            case 3:
-                inicializarPagina3();
-                break;
-        }
-    }
-
-    private boolean puedeAvanzarPagina() {
-        switch (paginaActual) {
-            case 1:
-                if (!videoCompletado) {
-                    JOptionPane.showMessageDialog(
-                            vistaLeccion,
-                            "Debes completar el video antes de continuar.",
-                            "Video no completado",
-                            JOptionPane.WARNING_MESSAGE
-                    );
-                    return false;
-                }
-                break;
-            case 2:
-                if (!contenidoVisualizadoPag2) {
-                    JOptionPane.showMessageDialog(
-                            vistaLeccion,
-                            "Debes revisar el contenido antes de continuar.",
-                            "Contenido no revisado",
-                            JOptionPane.WARNING_MESSAGE
-                    );
-                    return false;
-                }
-                break;
-        }
-        return true;
-    }
 
     private void completarLeccion() {
         try {
@@ -621,10 +805,33 @@ private void cargarVideoDesdeDB() {
         }
     }
 
-    private void liberarRecursos() {
-        if (controladorVideo != null) {
-            controladorVideo.liberarRecursos();
+    /**
+     * Limpia todos los recursos de video para evitar audio en segundo plano
+     */
+    private void limpiarRecursosVideo() {
+        // Detener timers de video
+        if (timerVideoSaludos != null) {
+            timerVideoSaludos.stop();
+            timerVideoSaludos = null;
         }
+        if (timerVideoFonologia != null) {
+            timerVideoFonologia.stop();
+            timerVideoFonologia = null;
+        }
+        
+        // Detener y liberar recursos de video completamente
+        if (controladorVideo != null) {
+            controladorVideo.detenerYLiberarRecursos();
+            controladorVideo = null;
+        }
+        
+        // Resetear estados
+        videoCompletado = false;
+        sonidoActivado = true;
+    }
+    
+    private void liberarRecursos() {
+        limpiarRecursosVideo();
     }
 
     private void actualizarInterfaz() {
@@ -634,6 +841,80 @@ private void cargarVideoDesdeDB() {
         Vista_Unidad1 vistaUnidad1 = new Vista_Unidad1();
         new Controlador_Unidad1(vistaUnidad1, conn, controladorDashboard, correo, controladorUnidades);
         controladorDashboard.getVista().mostrarVista(vistaUnidad1);
+    }
+
+    /**
+     * Método para avanzar entre páginas de las lecciones
+     */
+    private void avanzarPagina() {
+        paginaActual++;
+        
+        if (vistaLeccion instanceof Vista_LeccionSALUDOS) {
+            avanzarPaginaSaludos();
+        } else if (vistaLeccion instanceof Vista_LeccionFONOLOGIA) {
+            avanzarPaginaFonologia();
+        } else if (vistaLeccion instanceof Vista_LeccionPRONOMBRES) {
+            avanzarPaginaPronombres();
+        }
+    }
+    
+    private void avanzarPaginaSaludos() {
+        Vista_LeccionSALUDOS vista = (Vista_LeccionSALUDOS) vistaLeccion;
+        CardLayout cardLayout = (CardLayout) vista.jPanelContenedor.getLayout();
+        
+        switch (paginaActual) {
+            case 2:
+                inicializarPagina2();
+                break;
+            case 3:
+                inicializarPagina3();
+                break;
+            default:
+                System.out.println("Página no válida: " + paginaActual);
+                break;
+        }
+    }
+    
+    private void avanzarPaginaFonologia() {
+        Vista_LeccionFONOLOGIA vista = (Vista_LeccionFONOLOGIA) vistaLeccion;
+        CardLayout cardLayout = (CardLayout) vista.jPanelContenedorF.getLayout();
+        
+        switch (paginaActual) {
+            case 2:
+                // Mostrar página 2 de fonología
+                cardLayout.show(vista.jPanelContenedorF, PAGINA_2);
+                vista.jButtonSiguientePag3F.setEnabled(true);
+                break;
+            case 3:
+                // Mostrar página 3 de fonología
+                cardLayout.show(vista.jPanelContenedorF, PAGINA_3);
+                vista.jButtonCOMPLETOFONOLOGIA.setEnabled(true);
+                break;
+            default:
+                System.out.println("Página no válida para fonología: " + paginaActual);
+                break;
+        }
+    }
+    
+    private void avanzarPaginaPronombres() {
+        Vista_LeccionPRONOMBRES vista = (Vista_LeccionPRONOMBRES) vistaLeccion;
+        CardLayout cardLayout = (CardLayout) vista.jPanelContenedorP.getLayout();
+        
+        switch (paginaActual) {
+            case 2:
+                // Mostrar página 2 de pronombres
+                cardLayout.show(vista.jPanelContenedorP, PAGINA_2);
+                vista.jButtonSiguientePag3.setEnabled(true);
+                break;
+            case 3:
+                // Mostrar página 3 de pronombres
+                cardLayout.show(vista.jPanelContenedorP, PAGINA_3);
+                vista.jButtonCOMPLETOPRONOMBRES.setEnabled(true);
+                break;
+            default:
+                System.out.println("Página no válida para pronombres: " + paginaActual);
+                break;
+        }
     }
 
     private void escalarYMostrarImagen(JLabel label, ImageIcon imagenOriginal) {
@@ -761,13 +1042,16 @@ private void cargarVideoDesdeDB() {
         return valido;
     }
 
-    // Método para limpiar recursos al cerrar
+    /**
+     * Método público para limpiar recursos al cerrar la lección.
+     * Debe ser llamado por el controlador padre cuando se sale de la vista.
+     */
     public void limpiarRecursos() {
         try {
-            if (controladorVideo != null) {
-                controladorVideo.liberarRecursos();
-                controladorVideo = null;
-            }
+            System.out.println("Limpiando recursos de la lección " + numeroLeccion);
+            
+            // Limpiar recursos de video (incluye timers y controlador)
+            limpiarRecursosVideo();
 
             // Limpiar imágenes
             if (imagen1Original != null) {
@@ -780,9 +1064,23 @@ private void cargarVideoDesdeDB() {
                 imagen2Original = null;
             }
 
-            System.out.println("Recursos limpiados correctamente");
+            System.out.println("Recursos de lección " + numeroLeccion + " limpiados correctamente");
         } catch (Exception e) {
-            System.err.println("Error al limpiar recursos: " + e.getMessage());
+            System.err.println("Error al limpiar recursos de lección: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    
+    /**
+     * Método para forzar la limpieza de recursos de video cuando se sale de la vista.
+     * Útil para evitar audio en segundo plano.
+     */
+    public void detenerVideoYLimpiarRecursos() {
+        try {
+            System.out.println("Deteniendo video y limpiando recursos de emergencia");
+            limpiarRecursosVideo();
+        } catch (Exception e) {
+            System.err.println("Error en limpieza de emergencia: " + e.getMessage());
         }
     }
 

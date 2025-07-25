@@ -329,21 +329,65 @@ public class Controlador_Actividades {
         try {
             LOGGER.info(String.format("Completando actividad %d para usuario %d", idActividad, idUsuario));
             
-            // Actualizar progreso en la base de datos
+            // Obtener progreso actual del usuario
             Modelo_Progreso_Usuario progreso = ControladorProgresoUsuario.obtenerProgreso(idUsuario, actividad.getIdUnidad());
-            boolean actualizado = ControladorProgresoUsuario.actualizarActividad(progreso, idActividad);
+            
+            if (progreso == null) {
+                LOGGER.severe("No se pudo obtener el progreso del usuario");
+                mostrarError("Error al obtener el progreso del usuario");
+                return;
+            }
+            
+            // Verificar si esta actividad ya fue completada
+            if (progreso.getActividadesCompletadas() >= idActividad) {
+                int respuesta = javax.swing.JOptionPane.showConfirmDialog(
+                        vista,
+                        "Ya has completado esta actividad. ¿Quieres marcarla como completada nuevamente?",
+                        "Actividad ya completada",
+                        javax.swing.JOptionPane.YES_NO_OPTION,
+                        javax.swing.JOptionPane.QUESTION_MESSAGE
+                );
+                
+                if (respuesta != javax.swing.JOptionPane.YES_OPTION) {
+                    LOGGER.info("Usuario canceló la recompletación de la actividad");
+                    return;
+                }
+            }
+            
+            // Actualizar progreso solo si es necesario
+            boolean actualizado = false;
+            if (progreso.getActividadesCompletadas() < idActividad) {
+                actualizado = ControladorProgresoUsuario.actualizarActividad(progreso, idActividad);
+                if (actualizado) {
+                    LOGGER.info("Progreso actualizado en base de datos");
+                }
+            } else {
+                // Si ya estaba completada pero el usuario confirmó, consideramos como exitoso
+                actualizado = true;
+                LOGGER.info("Actividad ya completada, usuario confirmó recompletación");
+            }
             
             if (actualizado) {
-                LOGGER.info(String.format("Actividad %d completada exitosamente", idActividad));
                 mostrarMensajeExito("¡Actividad completada exitosamente!");
+                
+                // Notificar al controlador de la unidad para actualizar la interfaz
+                if (controladorUnidad1 != null) {
+                    SwingUtilities.invokeLater(() -> {
+                        try {
+                            controladorUnidad1.actualizarVista();
+                            LOGGER.info("Vista de unidad actualizada");
+                        } catch (Exception ex) {
+                            LOGGER.log(Level.WARNING, "Error al actualizar vista de unidad", ex);
+                        }
+                    });
+                }
+                
+                // Navegar de vuelta a la unidad
+                navegarAUnidad1();
             } else {
                 LOGGER.warning("No se pudo actualizar el progreso de la actividad");
                 mostrarError("Error al guardar el progreso. Intenta nuevamente.");
-                return;
             }
-
-            // Navegar de vuelta a la unidad
-            navegarAUnidad1();
             
         } catch (Exception e) {
             String errorMsg = "Error al completar la actividad: " + e.getMessage();

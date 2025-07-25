@@ -72,9 +72,15 @@ public class ControladorDashboard {
 
     private void agregarEventos() {
         vista.btnJuegos.addActionListener((ActionEvent e) -> {
+            // Detener todos los videos antes de cambiar de vista
+            VideoManager.getInstance().detenerTodosLosVideos();
             abrirVistaJuego();
         });
-        vista.btnDashboard.addActionListener(e -> abrirPanelUnidades());
+        vista.btnDashboard.addActionListener(e -> {
+            // Detener todos los videos antes de cambiar de vista
+            VideoManager.getInstance().detenerTodosLosVideos();
+            abrirPanelUnidades();
+        });
 
         vista.btnCuenta.addActionListener(e -> abrirCuenta());
         
@@ -83,6 +89,9 @@ public class ControladorDashboard {
         vista.btnSalir.addActionListener(e -> {
             int confirm = JOptionPane.showConfirmDialog(null, "¿Deseas salir?", "Cerrar sesión", JOptionPane.YES_NO_OPTION);
             if (confirm == JOptionPane.YES_OPTION) {
+                // Detener todos los videos antes de salir
+                VideoManager.getInstance().detenerTodosLosVideos();
+                
                 // Detener el timer del saludo antes de salir
                 if (controladorSaludo != null) {
                     controladorSaludo.detener();

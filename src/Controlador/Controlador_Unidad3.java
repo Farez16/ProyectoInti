@@ -97,7 +97,7 @@ public class Controlador_Unidad3 {
         vista.jButtonActVestimenta.addActionListener(e -> abrirActividadVestimenta());
         //vista.jButtonEvaluacion.addActionListener(e -> abrirEvaluacion());
         vista.jButtonREINICIARU1.addActionListener(e -> reiniciarProgresoUnidad3());
-        vista.jButtonHistorial.addActionListener(e -> abrirHistorialEvaluaciones());
+       // vista.jButtonHistorial.addActionListener(e -> abrirHistorialEvaluaciones());
 
         vista.jButtonBack.addActionListener(e -> {
             if (controladorUnidades != null) {
@@ -183,11 +183,6 @@ public class Controlador_Unidad3 {
 //        new Controlador_Evaluaciones(vistaEvaluacion, controladorDashboard, conn, correo, ID_UNIDAD, controladorUnidades);
 //        controladorDashboard.getVista().mostrarVista(vistaEvaluacion);
 //    }
-    private void abrirHistorialEvaluaciones() {
-        Vista_Historial_Evaluaciones vistaHistorial = new Vista_Historial_Evaluaciones();
-        Controlador_HistorialEvaluaciones controladorHistorial = new Controlador_HistorialEvaluaciones(vistaHistorial, conn, correo);
-        controladorDashboard.getVista().mostrarVista(vistaHistorial);
-    }
 
     private void reiniciarProgresoUnidad3() {
         int confirmacion = javax.swing.JOptionPane.showConfirmDialog(

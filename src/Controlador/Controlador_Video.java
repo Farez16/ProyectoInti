@@ -35,6 +35,9 @@ public class Controlador_Video {
         this.fxPanel = new JFXPanel();
         configurarContenedor();
         Platform.runLater(this::initializeFX);
+        
+        // Registrar en el gestor global de videos
+        VideoManager.getInstance().registrarControlador(this);
     }
 
     private void configurarContenedor() {
@@ -368,18 +371,52 @@ public class Controlador_Video {
         }
     }
     /**
-     * Detiene completamente el video.
+     * Detiene completamente el video y libera recursos para evitar audio en segundo plano.
      */
     public void detenerVideo() {
-        if (mediaPlayer != null && !isDisposed && !isLoadingVideo) {
+        if (mediaPlayer != null && !isDisposed) {
             Platform.runLater(() -> {
                 try {
                     mediaPlayer.stop();
+                    mediaPlayer.setVolume(0.0); // Silenciar completamente
+                    mediaPlayer.seek(Duration.ZERO); // Volver al inicio
                 } catch (Exception e) {
                     System.err.println("Error al detener video: " + e.getMessage());
                 }
             });
         }
+    }
+    
+    /**
+     * Detiene completamente el video y libera todos los recursos de audio/video.
+     * Método más robusto para evitar audio en segundo plano.
+     */
+    public void detenerYLiberarRecursos() {
+        if (isDisposed) {
+            return;
+        }
+        
+        // Desregistrar del gestor global de videos
+        VideoManager.getInstance().desregistrarControlador(this);
+        
+        Platform.runLater(() -> {
+            try {
+                if (mediaPlayer != null) {
+                    mediaPlayer.stop();
+                    mediaPlayer.setVolume(0.0);
+                    mediaPlayer.seek(Duration.ZERO);
+                    mediaPlayer.dispose();
+                    mediaPlayer = null;
+                }
+                if (mediaView != null) {
+                    mediaView = null;
+                }
+                mostrarPlaceholder();
+                isDisposed = true;
+            } catch (Exception e) {
+                System.err.println("Error al detener y liberar recursos: " + e.getMessage());
+            }
+        });
     }
     
    

@@ -1,5 +1,14 @@
 package Controlador;
 
+import Vista.Estudiante.Dashboard;
+import Vista.Vistas_Unidad1.Vista_EvaluacionU1;
+import Vista.Vistas_Unidad1.Vista_Actividad1U1;
+import Vista.Vistas_Unidad1.Vista_LeccionFONOLOGIA;
+import Vista.Vistas_Unidad1.Vista_Actividad2U1;
+import Vista.Vistas_Unidad1.Vista_Actividad3U1;
+import Vista.Vistas_Unidad1.Vista_Unidad1;
+import Vista.Vistas_Unidad1.Vista_LeccionPRONOMBRES;
+import Vista.Vistas_Unidad1.Vista_LeccionSALUDOS;
 import Vista.*;
 import Modelo.Usuario;
 import Modelo.Modelo_Progreso_Usuario;
@@ -78,12 +87,14 @@ public class Controlador_Unidad1 {
         );
         vista.jProgressBarUNIDAD1.setValue(progresoTotal);
 
-        vista.jButtonLECCIONSALUDOS.setEnabled(progresoTotal >= 0);
-        vista.jButtonLECCIONFONOLOGIA.setEnabled(progresoTotal >= 15);
-        vista.jButtonLECCIONPRONOMBRES.setEnabled(progresoTotal >= 30);
-        vista.jButtonACTIIVIDAD1.setEnabled(progresoTotal >= 45);
-        vista.jButtonACTIVIDAD2.setEnabled(progresoTotal >= 60);
-        vista.jButtonEVALUACION.setEnabled(progresoTotal >= 75);
+        // Nuevo flujo: fonología, actividad 1, saludos, actividad 2, pronombres, actividad 3, evaluación
+        vista.jButtonLECCIONFONOLOGIA.setEnabled(progresoTotal >= 0);  // Fonología primero
+        vista.jButtonACTIIVIDAD1.setEnabled(progresoTotal >= 15);       // Actividad 1
+        vista.jButtonLECCIONSALUDOS.setEnabled(progresoTotal >= 30);    // Saludos
+        vista.jButtonACTIVIDAD2.setEnabled(progresoTotal >= 45);        // Actividad 2
+        vista.jButtonLECCIONPRONOMBRES.setEnabled(progresoTotal >= 60); // Pronombres
+        vista.jButtonAtividad3.setEnabled(progresoTotal >= 75);         // Actividad 3
+        vista.jButtonEVALUACION.setEnabled(progresoTotal >= 90);        // Evaluación
         vista.jButtonFINALIZARUNIDAD1.setEnabled(progresoTotal == 100);
     }
 
@@ -95,9 +106,9 @@ public class Controlador_Unidad1 {
         vista.jButtonLECCIONPRONOMBRES.addActionListener(e -> abrirLeccionPronombres());
         vista.jButtonACTIIVIDAD1.addActionListener(e -> abrirActividad1());
         vista.jButtonACTIVIDAD2.addActionListener(e -> abrirActividad2());
+        vista.jButtonAtividad3.addActionListener(e -> abrirActividad3());
         vista.jButtonEVALUACION.addActionListener(e -> abrirEvaluacion());
         vista.jButtonREINICIARU1.addActionListener(e -> reiniciarProgresoUnidad1());
-        vista.jButtonHistorial.addActionListener(e -> abrirHistorialEvaluaciones());
 
         vista.jButtonBack.addActionListener(e -> {
             if (controladorUnidades != null) {
@@ -126,24 +137,30 @@ public class Controlador_Unidad1 {
 
     private int calcularProgreso(int lecciones, int actividades, boolean evaluacion) {
         int progreso = 0;
-        if (lecciones >= 1) {
+        
+        // Nuevo flujo: fonología(15), actividad1(30), saludos(45), actividad2(60), pronombres(75), actividad3(90), evaluación(100)
+        if (lecciones >= 1) {  // Fonología completada
             progreso = 15;
         }
-        if (lecciones >= 2) {
+        if (actividades >= 1) {  // Actividad 1 completada
             progreso = 30;
         }
-        if (lecciones >= 3) {
+        if (lecciones >= 2) {  // Saludos completados
             progreso = 45;
         }
-        if (actividades >= 1) {
+        if (actividades >= 2) {  // Actividad 2 completada
             progreso = 60;
         }
-        if (actividades >= 2) {
+        if (lecciones >= 3) {  // Pronombres completados
             progreso = 75;
         }
-        if (evaluacion) {
+        if (actividades >= 3) {  // Actividad 3 completada
+            progreso = 90;
+        }
+        if (evaluacion) {  // Evaluación completada
             progreso = 100;
         }
+        
         return progreso;
     }
 
@@ -188,17 +205,21 @@ private void abrirActividad1() {
         controladorDashboard.getVista().mostrarVista(vistaActividad);
     }
 
+    private void abrirActividad3() {
+        int idActividad = 3;
+        Vista_Actividad3U1 vistaActividad = new Vista_Actividad3U1();
+        Controlador_Actv3U1 controladorAct3 = new Controlador_Actv3U1(vistaActividad, controladorDashboard, conn, correo, idActividad, this);
+        controladorAct3.cargarActividad();
+        controladorDashboard.getVista().mostrarVista(vistaActividad);
+    }
+
     private void abrirEvaluacion() {
         Vista_EvaluacionU1 vistaEvaluacion = new Vista_EvaluacionU1();
         new Controlador_Evaluaciones(vistaEvaluacion, controladorDashboard, conn, correo, ID_UNIDAD, controladorUnidades);
         controladorDashboard.getVista().mostrarVista(vistaEvaluacion);
     }
 
-    private void abrirHistorialEvaluaciones() {
-        Vista_Historial_Evaluaciones vistaHistorial = new Vista_Historial_Evaluaciones();
-        Controlador_HistorialEvaluaciones controladorHistorial = new Controlador_HistorialEvaluaciones(vistaHistorial, conn, correo);
-        controladorDashboard.getVista().mostrarVista(vistaHistorial);
-    }
+  
 
     private void reiniciarProgresoUnidad1() {
         int confirmacion = javax.swing.JOptionPane.showConfirmDialog(

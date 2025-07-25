@@ -20,10 +20,7 @@ private String rutaAudio;
         
     }
 
-    public JButton getBtnAudio() {
-        return btnAudio;
-    }
-    
+   
 
 
     // ✅ Estos son los métodos para guardar y recuperar la ruta del audio:
@@ -46,15 +43,7 @@ private String rutaAudio;
 
         jPanelContenedorF = new javax.swing.JPanel();
         jPanelPag1F = new javax.swing.JPanel();
-        jPanelVideoF = new javax.swing.JPanel();
-        jLabelTiempoVF = new javax.swing.JLabel();
-        jSliderProgresoVideoF = new javax.swing.JSlider();
-        jSliderSubirBajarVolumenF = new javax.swing.JSlider();
-        jButtonVolumenF = new javax.swing.JButton();
-        jButtonPlayF = new javax.swing.JButton();
-        jButtonPausaF = new javax.swing.JButton();
         jButtonSiguientePag2F = new javax.swing.JButton();
-        btnAudio = new javax.swing.JButton();
         jPanelPag2F = new javax.swing.JPanel();
         jLabelImagen1F = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -76,42 +65,10 @@ private String rutaAudio;
         jPanelPag1F.setMinimumSize(new java.awt.Dimension(1190, 660));
         jPanelPag1F.setPreferredSize(new java.awt.Dimension(1190, 660));
 
-        jPanelVideoF.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        javax.swing.GroupLayout jPanelVideoFLayout = new javax.swing.GroupLayout(jPanelVideoF);
-        jPanelVideoF.setLayout(jPanelVideoFLayout);
-        jPanelVideoFLayout.setHorizontalGroup(
-            jPanelVideoFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 898, Short.MAX_VALUE)
-        );
-        jPanelVideoFLayout.setVerticalGroup(
-            jPanelVideoFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 492, Short.MAX_VALUE)
-        );
-
-        jLabelTiempoVF.setText("jLabel1");
-        jLabelTiempoVF.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jSliderSubirBajarVolumenF.setOrientation(javax.swing.JSlider.VERTICAL);
-
-        jButtonVolumenF.setText("Sonido");
-
-        jButtonPlayF.setText("Play");
-
-        jButtonPausaF.setText("Pausa");
-        jButtonPausaF.setToolTipText("");
-
         jButtonSiguientePag2F.setText("Siguiente Pag");
         jButtonSiguientePag2F.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSiguientePag2FActionPerformed(evt);
-            }
-        });
-
-        btnAudio.setText("Audio");
-        btnAudio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAudioActionPerformed(evt);
             }
         });
 
@@ -120,68 +77,16 @@ private String rutaAudio;
         jPanelPag1FLayout.setHorizontalGroup(
             jPanelPag1FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelPag1FLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(jPanelPag1FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelPag1FLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonSiguientePag2F, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40))
-                    .addGroup(jPanelPag1FLayout.createSequentialGroup()
-                        .addGroup(jPanelPag1FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanelPag1FLayout.createSequentialGroup()
-                                .addComponent(jSliderProgresoVideoF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelTiempoVF))
-                            .addComponent(jPanelVideoF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanelPag1FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelPag1FLayout.createSequentialGroup()
-                                .addGroup(jPanelPag1FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanelPag1FLayout.createSequentialGroup()
-                                        .addGap(35, 35, 35)
-                                        .addComponent(jSliderSubirBajarVolumenF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanelPag1FLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButtonVolumenF)))
-                                .addContainerGap(179, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPag1FLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnAudio)
-                                .addGap(77, 77, 77))))))
-            .addGroup(jPanelPag1FLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jButtonPlayF)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonPausaF)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 1011, Short.MAX_VALUE)
+                .addComponent(jButtonSiguientePag2F, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
         );
         jPanelPag1FLayout.setVerticalGroup(
             jPanelPag1FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelPag1FLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(jPanelPag1FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelVideoF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanelPag1FLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(jSliderSubirBajarVolumenF, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonVolumenF)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
-                        .addComponent(btnAudio)))
-                .addGroup(jPanelPag1FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelPag1FLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelPag1FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelTiempoVF, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSliderProgresoVideoF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelPag1FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonPausaF)
-                            .addComponent(jButtonPlayF))
-                        .addContainerGap(76, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPag1FLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonSiguientePag2F, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23))))
+                .addContainerGap(598, Short.MAX_VALUE)
+                .addComponent(jButtonSiguientePag2F, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
 
         jPanelContenedorF.add(jPanelPag1F, "card3");
@@ -300,31 +205,19 @@ private String rutaAudio;
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonSiguientePag2FActionPerformed
 
-    private void btnAudioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAudioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAudioActionPerformed
-
 //Componentes del editor visual de netbeans de la Vista leccion Fonologia
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnAudio;
     public javax.swing.JButton jButtonCOMPLETOFONOLOGIA;
-    public javax.swing.JButton jButtonPausaF;
-    public javax.swing.JButton jButtonPlayF;
     public javax.swing.JButton jButtonSiguientePag2F;
     public javax.swing.JButton jButtonSiguientePag3F;
-    public javax.swing.JButton jButtonVolumenF;
     public javax.swing.JLabel jLabelImagen1F;
     public javax.swing.JLabel jLabelImagen2F;
-    public javax.swing.JLabel jLabelTiempoVF;
     public javax.swing.JPanel jPanelContenedorF;
     public javax.swing.JPanel jPanelPag1F;
     public javax.swing.JPanel jPanelPag2F;
     public javax.swing.JPanel jPanelPag3F;
-    public javax.swing.JPanel jPanelVideoF;
     public javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JScrollPane jScrollPane2;
-    public javax.swing.JSlider jSliderProgresoVideoF;
-    public javax.swing.JSlider jSliderSubirBajarVolumenF;
     public javax.swing.JTextArea jTextAreaTexto1F;
     public javax.swing.JTextArea jTextAreaTexto2F;
     // End of variables declaration//GEN-END:variables
