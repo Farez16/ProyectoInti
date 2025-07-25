@@ -7,6 +7,7 @@ package Controlador;
 
 import Modelo.Modelo_ProgresoUnidad2;
 import Vista.Estudiante.Dashboard;
+import Vista.Estudiante.Dashboard;
 import Vista.Vista_ActividadMorfemasUnidad2;
 import Vista.Vista_Unidad2;
 import java.awt.Color;
@@ -118,14 +119,12 @@ private void agregarEventos() {
     vista.getjButton1ComprobarAudios().addActionListener(e -> verificarRespuestas());
 
     vista.getjButton1().addActionListener(e -> {
-        Modelo_ProgresoUnidad2.guardarProgreso(dashboard.getCorreoUsuario(), 30);
-        Vista_Unidad2 panelUnidad2 = new Vista_Unidad2();
-        new ControladorUnidad2(panelUnidad2, dashboard);
-        panelUnidad2.getjButtonOperaciones().setEnabled(true);
-        panelUnidad2.getjButtonMorfemas().setEnabled(true);
-        panelUnidad2.getjButtonAnimales().setEnabled(true);
-        dashboard.mostrarVista(panelUnidad2);
-    });
+Modelo_ProgresoUnidad2.incrementarProgreso(dashboard.getCorreoUsuario(), 20);
+
+Vista_Unidad2 panelUnidad2 = new Vista_Unidad2();
+ControladorUnidad2 controladorUnidad2 = new ControladorUnidad2(panelUnidad2, dashboard);
+dashboard.mostrarVista(panelUnidad2);
+});
 }
 
 private void verificarRespuestas() {

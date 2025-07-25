@@ -29,6 +29,70 @@ public class Vista_ActividadAnimalesdelaSierraUnidad2 extends javax.swing.JPanel
         return jButton1ComprobarAudios;
     }
 
+    public JButton getjButton1animaldomestico1() {
+        return jButton1animaldomestico1;
+    }
+
+    public JButton getjButton1animaldomestico2() {
+        return jButton1animaldomestico2;
+    }
+
+    public JButton getjButton1animaldomestico3() {
+        return jButton1animaldomestico3;
+    }
+
+    public JButton getjButton1animaldomestico4() {
+        return jButton1animaldomestico4;
+    }
+
+    public JButton getjButton1animaldomestico5() {
+        return jButton1animaldomestico5;
+    }
+
+    public JButton getjButton1animaldomestico6() {
+        return jButton1animaldomestico6;
+    }
+
+    public JButton getjButton1animaldomestico7() {
+        return jButton1animaldomestico7;
+    }
+
+    public JButton getjButton1animalessilvestres1() {
+        return jButton1animalessilvestres1;
+    }
+
+    public JButton getjButton1animalessilvestres2() {
+        return jButton1animalessilvestres2;
+    }
+
+    public JButton getjButton1animalessilvestres3() {
+        return jButton1animalessilvestres3;
+    }
+
+    public JLabel getjLabel1animalesdomesticosimagen1() {
+        return jLabel1animalesdomesticosimagen1;
+    }
+
+    public JLabel getjLabel1animalesdomesticosimagen3() {
+        return jLabel1animalesdomesticosimagen3;
+    }
+
+    public JLabel getjLabel1animalesdomesticosimagen7() {
+        return jLabel1animalesdomesticosimagen7;
+    }
+
+    public JLabel getjLabel1animalessilvestres2() {
+        return jLabel1animalessilvestres2;
+    }
+
+    public JLabel getjLabel1animalessilvestres4() {
+        return jLabel1animalessilvestres4;
+    }
+
+    public JLabel getjLabel1animalessilvestres6() {
+        return jLabel1animalessilvestres6;
+    }
+
     public JLabel getjLabel2debeaparecer3() {
         return jLabel2debeaparecer3;
     }
@@ -45,108 +109,76 @@ public class Vista_ActividadAnimalesdelaSierraUnidad2 extends javax.swing.JPanel
         return jLabel2debeaparecer6;
     }
 
-    public JTextField getjTextField1AnimalesSilvestres1() {
-        return jTextField1AnimalesSilvestres1;
-    }
-
-    public JTextField getjTextField1AnimalesSilvestres2() {
-        return jTextField1AnimalesSilvestres2;
-    }
-
-    public JTextField getjTextField1AnimalesSilvestres3() {
-        return jTextField1AnimalesSilvestres3;
-    }
-
-    public JTextField getjTextField1AnimalesSilvestresaarrastar1() {
-        return jTextField1AnimalesSilvestresaarrastar1;
-    }
-
-    public JTextField getjTextField1AnimalesSilvestresaarrastar2() {
-        return jTextField1AnimalesSilvestresaarrastar2;
-    }
-
-    public JTextField getjTextField1AnimalesSilvestresaarrastar3() {
-        return jTextField1AnimalesSilvestresaarrastar3;
-    }
-
-    public JTextField getjTextField1Animalesdosmesticos1() {
-        return jTextField1Animalesdosmesticos1;
-    }
-
-    public JTextField getjTextField1Animalesdosmesticos2() {
-        return jTextField1Animalesdosmesticos2;
-    }
-
-    public JTextField getjTextField1Animalesdosmesticos3() {
-        return jTextField1Animalesdosmesticos3;
-    }
-
-    public JTextField getjTextField1Animalesdosmesticosimagearrastar1() {
-        return jTextField1Animalesdosmesticosimagearrastar1;
-    }
-
-    public JTextField getjTextField1Animalesdosmesticosimagearrastar2() {
-        return jTextField1Animalesdosmesticosimagearrastar2;
-    }
-
-    public JTextField getjTextField1Animalesdosmesticosimagearrastar3() {
-        return jTextField1Animalesdosmesticosimagearrastar3;
-    }
-
-    public JTextField getjTextField1animalesdomesticostexto1() {
-        return jTextField1animalesdomesticostexto1;
-    }
-
-    public JTextField getjTextField1animalesdomesticostexto2() {
-        return jTextField1animalesdomesticostexto2;
-    }
-
-    public JTextField getjTextField1animalesdomesticostexto3() {
-        return jTextField1animalesdomesticostexto3;
-    }
-
-    public JTextField getjTextField1animalesdomesticostextoaarrastar1() {
-        return jTextField1animalesdomesticostextoaarrastar1;
-    }
-
-    public JTextField getjTextField1animalesdomesticostextoaarrastar2() {
-        return jTextField1animalesdomesticostextoaarrastar2;
-    }
-
-    public JTextField getjTextField1animalesdomesticostextoaarrastar3() {
-        return jTextField1animalesdomesticostextoaarrastar3;
-    }
-
-    public JTextField getjTextField1animalessilvestres1() {
-        return jTextField1animalessilvestres1;
-    }
-
-    public JTextField getjTextField1animalessilvestres2() {
-        return jTextField1animalessilvestres2;
-    }
-
-    public JTextField getjTextField1animalessilvestres3() {
-        return jTextField1animalessilvestres3;
-    }
-
-    public JTextField getjTextField1animalessilvestrestextoaarrastar1() {
-        return jTextField1animalessilvestrestextoaarrastar1;
-    }
-
-    public JTextField getjTextField1animalessilvestrestextoaarrastar2() {
-        return jTextField1animalessilvestrestextoaarrastar2;
-    }
-
-    public JTextField getjTextField1animalessilvestrestextoaarrastar3() {
-        return jTextField1animalessilvestrestextoaarrastar3;
-    }
-
     public void setjButton1CONTINUAR(JButton jButton1CONTINUAR) {
         this.jButton1CONTINUAR = jButton1CONTINUAR;
     }
 
     public void setjButton1ComprobarAudios(JButton jButton1ComprobarAudios) {
         this.jButton1ComprobarAudios = jButton1ComprobarAudios;
+    }
+
+    public void setjButton1animaldomestico1(JButton jButton1animaldomestico1) {
+        this.jButton1animaldomestico1 = jButton1animaldomestico1;
+    }
+
+    public void setjButton1animaldomestico2(JButton jButton1animaldomestico2) {
+        this.jButton1animaldomestico2 = jButton1animaldomestico2;
+    }
+
+    public void setjButton1animaldomestico3(JButton jButton1animaldomestico3) {
+        this.jButton1animaldomestico3 = jButton1animaldomestico3;
+    }
+
+    public void setjButton1animaldomestico4(JButton jButton1animaldomestico4) {
+        this.jButton1animaldomestico4 = jButton1animaldomestico4;
+    }
+
+    public void setjButton1animaldomestico5(JButton jButton1animaldomestico5) {
+        this.jButton1animaldomestico5 = jButton1animaldomestico5;
+    }
+
+    public void setjButton1animaldomestico6(JButton jButton1animaldomestico6) {
+        this.jButton1animaldomestico6 = jButton1animaldomestico6;
+    }
+
+    public void setjButton1animaldomestico7(JButton jButton1animaldomestico7) {
+        this.jButton1animaldomestico7 = jButton1animaldomestico7;
+    }
+
+    public void setjButton1animalessilvestres1(JButton jButton1animalessilvestres1) {
+        this.jButton1animalessilvestres1 = jButton1animalessilvestres1;
+    }
+
+    public void setjButton1animalessilvestres2(JButton jButton1animalessilvestres2) {
+        this.jButton1animalessilvestres2 = jButton1animalessilvestres2;
+    }
+
+    public void setjButton1animalessilvestres3(JButton jButton1animalessilvestres3) {
+        this.jButton1animalessilvestres3 = jButton1animalessilvestres3;
+    }
+
+    public void setjLabel1animalesdomesticosimagen1(JLabel jLabel1animalesdomesticosimagen1) {
+        this.jLabel1animalesdomesticosimagen1 = jLabel1animalesdomesticosimagen1;
+    }
+
+    public void setjLabel1animalesdomesticosimagen3(JLabel jLabel1animalesdomesticosimagen3) {
+        this.jLabel1animalesdomesticosimagen3 = jLabel1animalesdomesticosimagen3;
+    }
+
+    public void setjLabel1animalesdomesticosimagen7(JLabel jLabel1animalesdomesticosimagen7) {
+        this.jLabel1animalesdomesticosimagen7 = jLabel1animalesdomesticosimagen7;
+    }
+
+    public void setjLabel1animalessilvestres2(JLabel jLabel1animalessilvestres2) {
+        this.jLabel1animalessilvestres2 = jLabel1animalessilvestres2;
+    }
+
+    public void setjLabel1animalessilvestres4(JLabel jLabel1animalessilvestres4) {
+        this.jLabel1animalessilvestres4 = jLabel1animalessilvestres4;
+    }
+
+    public void setjLabel1animalessilvestres6(JLabel jLabel1animalessilvestres6) {
+        this.jLabel1animalessilvestres6 = jLabel1animalessilvestres6;
     }
 
     public void setjLabel2debeaparecer3(JLabel jLabel2debeaparecer3) {
@@ -164,151 +196,8 @@ public class Vista_ActividadAnimalesdelaSierraUnidad2 extends javax.swing.JPanel
     public void setjLabel2debeaparecer6(JLabel jLabel2debeaparecer6) {
         this.jLabel2debeaparecer6 = jLabel2debeaparecer6;
     }
-
-    public void setjTextField1AnimalesSilvestres1(JTextField jTextField1AnimalesSilvestres1) {
-        this.jTextField1AnimalesSilvestres1 = jTextField1AnimalesSilvestres1;
-    }
-
-    public void setjTextField1AnimalesSilvestres2(JTextField jTextField1AnimalesSilvestres2) {
-        this.jTextField1AnimalesSilvestres2 = jTextField1AnimalesSilvestres2;
-    }
-
-    public void setjTextField1AnimalesSilvestres3(JTextField jTextField1AnimalesSilvestres3) {
-        this.jTextField1AnimalesSilvestres3 = jTextField1AnimalesSilvestres3;
-    }
-
-    public void setjTextField1AnimalesSilvestresaarrastar1(JTextField jTextField1AnimalesSilvestresaarrastar1) {
-        this.jTextField1AnimalesSilvestresaarrastar1 = jTextField1AnimalesSilvestresaarrastar1;
-    }
-
-    public void setjTextField1AnimalesSilvestresaarrastar2(JTextField jTextField1AnimalesSilvestresaarrastar2) {
-        this.jTextField1AnimalesSilvestresaarrastar2 = jTextField1AnimalesSilvestresaarrastar2;
-    }
-
-    public void setjTextField1AnimalesSilvestresaarrastar3(JTextField jTextField1AnimalesSilvestresaarrastar3) {
-        this.jTextField1AnimalesSilvestresaarrastar3 = jTextField1AnimalesSilvestresaarrastar3;
-    }
-
-    public void setjTextField1Animalesdosmesticos1(JTextField jTextField1Animalesdosmesticos1) {
-        this.jTextField1Animalesdosmesticos1 = jTextField1Animalesdosmesticos1;
-    }
-
-    public void setjTextField1Animalesdosmesticos2(JTextField jTextField1Animalesdosmesticos2) {
-        this.jTextField1Animalesdosmesticos2 = jTextField1Animalesdosmesticos2;
-    }
-
-    public void setjTextField1Animalesdosmesticos3(JTextField jTextField1Animalesdosmesticos3) {
-        this.jTextField1Animalesdosmesticos3 = jTextField1Animalesdosmesticos3;
-    }
-
-    public void setjTextField1Animalesdosmesticosimagearrastar1(JTextField jTextField1Animalesdosmesticosimagearrastar1) {
-        this.jTextField1Animalesdosmesticosimagearrastar1 = jTextField1Animalesdosmesticosimagearrastar1;
-    }
-
-    public void setjTextField1Animalesdosmesticosimagearrastar2(JTextField jTextField1Animalesdosmesticosimagearrastar2) {
-        this.jTextField1Animalesdosmesticosimagearrastar2 = jTextField1Animalesdosmesticosimagearrastar2;
-    }
-
-    public void setjTextField1Animalesdosmesticosimagearrastar3(JTextField jTextField1Animalesdosmesticosimagearrastar3) {
-        this.jTextField1Animalesdosmesticosimagearrastar3 = jTextField1Animalesdosmesticosimagearrastar3;
-    }
-
-    public void setjTextField1animalesdomesticostexto1(JTextField jTextField1animalesdomesticostexto1) {
-        this.jTextField1animalesdomesticostexto1 = jTextField1animalesdomesticostexto1;
-    }
-
-    public void setjTextField1animalesdomesticostexto2(JTextField jTextField1animalesdomesticostexto2) {
-        this.jTextField1animalesdomesticostexto2 = jTextField1animalesdomesticostexto2;
-    }
-
-    public void setjTextField1animalesdomesticostexto3(JTextField jTextField1animalesdomesticostexto3) {
-        this.jTextField1animalesdomesticostexto3 = jTextField1animalesdomesticostexto3;
-    }
-
-    public void setjTextField1animalesdomesticostextoaarrastar1(JTextField jTextField1animalesdomesticostextoaarrastar1) {
-        this.jTextField1animalesdomesticostextoaarrastar1 = jTextField1animalesdomesticostextoaarrastar1;
-    }
-
-    public void setjTextField1animalesdomesticostextoaarrastar2(JTextField jTextField1animalesdomesticostextoaarrastar2) {
-        this.jTextField1animalesdomesticostextoaarrastar2 = jTextField1animalesdomesticostextoaarrastar2;
-    }
-
-    public void setjTextField1animalesdomesticostextoaarrastar3(JTextField jTextField1animalesdomesticostextoaarrastar3) {
-        this.jTextField1animalesdomesticostextoaarrastar3 = jTextField1animalesdomesticostextoaarrastar3;
-    }
-
-    public void setjTextField1animalessilvestres1(JTextField jTextField1animalessilvestres1) {
-        this.jTextField1animalessilvestres1 = jTextField1animalessilvestres1;
-    }
-
-    public void setjTextField1animalessilvestres2(JTextField jTextField1animalessilvestres2) {
-        this.jTextField1animalessilvestres2 = jTextField1animalessilvestres2;
-    }
-
-    public void setjTextField1animalessilvestres3(JTextField jTextField1animalessilvestres3) {
-        this.jTextField1animalessilvestres3 = jTextField1animalessilvestres3;
-    }
-
-    public void setjTextField1animalessilvestrestextoaarrastar1(JTextField jTextField1animalessilvestrestextoaarrastar1) {
-        this.jTextField1animalessilvestrestextoaarrastar1 = jTextField1animalessilvestrestextoaarrastar1;
-    }
-
-    public void setjTextField1animalessilvestrestextoaarrastar2(JTextField jTextField1animalessilvestrestextoaarrastar2) {
-        this.jTextField1animalessilvestrestextoaarrastar2 = jTextField1animalessilvestrestextoaarrastar2;
-    }
-
-    public void setjTextField1animalessilvestrestextoaarrastar3(JTextField jTextField1animalessilvestrestextoaarrastar3) {
-        this.jTextField1animalessilvestrestextoaarrastar3 = jTextField1animalessilvestrestextoaarrastar3;
-    }
-
-    public JLabel getjLabel1AnimalesSilvestresaarrastar1() {
-        return jLabel1AnimalesSilvestresaarrastar1;
-    }
-
-    public JLabel getjLabel1AnimalesSilvestresaarrastar2() {
-        return jLabel1AnimalesSilvestresaarrastar2;
-    }
-
-    public JLabel getjLabel1AnimalesSilvestresaarrastar3() {
-        return jLabel1AnimalesSilvestresaarrastar3;
-    }
-
-    public JLabel getjLabel1Animalesdosmesticosimagearrastar1() {
-        return jLabel1Animalesdosmesticosimagearrastar1;
-    }
-
-    public JLabel getjLabel1Animalesdosmesticosimagearrastar2() {
-        return jLabel1Animalesdosmesticosimagearrastar2;
-    }
-
-    public JLabel getjLabel1Animalesdosmesticosimagearrastar3() {
-        return jLabel1Animalesdosmesticosimagearrastar3;
-    }
-
-    public void setjLabel1AnimalesSilvestresaarrastar1(JLabel jLabel1AnimalesSilvestresaarrastar1) {
-        this.jLabel1AnimalesSilvestresaarrastar1 = jLabel1AnimalesSilvestresaarrastar1;
-    }
-
-    public void setjLabel1AnimalesSilvestresaarrastar2(JLabel jLabel1AnimalesSilvestresaarrastar2) {
-        this.jLabel1AnimalesSilvestresaarrastar2 = jLabel1AnimalesSilvestresaarrastar2;
-    }
-
-    public void setjLabel1AnimalesSilvestresaarrastar3(JLabel jLabel1AnimalesSilvestresaarrastar3) {
-        this.jLabel1AnimalesSilvestresaarrastar3 = jLabel1AnimalesSilvestresaarrastar3;
-    }
-
-    public void setjLabel1Animalesdosmesticosimagearrastar1(JLabel jLabel1Animalesdosmesticosimagearrastar1) {
-        this.jLabel1Animalesdosmesticosimagearrastar1 = jLabel1Animalesdosmesticosimagearrastar1;
-    }
-
-    public void setjLabel1Animalesdosmesticosimagearrastar2(JLabel jLabel1Animalesdosmesticosimagearrastar2) {
-        this.jLabel1Animalesdosmesticosimagearrastar2 = jLabel1Animalesdosmesticosimagearrastar2;
-    }
-
-    public void setjLabel1Animalesdosmesticosimagearrastar3(JLabel jLabel1Animalesdosmesticosimagearrastar3) {
-        this.jLabel1Animalesdosmesticosimagearrastar3 = jLabel1Animalesdosmesticosimagearrastar3;
-    }
-
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -323,37 +212,23 @@ public class Vista_ActividadAnimalesdelaSierraUnidad2 extends javax.swing.JPanel
         jLabel2debeaparecer3 = new javax.swing.JLabel();
         jLabel2debeaparecer4 = new javax.swing.JLabel();
         jLabel2debeaparecer5 = new javax.swing.JLabel();
-        jLabel1Animalesdosmesticosimagearrastar3 = new javax.swing.JLabel();
-        jLabel1Animalesdosmesticosimagearrastar1 = new javax.swing.JLabel();
-        jLabel1Animalesdosmesticosimagearrastar2 = new javax.swing.JLabel();
-        jLabel1AnimalesSilvestresaarrastar2 = new javax.swing.JLabel();
-        jLabel1AnimalesSilvestresaarrastar3 = new javax.swing.JLabel();
-        jLabel1AnimalesSilvestresaarrastar1 = new javax.swing.JLabel();
-        jTextField1Animalesdosmesticos1 = new javax.swing.JTextField();
-        jTextField1animalesdomesticostexto1 = new javax.swing.JTextField();
-        jTextField1Animalesdosmesticos2 = new javax.swing.JTextField();
-        jTextField1animalesdomesticostexto2 = new javax.swing.JTextField();
-        jTextField1Animalesdosmesticos3 = new javax.swing.JTextField();
-        jTextField1animalesdomesticostexto3 = new javax.swing.JTextField();
-        jTextField1Animalesdosmesticosimagearrastar1 = new javax.swing.JTextField();
-        jTextField1animalesdomesticostextoaarrastar2 = new javax.swing.JTextField();
-        jTextField1animalesdomesticostextoaarrastar3 = new javax.swing.JTextField();
-        jTextField1Animalesdosmesticosimagearrastar2 = new javax.swing.JTextField();
-        jTextField1animalesdomesticostextoaarrastar1 = new javax.swing.JTextField();
-        jTextField1Animalesdosmesticosimagearrastar3 = new javax.swing.JTextField();
-        jTextField1AnimalesSilvestres1 = new javax.swing.JTextField();
-        jTextField1animalessilvestres1 = new javax.swing.JTextField();
-        jTextField1AnimalesSilvestres2 = new javax.swing.JTextField();
-        jTextField1animalessilvestres2 = new javax.swing.JTextField();
-        jTextField1AnimalesSilvestres3 = new javax.swing.JTextField();
-        jTextField1animalessilvestres3 = new javax.swing.JTextField();
-        jTextField1AnimalesSilvestresaarrastar1 = new javax.swing.JTextField();
-        jTextField1animalessilvestrestextoaarrastar1 = new javax.swing.JTextField();
-        jTextField1AnimalesSilvestresaarrastar2 = new javax.swing.JTextField();
-        jTextField1animalessilvestrestextoaarrastar2 = new javax.swing.JTextField();
-        jTextField1animalessilvestrestextoaarrastar3 = new javax.swing.JTextField();
-        jTextField1AnimalesSilvestresaarrastar3 = new javax.swing.JTextField();
         jButton1CONTINUAR = new javax.swing.JButton();
+        jButton1animaldomestico1 = new javax.swing.JButton();
+        jButton1animaldomestico2 = new javax.swing.JButton();
+        jButton1animaldomestico3 = new javax.swing.JButton();
+        jButton1animaldomestico4 = new javax.swing.JButton();
+        jButton1animaldomestico5 = new javax.swing.JButton();
+        jButton1animaldomestico6 = new javax.swing.JButton();
+        jButton1animaldomestico7 = new javax.swing.JButton();
+        jButton1animalessilvestres1 = new javax.swing.JButton();
+        jButton1animalessilvestres2 = new javax.swing.JButton();
+        jButton1animalessilvestres3 = new javax.swing.JButton();
+        jLabel1animalesdomesticosimagen1 = new javax.swing.JLabel();
+        jLabel1animalesdomesticosimagen3 = new javax.swing.JLabel();
+        jLabel1animalesdomesticosimagen7 = new javax.swing.JLabel();
+        jLabel1animalessilvestres2 = new javax.swing.JLabel();
+        jLabel1animalessilvestres4 = new javax.swing.JLabel();
+        jLabel1animalessilvestres6 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(1190, 660));
@@ -365,7 +240,7 @@ public class Vista_ActividadAnimalesdelaSierraUnidad2 extends javax.swing.JPanel
         add(jLabel2debeaparecer6, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 120, -1, -1));
 
         jButton1ComprobarAudios.setText("Comprobar");
-        add(jButton1ComprobarAudios, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 590, -1, -1));
+        add(jButton1ComprobarAudios, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 610, -1, -1));
 
         jLabel2debeaparecer3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2debeaparecer3.setText("KALLARINKAPAK ");
@@ -378,79 +253,90 @@ public class Vista_ActividadAnimalesdelaSierraUnidad2 extends javax.swing.JPanel
         jLabel2debeaparecer5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2debeaparecer5.setText("Killu (domésticos)");
         add(jLabel2debeaparecer5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, -1, -1));
-        add(jLabel1Animalesdosmesticosimagearrastar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 410, 120, 100));
-        add(jLabel1Animalesdosmesticosimagearrastar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 420, 120, 100));
-        add(jLabel1Animalesdosmesticosimagearrastar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 420, 120, 100));
-        add(jLabel1AnimalesSilvestresaarrastar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 410, 120, 100));
-        add(jLabel1AnimalesSilvestresaarrastar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 410, 120, 100));
-        add(jLabel1AnimalesSilvestresaarrastar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 410, 120, 100));
-        add(jTextField1Animalesdosmesticos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, 120, 100));
-        add(jTextField1animalesdomesticostexto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 120, -1));
-        add(jTextField1Animalesdosmesticos2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 120, 100));
-        add(jTextField1animalesdomesticostexto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, 120, -1));
-        add(jTextField1Animalesdosmesticos3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, 120, 100));
-        add(jTextField1animalesdomesticostexto3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 280, 120, -1));
-        add(jTextField1Animalesdosmesticosimagearrastar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 420, 120, 100));
-        add(jTextField1animalesdomesticostextoaarrastar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 540, 120, -1));
-        add(jTextField1animalesdomesticostextoaarrastar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 540, 120, -1));
-        add(jTextField1Animalesdosmesticosimagearrastar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 420, 120, 100));
-        add(jTextField1animalesdomesticostextoaarrastar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 540, 120, -1));
-        add(jTextField1Animalesdosmesticosimagearrastar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 410, 120, 100));
-        add(jTextField1AnimalesSilvestres1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 170, 120, 100));
-        add(jTextField1animalessilvestres1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 280, 120, -1));
-        add(jTextField1AnimalesSilvestres2, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 170, 120, 100));
-        add(jTextField1animalessilvestres2, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 280, 120, -1));
-        add(jTextField1AnimalesSilvestres3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 170, 120, 100));
-        add(jTextField1animalessilvestres3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 280, 120, -1));
-        add(jTextField1AnimalesSilvestresaarrastar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 410, 120, 100));
-        add(jTextField1animalessilvestrestextoaarrastar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 520, 120, -1));
-        add(jTextField1AnimalesSilvestresaarrastar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 410, 120, 100));
-        add(jTextField1animalessilvestrestextoaarrastar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 520, 120, -1));
-        add(jTextField1animalessilvestrestextoaarrastar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 550, 120, -1));
-        add(jTextField1AnimalesSilvestresaarrastar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 410, 120, 100));
 
         jButton1CONTINUAR.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton1CONTINUAR.setText("CONTINUAR");
         add(jButton1CONTINUAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 610, -1, -1));
+
+        jButton1animaldomestico1.setText("jButton1");
+        jButton1animaldomestico1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add(jButton1animaldomestico1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 490, 120, -1));
+
+        jButton1animaldomestico2.setText("jButton1");
+        jButton1animaldomestico2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add(jButton1animaldomestico2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 490, 120, 20));
+
+        jButton1animaldomestico3.setText("jButton1");
+        jButton1animaldomestico3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add(jButton1animaldomestico3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 490, 120, -1));
+
+        jButton1animaldomestico4.setText("jButton1");
+        jButton1animaldomestico4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add(jButton1animaldomestico4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 540, 120, -1));
+
+        jButton1animaldomestico5.setText("jButton1");
+        jButton1animaldomestico5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add(jButton1animaldomestico5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 540, 120, -1));
+
+        jButton1animaldomestico6.setText("jButton1");
+        jButton1animaldomestico6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add(jButton1animaldomestico6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 540, 120, -1));
+
+        jButton1animaldomestico7.setText("jButton1");
+        jButton1animaldomestico7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add(jButton1animaldomestico7, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 540, 120, -1));
+
+        jButton1animalessilvestres1.setText("jButton1");
+        add(jButton1animalessilvestres1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 490, 120, 20));
+
+        jButton1animalessilvestres2.setText("jButton1");
+        add(jButton1animalessilvestres2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 540, 120, 20));
+
+        jButton1animalessilvestres3.setText("jButton1");
+        add(jButton1animalessilvestres3, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 490, 120, -1));
+
+        jLabel1animalesdomesticosimagen1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        add(jLabel1animalesdomesticosimagen1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, 120, 100));
+
+        jLabel1animalesdomesticosimagen3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        add(jLabel1animalesdomesticosimagen3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 120, 100));
+
+        jLabel1animalesdomesticosimagen7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        add(jLabel1animalesdomesticosimagen7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 120, 100));
+
+        jLabel1animalessilvestres2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        add(jLabel1animalessilvestres2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 310, 120, 100));
+
+        jLabel1animalessilvestres4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        add(jLabel1animalessilvestres4, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 180, 120, 100));
+
+        jLabel1animalessilvestres6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        add(jLabel1animalessilvestres6, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 310, 120, 100));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1CONTINUAR;
     private javax.swing.JButton jButton1ComprobarAudios;
-    private javax.swing.JLabel jLabel1AnimalesSilvestresaarrastar1;
-    private javax.swing.JLabel jLabel1AnimalesSilvestresaarrastar2;
-    private javax.swing.JLabel jLabel1AnimalesSilvestresaarrastar3;
-    private javax.swing.JLabel jLabel1Animalesdosmesticosimagearrastar1;
-    private javax.swing.JLabel jLabel1Animalesdosmesticosimagearrastar2;
-    private javax.swing.JLabel jLabel1Animalesdosmesticosimagearrastar3;
+    private javax.swing.JButton jButton1animaldomestico1;
+    private javax.swing.JButton jButton1animaldomestico2;
+    private javax.swing.JButton jButton1animaldomestico3;
+    private javax.swing.JButton jButton1animaldomestico4;
+    private javax.swing.JButton jButton1animaldomestico5;
+    private javax.swing.JButton jButton1animaldomestico6;
+    private javax.swing.JButton jButton1animaldomestico7;
+    private javax.swing.JButton jButton1animalessilvestres1;
+    private javax.swing.JButton jButton1animalessilvestres2;
+    private javax.swing.JButton jButton1animalessilvestres3;
+    private javax.swing.JLabel jLabel1animalesdomesticosimagen1;
+    private javax.swing.JLabel jLabel1animalesdomesticosimagen3;
+    private javax.swing.JLabel jLabel1animalesdomesticosimagen7;
+    private javax.swing.JLabel jLabel1animalessilvestres2;
+    private javax.swing.JLabel jLabel1animalessilvestres4;
+    private javax.swing.JLabel jLabel1animalessilvestres6;
     private javax.swing.JLabel jLabel2debeaparecer3;
     private javax.swing.JLabel jLabel2debeaparecer4;
     private javax.swing.JLabel jLabel2debeaparecer5;
     private javax.swing.JLabel jLabel2debeaparecer6;
-    private javax.swing.JTextField jTextField1AnimalesSilvestres1;
-    private javax.swing.JTextField jTextField1AnimalesSilvestres2;
-    private javax.swing.JTextField jTextField1AnimalesSilvestres3;
-    private javax.swing.JTextField jTextField1AnimalesSilvestresaarrastar1;
-    private javax.swing.JTextField jTextField1AnimalesSilvestresaarrastar2;
-    private javax.swing.JTextField jTextField1AnimalesSilvestresaarrastar3;
-    private javax.swing.JTextField jTextField1Animalesdosmesticos1;
-    private javax.swing.JTextField jTextField1Animalesdosmesticos2;
-    private javax.swing.JTextField jTextField1Animalesdosmesticos3;
-    private javax.swing.JTextField jTextField1Animalesdosmesticosimagearrastar1;
-    private javax.swing.JTextField jTextField1Animalesdosmesticosimagearrastar2;
-    private javax.swing.JTextField jTextField1Animalesdosmesticosimagearrastar3;
-    private javax.swing.JTextField jTextField1animalesdomesticostexto1;
-    private javax.swing.JTextField jTextField1animalesdomesticostexto2;
-    private javax.swing.JTextField jTextField1animalesdomesticostexto3;
-    private javax.swing.JTextField jTextField1animalesdomesticostextoaarrastar1;
-    private javax.swing.JTextField jTextField1animalesdomesticostextoaarrastar2;
-    private javax.swing.JTextField jTextField1animalesdomesticostextoaarrastar3;
-    private javax.swing.JTextField jTextField1animalessilvestres1;
-    private javax.swing.JTextField jTextField1animalessilvestres2;
-    private javax.swing.JTextField jTextField1animalessilvestres3;
-    private javax.swing.JTextField jTextField1animalessilvestrestextoaarrastar1;
-    private javax.swing.JTextField jTextField1animalessilvestrestextoaarrastar2;
-    private javax.swing.JTextField jTextField1animalessilvestrestextoaarrastar3;
     // End of variables declaration//GEN-END:variables
 }

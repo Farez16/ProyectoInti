@@ -4,9 +4,10 @@
  */
 package Controlador;
 
-import Vista.Estudiante.Dashboard;
+import Modelo.Modelo_ProgresoUnidad2;
 import Vista.*;
 import Modelo.Modelo_Unidades;
+import Vista.Estudiante.Dashboard;
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.*;
@@ -83,8 +84,15 @@ public class Controlador_NumerosUnidad2 {
     }
 }
 
-        private void finalizarActividad() {
-JOptionPane.showMessageDialog(vista, "✨ Actividad completada correctamente.\n🔓 Se ha desbloqueado la lección de Operaciones.");
+       private void finalizarActividad() {
+    // Guardar progreso (25%)
+    Modelo_ProgresoUnidad2.actualizarProgreso(
+        dashboard.getCorreoUsuario(), 
+        25
+            
+    );
+    
+        JOptionPane.showMessageDialog(vista, "✨ Actividad completada correctamente.\n🔓 Se ha desbloqueado la lección de Operaciones.");
 
 // Registrar progreso
 Modelo_Unidades.registrarActividadCompletadaUnidad2(dashboard.getCorreoUsuario());
@@ -101,7 +109,8 @@ controladorUnidad2.desbloquearBotonOperaciones();
 
 dashboard.mostrarVista(nuevaVistaUnidad2);
 }
-    
+        
+
 
     private void reproducirAudioTexto(String texto) {
         try {

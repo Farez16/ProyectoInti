@@ -1,12 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-// Controlador_ActividadOperacionesU2.java
 package Controlador;
 
 import Modelo.Modelo_OperacionesUnidad2;
 import Modelo.Modelo_ProgresoUnidad2;
+import Vista.Estudiante.Dashboard;
 import Vista.Estudiante.Dashboard;
 import Vista.Vista_ActividadOperacionesUnidad2;
 import Vista.Vista_Unidad2;
@@ -153,12 +149,14 @@ public class Controlador_ActividadOperacionesU2 {
         }
     }
 
-   private void irAUnidad2() {
-Vista_Unidad2 panelUnidad2 = new Vista_Unidad2();
-ControladorUnidad2 controladorUnidad2 = new ControladorUnidad2(panelUnidad2, dashboard);
-
-controladorUnidad2.marcarOperacionesComoCompletadas(); // ← Nuevo método
-
-dashboard.mostrarVista(panelUnidad2);
-}
+    private void irAUnidad2() {
+        // Actualizar progreso a 55%
+        Modelo_ProgresoUnidad2.actualizarProgreso(
+                dashboard.getCorreoUsuario(),
+                55
+        );
+        Vista_Unidad2 panelUnidad2 = new Vista_Unidad2();
+        ControladorUnidad2 controladorUnidad2 = new ControladorUnidad2(panelUnidad2, dashboard);
+        dashboard.mostrarVista(panelUnidad2);
+    }
 }

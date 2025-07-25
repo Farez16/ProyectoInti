@@ -4,35 +4,36 @@
  */
 package Modelo;
 
-import javax.swing.JLabel;
-import javax.swing.Timer;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import javax.swing.*;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Modelo_AnimacionTextoUnidad2 {
+private final JLabel[] etiquetas;
+private int indice;
 
-private final JLabel[] textos;
-private int indice = 0;
-private Timer timer;
-
-public Modelo_AnimacionTextoUnidad2(JLabel[] textos) {
-    this.textos = textos;
+public Modelo_AnimacionTextoUnidad2(JLabel[] etiquetas) {
+    this.etiquetas = etiquetas;
 }
 
 public void iniciarAnimacion() {
-    timer = new Timer(800, new ActionListener() {
+    Timer timer = new Timer();
+    indice = 0;
+
+    for (JLabel label : etiquetas) {
+        label.setVisible(false);
+    }
+
+    timer.schedule(new TimerTask() {
         @Override
-        public void actionPerformed(ActionEvent e) {
-            if (indice < textos.length) {
-                textos[indice].setVisible(true);
+        public void run() {
+            if (indice < etiquetas.length) {
+                etiquetas[indice].setVisible(true);
                 indice++;
             } else {
-                timer.stop();
+                timer.cancel();
             }
         }
-    });
-
-    timer.setInitialDelay(400); // Espera inicial antes de iniciar
-    timer.start();
-}}
- 
+    }, 0, 500); // Cada 500ms muestra una etiqueta
+}
+}

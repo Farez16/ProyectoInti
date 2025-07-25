@@ -4,6 +4,11 @@
  */
 package Vista;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
 /**
  *
  * @author Jhony Espinoza
@@ -15,6 +20,30 @@ public class Vista_AnimalesdelaSierrainformacion2Unidad2 extends javax.swing.JPa
      */
     public Vista_AnimalesdelaSierrainformacion2Unidad2() {
         initComponents();
+    }
+
+    public JButton getjButton1Continuar() {
+        return jButton1Continuar;
+    }
+
+    public JLabel getjLabel1mostrar3() {
+        return jLabel1mostrar3;
+    }
+
+    public JLabel getjLabel1mostrar4() {
+        return jLabel1mostrar4;
+    }
+
+    public JLabel getjLabel2debeaparecer1() {
+        return jLabel2debeaparecer1;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public JTextArea getjTextArea1() {
+        return jTextArea1;
     }
 
     /**

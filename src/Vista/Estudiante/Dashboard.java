@@ -1,6 +1,7 @@
 package Vista.Estudiante;
 
 import Controlador.ControladorBotones;
+import Controlador.ControladorDashboard;
 import Modelo.TextoBotones;
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
@@ -20,6 +21,7 @@ public class Dashboard extends javax.swing.JPanel {
     private String correoUsuario;
     private ControladorBotones controladorBotones;
     private int idUsuario;
+    private ControladorDashboard controladorDashboard;
 
 
     public Dashboard(String correoUsuario) {
@@ -169,6 +171,13 @@ public class Dashboard extends javax.swing.JPanel {
         } catch (Exception ex) {
             System.err.println("Error actualizando imagen en Dashboard: " + ex.getMessage());
         }
+    }
+       public ControladorDashboard getControladorDashboard() {
+        return controladorDashboard;
+    }
+
+    public void setControladorDashboard(ControladorDashboard controladorDashboard) {
+        this.controladorDashboard = controladorDashboard;
     }
 
     @SuppressWarnings("unchecked")

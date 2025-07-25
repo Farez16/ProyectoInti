@@ -10,6 +10,7 @@ import Modelo.TextoBotones;
 import Modelo.Usuario; // ← IMPORTANTE
 import Vista.Admin.Cuenta;
 import Vista.Login.Login;
+import Vista.Vista_Certificado;
 import Vista.Estudiante.Vista_PanelUnidades;
 import java.awt.Graphics2D;
 import java.awt.event.ActionListener;
@@ -76,6 +77,8 @@ public class ControladorDashboard {
         vista.btnDashboard.addActionListener(e -> abrirPanelUnidades());
 
         vista.btnCuenta.addActionListener(e -> abrirCuenta());
+        
+        vista.btnCertificado.addActionListener(e -> abrirCertificado());
 
         vista.btnSalir.addActionListener(e -> {
             int confirm = JOptionPane.showConfirmDialog(null, "¿Deseas salir?", "Cerrar sesión", JOptionPane.YES_NO_OPTION);
@@ -94,7 +97,11 @@ public class ControladorDashboard {
     // Usar la instancia existente que ya tiene su controlador
     vista.mostrarVista(panelUnidades);
 }
-
+  private void abrirCertificado() {
+    Vista_Certificado certificadoPanel = new Vista_Certificado();
+    new Controlador_Certificado(certificadoPanel, vista);
+    vista.mostrarVista(certificadoPanel);
+}
     private void abrirCuenta() {
         System.out.println("Intentando abrir panel de cuenta...");
         try {

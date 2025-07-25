@@ -1,18 +1,17 @@
 package Controlador;
 
-import Vista.Estudiante.Dashboard;
-import Vista.Vistas_Unidad1.Vista_EvaluacionU1;
-import Vista.Vistas_Unidad1.Vista_Actividad1U1;
-import Vista.Vistas_Unidad1.Vista_LeccionFONOLOGIA;
-import Vista.Vistas_Unidad1.Vista_Actividad2U1;
-import Vista.Vistas_Unidad1.Vista_Unidad1;
-import Vista.Vistas_Unidad1.Vista_LeccionPRONOMBRES;
-import Vista.Vistas_Unidad1.Vista_LeccionSALUDOS;
 import Vista.*;
 import Modelo.Usuario;
 import Modelo.Modelo_Progreso_Usuario;
 import java.sql.Connection;
 import java.time.LocalDateTime;
+import Vista.Estudiante.Dashboard;
+import Vista.Vistas_Unidad1.Vista_Actividad1U1;
+import Vista.Vistas_Unidad1.Vista_Actividad2U1;
+import Vista.Vistas_Unidad1.Vista_EvaluacionU1;
+import Vista.Vistas_Unidad1.Vista_LeccionPRONOMBRES;
+import Vista.Vistas_Unidad1.Vista_LeccionSALUDOS;
+import Vista.Vistas_Unidad1.Vista_Unidad1;
 import Controlador.Controlador_Unidades;
 
 public class Controlador_Unidad1 {
@@ -169,7 +168,7 @@ public class Controlador_Unidad1 {
         controladorDashboard.getVista().mostrarVista(vistaLeccion);
     }
 
-   private void abrirActividad1() {
+private void abrirActividad1() {
     Vista_Actividad1U1 vistaActividad = new Vista_Actividad1U1();
     Controlador_Actividad_PreguntaRespuesta controlador = new Controlador_Actividad_PreguntaRespuesta(
             vistaActividad,

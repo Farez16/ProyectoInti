@@ -4,18 +4,22 @@
  */
 package Controlador;
 
-import Vista.Estudiante.Dashboard;
-import Vista.*;
 import Modelo.Modelo_AnimacionTextoUnidad2;
-import Modelo.Modelo_ProgresoUnidad2;
 import Modelo.Modelo_AnimalesUnidad2;
+import Modelo.Modelo_ProgresoUnidad2;
+import Vista.*;
+import Vista.Estudiante.Dashboard;
+
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.datatransfer.*;
-import java.awt.dnd.*;
 import java.awt.event.*;
-import java.util.HashMap;
+import java.io.File;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Controlador_ActividadAnimalesdelaSierraUnidad2 {
@@ -24,12 +28,16 @@ public class Controlador_ActividadAnimalesdelaSierraUnidad2 {
     private final Vista_AnimalesdelaSierraUnidad2 vistaIntro;
     private final Vista_AnimalesdelaSierrainformacion2Unidad2 vistaInfo;
     private final Vista_ActividadAnimalesdelaSierraUnidad2 vistaActividad;
+    private final Map<JLabel, Modelo_AnimalesUnidad2.Animal> asignaciones = new HashMap<>();
+    private JButton botonSeleccionado = null;
 
-    private final Map<JLabel, JTextField> asignacionesCorrectas = new HashMap<>();
-    private final Map<JLabel, Point> posicionesIniciales = new HashMap<>();
-    private final Map<JLabel, String> nombresKichwa = new HashMap<>();
+    // Rutas corregidas para imágenes
+    private static final String RUTA_BASE_PROYECTO = "C:/Users/diego/Desktop/ProyectoInti/";
+    private static final String DIRECTORIO_IMAGENES = "src/Imagenes/ImagenesUnidad2/";
+    private static final String RUTA_IMAGENES = RUTA_BASE_PROYECTO + DIRECTORIO_IMAGENES;
+    private static final String IMAGEN_DEFAULT = "default.png";
 
-    public Controlador_ActividadAnimalesdelaSierraUnidad2(Dashboard dashboard) {
+    public Controlador_ActividadAnimalesdelaSierraUnidad2(Dashboard dashboard, boolean ignorar) {
         this.dashboard = dashboard;
         this.vistaIntro = new Vista_AnimalesdelaSierraUnidad2();
         this.vistaInfo = new Vista_AnimalesdelaSierrainformacion2Unidad2();
@@ -39,127 +47,154 @@ public class Controlador_ActividadAnimalesdelaSierraUnidad2 {
         dashboard.mostrarVista(vistaIntro);
 
         vistaIntro.getjButton1().addActionListener(e -> dashboard.mostrarVista(vistaInfo));
+        vistaInfo.getjButton1Continuar().addActionListener(e -> dashboard.mostrarVista(vistaActividad));
         vistaActividad.getjButton1ComprobarAudios().addActionListener(e -> verificarRespuestas());
+        vistaActividad.getjButton1CONTINUAR().addActionListener(e -> {
+            JOptionPane.showMessageDialog(dashboard, "¡Actividad completada con éxito!");
+            Modelo_ProgresoUnidad2.incrementarProgreso(dashboard.getCorreoUsuario(), 20);
+            Vista_Unidad2 panelUnidad2 = new Vista_Unidad2();
+            ControladorUnidad2 controladorUnidad2 = new ControladorUnidad2(panelUnidad2, dashboard);
+            dashboard.mostrarVista(panelUnidad2);
+ 
+        });
 
-        configurarDragAndDrop();
+        configurarActividad();
     }
 
     private void iniciarAnimacionEntrada() {
         JLabel[] labels = {
-            vistaIntro.getjLabel1debeaparecercdecimo(),
-            vistaIntro.getjLabel1debeaparecercquinto1(),
-            vistaIntro.getjLabel1debeaparecercseptimo1(),
-            vistaIntro.getjLabel1debeaparecercsexto1(),
-            vistaIntro.getjLabel1debeaparecercsoctavo1(),
-            vistaIntro.getjLabel1debeaparecercsonoveno(),
-            vistaIntro.getjLabel1debeaparecercuarto(),
-            vistaIntro.getjLabel1debeaparecertercero(),
-            vistaIntro.getjLabel1debeaparecertercero2(),
-            vistaIntro.getjLabel2debeaparecer1(),
-            vistaIntro.getjLabel3debeaparecersegundo()
+                vistaIntro.getjLabel2debeaparecer1(),
+                vistaIntro.getjLabel3debeaparecersegundo(),
+                vistaIntro.getjLabel1debeaparecertercero2(),
+                vistaIntro.getjLabel1debeaparecertercero(),
+                vistaIntro.getjLabel1debeaparecercuarto(),
+                vistaIntro.getjLabel1debeaparecercquinto1(),
+                vistaIntro.getjLabel1debeaparecercsexto1(),
+                vistaIntro.getjLabel1debeaparecercseptimo1(),
+                vistaIntro.getjLabel1debeaparecercsoctavo1(),
+                vistaIntro.getjLabel1debeaparecercsonoveno(),
+                vistaIntro.getjLabel1debeaparecercdecimo()
         };
-        Modelo_AnimacionTextoUnidad2 anim = new Modelo_AnimacionTextoUnidad2(labels);
-        anim.iniciarAnimacion();
+        new Modelo_AnimacionTextoUnidad2(labels).iniciarAnimacion();
     }
 
-    private void configurarDragAndDrop() {
-        List<Modelo_AnimalesUnidad2.Animal> silvestres = Modelo_AnimalesUnidad2.obtenerAnimalesAleatorios("silvestre", 3);
-        List<Modelo_AnimalesUnidad2.Animal> domesticos = Modelo_AnimalesUnidad2.obtenerAnimalesAleatorios("domestico", 3);
+    private void configurarActividad() {
+        List<Modelo_AnimalesUnidad2.Animal> animalesDom = Modelo_AnimalesUnidad2.obtenerTodosAnimalesPorTipo("domestico");
+        List<Modelo_AnimalesUnidad2.Animal> animalesSilv = Modelo_AnimalesUnidad2.obtenerTodosAnimalesPorTipo("silvestre");
 
-        JLabel[] labelsSilvestres = {
-            vistaActividad.getjLabel1AnimalesSilvestresaarrastar1(),
-            vistaActividad.getjLabel1AnimalesSilvestresaarrastar2(),
-            vistaActividad.getjLabel1AnimalesSilvestresaarrastar3()
-        };
-        JTextField[] camposSilvestres = {
-            vistaActividad.getjTextField1AnimalesSilvestresaarrastar1(),
-            vistaActividad.getjTextField1AnimalesSilvestresaarrastar2(),
-            vistaActividad.getjTextField1AnimalesSilvestresaarrastar3()
-        };
+        Collections.shuffle(animalesDom);
+        Collections.shuffle(animalesSilv);
 
-        JLabel[] labelsDomesticos = {
-            vistaActividad.getjLabel1Animalesdosmesticosimagearrastar1(),
-            vistaActividad.getjLabel1Animalesdosmesticosimagearrastar2(),
-            vistaActividad.getjLabel1Animalesdosmesticosimagearrastar3()
-        };
-        JTextField[] camposDomesticos = {
-            vistaActividad.getjTextField1Animalesdosmesticosimagearrastar1(),
-            vistaActividad.getjTextField1Animalesdosmesticosimagearrastar2(),
-            vistaActividad.getjTextField1Animalesdosmesticosimagearrastar3()
-        };
+        List<Modelo_AnimalesUnidad2.Animal> seleccionados = new ArrayList<>();
+        seleccionados.addAll(animalesDom.subList(0, Math.min(3, animalesDom.size())));
+        seleccionados.addAll(animalesSilv.subList(0, Math.min(3, animalesSilv.size())));
+        Collections.shuffle(seleccionados);
 
-        for (int i = 0; i < 3; i++) {
-            ImageIcon icon1 = new ImageIcon("src/Imagenes/ImagenesUnidad2/" + silvestres.get(i).rutaImagen);
-            labelsSilvestres[i].setIcon(icon1);
-            asignar(labelsSilvestres[i], camposSilvestres[i], silvestres.get(i).nombreEsp, silvestres.get(i).nombreKichwa);
+        // Labels
+        List<JLabel> labels = Arrays.asList(
+            vistaActividad.getjLabel1animalesdomesticosimagen1(),
+            vistaActividad.getjLabel1animalesdomesticosimagen3(),
+            vistaActividad.getjLabel1animalesdomesticosimagen7(),
+            vistaActividad.getjLabel1animalessilvestres2(),
+            vistaActividad.getjLabel1animalessilvestres4(),
+            vistaActividad.getjLabel1animalessilvestres6()
+        );
 
-            ImageIcon icon2 = new ImageIcon("src/Imagenes/ImagenesUnidad2/" + domesticos.get(i).rutaImagen);
-            labelsDomesticos[i].setIcon(icon2);
-            asignar(labelsDomesticos[i], camposDomesticos[i], domesticos.get(i).nombreEsp, domesticos.get(i).nombreKichwa);
-        }
+        // Botones funcionales
+        List<JButton> botones = Arrays.asList(
+            vistaActividad.getjButton1animaldomestico1(),
+            vistaActividad.getjButton1animaldomestico2(),
+            vistaActividad.getjButton1animaldomestico3(),
+            vistaActividad.getjButton1animaldomestico4(),
+            vistaActividad.getjButton1animaldomestico5(),
+            vistaActividad.getjButton1animaldomestico6()
+        );
 
-        for (JLabel label : asignacionesCorrectas.keySet()) {
-            posicionesIniciales.put(label, label.getLocation());
-            habilitarDrag(label);
-        }
-    }
+        // Desactivar botones sobrantes
+        vistaActividad.getjButton1animaldomestico7().setEnabled(false);
+        vistaActividad.getjButton1animalessilvestres1().setEnabled(false);
+        vistaActividad.getjButton1animalessilvestres2().setEnabled(false);
+        vistaActividad.getjButton1animalessilvestres3().setEnabled(false);
 
-    private void asignar(JLabel label, JTextField campo, String esp, String kichwa) {
-        asignacionesCorrectas.put(label, campo);
-        nombresKichwa.put(label, kichwa);
-    }
+        for (int i = 0; i < 6; i++) {
+            Modelo_AnimalesUnidad2.Animal animal = seleccionados.get(i);
+            JLabel label = labels.get(i);
+            JButton boton = botones.get(i);
 
-    private void habilitarDrag(JLabel label) {
-        label.setTransferHandler(new TransferHandler("icon"));
-        label.addMouseListener(new MouseAdapter() {
-            public void mousePressed(MouseEvent e) {
-                JComponent comp = (JComponent) e.getSource();
-                TransferHandler handler = comp.getTransferHandler();
-                handler.exportAsDrag(comp, e, TransferHandler.COPY);
+            // Construir ruta de imagen
+            String rutaCompleta = RUTA_IMAGENES + animal.rutaImagen;
+            File archivo = new File(rutaCompleta);
+            
+            ImageIcon icon;
+            if (archivo.exists()) {
+                icon = new ImageIcon(rutaCompleta);
+            } else {
+                // Usar imagen por defecto si no se encuentra
+                String rutaDefault = RUTA_IMAGENES + IMAGEN_DEFAULT;
+                System.err.println("⚠️ Imagen no encontrada: " + rutaCompleta);
+                System.err.println("   Usando imagen por defecto: " + rutaDefault);
+                icon = new ImageIcon(rutaDefault);
             }
-        });
-    }
+            
+            // Escalar imagen
+            Image img = icon.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
+            label.setIcon(new ImageIcon(img));
+            label.setText("");
 
-    private void mostrarNombreTemporal(JLabel label, String nombre) {
-        JLabel etiqueta = new JLabel(nombre);
-        etiqueta.setForeground(Color.BLUE);
-        etiqueta.setBounds(label.getX(), label.getY() - 20, 100, 20);
-        vistaActividad.add(etiqueta);
-        vistaActividad.repaint();
+            label.setName(animal.nombreEsp);
+            asignaciones.put(label, animal);
 
-        new Timer(2000, e -> {
-            vistaActividad.remove(etiqueta);
-            vistaActividad.repaint();
-        }).start();
+            boton.setText(animal.nombreKichwa);
+            boton.setEnabled(true);
+
+            boton.addActionListener(e -> botonSeleccionado = boton);
+
+            label.setBorder(BorderFactory.createEmptyBorder());
+            label.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    if (botonSeleccionado != null) {
+                        if (botonSeleccionado.getText().equalsIgnoreCase(animal.nombreKichwa)) {
+                            label.setBorder(BorderFactory.createLineBorder(Color.GREEN, 3));
+                        } else {
+                            label.setBorder(BorderFactory.createLineBorder(Color.RED, 3));
+                        }
+                        botonSeleccionado = null;
+                    }
+                }
+            });
+        }
     }
 
     private void verificarRespuestas() {
-        boolean todoCorrecto = true;
-        for (Map.Entry<JLabel, JTextField> entry : asignacionesCorrectas.entrySet()) {
-            JLabel label = entry.getKey();
-            JTextField destino = entry.getValue();
-            Point posicionCorrecta = destino.getLocation();
+        boolean correcto = true;
+        StringBuilder traducciones = new StringBuilder("✔ Traducciones:\n");
 
-            if (label.getX() >= posicionCorrecta.getX() - 10 && label.getX() <= posicionCorrecta.getX() + 10 &&
-                label.getY() >= posicionCorrecta.getY() - 10 && label.getY() <= posicionCorrecta.getY() + 10) {
-                destino.setBackground(Color.GREEN);
-            } else {
-                destino.setBackground(Color.RED);
-                label.setLocation(posicionesIniciales.get(label));
-                todoCorrecto = false;
+        for (Map.Entry<JLabel, Modelo_AnimalesUnidad2.Animal> entry : asignaciones.entrySet()) {
+            JLabel label = entry.getKey();
+            Modelo_AnimalesUnidad2.Animal animal = entry.getValue();
+
+            Border borde = label.getBorder();
+            if (borde == null || 
+                !(borde instanceof javax.swing.border.LineBorder) || 
+                !((javax.swing.border.LineBorder) borde).getLineColor().equals(Color.GREEN)) {
+                correcto = false;
             }
+
+            traducciones.append("✔ ")
+                       .append(animal.nombreEsp)
+                       .append(" = ")
+                       .append(animal.nombreKichwa)
+                       .append("\n");
         }
 
-        if (todoCorrecto) {
-            StringBuilder mensaje = new StringBuilder("\u00a1Excelente! Todos los animales est\u00e1n bien clasificados.\n\n");
-            for (Map.Entry<JLabel, String> entry : nombresKichwa.entrySet()) {
-                mensaje.append("\u2714 ").append(entry.getKey().getName()).append(" = ").append(entry.getValue()).append("\n");
-            }
-            JOptionPane.showMessageDialog(dashboard, mensaje.toString());
+        if (correcto) {
+            JOptionPane.showMessageDialog(dashboard, traducciones.toString());
             vistaActividad.getjButton1CONTINUAR().setEnabled(true);
-            Modelo_ProgresoUnidad2.guardarProgreso(dashboard.getCorreoUsuario(), 25);
         } else {
-            JOptionPane.showMessageDialog(dashboard, "Algunos animales no est\u00e1n bien colocados. Int\u00e9ntalo de nuevo.");
+            JOptionPane.showMessageDialog(dashboard, 
+                "❌ Algunos animales están incorrectos. Intenta de nuevo.\n" +
+                traducciones.toString());
         }
     }
 }

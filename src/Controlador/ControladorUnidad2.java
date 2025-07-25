@@ -1,7 +1,12 @@
 package Controlador;
 
 import Modelo.Modelo_AnimacionEntradaUnidad2;
+import Modelo.Modelo_ProgresoUnidad2;
+import Vista.Vista_EvaluacionU2;
+import Vista.Estudiante.Vista_PanelUnidades;
+import javax.swing.*;
 import Vista.Estudiante.Dashboard;
+import Vista.Estudiante.Vista_PanelUnidades;
 import Vista.Vista_ActividadMorfemasUnidad2;
 import Vista.Vista_InicioNumerosUnidad2;
 import Vista.Vista_InicioOperacionesUnidad2;
@@ -17,33 +22,36 @@ public class ControladorUnidad2 {
     private boolean operacionesCompletado = false;
     private boolean morfemasCompletado = false;
     private boolean animalesCompletado = false;
-    private boolean evaluacionCompletada = false;
+    private boolean evaluacionCompletada = true; // ← Para pruebas, marcar como true
     private final Dashboard dashboard;
 
-
     public ControladorUnidad2(Vista_Unidad2 vista, Dashboard dashboard) {
-    this.vista = vista;
-    this.dashboard = dashboard;
-    inicializar();
-}
+        this.vista = vista;
+        this.dashboard = dashboard;
+        inicializar();
+        cargarProgreso();
+        configurarEventos();
+    }
 
     private void inicializar() {
         desactivarBotonesIniciales();
         agregarEventos();
     }
-        public void desbloquearBotonOperaciones() {
-vista.getjButtonOperaciones().setEnabled(true);
-vista.getjButtonOperaciones().addActionListener(e -> {
-    Vista_InicioOperacionesUnidad2 panel = new Vista_InicioOperacionesUnidad2();
-    dashboard.mostrarVista(panel);
-});}
+
+    public void desbloquearBotonOperaciones() {
+        vista.getjButtonOperaciones().setEnabled(true);
+        vista.getjButtonOperaciones().addActionListener(e -> {
+            Vista_InicioOperacionesUnidad2 panel = new Vista_InicioOperacionesUnidad2();
+            dashboard.mostrarVista(panel);
+        });
+    }
 
     private void desactivarBotonesIniciales() {
         vista.getjButtonOperaciones().setEnabled(false);
         vista.getjButtonMorfemas().setEnabled(false);
         vista.getjButtonAnimales().setEnabled(false);
-        vista.getjButtonEvaluacion().setEnabled(false);
-        vista.getjButtonFINALIZARUNIDAD1().setEnabled(false);
+        vista.getjButtonEvaluacion().setEnabled(true); // ← FORZAMOS QUE SIEMPRE ESTÉ ACTIVO
+        vista.getjButtonFINALIZARUNIDAD1().setEnabled(true);
     }
 
     private void agregarEventos() {
@@ -54,84 +62,52 @@ vista.getjButtonOperaciones().addActionListener(e -> {
                 vista.getjButtonOperaciones().setEnabled(true);
             }
         });
-        vista.getjButtonNumeros().addActionListener(new ActionListener() {
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        Vista_InicioNumerosUnidad2 panelNumeros = new Vista_InicioNumerosUnidad2();
-        new Controlador_InicioNumerosU2(panelNumeros, dashboard);
-        dashboard.mostrarVista(panelNumeros); // ← ¡ya no dará error!
-    }
-});
+        vista.getjButtonNumeros().addActionListener(e -> {
+            Vista_InicioNumerosUnidad2 panelNumeros = new Vista_InicioNumerosUnidad2();
+            new Controlador_InicioNumerosU2(panelNumeros, dashboard);
+            dashboard.mostrarVista(panelNumeros);
+        });
 
-        
         vista.getjButtonOperaciones().addActionListener(e -> {
-    Vista_InicioOperacionesUnidad2 panel = new Vista_InicioOperacionesUnidad2();
-    new Controlador_InicioOperacionesU2(panel, dashboard);
-
-    // Aplica animación de entrada
-    Modelo_AnimacionEntradaUnidad2 anim = new Modelo_AnimacionEntradaUnidad2(panel);
-    anim.mostrarConAnimacion();
-
-    dashboard.mostrarVista(panel);
-});
-
+            Vista_InicioOperacionesUnidad2 panel = new Vista_InicioOperacionesUnidad2();
+            new Controlador_InicioOperacionesU2(panel, dashboard);
+            Modelo_AnimacionEntradaUnidad2 anim = new Modelo_AnimacionEntradaUnidad2(panel);
+            anim.mostrarConAnimacion();
+            dashboard.mostrarVista(panel);
+        });
 
         vista.getjButtonMorfemas().addActionListener(e -> {
-Vista_ActividadMorfemasUnidad2 panel = new Vista_ActividadMorfemasUnidad2();
-new Controlador_ActividadMorfemasU2(panel, dashboard);
-dashboard.mostrarVista(panel);
-});
+            Vista_ActividadMorfemasUnidad2 panel = new Vista_ActividadMorfemasUnidad2();
+            new Controlador_ActividadMorfemasU2(panel, dashboard);
+            dashboard.mostrarVista(panel);
+        });
 
-        vista.getjButtonAnimales().addActionListener(new ActionListener() {
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (morfemasCompletado) {
-            new Controlador_ActividadAnimalesdelaSierraUnidad2(dashboard);
-        } else {
-            JOptionPane.showMessageDialog(vista, "Debes completar primero la actividad de Morfemas.");
-        }
-    }
-});
+        vista.getjButtonAnimales().addActionListener(e -> {
+            boolean esDomestico = true;
+            new Controlador_ActividadAnimalesdelaSierraUnidad2(dashboard, esDomestico);
+        });
 
-        
+        vista.getjButtonEvaluacion().addActionListener(e -> {
+            Vista_EvaluacionU2 vistaEvaluacion = new Vista_EvaluacionU2();
+            new Controlador_EvaluacionU2(vistaEvaluacion, dashboard);
+            dashboard.mostrarVista(vistaEvaluacion);
+        });
 
-        vista.getjButtonEvaluacion().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (animalesCompletado) {
-                    evaluacionCompletada = true;
-                    vista.getjButtonFINALIZARUNIDAD1().setEnabled(true);
-                    JOptionPane.showMessageDialog(vista, "¡Evaluación aprobada!");
-                }
+        vista.getjButtonFINALIZARUNIDAD1().addActionListener(e -> {
+            if (evaluacionCompletada) {
+                JOptionPane.showMessageDialog(vista, "🎉 ¡Has cumplido con mucho esfuerzo la Unidad 2!\n🚀 Ahora continúa tu transcurso en la Unidad 3.");
+                Vista_PanelUnidades panelUnidades = new Vista_PanelUnidades();
+                dashboard.mostrarVista(panelUnidades);
+            } else {
+                JOptionPane.showMessageDialog(vista, "⚠️ Debes completar la evaluación para finalizar la unidad.");
             }
         });
 
-        vista.getjButtonFINALIZARUNIDAD1().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (evaluacionCompletada) {
-                    JOptionPane.showMessageDialog(vista, "¡Unidad 2 completada!");
-                    // Aquí podrías desbloquear Unidad 3 desde el controlador de unidades
-                }
-            }
+        vista.getjButtonBack().addActionListener(e -> {
+            JOptionPane.showMessageDialog(vista, "Volviendo al panel de unidades...");
         });
 
-        vista.getjButtonBack().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Si tienes referencia al dashboard, podrías volver al panel de unidades
-                JOptionPane.showMessageDialog(vista, "Volviendo al panel de unidades...");
-            }
-        });
-
-        vista.getjButtonREINICIARU1().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                reiniciarUnidad();
-            }
-        });
-
-
+        vista.getjButtonREINICIARU1().addActionListener(e -> reiniciarUnidad());
     }
 
     private void reiniciarUnidad() {
@@ -145,37 +121,94 @@ dashboard.mostrarVista(panel);
         vista.getjButtonOperaciones().setEnabled(false);
         vista.getjButtonMorfemas().setEnabled(false);
         vista.getjButtonAnimales().setEnabled(false);
-        vista.getjButtonEvaluacion().setEnabled(false);
+        vista.getjButtonEvaluacion().setEnabled(true);
         vista.getjButtonFINALIZARUNIDAD1().setEnabled(false);
 
         JOptionPane.showMessageDialog(vista, "Unidad 2 reiniciada.");
     }
-    private void reproducirAudioTexto(String texto) {
-    try {
-        System.setProperty("freetts.voices", 
-            "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
 
-        com.sun.speech.freetts.VoiceManager voiceManager = com.sun.speech.freetts.VoiceManager.getInstance();
-        com.sun.speech.freetts.Voice voice = voiceManager.getVoice("kevin16");
-
-        if (voice != null) {
-            voice.allocate();
-            voice.speak(texto);
-            voice.deallocate();
-        } else {
-            System.err.println("⚠️ Voz 'kevin16' no encontrada. Verifica que FreeTTS esté en el classpath.");
-        }
-
-    } catch (Exception e) {
-        e.printStackTrace();
+    private void cargarProgreso() {
+        int progreso = Modelo_ProgresoUnidad2.obtenerProgreso(dashboard.getCorreoUsuario());
+        vista.actualizarProgreso(progreso);
     }
-}
-public void marcarOperacionesComoCompletadas() {
-this.operacionesCompletado = true;
 
-vista.getjButtonOperaciones().setEnabled(true);
-vista.getjButtonMorfemas().setEnabled(true);
-JOptionPane.showMessageDialog(vista, "✔️ ¡Actividad de operaciones completada!\nAvanzaste un 15%.");
-}
+     private void configurarEventos() {
+        // ControladorUnidad2.java
+vista.getjButtonBack().addActionListener((ActionEvent e) -> {
+    dashboard.mostrarVista(new Vista_PanelUnidades()); // Corregido aquí
+});
 
-}
+        vista.getjButtonNumeros().addActionListener((ActionEvent e) -> {
+            Vista_InicioNumerosUnidad2 panel = new Vista_InicioNumerosUnidad2();
+            new Controlador_InicioNumerosU2(panel, dashboard);
+            dashboard.mostrarVista(panel);
+        });
+
+        vista.getjButtonOperaciones().addActionListener((ActionEvent e) -> {
+            Vista_InicioOperacionesUnidad2 panel = new Vista_InicioOperacionesUnidad2();
+            new Controlador_InicioOperacionesU2(panel, dashboard);
+            dashboard.mostrarVista(panel);
+        });
+
+        vista.getjButtonAnimales().addActionListener((ActionEvent e) -> {
+            // Controlador maneja sus propias vistas
+            new Controlador_ActividadAnimalesdelaSierraUnidad2(dashboard, true);
+        });
+
+        vista.getjButtonMorfemas().addActionListener((ActionEvent e) -> {
+            Vista_ActividadMorfemasUnidad2 panel = new Vista_ActividadMorfemasUnidad2();
+            new Controlador_ActividadMorfemasU2(panel, dashboard);
+            dashboard.mostrarVista(panel);
+        });
+
+        vista.getjButtonEvaluacion().addActionListener((ActionEvent e) -> {
+            Vista_EvaluacionU2 panel = new Vista_EvaluacionU2();
+            new Controlador_EvaluacionU2(panel, dashboard);
+            dashboard.mostrarVista(panel);
+        });
+
+        vista.getjButtonFINALIZARUNIDAD1().addActionListener(e -> {
+            int progreso = Modelo_ProgresoUnidad2.obtenerProgreso(dashboard.getCorreoUsuario());
+            if (progreso >= 100) {
+                JOptionPane.showMessageDialog(vista, "🎉 ¡Felicidades! Completaste la Unidad 2");
+                dashboard.mostrarVista(new Vista_PanelUnidades());
+            } else {
+                JOptionPane.showMessageDialog(vista, "⚠️ Completa todas las actividades primero");
+            }
+        });
+    }
+    
+    public void actualizarProgreso() {
+        cargarProgreso();
+    }
+
+    public void marcarOperacionesComoCompletadas() {
+        // Actualizar estado en la vista
+        vista.getjButtonOperaciones().setEnabled(true);
+        
+        // Actualizar base de datos (55% de progreso)
+        Modelo_ProgresoUnidad2.actualizarProgreso(
+            dashboard.getCorreoUsuario(), 
+            55
+        );
+        
+        // Actualizar barra de progreso
+        cargarProgreso();
+    }
+    
+
+    public void marcarMorfemasComoCompletadas() {
+        this.morfemasCompletado = true;
+        vista.getjButtonMorfemas().setEnabled(true);
+        vista.getjButtonAnimales().setEnabled(true);
+        JOptionPane.showMessageDialog(vista, "✔️ ¡Actividad de morfemas completada!\nAvanzaste un 30%.");
+    }
+
+    public void marcarAnimalesComoCompletados() {
+        this.animalesCompletado = true;
+        vista.getjButtonAnimales().setEnabled(true);
+        vista.getjButtonEvaluacion().setEnabled(true);
+        JOptionPane.showMessageDialog(vista, "✔️ ¡Actividad de animales completada!\nAvanzaste un 40%.");
+    }
+    
+} 

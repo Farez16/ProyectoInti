@@ -4,6 +4,11 @@
  */
 package Vista;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Jhony Espinoza
@@ -14,8 +19,252 @@ public class Vista_EvaluacionU2 extends javax.swing.JPanel {
      * Creates new form Vista_Actividad1U1
      */
     public Vista_EvaluacionU2() {
-        initComponents();
+    initComponents();
+    this.setSize(930, 560); // ← Asegura tamaño visible
+    this.setVisible(true);  // ← Por si el JPanel está invisible
+}
+
+
+    public JLabel getMostrarImagendeunAnimal() {
+        return MostrarImagendeunAnimal;
     }
+
+    public JButton getjButton1() {
+        return jButton1;
+    }
+
+    public JButton getjButton1ComprobaryFinalizarUnidad() {
+        return jButton1ComprobaryFinalizarUnidad;
+    }
+
+    public JLabel getjLabel1Pregunta1Generada1() {
+        return jLabel1Pregunta1Generada1;
+    }
+
+    public JLabel getjLabel1Pregunta2Generada1() {
+        return jLabel1Pregunta2Generada1;
+    }
+
+    public JLabel getjLabel1Pregunta3GeneradaEleijalaopcioncorrecta() {
+        return jLabel1Pregunta3GeneradaEleijalaopcioncorrecta;
+    }
+
+    public JLabel getjLabel1Pregunta4GeneradaCompletelafrase() {
+        return jLabel1Pregunta4GeneradaCompletelafrase;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public JLabel getjLabel2TextoMorfemas1() {
+        return jLabel2TextoMorfemas1;
+    }
+
+    public JLabel getjLabel2TextoMorfemas4() {
+        return jLabel2TextoMorfemas4;
+    }
+
+    public JLabel getjLabel2TextoMorfemas5() {
+        return jLabel2TextoMorfemas5;
+    }
+
+    public JLabel getjLabel2debeaparecer3() {
+        return jLabel2debeaparecer3;
+    }
+
+    public JLabel getjLabel2debeaparecer4() {
+        return jLabel2debeaparecer4;
+    }
+
+    public JRadioButton getjRadioButton2() {
+        return jRadioButton2;
+    }
+
+    public JRadioButton getjRadioButton3() {
+        return jRadioButton3;
+    }
+
+    public JRadioButton getjRadioButton4() {
+        return jRadioButton4;
+    }
+
+    public JRadioButton getjRadioButton5() {
+        return jRadioButton5;
+    }
+
+    public JRadioButton getjRadioButtonOpcion1() {
+        return jRadioButtonOpcion1;
+    }
+
+    public JRadioButton getjRadioButtonOpcion2() {
+        return jRadioButtonOpcion2;
+    }
+
+    public JRadioButton getjRadioButtonSeleccionelnombrecorrectodelanimalopcion1() {
+        return jRadioButtonSeleccionelnombrecorrectodelanimalopcion1;
+    }
+
+    public JRadioButton getjRadioButtonSeleccionelnombrecorrectodelanimalopcion2() {
+        return jRadioButtonSeleccionelnombrecorrectodelanimalopcion2;
+    }
+
+    public JRadioButton getjRadioButtonSeleccionelnombrecorrectodelanimalopcion3() {
+        return jRadioButtonSeleccionelnombrecorrectodelanimalopcion3;
+    }
+
+    public JTextField getjTextField1OPCCIONAARRASTRAR2() {
+        return jTextField1OPCCIONAARRASTRAR2;
+    }
+
+    public JTextField getjTextField1OPCCIONAARRASTRAR3() {
+        return jTextField1OPCCIONAARRASTRAR3;
+    }
+
+    public JTextField getjTextField1OPCCIONAARRASTRAR4() {
+        return jTextField1OPCCIONAARRASTRAR4;
+    }
+
+    public JTextField getjTextField1TextoMorfemas1() {
+        return jTextField1TextoMorfemas1;
+    }
+
+    public JTextField getjTextField1TextoMorfemas2() {
+        return jTextField1TextoMorfemas2;
+    }
+
+    public JTextField getjTextField1TextoMorfemas4() {
+        return jTextField1TextoMorfemas4;
+    }
+
+    public JTextField getjTextField1arrastraropcion2() {
+        return jTextField1arrastraropcion2;
+    }
+
+    public JTextField getjTextField1arrastraropcion3() {
+        return jTextField1arrastraropcion3;
+    }
+
+    public void setMostrarImagendeunAnimal(JLabel MostrarImagendeunAnimal) {
+        this.MostrarImagendeunAnimal = MostrarImagendeunAnimal;
+    }
+
+    public void setjButton1(JButton jButton1) {
+        this.jButton1 = jButton1;
+    }
+
+    public void setjButton1ComprobaryFinalizarUnidad(JButton jButton1ComprobaryFinalizarUnidad) {
+        this.jButton1ComprobaryFinalizarUnidad = jButton1ComprobaryFinalizarUnidad;
+    }
+
+    public void setjLabel1Pregunta1Generada1(JLabel jLabel1Pregunta1Generada1) {
+        this.jLabel1Pregunta1Generada1 = jLabel1Pregunta1Generada1;
+    }
+
+    public void setjLabel1Pregunta2Generada1(JLabel jLabel1Pregunta2Generada1) {
+        this.jLabel1Pregunta2Generada1 = jLabel1Pregunta2Generada1;
+    }
+
+    public void setjLabel1Pregunta3GeneradaEleijalaopcioncorrecta(JLabel jLabel1Pregunta3GeneradaEleijalaopcioncorrecta) {
+        this.jLabel1Pregunta3GeneradaEleijalaopcioncorrecta = jLabel1Pregunta3GeneradaEleijalaopcioncorrecta;
+    }
+
+    public void setjLabel1Pregunta4GeneradaCompletelafrase(JLabel jLabel1Pregunta4GeneradaCompletelafrase) {
+        this.jLabel1Pregunta4GeneradaCompletelafrase = jLabel1Pregunta4GeneradaCompletelafrase;
+    }
+
+    public void setjLabel2(JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    public void setjLabel2TextoMorfemas1(JLabel jLabel2TextoMorfemas1) {
+        this.jLabel2TextoMorfemas1 = jLabel2TextoMorfemas1;
+    }
+
+    public void setjLabel2TextoMorfemas4(JLabel jLabel2TextoMorfemas4) {
+        this.jLabel2TextoMorfemas4 = jLabel2TextoMorfemas4;
+    }
+
+    public void setjLabel2TextoMorfemas5(JLabel jLabel2TextoMorfemas5) {
+        this.jLabel2TextoMorfemas5 = jLabel2TextoMorfemas5;
+    }
+
+    public void setjLabel2debeaparecer3(JLabel jLabel2debeaparecer3) {
+        this.jLabel2debeaparecer3 = jLabel2debeaparecer3;
+    }
+
+    public void setjLabel2debeaparecer4(JLabel jLabel2debeaparecer4) {
+        this.jLabel2debeaparecer4 = jLabel2debeaparecer4;
+    }
+
+    public void setjRadioButton2(JRadioButton jRadioButton2) {
+        this.jRadioButton2 = jRadioButton2;
+    }
+
+    public void setjRadioButton3(JRadioButton jRadioButton3) {
+        this.jRadioButton3 = jRadioButton3;
+    }
+
+    public void setjRadioButton4(JRadioButton jRadioButton4) {
+        this.jRadioButton4 = jRadioButton4;
+    }
+
+    public void setjRadioButton5(JRadioButton jRadioButton5) {
+        this.jRadioButton5 = jRadioButton5;
+    }
+
+    public void setjRadioButtonOpcion1(JRadioButton jRadioButtonOpcion1) {
+        this.jRadioButtonOpcion1 = jRadioButtonOpcion1;
+    }
+
+    public void setjRadioButtonOpcion2(JRadioButton jRadioButtonOpcion2) {
+        this.jRadioButtonOpcion2 = jRadioButtonOpcion2;
+    }
+
+    public void setjRadioButtonSeleccionelnombrecorrectodelanimalopcion1(JRadioButton jRadioButtonSeleccionelnombrecorrectodelanimalopcion1) {
+        this.jRadioButtonSeleccionelnombrecorrectodelanimalopcion1 = jRadioButtonSeleccionelnombrecorrectodelanimalopcion1;
+    }
+
+    public void setjRadioButtonSeleccionelnombrecorrectodelanimalopcion2(JRadioButton jRadioButtonSeleccionelnombrecorrectodelanimalopcion2) {
+        this.jRadioButtonSeleccionelnombrecorrectodelanimalopcion2 = jRadioButtonSeleccionelnombrecorrectodelanimalopcion2;
+    }
+
+    public void setjRadioButtonSeleccionelnombrecorrectodelanimalopcion3(JRadioButton jRadioButtonSeleccionelnombrecorrectodelanimalopcion3) {
+        this.jRadioButtonSeleccionelnombrecorrectodelanimalopcion3 = jRadioButtonSeleccionelnombrecorrectodelanimalopcion3;
+    }
+
+    public void setjTextField1OPCCIONAARRASTRAR2(JTextField jTextField1OPCCIONAARRASTRAR2) {
+        this.jTextField1OPCCIONAARRASTRAR2 = jTextField1OPCCIONAARRASTRAR2;
+    }
+
+    public void setjTextField1OPCCIONAARRASTRAR3(JTextField jTextField1OPCCIONAARRASTRAR3) {
+        this.jTextField1OPCCIONAARRASTRAR3 = jTextField1OPCCIONAARRASTRAR3;
+    }
+
+    public void setjTextField1OPCCIONAARRASTRAR4(JTextField jTextField1OPCCIONAARRASTRAR4) {
+        this.jTextField1OPCCIONAARRASTRAR4 = jTextField1OPCCIONAARRASTRAR4;
+    }
+
+    public void setjTextField1TextoMorfemas1(JTextField jTextField1TextoMorfemas1) {
+        this.jTextField1TextoMorfemas1 = jTextField1TextoMorfemas1;
+    }
+
+    public void setjTextField1TextoMorfemas2(JTextField jTextField1TextoMorfemas2) {
+        this.jTextField1TextoMorfemas2 = jTextField1TextoMorfemas2;
+    }
+
+    public void setjTextField1TextoMorfemas4(JTextField jTextField1TextoMorfemas4) {
+        this.jTextField1TextoMorfemas4 = jTextField1TextoMorfemas4;
+    }
+
+    public void setjTextField1arrastraropcion2(JTextField jTextField1arrastraropcion2) {
+        this.jTextField1arrastraropcion2 = jTextField1arrastraropcion2;
+    }
+
+    public void setjTextField1arrastraropcion3(JTextField jTextField1arrastraropcion3) {
+        this.jTextField1arrastraropcion3 = jTextField1arrastraropcion3;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,24 +279,16 @@ public class Vista_EvaluacionU2 extends javax.swing.JPanel {
         jLabel2debeaparecer3 = new javax.swing.JLabel();
         jLabel2debeaparecer4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jLabel1Pregunta1 = new javax.swing.JLabel();
         jRadioButtonSeleccionelnombrecorrectodelanimalopcion1 = new javax.swing.JRadioButton();
         jRadioButtonOpcion1 = new javax.swing.JRadioButton();
         jRadioButtonOpcion2 = new javax.swing.JRadioButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jLabel1SegundaPregunta = new javax.swing.JLabel();
         jRadioButton2 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
         jRadioButton4 = new javax.swing.JRadioButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jLabel1Pregunta3darunaimagendeunanimalalzar = new javax.swing.JLabel();
         MostrarImagendeunAnimal = new javax.swing.JLabel();
         jRadioButton5 = new javax.swing.JRadioButton();
         jRadioButtonSeleccionelnombrecorrectodelanimalopcion2 = new javax.swing.JRadioButton();
         jRadioButtonSeleccionelnombrecorrectodelanimalopcion3 = new javax.swing.JRadioButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        Pregunta4Completarlafrase = new javax.swing.JLabel();
         jLabel2TextoMorfemas1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTextField1TextoMorfemas1 = new javax.swing.JTextField();
@@ -60,6 +301,10 @@ public class Vista_EvaluacionU2 extends javax.swing.JPanel {
         jTextField1OPCCIONAARRASTRAR2 = new javax.swing.JTextField();
         jTextField1OPCCIONAARRASTRAR3 = new javax.swing.JTextField();
         jTextField1OPCCIONAARRASTRAR4 = new javax.swing.JTextField();
+        jLabel1Pregunta4GeneradaCompletelafrase = new javax.swing.JLabel();
+        jLabel1Pregunta1Generada1 = new javax.swing.JLabel();
+        jLabel1Pregunta2Generada1 = new javax.swing.JLabel();
+        jLabel1Pregunta3GeneradaEleijalaopcioncorrecta = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(1190, 660));
@@ -80,10 +325,6 @@ public class Vista_EvaluacionU2 extends javax.swing.JPanel {
         jButton1.setText("Regresar");
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 620, -1, -1));
 
-        jScrollPane1.setViewportView(jLabel1Pregunta1);
-
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, 370, 20));
-
         jRadioButtonSeleccionelnombrecorrectodelanimalopcion1.setText("jRadioButton1");
         add(jRadioButtonSeleccionelnombrecorrectodelanimalopcion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 350, -1, -1));
 
@@ -93,10 +334,6 @@ public class Vista_EvaluacionU2 extends javax.swing.JPanel {
         jRadioButtonOpcion2.setText("jRadioButton1");
         add(jRadioButtonOpcion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 130, -1, -1));
 
-        jScrollPane2.setViewportView(jLabel1SegundaPregunta);
-
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, 370, 20));
-
         jRadioButton2.setText("jRadioButton1");
         add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 130, -1, -1));
 
@@ -105,10 +342,6 @@ public class Vista_EvaluacionU2 extends javax.swing.JPanel {
 
         jRadioButton4.setText("jRadioButton1");
         add(jRadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 210, -1, -1));
-
-        jScrollPane3.setViewportView(jLabel1Pregunta3darunaimagendeunanimalalzar);
-
-        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 250, 370, 20));
 
         MostrarImagendeunAnimal.setText("jLabel1");
         add(MostrarImagendeunAnimal, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, 110, 90));
@@ -121,10 +354,6 @@ public class Vista_EvaluacionU2 extends javax.swing.JPanel {
 
         jRadioButtonSeleccionelnombrecorrectodelanimalopcion3.setText("jRadioButton1");
         add(jRadioButtonSeleccionelnombrecorrectodelanimalopcion3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 320, -1, -1));
-
-        jScrollPane4.setViewportView(Pregunta4Completarlafrase);
-
-        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 390, 380, 20));
 
         jLabel2TextoMorfemas1.setText("-----------------------");
         add(jLabel2TextoMorfemas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 450, 120, -1));
@@ -151,17 +380,29 @@ public class Vista_EvaluacionU2 extends javax.swing.JPanel {
         add(jTextField1OPCCIONAARRASTRAR2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 480, 90, -1));
         add(jTextField1OPCCIONAARRASTRAR3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 480, 90, -1));
         add(jTextField1OPCCIONAARRASTRAR4, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 480, 90, -1));
+
+        jLabel1Pregunta4GeneradaCompletelafrase.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        add(jLabel1Pregunta4GeneradaCompletelafrase, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 400, 460, 20));
+
+        jLabel1Pregunta1Generada1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        add(jLabel1Pregunta1Generada1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, 460, 20));
+
+        jLabel1Pregunta2Generada1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        add(jLabel1Pregunta2Generada1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 460, 20));
+
+        jLabel1Pregunta3GeneradaEleijalaopcioncorrecta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        add(jLabel1Pregunta3GeneradaEleijalaopcioncorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 460, 20));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel MostrarImagendeunAnimal;
-    private javax.swing.JLabel Pregunta4Completarlafrase;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton1ComprobaryFinalizarUnidad;
-    private javax.swing.JLabel jLabel1Pregunta1;
-    private javax.swing.JLabel jLabel1Pregunta3darunaimagendeunanimalalzar;
-    private javax.swing.JLabel jLabel1SegundaPregunta;
+    private javax.swing.JLabel jLabel1Pregunta1Generada1;
+    private javax.swing.JLabel jLabel1Pregunta2Generada1;
+    private javax.swing.JLabel jLabel1Pregunta3GeneradaEleijalaopcioncorrecta;
+    private javax.swing.JLabel jLabel1Pregunta4GeneradaCompletelafrase;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel2TextoMorfemas1;
     private javax.swing.JLabel jLabel2TextoMorfemas4;
@@ -177,10 +418,6 @@ public class Vista_EvaluacionU2 extends javax.swing.JPanel {
     private javax.swing.JRadioButton jRadioButtonSeleccionelnombrecorrectodelanimalopcion1;
     private javax.swing.JRadioButton jRadioButtonSeleccionelnombrecorrectodelanimalopcion2;
     private javax.swing.JRadioButton jRadioButtonSeleccionelnombrecorrectodelanimalopcion3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextField jTextField1OPCCIONAARRASTRAR2;
     private javax.swing.JTextField jTextField1OPCCIONAARRASTRAR3;
     private javax.swing.JTextField jTextField1OPCCIONAARRASTRAR4;

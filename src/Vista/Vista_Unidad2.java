@@ -62,8 +62,20 @@ public class Vista_Unidad2 extends javax.swing.JPanel {
     }
 
     public JProgressBar getjProgressBarUNIDAD1() {
-        return jProgressBarUNIDAD1;
+        return jProgressBarUNIDAD2;
     }
+    // Actualizar progreso al cargar la vista
+    public void actualizarProgreso(int porcentaje) {
+    jProgressBarUNIDAD2.setValue(porcentaje);
+    jProgressBarUNIDAD2.setString(porcentaje + "%");
+    
+    // Actualizar estado de botones
+    jButtonOperaciones.setEnabled(porcentaje >= 20);
+    jButtonAnimales.setEnabled(porcentaje >= 40);
+    jButtonMorfemas.setEnabled(porcentaje >= 60);
+    jButtonEvaluacion.setEnabled(porcentaje >= 80);
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -74,7 +86,7 @@ public class Vista_Unidad2 extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jProgressBarUNIDAD1 = new javax.swing.JProgressBar();
+        jProgressBarUNIDAD2 = new javax.swing.JProgressBar();
         jButtonFINALIZARUNIDAD1 = new javax.swing.JButton();
         jButtonNumeros = new javax.swing.JButton();
         jButtonOperaciones = new javax.swing.JButton();
@@ -91,12 +103,12 @@ public class Vista_Unidad2 extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1190, 660));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jProgressBarUNIDAD1.setBackground(new java.awt.Color(204, 204, 204));
-        jProgressBarUNIDAD1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jProgressBarUNIDAD1.setForeground(new java.awt.Color(0, 204, 204));
-        jProgressBarUNIDAD1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        jProgressBarUNIDAD1.setStringPainted(true);
-        add(jProgressBarUNIDAD1, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 10, 260, 30));
+        jProgressBarUNIDAD2.setBackground(new java.awt.Color(204, 204, 204));
+        jProgressBarUNIDAD2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jProgressBarUNIDAD2.setForeground(new java.awt.Color(0, 204, 204));
+        jProgressBarUNIDAD2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jProgressBarUNIDAD2.setStringPainted(true);
+        add(jProgressBarUNIDAD2, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 10, 260, 30));
 
         jButtonFINALIZARUNIDAD1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BtnFinalizarU1.png"))); // NOI18N
         add(jButtonFINALIZARUNIDAD1, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 600, 200, 40));
@@ -115,10 +127,10 @@ public class Vista_Unidad2 extends javax.swing.JPanel {
         add(jButtonOperaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, 120, 70));
 
         jButtonAnimales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PronombresU1.png"))); // NOI18N
-        add(jButtonAnimales, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 320, 120, 70));
+        add(jButtonAnimales, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 330, 120, 70));
 
         jButtonMorfemas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ActividadU1.png"))); // NOI18N
-        add(jButtonMorfemas, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 340, 120, 70));
+        add(jButtonMorfemas, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 320, 120, 70));
 
         jButtonEvaluacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ActividadU1.png"))); // NOI18N
         jButtonEvaluacion.addActionListener(new java.awt.event.ActionListener() {
@@ -166,6 +178,6 @@ public class Vista_Unidad2 extends javax.swing.JPanel {
     public javax.swing.JButton jButtonNumeros;
     public javax.swing.JButton jButtonOperaciones;
     public javax.swing.JButton jButtonREINICIARU1;
-    public javax.swing.JProgressBar jProgressBarUNIDAD1;
+    public javax.swing.JProgressBar jProgressBarUNIDAD2;
     // End of variables declaration//GEN-END:variables
 }
