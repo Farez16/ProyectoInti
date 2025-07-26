@@ -243,16 +243,41 @@ public class Controlador_Video {
     }
 
     private void configurarEventosReproductor() {
-        mediaPlayer.setOnReady(() -> mediaPlayer.play());
+        // Configurar evento de listo para reproducir
+        mediaPlayer.setOnReady(() -> {
+            System.out.println("Video listo - Duración: " + mediaPlayer.getTotalDuration().toSeconds() + " segundos");
+            mediaPlayer.play();
+        });
+        
+        // Configurar evento de fin de media
         mediaPlayer.setOnEndOfMedia(() -> {
+            System.out.println("Video completado - Ejecutando callback");
             if (onVideoCompletedCallback != null) {
                 SwingUtilities.invokeLater(onVideoCompletedCallback);
             }
         });
+        
+        // Configurar evento de error
         mediaPlayer.setOnError(() -> {
             String errorMsg = mediaPlayer.getError() != null ? 
                 mediaPlayer.getError().getMessage() : "Error desconocido";
+            System.err.println("Error en MediaPlayer: " + errorMsg);
             mostrarError("Error en video: " + errorMsg);
+        });
+        
+        // Configurar evento de pausa (para debugging)
+        mediaPlayer.setOnPaused(() -> {
+            System.out.println("Video pausado en: " + mediaPlayer.getCurrentTime().toSeconds() + " segundos");
+        });
+        
+        // Configurar evento de reproducción (para debugging)
+        mediaPlayer.setOnPlaying(() -> {
+            System.out.println("Video reproduciéndose - Tiempo actual: " + mediaPlayer.getCurrentTime().toSeconds() + " segundos");
+        });
+        
+        // Configurar evento de detención (para debugging)
+        mediaPlayer.setOnStopped(() -> {
+            System.out.println("Video detenido");
         });
     }
 
@@ -393,33 +418,82 @@ public class Controlador_Video {
      */
     public void detenerYLiberarRecursos() {
         if (isDisposed) {
+            System.out.println("Controlador ya fue liberado, saltando limpieza");
             return;
         }
         
+        System.out.println("Iniciando detención y liberación de recursos de video...");
+        
+        // Marcar como disposed inmediatamente para evitar operaciones concurrentes
+        isDisposed = true;
+        isLoadingVideo = false;
+        needsReload = false;
+        
         // Desregistrar del gestor global de videos
-        VideoManager.getInstance().desregistrarControlador(this);
+        try {
+            VideoManager.getInstance().desregistrarControlador(this);
+        } catch (Exception e) {
+            System.err.println("Error al desregistrar del VideoManager: " + e.getMessage());
+        }
         
         Platform.runLater(() -> {
             try {
                 if (mediaPlayer != null) {
-                    mediaPlayer.stop();
-                    mediaPlayer.setVolume(0.0);
-                    mediaPlayer.seek(Duration.ZERO);
-                    mediaPlayer.dispose();
-                    mediaPlayer = null;
+                    try {
+                        // Detener reproducción
+                        mediaPlayer.stop();
+                        System.out.println("MediaPlayer detenido");
+                        
+                        // Silenciar completamente
+                        mediaPlayer.setVolume(0.0);
+                        System.out.println("MediaPlayer silenciado");
+                        
+                        // Volver al inicio
+                        mediaPlayer.seek(Duration.ZERO);
+                        System.out.println("MediaPlayer posicionado al inicio");
+                        
+                        // Liberar recursos
+                        mediaPlayer.dispose();
+                        System.out.println("MediaPlayer liberado");
+                        
+                    } catch (Exception e) {
+                        System.err.println("Error al procesar MediaPlayer: " + e.getMessage());
+                    } finally {
+                        mediaPlayer = null;
+                    }
                 }
+                
                 if (mediaView != null) {
                     mediaView = null;
+                    System.out.println("MediaView liberado");
                 }
-                mostrarPlaceholder();
-                isDisposed = true;
+                
+                // Mostrar placeholder
+                try {
+                    mostrarPlaceholder();
+                    System.out.println("Placeholder mostrado");
+                } catch (Exception e) {
+                    System.err.println("Error al mostrar placeholder: " + e.getMessage());
+                }
+                
+                System.out.println("Recursos de video liberados completamente");
+                
             } catch (Exception e) {
-                System.err.println("Error al detener y liberar recursos: " + e.getMessage());
+                System.err.println("Error general al detener y liberar recursos: " + e.getMessage());
+                e.printStackTrace();
             }
         });
     }
     
-   
+    /**
+     * Configura el callback que se ejecutará cuando el video termine.
+     * 
+     * @param callback Runnable que se ejecutará al finalizar el video
+     */
+    public void setOnVideoCompleted(Runnable callback) {
+        this.onVideoCompletedCallback = callback;
+        System.out.println("Callback de video completado configurado");
+    }
 
     private void mostrarError(String mensaje) {
         SwingUtilities.invokeLater(() -> 
