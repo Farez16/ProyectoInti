@@ -60,6 +60,7 @@ public class Vista_Actividad1U1 extends javax.swing.JPanel {
         jPanelContenedor.setMinimumSize(new java.awt.Dimension(1190, 660));
         jPanelContenedor.setName(""); // NOI18N
         jPanelContenedor.setPreferredSize(new java.awt.Dimension(1190, 660));
+        jPanelContenedor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanelAPag1.setBackground(new java.awt.Color(255, 153, 102));
         jPanelAPag1.setFocusCycleRoot(true);
@@ -68,7 +69,8 @@ public class Vista_Actividad1U1 extends javax.swing.JPanel {
         jPanelAPag1.setPreferredSize(new java.awt.Dimension(1190, 660));
         jPanelAPag1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanelPregunta1.setBackground(new java.awt.Color(255, 204, 153));
+        jPanelPregunta1.setBackground(new java.awt.Color(204, 255, 204));
+        jPanelPregunta1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanelPregunta1.setAlignmentX(0.3F);
         jPanelPregunta1.setMaximumSize(new java.awt.Dimension(500, 200));
         jPanelPregunta1.setMinimumSize(new java.awt.Dimension(500, 200));
@@ -103,7 +105,7 @@ public class Vista_Actividad1U1 extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabelPregunta1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPregunta1Layout.createSequentialGroup()
-                .addContainerGap(137, Short.MAX_VALUE)
+                .addContainerGap(95, Short.MAX_VALUE)
                 .addGroup(jPanelPregunta1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jRadioButtonOpcion2P1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jRadioButtonOpcion1P1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -124,9 +126,10 @@ public class Vista_Actividad1U1 extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jPanelAPag1.add(jPanelPregunta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        jPanelAPag1.add(jPanelPregunta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 460, -1));
 
-        jPanelPregunta3.setBackground(new java.awt.Color(255, 204, 153));
+        jPanelPregunta3.setBackground(new java.awt.Color(204, 255, 204));
+        jPanelPregunta3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanelPregunta3.setAlignmentX(0.3F);
         jPanelPregunta3.setMaximumSize(new java.awt.Dimension(500, 200));
         jPanelPregunta3.setMinimumSize(new java.awt.Dimension(500, 200));
@@ -164,12 +167,12 @@ public class Vista_Actividad1U1 extends javax.swing.JPanel {
             jPanelPregunta3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabelPregunta3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanelPregunta3Layout.createSequentialGroup()
-                .addGap(168, 168, 168)
+                .addGap(120, 120, 120)
                 .addGroup(jPanelPregunta3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jRadioButtonOpcion2P3)
                     .addComponent(jRadioButtonOpcion1P3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jRadioButtonOpcion3P3, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(214, Short.MAX_VALUE))
+                .addContainerGap(260, Short.MAX_VALUE))
         );
         jPanelPregunta3Layout.setVerticalGroup(
             jPanelPregunta3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,12 +185,13 @@ public class Vista_Actividad1U1 extends javax.swing.JPanel {
                 .addComponent(jRadioButtonOpcion3P3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jRadioButtonOpcion2P3)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
-        jPanelAPag1.add(jPanelPregunta3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, -1, -1));
+        jPanelAPag1.add(jPanelPregunta3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, 450, -1));
 
-        jPanelPregunta2.setBackground(new java.awt.Color(255, 204, 153));
+        jPanelPregunta2.setBackground(new java.awt.Color(204, 255, 204));
+        jPanelPregunta2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanelPregunta2.setAlignmentX(0.3F);
         jPanelPregunta2.setMaximumSize(new java.awt.Dimension(500, 200));
         jPanelPregunta2.setMinimumSize(new java.awt.Dimension(500, 200));
@@ -223,7 +227,7 @@ public class Vista_Actividad1U1 extends javax.swing.JPanel {
                 .addComponent(jLabelPregunta2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPregunta2Layout.createSequentialGroup()
-                .addContainerGap(139, Short.MAX_VALUE)
+                .addContainerGap(87, Short.MAX_VALUE)
                 .addGroup(jPanelPregunta2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jRadioButtonOpcion2P2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jRadioButtonOpcion3P2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -241,12 +245,12 @@ public class Vista_Actividad1U1 extends javax.swing.JPanel {
                 .addComponent(jRadioButtonOpcion2P2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jRadioButtonOpcion3P2)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
-        jPanelAPag1.add(jPanelPregunta2, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 20, -1, -1));
+        jPanelAPag1.add(jPanelPregunta2, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 110, 450, -1));
 
-        jButtonCOMPLETOACTV1.setBackground(new java.awt.Color(0, 153, 153));
+        jButtonCOMPLETOACTV1.setBackground(new java.awt.Color(255, 153, 51));
         jButtonCOMPLETOACTV1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButtonCOMPLETOACTV1.setText("Terminar");
         jButtonCOMPLETOACTV1.addActionListener(new java.awt.event.ActionListener() {
@@ -254,23 +258,15 @@ public class Vista_Actividad1U1 extends javax.swing.JPanel {
                 jButtonCOMPLETOACTV1ActionPerformed(evt);
             }
         });
-        jPanelAPag1.add(jButtonCOMPLETOACTV1, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 550, 180, 40));
+        jPanelAPag1.add(jButtonCOMPLETOACTV1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 540, 150, 40));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoUnidad1.jpg"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad1/Fondo1U1.jpg"))); // NOI18N
         jLabel5.setText("jLabel5");
         jPanelAPag1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 660));
 
-        javax.swing.GroupLayout jPanelContenedorLayout = new javax.swing.GroupLayout(jPanelContenedor);
-        jPanelContenedor.setLayout(jPanelContenedorLayout);
-        jPanelContenedorLayout.setHorizontalGroup(
-            jPanelContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelAPag1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        jPanelContenedorLayout.setVerticalGroup(
-            jPanelContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelAPag1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        jPanelContenedor.add(jPanelAPag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("                               Responde las Preguntas Correctamente para pasar a la siguiente Actividad.");
         jLabel1.setToolTipText("    ");

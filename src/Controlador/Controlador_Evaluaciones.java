@@ -42,6 +42,35 @@ public class Controlador_Evaluaciones {
         this.idUnidad = idUnidad;
         this.controladorUnidades = controladorUnidades;
 
+        // Validar que el usuario puede acceder a la evaluación
+        int idUsuario = Usuario.obtenerIdPorCorreo(correo);
+        Modelo_Progreso_Usuario progreso = Modelo_Progreso_Usuario.obtenerProgreso(idUsuario, idUnidad);
+        
+        if (progreso == null || progreso.getLeccionesCompletadas() < 3 || progreso.getActividadesCompletadas() < 3) {
+            JOptionPane.showMessageDialog(vista, 
+                "<html><body style='width: 300px;'>" +
+                "<h3>Acceso Denegado</h3>" +
+                "<p>Para acceder a la evaluación debes completar:</p>" +
+                "<ul>" +
+                "<li>Las 3 lecciones de la unidad</li>" +
+                "<li>Las 3 actividades de la unidad</li>" +
+                "</ul>" +
+                "<p>Tu progreso actual:</p>" +
+                "<ul>" +
+                "<li>Lecciones: " + (progreso != null ? progreso.getLeccionesCompletadas() : 0) + "/3</li>" +
+                "<li>Actividades: " + (progreso != null ? progreso.getActividadesCompletadas() : 0) + "/3</li>" +
+                "</ul>" +
+                "</body></html>",
+                "Evaluación no disponible", 
+                JOptionPane.WARNING_MESSAGE);
+            
+            // Regresar a la unidad
+            SwingUtilities.invokeLater(() -> {
+                irAUnidades();
+            });
+            return;
+        }
+
         this.preguntas = Modelo_Evaluaciones.obtenerPreguntasPorUnidad(conn, idUnidad);
         this.indicePreguntaActual = 0;
         this.respuestasCorrectas = 0;

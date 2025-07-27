@@ -328,26 +328,55 @@ public class Controlador_Unidades {
         try {
             System.out.println("=== DEBUG: Iniciando abrirUnidad1() ===");
 
+            // 1. Crear la vista de la unidad 1
             Vista_Unidad1 unidad1 = new Vista_Unidad1();
             System.out.println("Vista_Unidad1 creada: " + (unidad1 != null));
 
+            // 2. Obtener la conexión a la base de datos
             Connection conn = (Connection) controladorDashboard.getConnection();
             System.out.println("Connection obtenida: " + (conn != null));
-            System.out.println("ControladorDashboard: " + (controladorDashboard != null));
-            System.out.println("Correo: " + correo);
-            System.out.println("Controlador_Unidades (this): " + (this != null));
-
-            // Pasamos "this" para que Controlador_Unidad1 tenga referencia a este controlador
-            Controlador_Unidad1 controlador = new Controlador_Unidad1(unidad1, conn,
-                    controladorDashboard, correo, this);
-            System.out.println("Controlador_Unidad1 creado: " + (controlador != null));
-
+            
+            // 3. Validar referencias
+            if (controladorDashboard == null) {
+                throw new IllegalStateException("ControladorDashboard no puede ser nulo");
+            }
+            
+            if (dashboard == null) {
+                throw new IllegalStateException("Dashboard no puede ser nulo");
+            }
+            
+            // 4. Configurar la vista en el dashboard ANTES de crear el controlador
             dashboard.mostrarVista(unidad1);
+            
+            // 5. Forzar la actualización de la interfaz
+            unidad1.revalidate();
+            unidad1.repaint();
+            
+            // 6. Crear el controlador (esto inicializará la vista)
+            Controlador_Unidad1 controlador = new Controlador_Unidad1(
+                unidad1, 
+                conn,
+                controladorDashboard, 
+                correo, 
+                this
+            );
+            
+            System.out.println("Controlador_Unidad1 creado: " + (controlador != null));
             System.out.println("=== DEBUG: abrirUnidad1() completado ===");
+            
         } catch (Exception e) {
             System.err.println("Error al abrir unidad 1: " + e.getMessage());
-            e.printStackTrace(); // Para ver el stack trace completo
+            e.printStackTrace();
             mostrarError("Error al abrir la unidad 1. Por favor, intenta de nuevo.");
+            
+            // Intentar regresar al dashboard en caso de error
+            try {
+                if (dashboard != null) {
+                    dashboard.mostrarVista(dashboard);
+                }
+            } catch (Exception ex) {
+                System.err.println("Error al regresar al dashboard: " + ex.getMessage());
+            }
         }
     }
     // In Controlador_Unidades.java

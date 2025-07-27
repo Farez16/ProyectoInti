@@ -1,11 +1,17 @@
 package Controlador;
 
-import Modelo.*;
+import Modelo.Modelo_Actividades;
+import Modelo.Modelo_DragDrop;
+import Modelo.Modelo_Emparejar;
+import Modelo.Modelo_Progreso_Usuario;
+import Modelo.Usuario;
 import Vista.Vistas_Unidad1.Vista_Actividad2U1;
 import Vista.Vistas_Unidad1.Vista_Unidad1;
 import java.awt.CardLayout;
 import java.sql.Connection;
 import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 import javax.swing.SwingUtilities;
@@ -79,7 +85,9 @@ public class Controlador_Actividades {
         this.correo = correo.trim();
         this.idActividad = idActividad;
         this.controladorUnidad1 = controladorUnidad1;
-
+        
+        // Instrucciones eliminadas - solo se muestran en la bienvenida de la unidad
+        
         LOGGER.info(String.format("Inicializando controlador de actividades para usuario: %s, actividad: %d", 
                                  this.correo, this.idActividad));
         
@@ -162,8 +170,12 @@ public class Controlador_Actividades {
     private void configurarInterfazInicial(Vista_Actividad2U1 act2) {
         SwingUtilities.invokeLater(() -> {
             mostrarSubPanel(PANEL_EMPAREJAR);
-            act2.jLabelPregunta.setText(actividad.getPregunta());
-            act2.jLabelPista.setText("Completa el ejercicio de emparejar para continuar.");
+            // Configurar pregunta específica para emparejar
+            if (actividad != null && actividad.getPregunta() != null) {
+                act2.jLabelPreguntaEmparejar.setText(actividad.getPregunta());
+            } else {
+                act2.jLabelPreguntaEmparejar.setText("Empareja las palabras con sus significados correctos:");
+            }
             act2.jButtonCOMPLETOACTV2.setEnabled(false);
         });
     }
@@ -209,86 +221,149 @@ public class Controlador_Actividades {
     }
 
     private void cargarDatosDragDrop(Vista_Actividad2U1 act2) {
-        Modelo_DragDrop modeloDragDrop = new Modelo_DragDrop(conn);
-        itemsDragDrop = modeloDragDrop.obtenerItemsPorActividad(idActividad);
+        try {
 
-        if (itemsDragDrop.size() >= 3) {
-            act2.jLabelDragDropOpcionA.setText(itemsDragDrop.get(0).texto);
-            act2.jLabelDragDropOpcionB.setText(itemsDragDrop.get(1).texto);
-            act2.jLabelDragDropOpcionC.setText(itemsDragDrop.get(2).texto);
-              act2.jLabelPregunta.setText(actividad.getPregunta());  // <-- refresca la pregunta
-        } else {
-            act2.jLabelPista.setText("No hay suficientes ítems de drag drop.");
+            
+            Modelo_DragDrop modeloDragDrop = new Modelo_DragDrop(conn);
+            itemsDragDrop = modeloDragDrop.obtenerItemsPorActividad(idActividad);
+
+            if (itemsDragDrop != null && itemsDragDrop.size() >= 3) {
+                act2.jLabelDragDropOpcionA.setText(itemsDragDrop.get(0).texto);
+                act2.jLabelDragDropOpcionB.setText(itemsDragDrop.get(1).texto);
+                act2.jLabelDragDropOpcionC.setText(itemsDragDrop.get(2).texto);
+                
+                // Cargar la pregunta dinámicamente desde la base de datos
+                cargarPreguntaDragDrop(act2);
+                
+                LOGGER.info("Datos de drag drop cargados correctamente");
+            } else {
+                act2.jLabelMensajeRespuesta.setText("No hay suficientes ítems de drag drop disponibles.");
+                LOGGER.warning("Insuficientes ítems de drag drop para la actividad " + idActividad);
+            }
+        } catch (Exception e) {
+            act2.jLabelMensajeRespuesta.setText("Error al cargar datos de drag drop.");
+            LOGGER.log(Level.SEVERE, "Error al cargar datos de drag drop", e);
+        }
+    }
+
+    /**
+     * Carga la pregunta para la actividad drag-drop dinámicamente desde la base de datos
+     */
+    private void cargarPreguntaDragDrop(Vista_Actividad2U1 act2) {
+        try {
+            // Cargar la actividad si no está cargada
+            if (actividad == null) {
+                actividad = Modelo_Actividades.obtenerPorId(conn, idActividad);
+            }
+            
+            if (actividad != null && actividad.getPregunta() != null) {
+                act2.jLabelPreguntaDragDrop.setText(actividad.getPregunta());
+                LOGGER.info("Pregunta de drag-drop cargada: " + actividad.getPregunta());
+            } else {
+                // Pregunta por defecto para la actividad 2 de drag-drop
+                String preguntaDefault = "Arrastra la expresión correcta para 'Buenos días' en kichwa:";
+                act2.jLabelPreguntaDragDrop.setText(preguntaDefault);
+                LOGGER.info("Usando pregunta por defecto para drag-drop: " + preguntaDefault);
+            }
+        } catch (Exception e) {
+            LOGGER.log(Level.WARNING, "Error al cargar pregunta de drag-drop", e);
+            act2.jLabelPreguntaDragDrop.setText("Arrastra la expresión correcta:");
         }
     }
 
     private void validarDragDrop(Vista_Actividad2U1 act2) {
-    String textoDestino = act2.jLabelDestino.getText().trim();
+        String textoDestino = act2.jLabelDestino.getText().trim();
 
-    boolean esCorrecto = false;
-    for (Modelo_DragDrop.DragDropItem item : itemsDragDrop) {
-        if (item.texto.equals(textoDestino) && item.posicionDestino.equalsIgnoreCase("mañana")) {
-            esCorrecto = true;
-            break;
+        boolean esCorrecto = false;
+        for (Modelo_DragDrop.DragDropItem item : itemsDragDrop) {
+            if (item.texto.equals(textoDestino) && item.posicionDestino.equalsIgnoreCase("mañana")) {
+                esCorrecto = true;
+                break;
+            }
         }
-    }
 
-    if (esCorrecto) {
-        act2.jLabelPista.setText("¡Correcto!");
-        dragDropCompletado = true;
-    } else {
-        act2.jLabelPista.setText("Incorrecto, intenta otra vez.");
-    }
+        if (esCorrecto) {
+            act2.jLabelMensajeRespuesta.setText("¡Correcto!");
+            dragDropCompletado = true;
+        } else {
+            act2.jLabelMensajeRespuesta.setText("Incorrecto, intenta otra vez.");
+        }
 
-    actualizarEstadoBotonCompleto(act2);
-}
+        actualizarEstadoBotonCompleto(act2);
+    }
 
 
     private void cargarDatosEmparejar(Vista_Actividad2U1 act2) {
-        Modelo_Emparejar modeloEmparejar = new Modelo_Emparejar(conn);
-        itemsEmparejar = modeloEmparejar.obtenerOpcionesPorActividad(idActividad);
+        try {
+            if (conn == null) {
+                act2.jLabelMensajeRespuesta.setText("Error: No hay conexión a la base de datos.");
+                LOGGER.severe("Conexión a base de datos es null en cargarDatosEmparejar");
+                return;
+            }
+            
+            Modelo_Emparejar modeloEmparejar = new Modelo_Emparejar(conn);
+            itemsEmparejar = modeloEmparejar.obtenerOpcionesPorActividad(idActividad);
 
-        if (itemsEmparejar.size() < 3) {
-            act2.jLabelPista.setText("No hay suficientes ítems de emparejar.");
-            return;
-        }
+            if (itemsEmparejar == null || itemsEmparejar.size() < 3) {
+                act2.jLabelMensajeRespuesta.setText("No hay suficientes ítems de emparejar disponibles.");
+                LOGGER.warning("Insuficientes ítems de emparejar para la actividad " + idActividad);
+                return;
+            }
 
-        act2.jLabelEmaprejar1.setText(itemsEmparejar.get(0).textoOrigen);
-        act2.jLabelEmaprejar2.setText(itemsEmparejar.get(1).textoOrigen);
-        act2.jLabelEmaprejar3.setText(itemsEmparejar.get(2).textoOrigen);
+            act2.jLabelEmaprejar1.setText(itemsEmparejar.get(0).textoOrigen);
+            act2.jLabelEmaprejar2.setText(itemsEmparejar.get(1).textoOrigen);
+            act2.jLabelEmaprejar3.setText(itemsEmparejar.get(2).textoOrigen);
 
-        act2.jComboBoxEmparejarOpcionA.removeAllItems();
-        act2.jComboBoxEmparejarOpcionB.removeAllItems();
-        act2.jComboBoxEmparejarOpcionC.removeAllItems();
+            // Limpiar los combos y evitar duplicados usando un Set
+            act2.jComboBoxEmparejarOpcionA.removeAllItems();
+            act2.jComboBoxEmparejarOpcionB.removeAllItems();
+            act2.jComboBoxEmparejarOpcionC.removeAllItems();
 
-        for (Modelo_Emparejar.EmparejarItem item : itemsEmparejar) {
-            act2.jComboBoxEmparejarOpcionA.addItem(item.textoDestino);
-            act2.jComboBoxEmparejarOpcionB.addItem(item.textoDestino);
-            act2.jComboBoxEmparejarOpcionC.addItem(item.textoDestino);
+            // Usar un Set para evitar duplicados
+            Set<String> opcionesUnicas = new HashSet<>();
+            for (Modelo_Emparejar.EmparejarItem item : itemsEmparejar) {
+                opcionesUnicas.add(item.textoDestino);
+            }
+
+            // Agregar las opciones únicas a los combos
+            for (String opcion : opcionesUnicas) {
+                act2.jComboBoxEmparejarOpcionA.addItem(opcion);
+                act2.jComboBoxEmparejarOpcionB.addItem(opcion);
+                act2.jComboBoxEmparejarOpcionC.addItem(opcion);
+            }
+            LOGGER.info("Datos de emparejar cargados correctamente");
+        } catch (Exception e) {
+            act2.jLabelMensajeRespuesta.setText("Error al cargar datos de emparejar.");
+            LOGGER.log(Level.SEVERE, "Error al cargar datos de emparejar", e);
         }
     }
 
     private void validarEmparejar(Vista_Actividad2U1 act2) {
-    String palabraA = act2.jLabelEmaprejar1.getText();
-    String palabraB = act2.jLabelEmaprejar2.getText();
-    String palabraC = act2.jLabelEmaprejar3.getText();
+        if (act2 == null) {
+            LOGGER.warning("La vista de actividad es nula en validarEmparejar");
+            return;
+        }
+        
+        String palabraA = act2.jLabelEmaprejar1.getText();
+        String palabraB = act2.jLabelEmaprejar2.getText();
+        String palabraC = act2.jLabelEmaprejar3.getText();
 
-    String respuestaA = (String) act2.jComboBoxEmparejarOpcionA.getSelectedItem();
-    String respuestaB = (String) act2.jComboBoxEmparejarOpcionB.getSelectedItem();
-    String respuestaC = (String) act2.jComboBoxEmparejarOpcionC.getSelectedItem();
+        String respuestaA = (String) act2.jComboBoxEmparejarOpcionA.getSelectedItem();
+        String respuestaB = (String) act2.jComboBoxEmparejarOpcionB.getSelectedItem();
+        String respuestaC = (String) act2.jComboBoxEmparejarOpcionC.getSelectedItem();
 
-    if (respuestaA == null || respuestaB == null || respuestaC == null) {
-        act2.jLabelPista.setText("Selecciona todas las opciones.");
-        return;
-    }
+        if (respuestaA == null || respuestaB == null || respuestaC == null) {
+            act2.jLabelMensajeRespuesta.setText("Selecciona todas las opciones.");
+            return;
+        }
 
-    boolean correctoA = esEmparejamientoCorrecto(palabraA, respuestaA);
-    boolean correctoB = esEmparejamientoCorrecto(palabraB, respuestaB);
-    boolean correctoC = esEmparejamientoCorrecto(palabraC, respuestaC);
+        boolean correctoA = esEmparejamientoCorrecto(palabraA, respuestaA);
+        boolean correctoB = esEmparejamientoCorrecto(palabraB, respuestaB);
+        boolean correctoC = esEmparejamientoCorrecto(palabraC, respuestaC);
 
-    if (correctoA && correctoB && correctoC) {
-        emparejarCompletado = true;
-        act2.jLabelPista.setText("¡Correcto en Emparejar! Ahora completa el DragDrop.");
+        if (correctoA && correctoB && correctoC) {
+            emparejarCompletado = true;
+        act2.jLabelMensajeRespuesta.setText("¡Correcto en Emparejar! Ahora completa el DragDrop.");
 
         // Cargar los datos para el DragDrop
         cargarDatosDragDrop(act2);
@@ -297,7 +372,7 @@ public class Controlador_Actividades {
 
     } else {
         emparejarCompletado = false;
-        act2.jLabelPista.setText("Incorrecto en emparejar, revisa tus selecciones.");
+        act2.jLabelMensajeRespuesta.setText("Incorrecto en emparejar, revisa tus selecciones.");
     }
 }
 
@@ -314,7 +389,7 @@ public class Controlador_Actividades {
     private void actualizarEstadoBotonCompleto(Vista_Actividad2U1 act2) {
         if (emparejarCompletado && dragDropCompletado) {
             act2.jButtonCOMPLETOACTV2.setEnabled(true);
-            act2.jLabelPista.setText("¡Has completado todas las actividades!");
+            act2.jLabelMensajeRespuesta.setText("¡Has completado todas las actividades!");
         } else {
             act2.jButtonCOMPLETOACTV2.setEnabled(false);
         }
@@ -400,11 +475,23 @@ public class Controlador_Actividades {
      * Navega de vuelta a la vista de la Unidad 1.
      */
     private void navegarAUnidad1() {
+        if (controladorDashboard == null) {
+            LOGGER.severe("No se puede navegar: controladorDashboard es nulo");
+            mostrarError("Error de navegación: No se puede cargar la unidad.");
+            return;
+        }
+        
         SwingUtilities.invokeLater(() -> {
             try {
                 Vista_Unidad1 vistaUnidad1 = new Vista_Unidad1();
-                new Controlador_Unidad1(vistaUnidad1, conn, controladorDashboard, correo,
-                        controladorUnidad1 != null ? controladorUnidad1.getControladorUnidades() : null);
+                // El controlador se instancia pero no se guarda en una variable ya que se asocia directamente con la vista
+                new Controlador_Unidad1(
+                    vistaUnidad1, 
+                    conn, 
+                    controladorDashboard, 
+                    correo,
+                    controladorUnidad1 != null ? controladorUnidad1.getControladorUnidades() : null
+                );
                 
                 controladorDashboard.getVista().mostrarVista(vistaUnidad1);
                 LOGGER.info("Navegación a Unidad 1 completada");
@@ -432,6 +519,20 @@ public class Controlador_Actividades {
     }
     
     /**
+     * Configura los elementos de interfaz para la actividad drag-drop.
+     */
+    private void configurarElementosDragDrop(Vista_Actividad2U1 act2) {
+        try {
+            // Configurar elementos visuales para drag-drop
+            // Los elementos específicos se configuran según la vista disponible
+            
+            LOGGER.info("Elementos de drag-drop configurados correctamente");
+        } catch (Exception e) {
+            LOGGER.log(Level.WARNING, "Error al configurar elementos de drag-drop", e);
+        }
+    }
+    
+    /**
      * Muestra un mensaje de éxito al usuario.
      * 
      * @param mensaje Mensaje de éxito a mostrar
@@ -446,4 +547,6 @@ public class Controlador_Actividades {
             );
         });
     }
+    
+    // Método de instrucciones eliminado - las instrucciones se muestran solo en la bienvenida de la unidad
 }

@@ -39,11 +39,13 @@ public class Controlador_Actividad_PreguntaRespuesta {
         this.correo = correo;
         this.respuestasCorrectas = new boolean[3];
         
-        cargarDatos();
+        // Instrucciones eliminadas - solo se muestran en la bienvenida de la unidad
+        
+        cargarPreguntasDesdeDB();
         agregarEventos();
     }
 
-    private void cargarDatos() {
+    private void cargarPreguntasDesdeDB() {
         preguntasActividad = obtenerPreguntasAleatorias(3);
         
         if (preguntasActividad.size() < 3) {
@@ -96,6 +98,15 @@ public class Controlador_Actividad_PreguntaRespuesta {
 
     private List<Modelo_Actividades> obtenerPreguntasAleatorias(int cantidad) {
         List<Modelo_Actividades> preguntas = new ArrayList<>();
+        
+        // Validar conexión antes de proceder
+        if (conn == null) {
+            System.err.println("Error: Conexión a base de datos es null");
+            JOptionPane.showMessageDialog(vista, "Error de conexión a la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
+            return preguntas;
+        }
+        
+        // Usar una consulta más compatible (RAND() puede no funcionar en todas las BD)
         String sql = "SELECT * FROM actividades WHERE id_unidad = ? AND tipo = 'pregunta_respuesta' ORDER BY RAND() LIMIT ?";
         
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -116,8 +127,13 @@ public class Controlador_Actividad_PreguntaRespuesta {
                 preguntas.add(pregunta);
             }
         } catch (SQLException e) {
+            System.err.println("Error SQL al cargar preguntas: " + e.getMessage());
             e.printStackTrace();
-            JOptionPane.showMessageDialog(vista, "Error al cargar preguntas: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(vista, "Error al cargar preguntas desde la base de datos.\nVerifica que la tabla 'actividades' existe y tiene datos.", "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            System.err.println("Error inesperado al cargar preguntas: " + e.getMessage());
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(vista, "Error inesperado al cargar preguntas: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
         
         return preguntas;
@@ -207,15 +223,30 @@ public class Controlador_Actividad_PreguntaRespuesta {
                 return false;
             }
             
-            // Incrementar actividades completadas
-            int nuevasActividades = progreso.getActividadesCompletadas() + 1;
-            progreso.setActividadesCompletadas(nuevasActividades);
-            progreso.setFechaActualizacion(LocalDateTime.now());
-            
-            boolean actualizado = Modelo_Progreso_Usuario.actualizarProgreso(progreso);
+            // Usar ControladorProgresoUsuario para actualizar correctamente
+            // La Actividad 1 corresponde al ID 1
+            boolean actualizado = ControladorProgresoUsuario.actualizarActividad(progreso, 1);
             
             if (!actualizado) {
-                JOptionPane.showMessageDialog(vista, "No se pudo actualizar el progreso", "Error", JOptionPane.ERROR_MESSAGE);
+                // Si no se actualizó, puede ser porque ya estaba completada
+                if (progreso.getActividadesCompletadas() >= 1) {
+                    System.out.println("Actividad 1 ya estaba completada anteriormente");
+                    return true; // Consideramos exitoso si ya estaba completada
+                } else {
+                    JOptionPane.showMessageDialog(vista, "No se pudo actualizar el progreso", "Error", JOptionPane.ERROR_MESSAGE);
+                    return false;
+                }
+            }
+            
+            // Notificar al controlador de la unidad para actualizar la interfaz
+            if (controladorUnidad1 != null) {
+                javax.swing.SwingUtilities.invokeLater(() -> {
+                    try {
+                        controladorUnidad1.actualizarVista();
+                    } catch (Exception e) {
+                        System.err.println("Error al actualizar vista de unidad: " + e.getMessage());
+                    }
+                });
             }
             
             return actualizado;
@@ -252,4 +283,5 @@ public class Controlador_Actividad_PreguntaRespuesta {
                 controladorUnidad1.getControladorUnidades());
         controladorDashboard.getVista().mostrarVista(vistaUnidad1);
     }
+    
 }
