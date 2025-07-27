@@ -1,16 +1,16 @@
 package Controlador;
 
-import VistasUnidad3.Vista_Leccion_Familia;
 import Vista.Estudiante.Dashboard;
 import Modelo.Modelo_Progreso_Usuario;
 import Modelo.Usuario;
+import VistasUnidad3.Vista_Leccion_Vestimenta;
 import VistasUnidad3.Vista_Unidad3;
 import java.sql.Connection;
 import java.time.LocalDateTime;
 import javax.swing.JOptionPane;
 
-public class ControladorLeccionFamiliaU3 {
-    private final Vista_Leccion_Familia vista;
+public class ControladorLeccionVestimentaU3 {
+    private final Vista_Leccion_Vestimenta vista;
     private final Dashboard dashboard;
     private final Connection connection;
     private final String correoUsuario;
@@ -20,7 +20,7 @@ public class ControladorLeccionFamiliaU3 {
     /**
      * Constructor modificado para incluir ControladorDashboard
      */
-    public ControladorLeccionFamiliaU3(Vista_Leccion_Familia vista, Dashboard dashboard, 
+    public ControladorLeccionVestimentaU3(Vista_Leccion_Vestimenta vista, Dashboard dashboard, 
                                      Connection connection, ControladorDashboard controladorDashboard,
                                      String correoUsuario) {
         // Validación de parámetros
@@ -76,9 +76,9 @@ public class ControladorLeccionFamiliaU3 {
                 throw new Exception("No se pudo crear el registro de progreso");
             }
             mostrarMensajeExito();
-        } else if (progreso.getLeccionesCompletadas() == 0) {
+        } else if (progreso.getLeccionesCompletadas() == 1) {
             // Solo actualizar si no hay lecciones completadas
-            progreso.setLeccionesCompletadas(1);
+            progreso.setLeccionesCompletadas(2);
             progreso.setFechaActualizacion(LocalDateTime.now());
             if (!Modelo_Progreso_Usuario.actualizarProgreso(progreso)) {
                 throw new Exception("No se pudo actualizar el progreso");
