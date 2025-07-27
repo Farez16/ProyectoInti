@@ -187,8 +187,10 @@ public class Vista_AnimalesdelaSierraUnidad2 extends javax.swing.JPanel {
         jLabel1debeaparecercsonoveno.setText("3.Warmi wakra / vaca  ");
         add(jLabel1debeaparecercsonoveno, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 510, 170, 20));
 
+        jButton1.setBackground(new java.awt.Color(255, 122, 0));
+        jButton1.setFont(new java.awt.Font("Modern No. 20", 0, 18)); // NOI18N
         jButton1.setText("CONTINUAR");
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 620, -1, -1));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 620, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 

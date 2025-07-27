@@ -127,6 +127,7 @@ public String[] getRespuestasIngresadas() {
         jButton1audio10 = new javax.swing.JButton();
         jButton1ComprobarAudios = new javax.swing.JButton();
         jButton1Continuar = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(1190, 660));
@@ -216,11 +217,17 @@ public String[] getRespuestasIngresadas() {
         });
         add(jButton1audio10, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 380, -1, -1));
 
+        jButton1ComprobarAudios.setFont(new java.awt.Font("Modern No. 20", 0, 18)); // NOI18N
         jButton1ComprobarAudios.setText("Comprobar");
         add(jButton1ComprobarAudios, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 460, -1, -1));
 
-        jButton1Continuar.setText("Continuar");
-        add(jButton1Continuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 580, -1, -1));
+        jButton1Continuar.setBackground(new java.awt.Color(255, 122, 0));
+        jButton1Continuar.setFont(new java.awt.Font("Modern No. 20", 0, 18)); // NOI18N
+        jButton1Continuar.setText("CONTINUAR");
+        add(jButton1Continuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 610, -1, -1));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad2/Fondo2.png"))); // NOI18N
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(-22, -84, 1230, 750));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1audio10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1audio10ActionPerformed
@@ -243,6 +250,7 @@ public String[] getRespuestasIngresadas() {
     private javax.swing.JButton jButton1audio9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel2EscuchayEscribe;
     private javax.swing.JLabel jLabel2debeaparecer2;

@@ -76,6 +76,7 @@ public class Vista_OperacionesUnidad2 extends javax.swing.JPanel {
         jTextArea1 = new javax.swing.JTextArea();
         jButton1CONTINUAR = new javax.swing.JButton();
         jLabel1entrada3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(1190, 660));
@@ -93,17 +94,22 @@ public class Vista_OperacionesUnidad2 extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 140, 320, 330));
 
-        jButton1CONTINUAR.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButton1CONTINUAR.setBackground(new java.awt.Color(255, 122, 0));
+        jButton1CONTINUAR.setFont(new java.awt.Font("Modern No. 20", 0, 18)); // NOI18N
         jButton1CONTINUAR.setText("CONTINUAR");
         add(jButton1CONTINUAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 610, -1, -1));
 
         jLabel1entrada3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad2/5.png"))); // NOI18N
         add(jLabel1entrada3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad2/Fondo2.png"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-22, -84, 1230, 750));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1CONTINUAR;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel1entrada3;
     private javax.swing.JLabel jLabel2debeaparecer1;
     private javax.swing.JScrollPane jScrollPane1;

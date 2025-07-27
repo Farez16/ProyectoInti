@@ -207,6 +207,9 @@ public class Vista_ActividadAnimalesdelaSierraUnidad2 extends javax.swing.JPanel
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1animalessilvestres3 = new javax.swing.JButton();
+        jButton1animalessilvestres2 = new javax.swing.JButton();
+        jButton1animalessilvestres1 = new javax.swing.JButton();
         jLabel2debeaparecer6 = new javax.swing.JLabel();
         jButton1ComprobarAudios = new javax.swing.JButton();
         jLabel2debeaparecer3 = new javax.swing.JLabel();
@@ -220,15 +223,19 @@ public class Vista_ActividadAnimalesdelaSierraUnidad2 extends javax.swing.JPanel
         jButton1animaldomestico5 = new javax.swing.JButton();
         jButton1animaldomestico6 = new javax.swing.JButton();
         jButton1animaldomestico7 = new javax.swing.JButton();
-        jButton1animalessilvestres1 = new javax.swing.JButton();
-        jButton1animalessilvestres2 = new javax.swing.JButton();
-        jButton1animalessilvestres3 = new javax.swing.JButton();
         jLabel1animalesdomesticosimagen1 = new javax.swing.JLabel();
         jLabel1animalesdomesticosimagen3 = new javax.swing.JLabel();
         jLabel1animalesdomesticosimagen7 = new javax.swing.JLabel();
         jLabel1animalessilvestres2 = new javax.swing.JLabel();
         jLabel1animalessilvestres4 = new javax.swing.JLabel();
         jLabel1animalessilvestres6 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+
+        jButton1animalessilvestres3.setText("jButton1");
+
+        jButton1animalessilvestres2.setText("jButton1");
+
+        jButton1animalessilvestres1.setText("jButton1");
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(1190, 660));
@@ -239,6 +246,8 @@ public class Vista_ActividadAnimalesdelaSierraUnidad2 extends javax.swing.JPanel
         jLabel2debeaparecer6.setText("Puka (silvestres)");
         add(jLabel2debeaparecer6, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 120, -1, -1));
 
+        jButton1ComprobarAudios.setBackground(new java.awt.Color(255, 122, 0));
+        jButton1ComprobarAudios.setFont(new java.awt.Font("Modern No. 20", 0, 18)); // NOI18N
         jButton1ComprobarAudios.setText("Comprobar");
         add(jButton1ComprobarAudios, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 610, -1, -1));
 
@@ -254,25 +263,26 @@ public class Vista_ActividadAnimalesdelaSierraUnidad2 extends javax.swing.JPanel
         jLabel2debeaparecer5.setText("Killu (domésticos)");
         add(jLabel2debeaparecer5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, -1, -1));
 
-        jButton1CONTINUAR.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButton1CONTINUAR.setBackground(new java.awt.Color(255, 122, 0));
+        jButton1CONTINUAR.setFont(new java.awt.Font("Modern No. 20", 0, 18)); // NOI18N
         jButton1CONTINUAR.setText("CONTINUAR");
-        add(jButton1CONTINUAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 610, -1, -1));
+        add(jButton1CONTINUAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 610, -1, -1));
 
         jButton1animaldomestico1.setText("jButton1");
         jButton1animaldomestico1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton1animaldomestico1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 490, 120, -1));
+        add(jButton1animaldomestico1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 500, 120, -1));
 
         jButton1animaldomestico2.setText("jButton1");
         jButton1animaldomestico2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton1animaldomestico2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 490, 120, 20));
+        add(jButton1animaldomestico2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 500, 120, 20));
 
         jButton1animaldomestico3.setText("jButton1");
         jButton1animaldomestico3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton1animaldomestico3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 490, 120, -1));
+        add(jButton1animaldomestico3, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 500, 120, -1));
 
         jButton1animaldomestico4.setText("jButton1");
         jButton1animaldomestico4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton1animaldomestico4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 540, 120, -1));
+        add(jButton1animaldomestico4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 550, 120, -1));
 
         jButton1animaldomestico5.setText("jButton1");
         jButton1animaldomestico5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -280,20 +290,11 @@ public class Vista_ActividadAnimalesdelaSierraUnidad2 extends javax.swing.JPanel
 
         jButton1animaldomestico6.setText("jButton1");
         jButton1animaldomestico6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton1animaldomestico6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 540, 120, -1));
+        add(jButton1animaldomestico6, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 550, 120, -1));
 
         jButton1animaldomestico7.setText("jButton1");
         jButton1animaldomestico7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton1animaldomestico7, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 540, 120, -1));
-
-        jButton1animalessilvestres1.setText("jButton1");
-        add(jButton1animalessilvestres1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 490, 120, 20));
-
-        jButton1animalessilvestres2.setText("jButton1");
-        add(jButton1animalessilvestres2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 540, 120, 20));
-
-        jButton1animalessilvestres3.setText("jButton1");
-        add(jButton1animalessilvestres3, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 490, 120, -1));
+        add(jButton1animaldomestico7, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 550, 120, -1));
 
         jLabel1animalesdomesticosimagen1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         add(jLabel1animalesdomesticosimagen1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, 120, 100));
@@ -312,6 +313,9 @@ public class Vista_ActividadAnimalesdelaSierraUnidad2 extends javax.swing.JPanel
 
         jLabel1animalessilvestres6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         add(jLabel1animalessilvestres6, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 310, 120, 100));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad2/Fondo.png"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-22, -84, 1230, 750));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -328,6 +332,7 @@ public class Vista_ActividadAnimalesdelaSierraUnidad2 extends javax.swing.JPanel
     private javax.swing.JButton jButton1animalessilvestres1;
     private javax.swing.JButton jButton1animalessilvestres2;
     private javax.swing.JButton jButton1animalessilvestres3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel1animalesdomesticosimagen1;
     private javax.swing.JLabel jLabel1animalesdomesticosimagen3;
     private javax.swing.JLabel jLabel1animalesdomesticosimagen7;
