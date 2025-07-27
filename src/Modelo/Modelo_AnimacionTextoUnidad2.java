@@ -34,6 +34,6 @@ public void iniciarAnimacion() {
                 timer.cancel();
             }
         }
-    }, 0, 500); // Cada 500ms muestra una etiqueta
+    }, 0, 0); // Cada 500ms muestra una etiqueta
 }
 }

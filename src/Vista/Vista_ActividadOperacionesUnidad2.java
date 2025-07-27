@@ -607,6 +607,7 @@ public class Vista_ActividadOperacionesUnidad2 extends javax.swing.JPanel {
         jTextField1Numero24 = new javax.swing.JTextField();
         jTextFieldSumarestamultiplicaciondivision11 = new javax.swing.JTextField();
         jButton1CONTINUAR = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(1190, 660));
@@ -617,6 +618,8 @@ public class Vista_ActividadOperacionesUnidad2 extends javax.swing.JPanel {
         jLabel2debeaparecer2.setText("Selecciona la operación correcta");
         add(jLabel2debeaparecer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, -1, -1));
 
+        jButton1ComprobarAudios.setBackground(new java.awt.Color(255, 122, 0));
+        jButton1ComprobarAudios.setFont(new java.awt.Font("Modern No. 20", 0, 18)); // NOI18N
         jButton1ComprobarAudios.setText("Comprobar");
         add(jButton1ComprobarAudios, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 470, -1, -1));
 
@@ -720,15 +723,20 @@ public class Vista_ActividadOperacionesUnidad2 extends javax.swing.JPanel {
         add(jTextField1Numero24, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 390, 60, -1));
         add(jTextFieldSumarestamultiplicaciondivision11, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 390, 30, -1));
 
-        jButton1CONTINUAR.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButton1CONTINUAR.setBackground(new java.awt.Color(255, 122, 0));
+        jButton1CONTINUAR.setFont(new java.awt.Font("Modern No. 20", 0, 18)); // NOI18N
         jButton1CONTINUAR.setText("CONTINUAR");
         add(jButton1CONTINUAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 610, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad2/Fondo.png"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-22, -84, 1230, 750));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1CONTINUAR;
     private javax.swing.JButton jButton1ComprobarAudios;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel1resultado;
     private javax.swing.JLabel jLabel1resultado1;
     private javax.swing.JLabel jLabel1resultado10;

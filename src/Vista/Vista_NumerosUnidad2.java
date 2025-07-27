@@ -37,6 +37,7 @@ public class Vista_NumerosUnidad2 extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1CONTINUAR = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(1190, 660));
@@ -60,8 +61,13 @@ public class Vista_NumerosUnidad2 extends javax.swing.JPanel {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad2/1-20.png"))); // NOI18N
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 70, -1, -1));
 
+        jButton1CONTINUAR.setBackground(new java.awt.Color(255, 122, 0));
+        jButton1CONTINUAR.setFont(new java.awt.Font("Modern No. 20", 0, 18)); // NOI18N
         jButton1CONTINUAR.setText("CONTINUAR");
-        add(jButton1CONTINUAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 610, -1, -1));
+        add(jButton1CONTINUAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 610, -1, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad2/Fondo2.png"))); // NOI18N
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-22, -84, 1230, 750));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -70,6 +76,7 @@ public class Vista_NumerosUnidad2 extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel2debeaparecer1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables

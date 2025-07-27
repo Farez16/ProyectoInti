@@ -63,7 +63,7 @@ public class Controlador_InicioOperacionesU2 {
                 public void run() {
                     label.setVisible(true);
                 }
-            }, (i + 1) * 1000);
+            }, (i + 1) * 0);
         }
     }
 }

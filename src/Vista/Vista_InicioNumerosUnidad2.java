@@ -57,43 +57,56 @@ public class Vista_InicioNumerosUnidad2 extends javax.swing.JPanel {
         jLabel1debeaparecercuarto = new javax.swing.JLabel();
         jLabel1debeaparecerquinto = new javax.swing.JLabel();
         jButton1CONTINUAR = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(1190, 660));
         setMinimumSize(new java.awt.Dimension(1190, 660));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1debeaparecersexto.setBackground(new java.awt.Color(153, 0, 255));
         jLabel1debeaparecersexto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1debeaparecersexto.setText("3. WIWAKUNA");
-        add(jLabel1debeaparecersexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 350, -1, -1));
+        add(jLabel1debeaparecersexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 230, -1, -1));
 
+        jLabel2debeaparecer1.setBackground(new java.awt.Color(153, 0, 255));
         jLabel2debeaparecer1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2debeaparecer1.setText("ALLI PUNCHA");
-        add(jLabel2debeaparecer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
+        add(jLabel2debeaparecer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 40, -1, -1));
 
+        jLabel3debeaparecersegundo.setBackground(new java.awt.Color(153, 0, 255));
         jLabel3debeaparecersegundo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3debeaparecersegundo.setText("ALLI SHAMUSHKA ");
-        add(jLabel3debeaparecersegundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, -1, -1));
+        add(jLabel3debeaparecersegundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 70, 180, 20));
 
+        jLabel1debeaparecertercero1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1debeaparecertercero1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1debeaparecertercero1.setText("ALLI SHAMUSHKA ");
-        add(jLabel1debeaparecertercero1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, -1, -1));
+        add(jLabel1debeaparecertercero1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 110, -1, -1));
 
+        jLabel1debeaparecercuarto.setBackground(new java.awt.Color(153, 0, 255));
         jLabel1debeaparecercuarto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1debeaparecercuarto.setText("1.YUPAYKUNA");
-        add(jLabel1debeaparecercuarto, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 200, -1, -1));
+        add(jLabel1debeaparecercuarto, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 150, -1, -1));
 
+        jLabel1debeaparecerquinto.setBackground(new java.awt.Color(153, 0, 255));
         jLabel1debeaparecerquinto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1debeaparecerquinto.setText("2. UNANCHA YUPAYKUNA ");
-        add(jLabel1debeaparecerquinto, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 270, -1, -1));
+        add(jLabel1debeaparecerquinto, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 190, -1, -1));
 
+        jButton1CONTINUAR.setBackground(new java.awt.Color(255, 122, 0));
+        jButton1CONTINUAR.setFont(new java.awt.Font("Modern No. 20", 0, 18)); // NOI18N
         jButton1CONTINUAR.setText("CONTINUAR");
-        add(jButton1CONTINUAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 610, -1, -1));
+        add(jButton1CONTINUAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 610, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad2/Fondo.png"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-22, -84, 1230, 750));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1CONTINUAR;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel1debeaparecercuarto;
     private javax.swing.JLabel jLabel1debeaparecerquinto;
     private javax.swing.JLabel jLabel1debeaparecersexto;

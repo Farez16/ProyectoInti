@@ -149,6 +149,7 @@ jLabel3debeaparecersegundo.setVisible(false);
         jLabel1debeaparecercsoctavo1 = new javax.swing.JLabel();
         jLabel1debeaparecercsonoveno = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(1190, 660));
@@ -157,19 +158,19 @@ jLabel3debeaparecersegundo.setVisible(false);
 
         jLabel2debeaparecer1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2debeaparecer1.setText("ALLI PUNCHA");
-        add(jLabel2debeaparecer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, -1));
+        add(jLabel2debeaparecer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 10, -1, -1));
 
         jLabel3debeaparecersegundo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3debeaparecersegundo.setText("ISHKINTI RURASHUN ISHKINTI RURASHUN ");
-        add(jLabel3debeaparecersegundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, -1));
+        add(jLabel3debeaparecersegundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 100, -1, -1));
 
         jLabel1debeaparecercuarto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1debeaparecercuarto.setText("Ahora vamos a escribir todo en una hoja");
-        add(jLabel1debeaparecercuarto, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, -1, -1));
+        add(jLabel1debeaparecercuarto, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 160, -1, -1));
 
         jLabel1debeaparecertercero2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1debeaparecertercero2.setText("¿Qué vamos a hacer juntos?");
-        add(jLabel1debeaparecertercero2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, -1, -1));
+        add(jLabel1debeaparecertercero2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 80, -1, -1));
 
         jLabel1debeaparecercdecimo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1debeaparecercdecimo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad2/4.png"))); // NOI18N
@@ -177,15 +178,17 @@ jLabel3debeaparecersegundo.setVisible(false);
 
         jLabel1debeaparecertercero.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1debeaparecertercero.setText("Kunan shuk pankapi killkashpa tukuy");
-        add(jLabel1debeaparecertercero, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, -1, -1));
+        add(jLabel1debeaparecertercero, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 180, -1, -1));
 
         jLabel1debeaparecercquinto1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1debeaparecercquinto1.setText("SHUK YAPACHUK SHUK ANCHUCHIK YACHASHUN ");
-        add(jLabel1debeaparecercquinto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 360, -1, -1));
+        add(jLabel1debeaparecercquinto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 230, -1, -1));
 
-        jLabel1debeaparecercsexto1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1debeaparecercsexto1.setBackground(new java.awt.Color(255, 51, 51));
+        jLabel1debeaparecercsexto1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1debeaparecercsexto1.setForeground(new java.awt.Color(51, 0, 0));
         jLabel1debeaparecercsexto1.setText("VAMOS HACER SUMAS Y RESTAS ");
-        add(jLabel1debeaparecercsexto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 390, -1, -1));
+        add(jLabel1debeaparecercsexto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 480, -1, -1));
 
         jLabel1debeaparecercseptimo1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1debeaparecercseptimo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad2/1.png"))); // NOI18N
@@ -199,13 +202,19 @@ jLabel3debeaparecersegundo.setVisible(false);
         jLabel1debeaparecercsonoveno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad2/3.png"))); // NOI18N
         add(jLabel1debeaparecercsonoveno, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 510, 250, 50));
 
+        jButton1.setBackground(new java.awt.Color(255, 122, 0));
+        jButton1.setFont(new java.awt.Font("Modern No. 20", 0, 18)); // NOI18N
         jButton1.setText("CONTINUAR");
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 620, -1, -1));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 610, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad2/Fondo2.png"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-22, -84, 1230, 750));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel1debeaparecercdecimo;
     private javax.swing.JLabel jLabel1debeaparecercquinto1;
     private javax.swing.JLabel jLabel1debeaparecercseptimo1;
