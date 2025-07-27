@@ -7,12 +7,12 @@ import Vista.*;
  *
  * @author Jhony Espinoza
  */
-public class Vista_Actividad_Vestimenta extends javax.swing.JPanel {
+public class Vista_Actividad_PartesCuerpo extends javax.swing.JPanel {
 
     /**
      * Creates new form Vista_Actividad1U1
      */
-    public Vista_Actividad_Vestimenta() {
+    public Vista_Actividad_PartesCuerpo() {
         initComponents();
     }
 

@@ -7,12 +7,12 @@ import VistasUnidad3.*;
  *
  * @author Jhony Espinoza
  */
-public class Vista_Actividad_Familia extends javax.swing.JPanel {
+public class Vista_Actividad_Colores extends javax.swing.JPanel {
 
     /**
      * Creates new form Vista_Actividad1U1
      */
-    public Vista_Actividad_Familia() {
+    public Vista_Actividad_Colores() {
         initComponents();
     }
 

@@ -8,12 +8,12 @@ import javax.swing.JButton;
  *
  * @author Jhony Espinoza
  */
-public class Vista_Leccion_Vestimenta extends javax.swing.JPanel {
+public class Vista_Leccion_PartesCuerpo extends javax.swing.JPanel {
 
     /**
      * Creates new form Vista_Actividad1U1
      */
-    public Vista_Leccion_Vestimenta() {
+    public Vista_Leccion_PartesCuerpo() {
         initComponents();
     }
 

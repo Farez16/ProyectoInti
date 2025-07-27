@@ -10,12 +10,12 @@ import javax.swing.JProgressBar;
  *
  * @author Jhony Espinoza
  */
-public class Vista_Unidad3 extends javax.swing.JPanel {
+public class Vista_Unidad4 extends javax.swing.JPanel {
 
     /**
      * Creates new form Vista_Unidad1
      */
-    public Vista_Unidad3() {
+    public Vista_Unidad4() {
         initComponents();
     }
 

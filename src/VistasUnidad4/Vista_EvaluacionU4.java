@@ -20,12 +20,12 @@ import javax.swing.plaf.ComponentUI;
  *
  * @author Jhony Espinoza
  */
-public class Vista_EvaluacionU3 extends javax.swing.JPanel {
+public class Vista_EvaluacionU4 extends javax.swing.JPanel {
 
     /**
      * Creates new form Vista_EvaluacionU1
      */
-    public Vista_EvaluacionU3() {
+    public Vista_EvaluacionU4() {
         initComponents();
        
 
