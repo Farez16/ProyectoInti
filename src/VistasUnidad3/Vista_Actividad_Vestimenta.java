@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package VistasUnidad3;
 
 import Vista.*;
@@ -31,11 +27,11 @@ public class Vista_Actividad_Vestimenta extends javax.swing.JPanel {
         jLabel2debeaparecer1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel2debeaparecer2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        Zapatos = new javax.swing.JTextField();
+        Camiseta = new javax.swing.JTextField();
+        Pantalon = new javax.swing.JTextField();
+        Falda = new javax.swing.JTextField();
+        Blusa = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -58,36 +54,36 @@ public class Vista_Actividad_Vestimenta extends javax.swing.JPanel {
         jLabel2debeaparecer2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2debeaparecer2.setText("VESTIMENTA (CHURANAKUNA)");
         add(jLabel2debeaparecer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, -1, -1));
-        add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 570, 170, 30));
-        add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 170, 30));
+        add(Zapatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 570, 170, 30));
+        add(Camiseta, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 170, 30));
 
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        Pantalon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                PantalonActionPerformed(evt);
             }
         });
-        add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 450, 170, 30));
-        add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 420, 170, 30));
-        add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 300, 170, 30));
+        add(Pantalon, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 450, 170, 30));
+        add(Falda, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 420, 170, 30));
+        add(Blusa, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 300, 170, 30));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Lecciones/actividad vestimenta.jpg"))); // NOI18N
         add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 830, 470));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void PantalonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PantalonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_PantalonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JTextField Blusa;
+    public javax.swing.JTextField Camiseta;
+    public javax.swing.JTextField Falda;
+    public javax.swing.JTextField Pantalon;
+    public javax.swing.JTextField Zapatos;
     public javax.swing.JButton jButton1;
     public javax.swing.JLabel jLabel11;
     public javax.swing.JLabel jLabel2debeaparecer1;
     public javax.swing.JLabel jLabel2debeaparecer2;
-    public javax.swing.JTextField jTextField2;
-    public javax.swing.JTextField jTextField3;
-    public javax.swing.JTextField jTextField4;
-    public javax.swing.JTextField jTextField5;
-    public javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables
 }

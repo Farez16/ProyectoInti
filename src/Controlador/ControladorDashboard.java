@@ -225,4 +225,5 @@ public class ControladorDashboard {
     public Dashboard getVista() {
         return vista;
     }
+   
 }

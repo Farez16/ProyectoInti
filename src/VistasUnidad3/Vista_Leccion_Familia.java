@@ -1,10 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package VistasUnidad3;
 
 import Vista.*;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 
 /**
  *
@@ -18,6 +17,71 @@ public class Vista_Leccion_Familia extends javax.swing.JPanel {
     public Vista_Leccion_Familia() {
         initComponents();
     }
+
+    public JButton getCompletarLeccion() {
+        return CompletarLeccion;
+    }
+
+    public JLabel getAbuela() {
+        return abuela;
+    }
+
+    public JLabel getAbuelo() {
+        return abuelo;
+    }
+
+    public JLabel getHermana() {
+        return hermana;
+    }
+
+    public JLabel getHermano() {
+        return hermano;
+    }
+
+    public JLabel getHija() {
+        return hija;
+    }
+
+    public JLabel getHijo() {
+        return hijo;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public JLabel getjLabel2debeaparecer1() {
+        return jLabel2debeaparecer1;
+    }
+
+    public JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    public JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    public JLabel getMama() {
+        return mama;
+    }
+
+    public JLabel getPapa() {
+        return papa;
+    }
+
+    public JLabel getTia() {
+        return tia;
+    }
+
+    public JLabel getYo() {
+        return yo;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
