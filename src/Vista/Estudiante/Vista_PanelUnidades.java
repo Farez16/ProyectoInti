@@ -1,5 +1,6 @@
 package Vista.Estudiante;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -126,7 +127,6 @@ public class Vista_PanelUnidades extends javax.swing.JPanel {
     public JButton getBtnUnidad4() {
         return btnUnidad4;
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -161,7 +161,7 @@ public class Vista_PanelUnidades extends javax.swing.JPanel {
         LbliconoPalabra = new javax.swing.JLabel();
         ProgresoTotal = new javax.swing.JProgressBar();
 
-        PanelVistas.setBackground(new java.awt.Color(247, 249, 252));
+        PanelVistas.setBackground(new java.awt.Color(235, 243, 250));
         PanelVistas.setPreferredSize(new java.awt.Dimension(1190, 660));
         PanelVistas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -170,8 +170,8 @@ public class Vista_PanelUnidades extends javax.swing.JPanel {
         LblTituloUnidades.setText("Mis Unidades");
         PanelVistas.add(LblTituloUnidades, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
 
-        PanelUnidad1.setBackground(new java.awt.Color(255, 255, 255));
-        PanelUnidad1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        PanelUnidad1.setBackground(new java.awt.Color(253, 253, 253));
+        PanelUnidad1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.white, null, null));
         PanelUnidad1.setPreferredSize(new java.awt.Dimension(260, 310));
         PanelUnidad1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -198,7 +198,7 @@ public class Vista_PanelUnidades extends javax.swing.JPanel {
 
         PanelVistas.add(PanelUnidad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
-        PanelUnidad2.setBackground(new java.awt.Color(255, 255, 255));
+        PanelUnidad2.setBackground(new java.awt.Color(253, 253, 253));
         PanelUnidad2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         PanelUnidad2.setPreferredSize(new java.awt.Dimension(260, 310));
         PanelUnidad2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -224,7 +224,7 @@ public class Vista_PanelUnidades extends javax.swing.JPanel {
 
         PanelVistas.add(PanelUnidad2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 80, -1, -1));
 
-        PanelUnidad3.setBackground(new java.awt.Color(255, 255, 255));
+        PanelUnidad3.setBackground(new java.awt.Color(253, 253, 253));
         PanelUnidad3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         PanelUnidad3.setPreferredSize(new java.awt.Dimension(260, 310));
         PanelUnidad3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -250,7 +250,7 @@ public class Vista_PanelUnidades extends javax.swing.JPanel {
 
         PanelVistas.add(PanelUnidad3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 80, -1, -1));
 
-        PanelUnidad4.setBackground(new java.awt.Color(255, 255, 255));
+        PanelUnidad4.setBackground(new java.awt.Color(253, 253, 253));
         PanelUnidad4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         PanelUnidad4.setPreferredSize(new java.awt.Dimension(260, 310));
         PanelUnidad4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -276,7 +276,7 @@ public class Vista_PanelUnidades extends javax.swing.JPanel {
 
         PanelVistas.add(PanelUnidad4, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 80, -1, -1));
 
-        PanelPalabraDiaria.setBackground(new java.awt.Color(255, 255, 255));
+        PanelPalabraDiaria.setBackground(new java.awt.Color(253, 253, 253));
         PanelPalabraDiaria.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         PanelPalabraDiaria.setPreferredSize(new java.awt.Dimension(531, 182));
 

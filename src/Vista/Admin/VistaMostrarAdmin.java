@@ -48,7 +48,7 @@ public class VistaMostrarAdmin extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(1190, 660));
 
-        PanelVistas.setBackground(new java.awt.Color(247, 249, 252));
+        PanelVistas.setBackground(new java.awt.Color(235, 243, 250));
         PanelVistas.setPreferredSize(new java.awt.Dimension(1190, 660));
 
         TxtBuscar.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N

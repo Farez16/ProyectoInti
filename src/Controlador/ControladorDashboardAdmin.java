@@ -9,11 +9,13 @@ import javax.swing.JOptionPane;
 import Controlador.ControladorSaludo;
 import Modelo.Grafico;
 import Modelo.MostrarDatosAdmin;
+import Modelo.Reportes;
 import Modelo.TextoBotones;
 import Vista.Admin.Cuenta;
 import Vista.Admin.Graficos;
 import Vista.Admin.RegistrarAdmin;
 import Vista.Admin.VistaMostrarAdmin;
+import Vista.Admin.Vista_Reportes;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
@@ -60,9 +62,11 @@ public class ControladorDashboardAdmin {
         vista.btnCrearAdmin.addActionListener(e -> AbrirVistaRegistrar());
         //Boton para abrir el panel de la Cuenta
         vista.btnCuenta1.addActionListener(e -> abrirCuenta());
+        //Boton para abrir los reportes
+        vista.btnReportes.addActionListener(e -> abrirReportes());
         // Botón Salir (igual que en Dashboard)
         vista.btnSalir1.addActionListener(e -> {
-            
+
             int confirm = JOptionPane.showConfirmDialog(
                     null,
                     "¿Deseas cerrar sesión?",
@@ -76,13 +80,15 @@ public class ControladorDashboardAdmin {
             }
         });
     }
-private void AbrirVistaGraficos(){
-        Graficos graficos= new Graficos();
+
+    private void AbrirVistaGraficos() {
+        Graficos graficos = new Graficos();
         Conexion conexion = new Conexion();
         Grafico grafico = new Grafico(conexion.getConexion());
         ControladorGrafico controlador = new ControladorGrafico(graficos, grafico);
         vista.mostrarVista(graficos);
     }
+
     private void mostrarVistaInicial() {
         VistaMostrarAdmin vistaInicial = new VistaMostrarAdmin();
         Conexion conexion = new Conexion();
@@ -107,6 +113,11 @@ private void AbrirVistaGraficos(){
         vista.mostrarVista(va);
     }
 
+private void abrirReportes() {
+    Vista_Reportes vistaReportes = new Vista_Reportes();
+    ControladorReportes controlador = new ControladorReportes(vistaReportes,vista);
+    vista.mostrarVista(vistaReportes);
+}
     private void abrirCuenta() {
         System.out.println("Intentando abrir panel de cuenta...");
         try {

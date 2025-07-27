@@ -7,7 +7,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-      <Color blue="fc" green="f9" red="f7" type="rgb"/>
+      <Color blue="fa" green="f3" red="eb" type="rgb"/>
     </Property>
   </Properties>
   <AuxValues>
