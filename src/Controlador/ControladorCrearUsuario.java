@@ -10,19 +10,21 @@ import Vista.Login.Login;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
-public class ControladorContrasenaNueva {
+public class ControladorCrearUsuario {
 
     private final CrearUsuario vista;
     private final JDialog dialog;
     private final Login login;
 
-    public ControladorContrasenaNueva(CrearUsuario vista, String correoUsuario, JDialog dialog, Login login) {
+    public ControladorCrearUsuario(CrearUsuario vista, String correoUsuario, JDialog dialog, Login login) {
         this.vista = vista;
         this.dialog = dialog;
         this.login = login;
 
         bloquearCamposRegistro();
 
+        // Agregar acción al botón Regresar
+        vista.btnRegresar.addActionListener(e -> regresarALogin());
         // BOTÓN PARA ENVIAR CÓDIGO
         this.vista.getBtnEnviarCodigo().addActionListener(e -> enviarCodigo());
 
@@ -31,6 +33,14 @@ public class ControladorContrasenaNueva {
 
         // BOTÓN PARA GUARDAR CONTRASEÑA
         this.vista.getBtnGuardarContraseña().addActionListener(e -> guardarContrasena());
+    }
+
+    private void regresarALogin() {
+        if (dialog != null) {
+            dialog.dispose(); // Si venía de un diálogo
+        } else {
+            login.mostrarPanelEnPanel1(login.getPanelLoginOriginal()); // Si está en Panel1
+        }
     }
 
     private void bloquearCamposRegistro() {
@@ -47,56 +57,51 @@ public class ControladorContrasenaNueva {
 
     // ENVÍA EL CÓDIGO AL CORREO
     private void enviarCodigo() {
-    String correo = vista.getTextFieldIngresarCorreo().getText().trim().toLowerCase();
-    if (correo.isEmpty() || !esCorreoPermitido(correo)) {
-        JOptionPane.showMessageDialog(vista, "Ingrese un correo válido de: Gmail, Hotmail, Outlook o institucional.");
-        vista.getTextFieldIngresarCorreo().requestFocus();
-        return;
+        String correo = vista.getTextFieldIngresarCorreo().getText().trim().toLowerCase();
+        if (correo.isEmpty() || !esCorreoPermitido(correo)) {
+            JOptionPane.showMessageDialog(vista, "Ingrese un correo válido de: Gmail, Hotmail, Outlook o institucional.");
+            vista.getTextFieldIngresarCorreo().requestFocus();
+            return;
+        }
+        if (OTPService.codigoEnviado(correo)) {
+            JOptionPane.showMessageDialog(vista, "Ya se ha enviado un código a este correo. Por favor revise su correo o espere para solicitar otro.");
+            return;
+        }
+        String codigo = OTPService.generarYEnviarCodigo(correo);
+        EmailSender.enviarCodigo(correo, codigo);
+        JOptionPane.showMessageDialog(vista, "Se ha enviado el código al correo.");
     }
-    if (OTPService.codigoEnviado(correo)) {
-        JOptionPane.showMessageDialog(vista, "Ya se ha enviado un código a este correo. Por favor revise su correo o espere para solicitar otro.");
-        return;
-    }
-    String codigo = OTPService.generarYEnviarCodigo(correo);
-    EmailSender.enviarCodigo(correo, codigo);
-    JOptionPane.showMessageDialog(vista, "Se ha enviado el código al correo.");
-}
 
 // Métodos de validación igual que en la vista
-private boolean esCorreoPermitido(String correo) {
-    correo = correo.toLowerCase();
-    return correo.matches("^[A-Za-z0-9._%+-]+@(gmail|hotmail|outlook)\\.com$")
-        || correo.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.(edu|edu\\.ec|edu\\.mx|edu\\.ar|edu\\.pe|edu\\.co|edu\\.es)$");
-}
-
-
-
+    private boolean esCorreoPermitido(String correo) {
+        correo = correo.toLowerCase();
+        return correo.matches("^[A-Za-z0-9._%+-]+@(gmail|hotmail|outlook)\\.com$")
+                || correo.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.(edu|edu\\.ec|edu\\.mx|edu\\.ar|edu\\.pe|edu\\.co|edu\\.es)$");
+    }
 
     // VERIFICA EL CÓDIGO
-   private void verificarCodigo() {
-    String correo = vista.getTextFieldIngresarCorreo().getText().trim().toLowerCase();
-    String codigo = vista.getTextFieldIngresarCodigoRecibido().getText().trim().replaceAll("[^0-9]", "");
+    private void verificarCodigo() {
+        String correo = vista.getTextFieldIngresarCorreo().getText().trim().toLowerCase();
+        String codigo = vista.getTextFieldIngresarCodigoRecibido().getText().trim().replaceAll("[^0-9]", "");
 
-    if (correo.isEmpty() || correo.equalsIgnoreCase("correo")) {
-        JOptionPane.showMessageDialog(vista, "Ingrese el correo.");
-        return;
+        if (correo.isEmpty() || correo.equalsIgnoreCase("correo")) {
+            JOptionPane.showMessageDialog(vista, "Ingrese el correo.");
+            return;
+        }
+        if (codigo.isEmpty() || codigo.equalsIgnoreCase("codigo recibido")) {
+            JOptionPane.showMessageDialog(vista, "Ingrese el código recibido.");
+            return;
+        }
+
+        System.out.println("Verificando código. Correo: '" + correo + "', Código: '" + codigo + "'");
+
+        if (!OTPService.validarCodigo(correo, codigo)) {
+            JOptionPane.showMessageDialog(vista, "El código ingresado no es correcto.", "Código incorrecto", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        JOptionPane.showMessageDialog(vista, "Código correcto. Ahora ingrese su nombre y contraseña.");
+        desbloquearCamposRegistro();
     }
-    if (codigo.isEmpty() || codigo.equalsIgnoreCase("codigo recibido")) {
-        JOptionPane.showMessageDialog(vista, "Ingrese el código recibido.");
-        return;
-    }
-
-    System.out.println("Verificando código. Correo: '" + correo + "', Código: '" + codigo + "'");
-
-    if (!OTPService.validarCodigo(correo, codigo)) {
-        JOptionPane.showMessageDialog(vista, "El código ingresado no es correcto.", "Código incorrecto", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-    JOptionPane.showMessageDialog(vista, "Código correcto. Ahora ingrese su nombre y contraseña.");
-    desbloquearCamposRegistro();
-}
-
-
 
     // GUARDA LA CONTRASEÑA Y ENVÍA EL CORREO DE BIENVENIDA
     private void guardarContrasena() {
@@ -122,11 +127,11 @@ private boolean esCorreoPermitido(String correo) {
 
                 String asunto = "¡Gracias por registrarte en nuestra app!";
                 String mensaje = "Bienvenido/a " + nombre + ",\n\n"
-                    + "Tu registro fue exitoso. Puedes iniciar sesión con:\n"
-                    + "Usuario: " + correoUsuario + "\n"
-                    + "Correo: " + correoUsuario + "\n"
-                    + "Contraseña: " + nuevaContrasena + "\n\n"
-                    + "¡Gracias por registrarte en nuestra app!";
+                        + "Tu registro fue exitoso. Puedes iniciar sesión con:\n"
+                        + "Usuario: " + correoUsuario + "\n"
+                        + "Correo: " + correoUsuario + "\n"
+                        + "Contraseña: " + nuevaContrasena + "\n\n"
+                        + "¡Gracias por registrarte en nuestra app!";
                 EmailSender.enviarCorreo(correoUsuario, asunto, mensaje);
 
                 JOptionPane.showMessageDialog(vista, "Registro exitoso. Revisa tu correo y disfruta nuestra app.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
@@ -150,5 +155,5 @@ private boolean esCorreoPermitido(String correo) {
             JOptionPane.showMessageDialog(vista, "Error en el cambio");
         }
     }
-    
+
 }

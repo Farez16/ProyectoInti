@@ -63,6 +63,7 @@ public class ControladorLogin implements ActionListener {
         timer.addActionListener(new ActionListener() {
             int count = 0;
             boolean highlight = false;
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (count >= 6) {
@@ -82,14 +83,11 @@ public class ControladorLogin implements ActionListener {
     private void abrirPanelRegistro() {
         String correo = vista.TxtUsuario.getText().trim();
         CrearUsuario panelCambio = new CrearUsuario(correo);
-        JDialog dialog = new JDialog(vista, "Registrar nueva cuenta", true);
-        dialog.setContentPane(panelCambio);
-        dialog.pack();
-        dialog.setLocationRelativeTo(vista);
+        // Mostrar directamente en Panel1
+        vista.mostrarPanelEnPanel1(panelCambio);
 
-        new ControladorContrasenaNueva(panelCambio, correo, dialog, vista);
-
-        dialog.setVisible(true);
+        // Modificar el controlador para que no dependa del JDialog
+        new ControladorCrearUsuario(panelCambio, correo, null, vista);
     }
 
     private void abrirDashboard(String correo) {

@@ -169,7 +169,7 @@ public class Controlador_Unidad3 {
 
     private void abrirEvaluacion() {
         Vista_EvaluacionU3 vistaEvaluacion = new Vista_EvaluacionU3();
-        // Aquí deberías crear el controlador correspondiente
+        new Controlador_EvaluacionU3(vistaEvaluacion, controladorDashboard, conn, correo, controladorUnidades);
         dashboard.mostrarVista(vistaEvaluacion);
     }
 
