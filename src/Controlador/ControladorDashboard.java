@@ -107,13 +107,19 @@ public class ControladorDashboard {
     vista.mostrarVista(panelUnidades);
 }
   private void abrirCertificado() {
-    Vista_Certificado certificadoPanel = new Vista_Certificado();
-    new Controlador_Certificado(certificadoPanel, vista);
-    vista.mostrarVista(certificadoPanel);
+        // Detener todos los videos antes de cambiar de vista
+        VideoManager.getInstance().detenerTodosLosVideos();
+        
+        Vista_Certificado certificadoPanel = new Vista_Certificado();
+        new Controlador_Certificado(certificadoPanel, vista);
+        vista.mostrarVista(certificadoPanel);
 }
     private void abrirCuenta() {
         System.out.println("Intentando abrir panel de cuenta...");
         try {
+            // Detener todos los videos antes de cambiar de vista
+            VideoManager.getInstance().detenerTodosLosVideos();
+            
             Cuenta cuentaPanel = new Cuenta();
             System.out.println("Componentes en cuentaPanel:");
             System.out.println("btnSubirImagenURL: " + (cuentaPanel.btnSubirImagenURL != null ? "Existe" : "NULL"));

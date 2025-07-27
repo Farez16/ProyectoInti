@@ -41,18 +41,51 @@ public class Controlador_Video {
     }
 
     private void configurarContenedor() {
-        contenedorVideo.setLayout(new BorderLayout());
-        contenedorVideo.removeAll();
-        contenedorVideo.add(fxPanel, BorderLayout.CENTER);
-        contenedorVideo.revalidate();
-        contenedorVideo.repaint();
+        try {
+            // Asegurar que el contenedor tenga un tamaño mínimo
+            contenedorVideo.setPreferredSize(new Dimension(640, 480));
+            contenedorVideo.setMinimumSize(new Dimension(320, 240));
+            
+            // Configurar layout y agregar el panel FX
+            contenedorVideo.setLayout(new BorderLayout());
+            contenedorVideo.removeAll();
+            
+            // Configurar el JFXPanel
+            fxPanel.setPreferredSize(new Dimension(640, 480));
+            fxPanel.setMinimumSize(new Dimension(320, 240));
+            
+            contenedorVideo.add(fxPanel, BorderLayout.CENTER);
+            contenedorVideo.revalidate();
+            contenedorVideo.repaint();
+            
+            System.out.println("Contenedor de video configurado - Tamaño: " + contenedorVideo.getPreferredSize());
+            
+        } catch (Exception e) {
+            System.err.println("Error al configurar contenedor de video: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     private void initializeFX() {
-        StackPane placeholderRoot = new StackPane(new Label("Cargando video..."));
-        placeholderScene = new Scene(placeholderRoot, 640, 480);
-        fxPanel.setScene(placeholderScene);
-        isInitialized = true;
+        try {
+            // Crear placeholder con tamaño fijo
+            Label placeholderLabel = new Label("Cargando video...");
+            placeholderLabel.setStyle("-fx-font-size: 14px; -fx-text-fill: #333333;");
+            
+            StackPane placeholderRoot = new StackPane(placeholderLabel);
+            placeholderRoot.setStyle("-fx-background-color: #f0f0f0; -fx-border-color: #cccccc;");
+            
+            placeholderScene = new Scene(placeholderRoot, 640, 480);
+            fxPanel.setScene(placeholderScene);
+            
+            isInitialized = true;
+            System.out.println("JavaFX inicializado correctamente para video");
+            
+        } catch (Exception e) {
+            System.err.println("Error al inicializar JavaFX: " + e.getMessage());
+            e.printStackTrace();
+            isInitialized = true; // Marcar como inicializado para evitar bloqueos
+        }
     }
 
     /**
@@ -106,6 +139,9 @@ public class Controlador_Video {
                 Scene videoScene = new Scene(videoRoot);
                 fxPanel.setScene(videoScene);
                 
+                // Forzar actualización visual
+                forzarActualizacionVisual();
+                
                 isLoadingVideo = false;
                 
                 // Si hay una recarga pendiente, ejecutarla
@@ -122,10 +158,79 @@ public class Controlador_Video {
     }
 
     private void configurarMediaView() {
-        mediaView.fitWidthProperty().bind(videoRoot.widthProperty());
-        mediaView.fitHeightProperty().bind(videoRoot.heightProperty());
-        mediaView.setPreserveRatio(true);
-        mediaView.setSmooth(true);
+        try {
+            // Configuración básica del MediaView
+            mediaView.setPreserveRatio(true);
+            mediaView.setSmooth(true);
+            
+            // Configurar tamaño fijo inicial para evitar problemas de binding
+            mediaView.setFitWidth(640);
+            mediaView.setFitHeight(480);
+            
+            // Asegurar que el MediaView sea visible
+            mediaView.setVisible(true);
+            mediaView.setManaged(true);
+            
+            // Configurar el StackPane contenedor
+            videoRoot.setPrefSize(640, 480);
+            videoRoot.setMinSize(320, 240);
+            
+            // Binding dinámico solo después de la configuración inicial
+            Platform.runLater(() -> {
+                try {
+                    if (videoRoot != null && mediaView != null) {
+                        mediaView.fitWidthProperty().bind(videoRoot.widthProperty());
+                        mediaView.fitHeightProperty().bind(videoRoot.heightProperty());
+                    }
+                } catch (Exception e) {
+                    System.err.println("Error en binding dinámico: " + e.getMessage());
+                }
+            });
+            
+            System.out.println("MediaView configurado correctamente - Tamaño: " + mediaView.getFitWidth() + "x" + mediaView.getFitHeight());
+            
+        } catch (Exception e) {
+            System.err.println("Error al configurar MediaView: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    
+    /**
+     * Fuerza la actualización visual del video para corregir problemas de renderizado
+     */
+    private void forzarActualizacionVisual() {
+        try {
+            if (videoRoot != null && mediaView != null) {
+                // Forzar repaint del contenedor Swing
+                SwingUtilities.invokeLater(() -> {
+                    contenedorVideo.revalidate();
+                    contenedorVideo.repaint();
+                });
+                
+                // Forzar actualización del MediaView en JavaFX
+                Platform.runLater(() -> {
+                    try {
+                        if (mediaView != null) {
+                            mediaView.setVisible(false);
+                            mediaView.setVisible(true);
+                            
+                            // Forzar recalculo de layout
+                            if (videoRoot != null) {
+                                videoRoot.requestLayout();
+                                videoRoot.applyCss();
+                                videoRoot.layout();
+                            }
+                        }
+                    } catch (Exception e) {
+                        System.err.println("Error en actualización visual JavaFX: " + e.getMessage());
+                    }
+                });
+                
+                System.out.println("Actualización visual forzada para corregir renderizado de video");
+            }
+        } catch (Exception e) {
+            System.err.println("Error al forzar actualización visual: " + e.getMessage());
+        }
     }
 
     /**
@@ -393,28 +498,67 @@ public class Controlador_Video {
      */
     public void detenerYLiberarRecursos() {
         if (isDisposed) {
+            System.out.println("Controlador de video ya fue liberado");
             return;
         }
         
+        System.out.println("=== INICIANDO LIBERACIÓN COMPLETA DE RECURSOS DE VIDEO ===");
+        
+        // Marcar como disposed inmediatamente para evitar operaciones concurrentes
+        isDisposed = true;
+        
         // Desregistrar del gestor global de videos
-        VideoManager.getInstance().desregistrarControlador(this);
+        try {
+            VideoManager.getInstance().desregistrarControlador(this);
+            System.out.println("Controlador desregistrado del VideoManager");
+        } catch (Exception e) {
+            System.err.println("Error al desregistrar del VideoManager: " + e.getMessage());
+        }
         
         Platform.runLater(() -> {
             try {
                 if (mediaPlayer != null) {
+                    System.out.println("Deteniendo MediaPlayer...");
+                    
+                    // Detener inmediatamente
                     mediaPlayer.stop();
+                    
+                    // Silenciar completamente
                     mediaPlayer.setVolume(0.0);
+                    
+                    // Volver al inicio
                     mediaPlayer.seek(Duration.ZERO);
+                    
+                    // Liberar recursos del MediaPlayer
                     mediaPlayer.dispose();
                     mediaPlayer = null;
+                    
+                    System.out.println("MediaPlayer detenido y liberado");
                 }
+                
                 if (mediaView != null) {
+                    mediaView.setMediaPlayer(null);
                     mediaView = null;
+                    System.out.println("MediaView liberado");
                 }
+                
+                // Limpiar la escena y mostrar placeholder
+                if (videoRoot != null) {
+                    videoRoot.getChildren().clear();
+                    videoRoot = null;
+                }
+                
                 mostrarPlaceholder();
-                isDisposed = true;
+                
+                // Limpiar referencias
+                currentVideoPath = null;
+                onVideoCompletedCallback = null;
+                
+                System.out.println("=== RECURSOS DE VIDEO LIBERADOS COMPLETAMENTE ===");
+                
             } catch (Exception e) {
                 System.err.println("Error al detener y liberar recursos: " + e.getMessage());
+                e.printStackTrace();
             }
         });
     }
