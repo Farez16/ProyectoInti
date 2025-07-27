@@ -34,7 +34,7 @@
     <Container class="javax.swing.JPanel" name="PanelVistas">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="fc" green="f9" red="f7" type="rgb"/>
+          <Color blue="fa" green="f3" red="eb" type="rgb"/>
         </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[1190, 660]"/>

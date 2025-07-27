@@ -26,7 +26,7 @@ public class Modelo_AnimacionEntradaUnidad2 {
         panel.setVisible(false);
         paso = 0;
 
-        timer = new Timer(100, new ActionListener() {
+        timer = new Timer(0, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 paso++;
@@ -37,7 +37,7 @@ public class Modelo_AnimacionEntradaUnidad2 {
             }
         });
 
-        timer.setInitialDelay(100);
+        timer.setInitialDelay(0);
         timer.start();
     }
 }

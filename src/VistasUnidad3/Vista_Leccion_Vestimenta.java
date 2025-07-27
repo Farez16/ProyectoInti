@@ -1,10 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package VistasUnidad3;
 
 import Vista.*;
+import javax.swing.JButton;
 
 /**
  *
@@ -19,6 +16,11 @@ public class Vista_Leccion_Vestimenta extends javax.swing.JPanel {
         initComponents();
     }
 
+    public JButton getCompletarLeccion() {
+        return CompletarLeccion;
+    }
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,7 +31,7 @@ public class Vista_Leccion_Vestimenta extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel2debeaparecer1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        CompletarLeccion = new javax.swing.JButton();
         jLabel2debeaparecer2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -51,11 +53,11 @@ public class Vista_Leccion_Vestimenta extends javax.swing.JPanel {
         jLabel2debeaparecer1.setText("Aqui vamos a ver como es la vestimenta tradicional de esta cultura ");
         add(jLabel2debeaparecer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(255, 102, 0));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("<html><center>COMPLETAR<br>ACTIVIDAD<center></html>");
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 590, 180, -1));
+        CompletarLeccion.setBackground(new java.awt.Color(255, 102, 0));
+        CompletarLeccion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        CompletarLeccion.setForeground(new java.awt.Color(255, 255, 255));
+        CompletarLeccion.setText("<html><center>COMPLETAR<br>ACTIVIDAD<center></html>");
+        add(CompletarLeccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 590, 180, -1));
 
         jLabel2debeaparecer2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2debeaparecer2.setForeground(new java.awt.Color(0, 0, 0));
@@ -108,7 +110,7 @@ public class Vista_Leccion_Vestimenta extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton jButton1;
+    public javax.swing.JButton CompletarLeccion;
     public javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel11;
     public javax.swing.JLabel jLabel2;

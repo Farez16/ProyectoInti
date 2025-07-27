@@ -23,6 +23,7 @@ public class TextoBotones {
         textosAlternativos.put("btnGraficos1", new String[]{"Graficos", "ShuyoKuna"});
         textosAlternativos.put("btnCrearAdmin", new String[]{"Registrar", "Killkakuna"});
         textosAlternativos.put("btnSalir1", new String[]{"Salir", "Llukshina"});
+        textosAlternativos.put("btnReportes", new String []{"Reportes", "Willaykuna"});
     }
 
     public String[] getTextos(String nombreBoton) {

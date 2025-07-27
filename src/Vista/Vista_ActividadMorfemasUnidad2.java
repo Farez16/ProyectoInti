@@ -421,6 +421,7 @@ public class Vista_ActividadMorfemasUnidad2 extends javax.swing.JPanel {
         jTextField1OPCCIONAARRASTRAR7 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(1190, 660));
@@ -443,8 +444,11 @@ public class Vista_ActividadMorfemasUnidad2 extends javax.swing.JPanel {
         jTextField1TextoMorfemas5.setBorder(null);
         add(jTextField1TextoMorfemas5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, 110, 20));
 
+        jButton1ComprobarAudios.setBackground(new java.awt.Color(255, 122, 0));
+        jButton1ComprobarAudios.setFont(new java.awt.Font("Modern No. 20", 0, 18)); // NOI18N
         jButton1ComprobarAudios.setText("Comprobar");
-        add(jButton1ComprobarAudios, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 630, -1, -1));
+        jButton1ComprobarAudios.setBorderPainted(false);
+        add(jButton1ComprobarAudios, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 570, -1, -1));
 
         jLabel2debeaparecer3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2debeaparecer3.setText("Morfemas");
@@ -529,9 +533,11 @@ public class Vista_ActividadMorfemasUnidad2 extends javax.swing.JPanel {
         add(jTextField1TextoMorfemas10, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 500, 180, 20));
         add(jTextField1arrastraropcion7, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 440, 120, -1));
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton1.setBackground(new java.awt.Color(255, 122, 0));
+        jButton1.setFont(new java.awt.Font("Modern No. 20", 0, 18)); // NOI18N
         jButton1.setText("CONTINUAR");
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 610, -1, -1));
+        jButton1.setBorderPainted(false);
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 600, -1, -1));
         add(jTextField1OPCCIONAARRASTRAR1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, 90, -1));
 
         jLabel2debeaparecer4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -549,6 +555,9 @@ public class Vista_ActividadMorfemasUnidad2 extends javax.swing.JPanel {
 
         jLabel6.setText("5.");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 440, -1, -1));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad2/Fondo.png"))); // NOI18N
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(-22, -84, 1230, 750));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1arrastraropcion3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1arrastraropcion3ActionPerformed
@@ -582,6 +591,7 @@ public class Vista_ActividadMorfemasUnidad2 extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField jTextField1OPCCIONAARRASTRAR1;
     private javax.swing.JTextField jTextField1OPCCIONAARRASTRAR2;
     private javax.swing.JTextField jTextField1OPCCIONAARRASTRAR3;

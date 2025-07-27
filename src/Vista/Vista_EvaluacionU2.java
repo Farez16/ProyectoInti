@@ -311,6 +311,8 @@ public class Vista_EvaluacionU2 extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(1190, 660));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButton1ComprobaryFinalizarUnidad.setBackground(new java.awt.Color(255, 122, 0));
+        jButton1ComprobaryFinalizarUnidad.setFont(new java.awt.Font("Modern No. 20", 0, 18)); // NOI18N
         jButton1ComprobaryFinalizarUnidad.setText("Comprobar");
         add(jButton1ComprobaryFinalizarUnidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 620, -1, -1));
 
@@ -322,6 +324,8 @@ public class Vista_EvaluacionU2 extends javax.swing.JPanel {
         jLabel2debeaparecer4.setText("Prueba tus conocimientos");
         add(jLabel2debeaparecer4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 50, -1, -1));
 
+        jButton1.setBackground(new java.awt.Color(255, 122, 0));
+        jButton1.setFont(new java.awt.Font("Modern No. 20", 0, 18)); // NOI18N
         jButton1.setText("Regresar");
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 620, -1, -1));
 

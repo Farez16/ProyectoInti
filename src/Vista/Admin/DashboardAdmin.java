@@ -135,6 +135,13 @@ public class DashboardAdmin extends javax.swing.JPanel {
         return btnMenu1;
     }
 
+    public JButton getBtnReportes() {
+        return btnReportes;
+    }
+    public String getNombreUsuario() {
+        return lblNombre.getText(); // Directamente del JLabel que ya tiene el nombre
+    }
+
     private void iniciarEfectosBotones() {
         // 1. Crear el mapa de botones
         Map<String, JButton> botonesMap = new HashMap<>();
@@ -143,6 +150,7 @@ public class DashboardAdmin extends javax.swing.JPanel {
         botonesMap.put("btnGraficos1", btnGraficos1);
         botonesMap.put("btnCrearAdmin", btnCrearAdmin);
         botonesMap.put("btnSalir1", btnSalir1);
+        botonesMap.put("btnReportes", btnReportes);
 
         // 2. Pasar el mapa al controlador
         TextoBotones modeloTextos = new TextoBotones();
@@ -167,12 +175,13 @@ public class DashboardAdmin extends javax.swing.JPanel {
         btnCrearAdmin = new javax.swing.JButton();
         LblLogo = new javax.swing.JLabel();
         btnSalir1 = new javax.swing.JButton();
+        btnReportes = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        PanelVistas.setBackground(new java.awt.Color(247, 249, 252));
+        PanelVistas.setBackground(new java.awt.Color(235, 243, 250));
         PanelVistas.setPreferredSize(new java.awt.Dimension(1190, 660));
         PanelVistas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(PanelVistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 1190, 660));
@@ -262,6 +271,20 @@ public class DashboardAdmin extends javax.swing.JPanel {
         });
         jPanel1.add(btnSalir1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 681, 160, 42));
 
+        btnReportes.setBackground(new java.awt.Color(255, 122, 0));
+        btnReportes.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        btnReportes.setForeground(new java.awt.Color(55, 65, 81));
+        btnReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AñadirAdmin.png"))); // NOI18N
+        btnReportes.setBorder(null);
+        btnReportes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnReportes.setOpaque(true);
+        btnReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, 160, 42));
+
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -322,6 +345,10 @@ public class DashboardAdmin extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSalir1ActionPerformed
 
+    private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnReportesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel LblLogo;
@@ -333,6 +360,7 @@ public class DashboardAdmin extends javax.swing.JPanel {
     public javax.swing.JButton btnCuenta1;
     public javax.swing.JButton btnGraficos1;
     public javax.swing.JButton btnMenu1;
+    public javax.swing.JButton btnReportes;
     public javax.swing.JButton btnSalir1;
     public javax.swing.JPanel jPanel1;
     public javax.swing.JPanel jPanel2;

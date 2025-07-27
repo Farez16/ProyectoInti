@@ -348,16 +348,41 @@ public class Controlador_Video {
     }
 
     private void configurarEventosReproductor() {
-        mediaPlayer.setOnReady(() -> mediaPlayer.play());
+        // Configurar evento de listo para reproducir
+        mediaPlayer.setOnReady(() -> {
+            System.out.println("Video listo - Duración: " + mediaPlayer.getTotalDuration().toSeconds() + " segundos");
+            mediaPlayer.play();
+        });
+        
+        // Configurar evento de fin de media
         mediaPlayer.setOnEndOfMedia(() -> {
+            System.out.println("Video completado - Ejecutando callback");
             if (onVideoCompletedCallback != null) {
                 SwingUtilities.invokeLater(onVideoCompletedCallback);
             }
         });
+        
+        // Configurar evento de error
         mediaPlayer.setOnError(() -> {
             String errorMsg = mediaPlayer.getError() != null ? 
                 mediaPlayer.getError().getMessage() : "Error desconocido";
+            System.err.println("Error en MediaPlayer: " + errorMsg);
             mostrarError("Error en video: " + errorMsg);
+        });
+        
+        // Configurar evento de pausa (para debugging)
+        mediaPlayer.setOnPaused(() -> {
+            System.out.println("Video pausado en: " + mediaPlayer.getCurrentTime().toSeconds() + " segundos");
+        });
+        
+        // Configurar evento de reproducción (para debugging)
+        mediaPlayer.setOnPlaying(() -> {
+            System.out.println("Video reproduciéndose - Tiempo actual: " + mediaPlayer.getCurrentTime().toSeconds() + " segundos");
+        });
+        
+        // Configurar evento de detención (para debugging)
+        mediaPlayer.setOnStopped(() -> {
+            System.out.println("Video detenido");
         });
     }
 
@@ -563,7 +588,15 @@ public class Controlador_Video {
         });
     }
     
-   
+    /**
+     * Configura el callback que se ejecutará cuando el video termine.
+     * 
+     * @param callback Runnable que se ejecutará al finalizar el video
+     */
+    public void setOnVideoCompleted(Runnable callback) {
+        this.onVideoCompletedCallback = callback;
+        System.out.println("Callback de video completado configurado");
+    }
 
     private void mostrarError(String mensaje) {
         SwingUtilities.invokeLater(() -> 

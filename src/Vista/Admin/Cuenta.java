@@ -68,10 +68,6 @@ public class Cuenta extends JPanel {
         return jButton1CambiarContraseña;
     }
 
-    public JButton getjButton1Miscertificados() {
-        return jButton1Miscertificados;
-    }
-
     public JButton getjButton1SubirImagen() {
         return jButton1SubirImagen;
     }
@@ -149,9 +145,6 @@ public class Cuenta extends JPanel {
         this.jButton1CambiarContraseña = jButton1CambiarContraseña;
     }
 
-    public void setjButton1Miscertificados(JButton jButton1Miscertificados) {
-        this.jButton1Miscertificados = jButton1Miscertificados;
-    }
 
     public void setjButton1SubirImagen(JButton jButton1SubirImagen) {
         this.jButton1SubirImagen = jButton1SubirImagen;
@@ -201,7 +194,6 @@ public class Cuenta extends JPanel {
         jLabel1FechayHora1 = new javax.swing.JLabel();
         jLabel1Contra1 = new javax.swing.JLabel();
         jTextField1Contraseña1 = new javax.swing.JTextField();
-        jButton1Miscertificados = new javax.swing.JButton();
         LblimagenFondo = new javax.swing.JLabel();
         LblSaludo = new javax.swing.JLabel();
         LabelPerfildelUsuario = new javax.swing.JLabel();
@@ -260,13 +252,6 @@ public class Cuenta extends JPanel {
         jTextField1Contraseña1.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
         PanelVistas.add(jTextField1Contraseña1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, 210, 30));
 
-        jButton1Miscertificados.setBackground(new java.awt.Color(255, 122, 0));
-        jButton1Miscertificados.setFont(new java.awt.Font("Montserrat", 1, 16)); // NOI18N
-        jButton1Miscertificados.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1Miscertificados.setText("Certificado");
-        jButton1Miscertificados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        PanelVistas.add(jButton1Miscertificados, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 520, 180, 40));
-
         LblimagenFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lbl.jpg"))); // NOI18N
         PanelVistas.add(LblimagenFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -305,7 +290,6 @@ public class Cuenta extends JPanel {
     public javax.swing.JLabel LblimagenFondo;
     public javax.swing.JPanel PanelVistas;
     public javax.swing.JButton jButton1CambiarContraseña;
-    public javax.swing.JButton jButton1Miscertificados;
     public javax.swing.JButton jButton1SubirImagen;
     public javax.swing.JLabel jLabel1Contra1;
     public javax.swing.JLabel jLabel1FechayHora1;
