@@ -113,9 +113,6 @@ public class Vista_Actividad2U1 extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelPista = new javax.swing.JLabel();
-        jLabelPregunta = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jPanelContenedor = new javax.swing.JPanel();
         jPanelDragDrop = new javax.swing.JPanel();
         jLabelDestino = new javax.swing.JLabel();
@@ -125,6 +122,9 @@ public class Vista_Actividad2U1 extends javax.swing.JPanel {
         jButtonValidarDragDrop = new javax.swing.JButton();
         jButtonCOMPLETOACTV2 = new javax.swing.JButton();
         jLabelMensajeRespuesta = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabelPreguntaDragDrop = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jPanelEmparejar = new javax.swing.JPanel();
         jComboBoxEmparejarOpcionA = new javax.swing.JComboBox<>();
         jComboBoxEmparejarOpcionB = new javax.swing.JComboBox<>();
@@ -133,159 +133,119 @@ public class Vista_Actividad2U1 extends javax.swing.JPanel {
         jLabelEmaprejar2 = new javax.swing.JLabel();
         jLabelEmaprejar3 = new javax.swing.JLabel();
         jButtonValidarEmparejar = new javax.swing.JButton();
+        LabelTitulo = new javax.swing.JLabel();
+        jLabelPreguntaEmparejar = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(1190, 660));
         setMinimumSize(new java.awt.Dimension(1190, 660));
         setPreferredSize(new java.awt.Dimension(1190, 660));
 
-        jLabelPista.setText("Pista");
-
-        jLabelPregunta.setText("Pregunta");
-
-        jLabel1.setText("Actividad 2");
-
+        jPanelContenedor.setPreferredSize(new java.awt.Dimension(1190, 626));
         jPanelContenedor.setLayout(new java.awt.CardLayout());
 
         jPanelDragDrop.setMaximumSize(new java.awt.Dimension(691, 587));
         jPanelDragDrop.setMinimumSize(new java.awt.Dimension(691, 587));
         jPanelDragDrop.setPreferredSize(new java.awt.Dimension(500, 500));
+        jPanelDragDrop.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabelDestino.setText("jLabel2");
+        jLabelDestino.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabelDestino.setText("ARRASTRA TU PALABAR AQUÍ");
         jLabelDestino.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanelDragDrop.add(jLabelDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, 303, 75));
 
-        jLabelDragDropOpcionA.setText("jLabel2");
+        jLabelDragDropOpcionA.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabelDragDropOpcionA.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanelDragDrop.add(jLabelDragDropOpcionA, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420, 200, 50));
 
-        jLabelDragDropOpcionB.setText("jLabel2");
+        jLabelDragDropOpcionB.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabelDragDropOpcionB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanelDragDrop.add(jLabelDragDropOpcionB, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 420, 200, 50));
 
-        jLabelDragDropOpcionC.setText("jLabel2");
+        jLabelDragDropOpcionC.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabelDragDropOpcionC.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanelDragDrop.add(jLabelDragDropOpcionC, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 420, 200, 50));
 
+        jButtonValidarDragDrop.setBackground(new java.awt.Color(255, 153, 51));
+        jButtonValidarDragDrop.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButtonValidarDragDrop.setText("Validar");
+        jPanelDragDrop.add(jButtonValidarDragDrop, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 540, 111, 45));
 
+        jButtonCOMPLETOACTV2.setBackground(new java.awt.Color(255, 153, 51));
+        jButtonCOMPLETOACTV2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButtonCOMPLETOACTV2.setText("TERMINADO");
         jButtonCOMPLETOACTV2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCOMPLETOACTV2ActionPerformed(evt);
             }
         });
+        jPanelDragDrop.add(jButtonCOMPLETOACTV2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 590, 150, 40));
 
+        jLabelMensajeRespuesta.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelMensajeRespuesta.setText("Respuesta");
+        jPanelDragDrop.add(jLabelMensajeRespuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 260, 170, 28));
 
-        javax.swing.GroupLayout jPanelDragDropLayout = new javax.swing.GroupLayout(jPanelDragDrop);
-        jPanelDragDrop.setLayout(jPanelDragDropLayout);
-        jPanelDragDropLayout.setHorizontalGroup(
-            jPanelDragDropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelDragDropLayout.createSequentialGroup()
-                .addGap(98, 98, 98)
-                .addComponent(jLabelDragDropOpcionA, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(179, 179, 179)
-                .addGroup(jPanelDragDropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonValidarDragDrop, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanelDragDropLayout.createSequentialGroup()
-                        .addComponent(jLabelDragDropOpcionB, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 417, Short.MAX_VALUE)
-                        .addComponent(jLabelDragDropOpcionC, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(50, 50, 50))
-            .addGroup(jPanelDragDropLayout.createSequentialGroup()
-                .addGap(315, 315, 315)
-                .addComponent(jLabelDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabelMensajeRespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDragDropLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonCOMPLETOACTV2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
-        );
-        jPanelDragDropLayout.setVerticalGroup(
-            jPanelDragDropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelDragDropLayout.createSequentialGroup()
-                .addGroup(jPanelDragDropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelDragDropLayout.createSequentialGroup()
-                        .addGap(107, 107, 107)
-                        .addGroup(jPanelDragDropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelMensajeRespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(109, 109, 109)
-                        .addComponent(jLabelDragDropOpcionA, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelDragDropLayout.createSequentialGroup()
-                        .addGap(271, 271, 271)
-                        .addGroup(jPanelDragDropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelDragDropOpcionB, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelDragDropOpcionC, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addComponent(jButtonValidarDragDrop, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(84, 84, 84)
-                .addComponent(jButtonCOMPLETOACTV2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
-        );
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel3.setText("DRAG-DROP");
+        jLabel3.setToolTipText("");
+        jPanelDragDrop.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 230, 60));
+
+        jLabelPreguntaDragDrop.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabelPreguntaDragDrop.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanelDragDrop.add(jLabelPreguntaDragDrop, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, 650, 40));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad1/Fondo1U1.jpg"))); // NOI18N
+        jLabel2.setToolTipText("");
+        jPanelDragDrop.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 660));
 
         jPanelContenedor.add(jPanelDragDrop, "card5");
 
         jPanelEmparejar.setMaximumSize(new java.awt.Dimension(691, 587));
         jPanelEmparejar.setMinimumSize(new java.awt.Dimension(691, 587));
-        jPanelEmparejar.setPreferredSize(new java.awt.Dimension(691, 587));
-        jPanelEmparejar.setRequestFocusEnabled(false);
+        jPanelEmparejar.setPreferredSize(new java.awt.Dimension(1190, 626));
+        jPanelEmparejar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jComboBoxEmparejarOpcionA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxEmparejarOpcionA.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jPanelEmparejar.add(jComboBoxEmparejarOpcionA, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 180, 170, 60));
 
         jComboBoxEmparejarOpcionB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxEmparejarOpcionB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jPanelEmparejar.add(jComboBoxEmparejarOpcionB, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 310, 170, 60));
 
         jComboBoxEmparejarOpcionC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxEmparejarOpcionC.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jComboBoxEmparejarOpcionC.setPreferredSize(new java.awt.Dimension(170, 50));
+        jPanelEmparejar.add(jComboBoxEmparejarOpcionC, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 440, 170, 60));
 
         jLabelEmaprejar1.setText("jLabel2");
+        jLabelEmaprejar1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jPanelEmparejar.add(jLabelEmaprejar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 170, 60));
 
         jLabelEmaprejar2.setText("jLabel3");
+        jLabelEmaprejar2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jPanelEmparejar.add(jLabelEmaprejar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 170, 60));
 
         jLabelEmaprejar3.setText("jLabel4");
+        jLabelEmaprejar3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jPanelEmparejar.add(jLabelEmaprejar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 440, 170, 60));
 
-        jButtonValidarEmparejar.setText("jButton1");
+        jButtonValidarEmparejar.setBackground(new java.awt.Color(255, 153, 51));
+        jButtonValidarEmparejar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonValidarEmparejar.setText("Validar Emparejamiento");
+        jButtonValidarEmparejar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanelEmparejar.add(jButtonValidarEmparejar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 567, 250, 40));
 
-        javax.swing.GroupLayout jPanelEmparejarLayout = new javax.swing.GroupLayout(jPanelEmparejar);
-        jPanelEmparejar.setLayout(jPanelEmparejarLayout);
-        jPanelEmparejarLayout.setHorizontalGroup(
-            jPanelEmparejarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelEmparejarLayout.createSequentialGroup()
-                .addContainerGap(65, Short.MAX_VALUE)
-                .addGroup(jPanelEmparejarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelEmparejarLayout.createSequentialGroup()
-                        .addGroup(jPanelEmparejarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelEmaprejar2, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelEmaprejar1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelEmaprejar3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(80, 80, 80)
-                        .addGroup(jPanelEmparejarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jComboBoxEmparejarOpcionA, 0, 161, Short.MAX_VALUE)
-                            .addComponent(jComboBoxEmparejarOpcionB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBoxEmparejarOpcionC, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(160, 160, 160))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelEmparejarLayout.createSequentialGroup()
-                        .addComponent(jButtonValidarEmparejar)
-                        .addGap(59, 59, 59))))
-        );
-        jPanelEmparejarLayout.setVerticalGroup(
-            jPanelEmparejarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelEmparejarLayout.createSequentialGroup()
-                .addGap(120, 120, 120)
-                .addGroup(jPanelEmparejarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jComboBoxEmparejarOpcionA, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelEmaprejar1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
-                .addGroup(jPanelEmparejarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jComboBoxEmparejarOpcionB, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelEmaprejar2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51)
-                .addGroup(jPanelEmparejarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBoxEmparejarOpcionC, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanelEmparejarLayout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(jLabelEmaprejar3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonValidarEmparejar)
-                .addGap(44, 44, 44))
-        );
+        LabelTitulo.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        LabelTitulo.setText("EMPAREJAR");
+        jPanelEmparejar.add(LabelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, 220, 50));
+
+        jLabelPreguntaEmparejar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabelPreguntaEmparejar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanelEmparejar.add(jLabelPreguntaEmparejar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 750, 30));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad1/Fondo1U1.jpg"))); // NOI18N
+        jPanelEmparejar.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, 1190, 700));
 
         jPanelContenedor.add(jPanelEmparejar, "card6");
 
@@ -293,26 +253,11 @@ public class Vista_Actividad2U1 extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(272, 272, 272)
-                .addComponent(jLabelPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 225, Short.MAX_VALUE)
-                .addComponent(jLabelPista, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
             .addComponent(jPanelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabelPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelPista, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
+            .addComponent(jPanelContenedor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -322,13 +267,16 @@ public class Vista_Actividad2U1 extends javax.swing.JPanel {
 
 //Variables  Vista_Actividad2U1
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JLabel LabelTitulo;
     public javax.swing.JButton jButtonCOMPLETOACTV2;
     public javax.swing.JButton jButtonValidarDragDrop;
     public javax.swing.JButton jButtonValidarEmparejar;
     public javax.swing.JComboBox<String> jComboBoxEmparejarOpcionA;
     public javax.swing.JComboBox<String> jComboBoxEmparejarOpcionB;
     public javax.swing.JComboBox<String> jComboBoxEmparejarOpcionC;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     public javax.swing.JLabel jLabelDestino;
     public javax.swing.JLabel jLabelDragDropOpcionA;
     public javax.swing.JLabel jLabelDragDropOpcionB;
@@ -337,8 +285,8 @@ public class Vista_Actividad2U1 extends javax.swing.JPanel {
     public javax.swing.JLabel jLabelEmaprejar2;
     public javax.swing.JLabel jLabelEmaprejar3;
     public javax.swing.JLabel jLabelMensajeRespuesta;
-    public javax.swing.JLabel jLabelPista;
-    public javax.swing.JLabel jLabelPregunta;
+    public javax.swing.JLabel jLabelPreguntaDragDrop;
+    public javax.swing.JLabel jLabelPreguntaEmparejar;
     public javax.swing.JPanel jPanelContenedor;
     public javax.swing.JPanel jPanelDragDrop;
     public javax.swing.JPanel jPanelEmparejar;

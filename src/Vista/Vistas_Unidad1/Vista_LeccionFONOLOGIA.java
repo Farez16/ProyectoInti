@@ -43,17 +43,16 @@ private String rutaAudio;
 
         jPanelContenedorF = new javax.swing.JPanel();
         jPanelPag1F = new javax.swing.JPanel();
-        jButtonSiguientePag2F = new javax.swing.JButton();
-        jPanelPag2F = new javax.swing.JPanel();
-        jLabelImagen1F = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextAreaTexto1F = new javax.swing.JTextArea();
-        jButtonSiguientePag3F = new javax.swing.JButton();
-        jPanelPag3F = new javax.swing.JPanel();
-        jButtonCOMPLETOFONOLOGIA = new javax.swing.JButton();
-        jLabelImagen2F = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextAreaTexto2F = new javax.swing.JTextArea();
+        jPanelVideo = new javax.swing.JPanel();
+        jButtonCompletarLeccionFonologia = new javax.swing.JButton();
+        jSliderTiempoVideo = new javax.swing.JSlider();
+        jLabelTiempoVP = new javax.swing.JLabel();
+        jButtonPlay = new javax.swing.JButton();
+        jButtonStop = new javax.swing.JButton();
+        jSliderSubirBajarVolumen = new javax.swing.JSlider();
+        jButtonSonido = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(1190, 660));
         setMinimumSize(new java.awt.Dimension(1190, 660));
@@ -64,122 +63,53 @@ private String rutaAudio;
         jPanelPag1F.setMaximumSize(new java.awt.Dimension(1190, 660));
         jPanelPag1F.setMinimumSize(new java.awt.Dimension(1190, 660));
         jPanelPag1F.setPreferredSize(new java.awt.Dimension(1190, 660));
+        jPanelPag1F.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButtonSiguientePag2F.setText("Siguiente Pag");
-        jButtonSiguientePag2F.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSiguientePag2FActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout jPanelVideoLayout = new javax.swing.GroupLayout(jPanelVideo);
+        jPanelVideo.setLayout(jPanelVideoLayout);
+        jPanelVideoLayout.setHorizontalGroup(
+            jPanelVideoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1040, Short.MAX_VALUE)
+        );
+        jPanelVideoLayout.setVerticalGroup(
+            jPanelVideoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 480, Short.MAX_VALUE)
+        );
 
-        javax.swing.GroupLayout jPanelPag1FLayout = new javax.swing.GroupLayout(jPanelPag1F);
-        jPanelPag1F.setLayout(jPanelPag1FLayout);
-        jPanelPag1FLayout.setHorizontalGroup(
-            jPanelPag1FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelPag1FLayout.createSequentialGroup()
-                .addGap(0, 1011, Short.MAX_VALUE)
-                .addComponent(jButtonSiguientePag2F, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
-        );
-        jPanelPag1FLayout.setVerticalGroup(
-            jPanelPag1FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelPag1FLayout.createSequentialGroup()
-                .addContainerGap(598, Short.MAX_VALUE)
-                .addComponent(jButtonSiguientePag2F, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
-        );
+        jPanelPag1F.add(jPanelVideo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 1040, 480));
+
+        jButtonCompletarLeccionFonologia.setBackground(new java.awt.Color(255, 153, 51));
+        jButtonCompletarLeccionFonologia.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButtonCompletarLeccionFonologia.setText("COMPLETAR");
+        jPanelPag1F.add(jButtonCompletarLeccionFonologia, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 600, 160, 50));
+        jPanelPag1F.add(jSliderTiempoVideo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 560, 990, -1));
+
+        jLabelTiempoVP.setText("jLabel2");
+        jPanelPag1F.add(jLabelTiempoVP, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 560, -1, 20));
+
+        jButtonPlay.setBackground(new java.awt.Color(255, 153, 51));
+        jButtonPlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad1/Play.png"))); // NOI18N
+        jPanelPag1F.add(jButtonPlay, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 590, 50, 40));
+
+        jButtonStop.setBackground(new java.awt.Color(255, 153, 51));
+        jButtonStop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad1/Stop.png"))); // NOI18N
+        jPanelPag1F.add(jButtonStop, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 590, 50, 40));
+
+        jSliderSubirBajarVolumen.setOrientation(javax.swing.JSlider.VERTICAL);
+        jPanelPag1F.add(jSliderSubirBajarVolumen, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 70, -1, 420));
+
+        jButtonSonido.setBackground(new java.awt.Color(255, 153, 51));
+        jButtonSonido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad1/volumen.png"))); // NOI18N
+        jPanelPag1F.add(jButtonSonido, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 510, 50, 40));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel2.setText("FONOLOGIA KICHWA");
+        jPanelPag1F.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, 250, 50));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad1/Fondo1U1.jpg"))); // NOI18N
+        jPanelPag1F.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jPanelContenedorF.add(jPanelPag1F, "card3");
-
-        jPanelPag2F.setMaximumSize(new java.awt.Dimension(1190, 660));
-        jPanelPag2F.setMinimumSize(new java.awt.Dimension(1190, 660));
-        jPanelPag2F.setPreferredSize(new java.awt.Dimension(1190, 660));
-
-        jLabelImagen1F.setText("jLabel1");
-        jLabelImagen1F.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jTextAreaTexto1F.setColumns(20);
-        jTextAreaTexto1F.setRows(5);
-        jScrollPane1.setViewportView(jTextAreaTexto1F);
-
-        jButtonSiguientePag3F.setText("Siguiente Pag");
-
-        javax.swing.GroupLayout jPanelPag2FLayout = new javax.swing.GroupLayout(jPanelPag2F);
-        jPanelPag2F.setLayout(jPanelPag2FLayout);
-        jPanelPag2FLayout.setHorizontalGroup(
-            jPanelPag2FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelPag2FLayout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(jLabelImagen1F, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(246, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPag2FLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonSiguientePag3F, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56))
-        );
-        jPanelPag2FLayout.setVerticalGroup(
-            jPanelPag2FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelPag2FLayout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addGroup(jPanelPag2FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabelImagen1F, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE))
-                .addGap(9, 9, 9)
-                .addComponent(jButtonSiguientePag3F, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
-        );
-
-        jPanelContenedorF.add(jPanelPag2F, "card2");
-
-        jPanelPag3F.setMaximumSize(new java.awt.Dimension(1190, 660));
-        jPanelPag3F.setMinimumSize(new java.awt.Dimension(1190, 660));
-        jPanelPag3F.setPreferredSize(new java.awt.Dimension(1190, 660));
-
-        jButtonCOMPLETOFONOLOGIA.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButtonCOMPLETOFONOLOGIA.setText("SIGUIENTE");
-        jButtonCOMPLETOFONOLOGIA.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCOMPLETOFONOLOGIAActionPerformed(evt);
-            }
-        });
-
-        jLabelImagen2F.setText("jLabel1");
-        jLabelImagen2F.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jTextAreaTexto2F.setColumns(20);
-        jTextAreaTexto2F.setRows(5);
-        jScrollPane2.setViewportView(jTextAreaTexto2F);
-
-        javax.swing.GroupLayout jPanelPag3FLayout = new javax.swing.GroupLayout(jPanelPag3F);
-        jPanelPag3F.setLayout(jPanelPag3FLayout);
-        jPanelPag3FLayout.setHorizontalGroup(
-            jPanelPag3FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPag3FLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonCOMPLETOFONOLOGIA, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
-            .addGroup(jPanelPag3FLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jLabelImagen2F, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(225, Short.MAX_VALUE))
-        );
-        jPanelPag3FLayout.setVerticalGroup(
-            jPanelPag3FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelPag3FLayout.createSequentialGroup()
-                .addContainerGap(27, Short.MAX_VALUE)
-                .addGroup(jPanelPag3FLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
-                    .addComponent(jLabelImagen2F, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(23, 23, 23)
-                .addComponent(jButtonCOMPLETOFONOLOGIA)
-                .addGap(17, 17, 17))
-        );
-
-        jPanelContenedorF.add(jPanelPag3F, "card4");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -197,28 +127,19 @@ private String rutaAudio;
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonCOMPLETOFONOLOGIAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCOMPLETOFONOLOGIAActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonCOMPLETOFONOLOGIAActionPerformed
-
-    private void jButtonSiguientePag2FActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguientePag2FActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonSiguientePag2FActionPerformed
-
 //Componentes del editor visual de netbeans de la Vista leccion Fonologia
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton jButtonCOMPLETOFONOLOGIA;
-    public javax.swing.JButton jButtonSiguientePag2F;
-    public javax.swing.JButton jButtonSiguientePag3F;
-    public javax.swing.JLabel jLabelImagen1F;
-    public javax.swing.JLabel jLabelImagen2F;
+    public javax.swing.JButton jButtonCompletarLeccionFonologia;
+    public javax.swing.JButton jButtonPlay;
+    public javax.swing.JButton jButtonSonido;
+    public javax.swing.JButton jButtonStop;
+    public javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel2;
+    public javax.swing.JLabel jLabelTiempoVP;
     public javax.swing.JPanel jPanelContenedorF;
     public javax.swing.JPanel jPanelPag1F;
-    public javax.swing.JPanel jPanelPag2F;
-    public javax.swing.JPanel jPanelPag3F;
-    public javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JScrollPane jScrollPane2;
-    public javax.swing.JTextArea jTextAreaTexto1F;
-    public javax.swing.JTextArea jTextAreaTexto2F;
+    public javax.swing.JPanel jPanelVideo;
+    public javax.swing.JSlider jSliderSubirBajarVolumen;
+    public javax.swing.JSlider jSliderTiempoVideo;
     // End of variables declaration//GEN-END:variables
 }

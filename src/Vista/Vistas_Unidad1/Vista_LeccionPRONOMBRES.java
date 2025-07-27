@@ -36,198 +36,99 @@ public class Vista_LeccionPRONOMBRES extends javax.swing.JPanel {
         jSliderSubirBajarVolumenP = new javax.swing.JSlider();
         jButtonSiguientePag2P = new javax.swing.JButton();
         jButtonVolumenP = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jPanelPag2P = new javax.swing.JPanel();
         jLabelImagen1Pronombres = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaTexto1P = new javax.swing.JTextArea();
-        jButtonSiguientePag3 = new javax.swing.JButton();
-        jPanelPag3P = new javax.swing.JPanel();
         jButtonCOMPLETOPRONOMBRES = new javax.swing.JButton();
-        jLabelImagen2Pronombres = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextAreaTexto2P = new javax.swing.JTextArea();
+        jLabel3 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(1190, 660));
         setMinimumSize(new java.awt.Dimension(1190, 660));
         setPreferredSize(new java.awt.Dimension(1190, 660));
 
+        jPanelContenedorP.setMaximumSize(new java.awt.Dimension(1190, 660));
+        jPanelContenedorP.setPreferredSize(new java.awt.Dimension(1190, 660));
         jPanelContenedorP.setLayout(new java.awt.CardLayout());
 
         jPanelPag1P.setMaximumSize(new java.awt.Dimension(1190, 660));
         jPanelPag1P.setMinimumSize(new java.awt.Dimension(1190, 660));
+        jPanelPag1P.setPreferredSize(new java.awt.Dimension(1190, 660));
+        jPanelPag1P.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanelVideoP.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanelVideoP.setPreferredSize(new java.awt.Dimension(1040, 480));
 
         javax.swing.GroupLayout jPanelVideoPLayout = new javax.swing.GroupLayout(jPanelVideoP);
         jPanelVideoP.setLayout(jPanelVideoPLayout);
         jPanelVideoPLayout.setHorizontalGroup(
             jPanelVideoPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 987, Short.MAX_VALUE)
+            .addGap(0, 368, Short.MAX_VALUE)
         );
         jPanelVideoPLayout.setVerticalGroup(
             jPanelVideoPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 568, Short.MAX_VALUE)
+            .addGap(0, 478, Short.MAX_VALUE)
         );
+
+        jPanelPag1P.add(jPanelVideoP, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, 370, -1));
 
         jLabelTiempoVP.setText("jLabel2");
+        jPanelPag1P.add(jLabelTiempoVP, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 560, -1, -1));
 
-        jButtonPlay.setText("Play");
+        jButtonPlay.setBackground(new java.awt.Color(255, 153, 51));
+        jButtonPlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad1/Play.png"))); // NOI18N
+        jPanelPag1P.add(jButtonPlay, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 580, 50, 40));
 
-        jButtonPausa.setText("Pause");
+        jButtonPausa.setBackground(new java.awt.Color(255, 153, 51));
+        jButtonPausa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad1/Stop.png"))); // NOI18N
+        jPanelPag1P.add(jButtonPausa, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 580, 50, 40));
+        jPanelPag1P.add(jSliderProgresoVideoP, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 560, 996, -1));
 
         jSliderSubirBajarVolumenP.setOrientation(javax.swing.JSlider.VERTICAL);
+        jPanelPag1P.add(jSliderSubirBajarVolumenP, new org.netbeans.lib.awtextra.AbsoluteConstraints(1094, 85, -1, 406));
 
+        jButtonSiguientePag2P.setBackground(new java.awt.Color(255, 153, 51));
         jButtonSiguientePag2P.setText("Siguiente Pag");
+        jPanelPag1P.add(jButtonSiguientePag2P, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 610, 130, 39));
 
-        jButtonVolumenP.setText("jButton1");
+        jButtonVolumenP.setBackground(new java.awt.Color(255, 153, 51));
+        jButtonVolumenP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad1/volumen.png"))); // NOI18N
+        jPanelPag1P.add(jButtonVolumenP, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 500, 50, 40));
 
-        javax.swing.GroupLayout jPanelPag1PLayout = new javax.swing.GroupLayout(jPanelPag1P);
-        jPanelPag1P.setLayout(jPanelPag1PLayout);
-        jPanelPag1PLayout.setHorizontalGroup(
-            jPanelPag1PLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelPag1PLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(jPanelPag1PLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelPag1PLayout.createSequentialGroup()
-                        .addComponent(jButtonPlay)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonPausa)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPag1PLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanelPag1PLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanelVideoP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPag1PLayout.createSequentialGroup()
-                                .addComponent(jSliderProgresoVideoP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelTiempoVP)))))
-                .addGroup(jPanelPag1PLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelPag1PLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jSliderSubirBajarVolumenP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonVolumenP)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPag1PLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                        .addComponent(jButtonSiguientePag2P, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35))))
-        );
-        jPanelPag1PLayout.setVerticalGroup(
-            jPanelPag1PLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelPag1PLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanelPag1PLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPag1PLayout.createSequentialGroup()
-                        .addGroup(jPanelPag1PLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanelVideoP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSliderSubirBajarVolumenP, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanelPag1PLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelPag1PLayout.createSequentialGroup()
-                                .addComponent(jLabelTiempoVP)
-                                .addGap(11, 11, 11))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPag1PLayout.createSequentialGroup()
-                                .addComponent(jSliderProgresoVideoP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPag1PLayout.createSequentialGroup()
-                        .addComponent(jButtonVolumenP)
-                        .addGap(62, 62, 62)))
-                .addGroup(jPanelPag1PLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonPlay)
-                    .addComponent(jButtonPausa)
-                    .addComponent(jButtonSiguientePag2P))
-                .addGap(472, 472, 472))
-        );
+        jLabel1.setBackground(new java.awt.Color(255, 153, 51));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setText("PRONOMBRES EN KICHWA");
+        jPanelPag1P.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, 240, 50));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad1/Fondo1U1.jpg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        jPanelPag1P.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 660));
 
         jPanelContenedorP.add(jPanelPag1P, "card4");
 
         jPanelPag2P.setMaximumSize(new java.awt.Dimension(1190, 660));
         jPanelPag2P.setMinimumSize(new java.awt.Dimension(1190, 660));
+        jPanelPag2P.setPreferredSize(new java.awt.Dimension(1190, 660));
+        jPanelPag2P.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelImagen1Pronombres.setText("jLabel2");
+        jPanelPag2P.add(jLabelImagen1Pronombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 51, 426, 513));
 
         jTextAreaTexto1P.setColumns(20);
         jTextAreaTexto1P.setRows(5);
         jScrollPane1.setViewportView(jTextAreaTexto1P);
 
-        jButtonSiguientePag3.setText("Siguiente Pag");
+        jPanelPag2P.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(598, 37, 425, 513));
 
-        javax.swing.GroupLayout jPanelPag2PLayout = new javax.swing.GroupLayout(jPanelPag2P);
-        jPanelPag2P.setLayout(jPanelPag2PLayout);
-        jPanelPag2PLayout.setHorizontalGroup(
-            jPanelPag2PLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelPag2PLayout.createSequentialGroup()
-                .addGap(84, 84, 84)
-                .addComponent(jLabelImagen1Pronombres, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                .addComponent(jButtonSiguientePag3, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
-        );
-        jPanelPag2PLayout.setVerticalGroup(
-            jPanelPag2PLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelPag2PLayout.createSequentialGroup()
-                .addContainerGap(71, Short.MAX_VALUE)
-                .addGroup(jPanelPag2PLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPag2PLayout.createSequentialGroup()
-                        .addGroup(jPanelPag2PLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabelImagen1Pronombres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE))
-                        .addGap(76, 76, 76))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPag2PLayout.createSequentialGroup()
-                        .addComponent(jButtonSiguientePag3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(63, 63, 63))))
-        );
+        jButtonCOMPLETOPRONOMBRES.setText("COMPLETAR");
+        jPanelPag2P.add(jButtonCOMPLETOPRONOMBRES, new org.netbeans.lib.awtextra.AbsoluteConstraints(1042, 600, 126, 46));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad1/Fondo1U1.jpg"))); // NOI18N
+        jPanelPag2P.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 660));
 
         jPanelContenedorP.add(jPanelPag2P, "card3");
-
-        jPanelPag3P.setMaximumSize(new java.awt.Dimension(1190, 660));
-        jPanelPag3P.setMinimumSize(new java.awt.Dimension(1190, 660));
-
-        jButtonCOMPLETOPRONOMBRES.setText("SIGUIENTE");
-
-        jLabelImagen2Pronombres.setText("jLabel2");
-
-        jTextAreaTexto2P.setColumns(20);
-        jTextAreaTexto2P.setRows(5);
-        jScrollPane2.setViewportView(jTextAreaTexto2P);
-
-        javax.swing.GroupLayout jPanelPag3PLayout = new javax.swing.GroupLayout(jPanelPag3P);
-        jPanelPag3P.setLayout(jPanelPag3PLayout);
-        jPanelPag3PLayout.setHorizontalGroup(
-            jPanelPag3PLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelPag3PLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabelImagen2Pronombres, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(733, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPag3PLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonCOMPLETOPRONOMBRES, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36))
-            .addGroup(jPanelPag3PLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelPag3PLayout.createSequentialGroup()
-                    .addGap(525, 525, 525)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(240, Short.MAX_VALUE)))
-        );
-        jPanelPag3PLayout.setVerticalGroup(
-            jPanelPag3PLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPag3PLayout.createSequentialGroup()
-                .addContainerGap(57, Short.MAX_VALUE)
-                .addComponent(jLabelImagen2Pronombres, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonCOMPLETOPRONOMBRES, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
-            .addGroup(jPanelPag3PLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelPag3PLayout.createSequentialGroup()
-                    .addGap(68, 68, 68)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(80, Short.MAX_VALUE)))
-        );
-
-        jPanelContenedorP.add(jPanelPag3P, "card4");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -251,21 +152,19 @@ public class Vista_LeccionPRONOMBRES extends javax.swing.JPanel {
     public javax.swing.JButton jButtonPausa;
     public javax.swing.JButton jButtonPlay;
     public javax.swing.JButton jButtonSiguientePag2P;
-    public javax.swing.JButton jButtonSiguientePag3;
     public javax.swing.JButton jButtonVolumenP;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     public javax.swing.JLabel jLabelImagen1Pronombres;
-    public javax.swing.JLabel jLabelImagen2Pronombres;
     public javax.swing.JLabel jLabelTiempoVP;
     public javax.swing.JPanel jPanelContenedorP;
     public javax.swing.JPanel jPanelPag1P;
     public javax.swing.JPanel jPanelPag2P;
-    public javax.swing.JPanel jPanelPag3P;
     public javax.swing.JPanel jPanelVideoP;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JSlider jSliderProgresoVideoP;
     public javax.swing.JSlider jSliderSubirBajarVolumenP;
     public javax.swing.JTextArea jTextAreaTexto1P;
-    public javax.swing.JTextArea jTextAreaTexto2P;
     // End of variables declaration//GEN-END:variables
 }
