@@ -23,6 +23,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import java.net.URL;
+import java.awt.Image;
 
 /**
  * Controlador dedicado para la Actividad 3 de la Unidad 1.
@@ -47,9 +48,9 @@ public class Controlador_Actv3U1 {
     // Variables para el juego de asociación
     private List<Modelo_Emparejar.EmparejarItem> paresCorrectos;
     private List<Modelo_Emparejar.EmparejarItem> distractores;
+    private List<Modelo_Emparejar.EmparejarItem> paresParaMostrar; // Los 3 pares que se muestran en el juego
     private final Map<JLabel, String> asociaciones = new HashMap<>();
     private JLabel imagenSeleccionada = null;
-    private boolean juegoCompletado = false;
     private boolean actividadInicializada = false;
 
     /**
@@ -87,6 +88,8 @@ public class Controlador_Actv3U1 {
         this.correo = correo.trim();
         this.idActividad = idActividad;
         this.controladorUnidad1 = controladorUnidad1;
+
+        // Instrucciones eliminadas - solo se muestran en la bienvenida de la unidad
 
         LOGGER.info(String.format("Inicializando controlador de actividad 3 para usuario: %s", this.correo));
 
@@ -150,7 +153,6 @@ public class Controlador_Actv3U1 {
             asociaciones.clear();
         }
         imagenSeleccionada = null;
-        juegoCompletado = false;
         LOGGER.info("Estados del juego reiniciados");
     }
 
@@ -169,38 +171,24 @@ public class Controlador_Actv3U1 {
                 return;
             }
 
-            // 2. Obtener datos de emparejar desde la base de datos
-            Modelo_Emparejar modeloEmparejar = new Modelo_Emparejar(conn);
-            List<Modelo_Emparejar.EmparejarItem> todasLasOpciones = modeloEmparejar.obtenerOpcionesPorActividad(idActividadEmparejar);
-
-            if (todasLasOpciones == null || todasLasOpciones.size() < 6) {
-                mostrarError("No hay suficientes datos para el juego (mínimo 6 opciones)");
+            // 2. Cargar datos separando pares correctos y distractores
+            cargarDatosEmparejarCompletos(idActividadEmparejar);
+            
+            if (paresCorrectos == null || paresCorrectos.isEmpty()) {
+                mostrarError("No se encontraron pares correctos para la actividad de emparejar.");
                 return;
             }
 
-            // 3. Separar opciones con imagen (pares correctos) y sin imagen (distractores)
-            List<Modelo_Emparejar.EmparejarItem> paresConImagen = new ArrayList<>();
-            List<Modelo_Emparejar.EmparejarItem> palabrasDistractoras = new ArrayList<>();
-
-            for (Modelo_Emparejar.EmparejarItem item : todasLasOpciones) {
-                if (item.recursoDestinoUrl != null && !item.recursoDestinoUrl.trim().isEmpty()) {
-                    paresConImagen.add(item);
-                } else {
-                    palabrasDistractoras.add(item);
-                }
+            // 5. Validar que hay suficientes datos para ejecutar la actividad
+            if (!validarDatosActividad()) {
+                LOGGER.severe("Validación de datos fallida - no se puede ejecutar la actividad");
+                return; // Salir si no hay datos suficientes
             }
 
-            // 4. Seleccionar 3 pares correctos y 3 distractores
-            Collections.shuffle(paresConImagen);
-            Collections.shuffle(palabrasDistractoras);
-
-            paresCorrectos = paresConImagen.subList(0, Math.min(3, paresConImagen.size()));
-            distractores = palabrasDistractoras.subList(0, Math.min(3, palabrasDistractoras.size()));
-
-            // 5. Configurar elementos visuales del juego
+            // 6. Configurar elementos visuales del juego
             configurarElementosJuego();
 
-            // 6. Agregar eventos del juego
+            // 7. Agregar eventos del juego
             agregarEventosJuego();
 
             LOGGER.info("Juego de asociación cargado exitosamente desde base de datos");
@@ -212,20 +200,124 @@ public class Controlador_Actv3U1 {
     }
 
     /**
-     * Obtiene el ID de la actividad de tipo 'emparejar' para una unidad específica.
+     * Obtiene el ID de la actividad de emparejar para la Actividad 3.
+     * Busca directamente el ID 6 que corresponde a los datos existentes.
      */
     private int obtenerIdActividadEmparejar(int idUnidad) {
+        // Primero intentar con la consulta estándar
         String sql = "SELECT id_actividad FROM actividades WHERE tipo = 'emparejar' AND id_unidad = ?";
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, idUnidad);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                return rs.getInt("id_actividad");
+                int idActividad = rs.getInt("id_actividad");
+                LOGGER.info("Encontrada actividad de emparejar con ID: " + idActividad + " para unidad: " + idUnidad);
+                return idActividad;
             }
         } catch (SQLException e) {
-            LOGGER.log(Level.SEVERE, "Error al consultar actividad de emparejar", e);
+            LOGGER.log(Level.WARNING, "Error al consultar actividades por tipo", e);
         }
+        
+        // Si no encuentra por tipo, buscar directamente los datos conocidos (ID 6)
+        String sqlDirecto = "SELECT DISTINCT id_actividad FROM emparejar_opciones WHERE id_actividad = 6";
+        try (PreparedStatement ps = conn.prepareStatement(sqlDirecto)) {
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                int idActividad = rs.getInt("id_actividad");
+                LOGGER.info("Encontrados datos de emparejar con ID: " + idActividad + " (búsqueda directa)");
+                return idActividad;
+            }
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, "Error al buscar datos de emparejar", e);
+        }
+        
+        LOGGER.warning("No se encontraron datos de emparejar para la actividad 3");
+        mostrarError("No se encontraron datos para la actividad de emparejar.\n" +
+                    "Verifica que existan registros en la tabla 'emparejar_opciones'.");
         return -1;
+    }
+    
+    /**
+     * Carga los datos de emparejar desde la base de datos separando pares correctos y distractores.
+     * Pares correctos: tienen texto_destino (ruta imagen)
+     * Distractores: tienen texto_destino = NULL
+     */
+    private void cargarDatosEmparejarCompletos(int idActividad) {
+        paresCorrectos = new ArrayList<>();
+        distractores = new ArrayList<>();
+        
+        String sql = "SELECT texto_origen, texto_destino FROM emparejar_opciones WHERE id_actividad = ?";
+        
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, idActividad);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                String palabra = rs.getString("texto_origen");
+                String rutaImagen = rs.getString("texto_destino");
+                
+                Modelo_Emparejar.EmparejarItem item = new Modelo_Emparejar.EmparejarItem(
+                    0,                    // id
+                    idActividad,          // idActividad
+                    palabra,              // textoOrigen - La palabra
+                    null,                 // recursoOrigenUrl
+                    palabra,              // textoDestino - La palabra para botones
+                    rutaImagen            // recursoDestinoUrl - La ruta de la imagen (puede ser null)
+                );
+                
+                // Separar entre pares correctos (con imagen) y distractores (sin imagen)
+                if (rutaImagen != null && !rutaImagen.trim().isEmpty()) {
+                    paresCorrectos.add(item);
+                    LOGGER.info("Par correcto: " + palabra + " -> " + rutaImagen);
+                } else {
+                    distractores.add(item);
+                    LOGGER.info("Distractor: " + palabra);
+                }
+            }
+            
+            LOGGER.info("Cargados " + paresCorrectos.size() + " pares correctos y " + 
+                       distractores.size() + " distractores para actividad " + idActividad);
+            
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, "Error al cargar datos de emparejar", e);
+            mostrarError("Error al cargar los datos de la actividad: " + e.getMessage());
+        }
+    }
+    
+    /**
+     * Valida que hay suficientes datos en la base de datos para ejecutar la actividad.
+     */
+    private boolean validarDatosActividad() {
+        if (paresCorrectos == null || paresCorrectos.isEmpty()) {
+            mostrarError("No hay pares correctos configurados en la base de datos.\n" +
+                        "La tabla 'emparejar_opciones' debe tener registros para la actividad.");
+            return false;
+        }
+        
+        // Para la actividad de pronombres, necesitamos al menos 3 pares para mostrar
+        if (paresCorrectos.size() < 3) {
+            mostrarError("Se necesitan al menos 3 pares palabra-imagen para la actividad.\n" +
+                        "Actualmente hay: " + paresCorrectos.size() + " pares configurados.");
+            return false;
+        }
+        
+        // Verificar que las imágenes tienen rutas válidas
+        int paresConImagenes = 0;
+        for (Modelo_Emparejar.EmparejarItem item : paresCorrectos) {
+            if (item.recursoDestinoUrl != null && !item.recursoDestinoUrl.trim().isEmpty()) {
+                paresConImagenes++;
+            }
+        }
+        
+        if (paresConImagenes == 0) {
+            mostrarError("Ningún par tiene imágenes configuradas.\n" +
+                        "Verifica que las rutas de imágenes estén correctas en la base de datos.");
+            return false;
+        }
+        
+        LOGGER.info("Validación exitosa: " + paresCorrectos.size() + " pares totales, " + 
+                   paresConImagenes + " con imágenes válidas");
+        return true;
     }
 
     /**
@@ -241,37 +333,111 @@ public class Controlador_Actv3U1 {
             vista.getBtn4(), vista.getBtn5(), vista.getBtn6()
         };
 
-        // Configurar imágenes
-        for (int i = 0; i < Math.min(paresCorrectos.size(), labels.length); i++) {
-            Modelo_Emparejar.EmparejarItem item = paresCorrectos.get(i);
-            String rutaCompleta = "/" + item.recursoDestinoUrl;
-            URL urlImagen = getClass().getResource(rutaCompleta);
-
-            if (urlImagen == null) {
-                LOGGER.warning("No se encontró la imagen: " + rutaCompleta);
-            } else {
-                ImageIcon icon = new ImageIcon(urlImagen);
-                labels[i].setIcon(icon);
+        // Seleccionar solo 3 pares correctos para mostrar como imágenes
+        Collections.shuffle(paresCorrectos);
+        paresParaMostrar = new ArrayList<>(paresCorrectos.subList(0, Math.min(3, paresCorrectos.size())));
+        
+        // Configurar imágenes (solo 3)
+        for (int i = 0; i < Math.min(paresParaMostrar.size(), labels.length); i++) {
+            Modelo_Emparejar.EmparejarItem item = paresParaMostrar.get(i);
+            
+            try {
+                // Configurar imagen usando getClass().getResource()
+                String rutaImagen = item.recursoDestinoUrl; // Ruta desde BD
+                System.out.println("[DEBUG] Intentando cargar imagen: " + rutaImagen);
+                
+                // Corregir ruta para usar la carpeta correcta
+                String rutaCorregida = rutaImagen;
+                if (!rutaImagen.startsWith("Imagenes/ImagenesUnidad1/")) {
+                    // Si la ruta no tiene el prefijo correcto, agregarlo
+                    rutaCorregida = "Imagenes/ImagenesUnidad1/" + rutaImagen.substring(rutaImagen.lastIndexOf("/") + 1);
+                }
+                
+                URL imageUrl = getClass().getResource("/" + rutaCorregida);
+                if (imageUrl != null) {
+                    ImageIcon icon = new ImageIcon(imageUrl);
+                    // Escalar imagen al tamaño del JLabel
+                    if (labels[i].getWidth() > 0 && labels[i].getHeight() > 0) {
+                        Image img = icon.getImage().getScaledInstance(
+                            labels[i].getWidth(), labels[i].getHeight(), Image.SCALE_SMOOTH);
+                        labels[i].setIcon(new ImageIcon(img));
+                    } else {
+                        labels[i].setIcon(icon);
+                    }
+                    System.out.println("[DEBUG] Imagen cargada exitosamente: " + rutaCorregida);
+                } else {
+                    System.err.println("[ERROR] No se pudo cargar la imagen: " + rutaCorregida);
+                    // Intentar con ruta original como fallback
+                    URL fallbackUrl = getClass().getResource("/" + rutaImagen);
+                    if (fallbackUrl != null) {
+                        ImageIcon icon = new ImageIcon(fallbackUrl);
+                        if (labels[i].getWidth() > 0 && labels[i].getHeight() > 0) {
+                            Image img = icon.getImage().getScaledInstance(
+                                labels[i].getWidth(), labels[i].getHeight(), Image.SCALE_SMOOTH);
+                            labels[i].setIcon(new ImageIcon(img));
+                        } else {
+                            labels[i].setIcon(icon);
+                        }
+                        System.out.println("[DEBUG] Imagen cargada con ruta fallback: " + rutaImagen);
+                    } else {
+                        labels[i].setText("Imagen no encontrada");
+                        System.err.println("[ERROR] Imagen no encontrada en ninguna ruta: " + rutaImagen);
+                    }
+                }
+                
                 labels[i].setBorder(null); // quitar bordes previos
                 labels[i].putClientProperty("palabra", item.textoDestino);
+                
+            } catch (Exception e) {
+                LOGGER.log(Level.WARNING, "Error al cargar imagen para " + item.textoDestino, e);
+                labels[i].setText("Error: " + item.textoDestino);
+                labels[i].setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
             }
         }
 
-        // Configurar botones con palabras mezcladas (correctas + distractores)
+        // Configurar botones con las palabras de los 3 pares seleccionados + 3 distractores
         List<String> palabras = new ArrayList<>();
-        for (Modelo_Emparejar.EmparejarItem item : paresCorrectos) {
-            palabras.add(item.textoDestino);
+        
+        // Agregar las 3 palabras correctas (de los pares que se muestran como imágenes)
+        for (Modelo_Emparejar.EmparejarItem item : paresParaMostrar) {
+            palabras.add(item.textoOrigen);
         }
-        for (Modelo_Emparejar.EmparejarItem item : distractores) {
-            palabras.add(item.textoDestino);
+        
+        // Agregar 3 distractores aleatorios
+        Collections.shuffle(distractores);
+        int distractoresAgregar = Math.min(3, distractores.size());
+        for (int i = 0; i < distractoresAgregar; i++) {
+            palabras.add(distractores.get(i).textoOrigen);
         }
+        
+        // Si no hay suficientes distractores, agregar palabras de otros pares correctos
+        if (palabras.size() < 6) {
+            for (Modelo_Emparejar.EmparejarItem item : paresCorrectos) {
+                if (!palabras.contains(item.textoOrigen) && palabras.size() < 6) {
+                    palabras.add(item.textoOrigen);
+                }
+            }
+        }
+        
+        // Mezclar todas las palabras
         Collections.shuffle(palabras);
 
-        for (int i = 0; i < Math.min(palabras.size(), botones.length); i++) {
+        // Configurar todos los botones
+        for (int i = 0; i < botones.length && i < palabras.size(); i++) {
             botones[i].setText(palabras.get(i));
             botones[i].setEnabled(true);
+            botones[i].setVisible(true);
             botones[i].setBackground(null); // quitar color de selección
         }
+        
+        // Ocultar botones extra si hay menos de 6 palabras
+        for (int i = palabras.size(); i < botones.length; i++) {
+            botones[i].setText("");
+            botones[i].setEnabled(false);
+            botones[i].setVisible(false);
+        }
+        
+        LOGGER.info("Configurados " + botones.length + " botones con " + palabras.size() + " palabras");
     }
 
     /**
@@ -344,7 +510,8 @@ public class Controlador_Actv3U1 {
      * Verifica los resultados del juego y muestra la puntuación.
      */
     private void verificarResultadosJuego() {
-        if (asociaciones.size() < paresCorrectos.size()) {
+        // Validar que se hayan asociado todas las imágenes mostradas (3)
+        if (asociaciones.size() < paresParaMostrar.size()) {
             vista.mostrarMensaje("Debes asociar todas las imágenes antes de verificar.");
             return;
         }
@@ -366,40 +533,65 @@ public class Controlador_Actv3U1 {
             }
         }
 
-        resultado.append("\nTotal correctos: ").append(correctos).append(" de ").append(paresCorrectos.size());
+        resultado.append("\nTotal correctos: ").append(correctos).append(" de ").append(paresParaMostrar.size());
 
-        // Determinar si la actividad se completó exitosamente
-        boolean aprobado = correctos >= (paresCorrectos.size() * 0.7); // 70% para aprobar
+        // Determinar si la actividad se completó exitosamente - DEBE SER 100% CORRECTO
+        boolean aprobado = correctos == paresParaMostrar.size(); // Todas las respuestas deben ser correctas
 
         if (aprobado) {
-            juegoCompletado = true;
-            resultado.append("\n\n🎉 ¡Felicitaciones! Has completado la actividad.");
+            resultado.append("\n\n🎉 ¡Perfecto! Todas las respuestas son correctas.");
+            resultado.append("\n✅ Has completado la actividad exitosamente.");
 
             // Actualizar progreso
             actualizarProgresoActividad();
         } else {
-            resultado.append("\n\n💪 Necesitas al menos ").append((int) (paresCorrectos.size() * 0.7))
-                    .append(" respuestas correctas para aprobar.");
+            resultado.append("\n\n💪 Debes tener TODAS las respuestas correctas para aprobar.");
+            resultado.append("\nTienes ").append(correctos).append(" correctas de ").append(paresParaMostrar.size()).append(" necesarias.");
+            resultado.append("\n🔁 Intenta nuevamente para corregir los errores.");
         }
 
-        int opcion = JOptionPane.showOptionDialog(
-                vista,
-                resultado.toString(),
-                aprobado ? "¡Actividad Completada!" : "Resultado",
-                JOptionPane.YES_NO_OPTION,
-                aprobado ? JOptionPane.INFORMATION_MESSAGE : JOptionPane.WARNING_MESSAGE,
-                null,
-                new String[]{"🔁 Repetir", aprobado ? "✅ Continuar" : "❌ Cancelar"},
-                aprobado ? "✅ Continuar" : "🔁 Repetir"
-        );
-
-        if (opcion == JOptionPane.YES_OPTION && !aprobado) {
-            // Repetir el juego
-            reiniciarEstadosJuego();
-            cargarJuegoActividad3();
-        } else if (aprobado) {
-            // Regresar a la unidad
-            navegarAUnidad1();
+        if (aprobado) {
+            // Si aprobó, mostrar mensaje de éxito y permitir continuar
+            int opcion = JOptionPane.showOptionDialog(
+                    vista,
+                    resultado.toString(),
+                    "¡Actividad Completada!",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.INFORMATION_MESSAGE,
+                    null,
+                    new String[]{"✅ Continuar", "🔁 Repetir"},
+                    "✅ Continuar"
+            );
+            
+            if (opcion == JOptionPane.NO_OPTION) {
+                // Usuario quiere repetir aunque haya aprobado
+                reiniciarEstadosJuego();
+                cargarJuegoActividad3();
+            } else {
+                // Continuar - regresar a la unidad
+                navegarAUnidad1();
+            }
+        } else {
+            // Si no aprobó, solo permitir repetir
+            int opcion = JOptionPane.showOptionDialog(
+                    vista,
+                    resultado.toString(),
+                    "Resultado - Necesitas mejorar",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.WARNING_MESSAGE,
+                    null,
+                    new String[]{"🔁 Intentar de nuevo", "❌ Salir"},
+                    "🔁 Intentar de nuevo"
+            );
+            
+            if (opcion == JOptionPane.YES_OPTION) {
+                // Repetir el juego
+                reiniciarEstadosJuego();
+                cargarJuegoActividad3();
+            } else {
+                // Salir sin completar - regresar a la unidad sin actualizar progreso
+                navegarAUnidad1();
+            }
         }
     }
 
@@ -417,17 +609,15 @@ public class Controlador_Actv3U1 {
             if (progreso != null) {
                 // Verificar si esta actividad ya fue completada
                 if (progreso.getActividadesCompletadas() >= idActividad) {
-                    int respuesta = JOptionPane.showConfirmDialog(
-                            vista,
-                            "Ya has completado esta actividad. ¿Quieres marcarla como completada nuevamente?",
-                            "Actividad ya completada",
-                            JOptionPane.YES_NO_OPTION,
-                            JOptionPane.QUESTION_MESSAGE
-                    );
-
-                    if (respuesta != JOptionPane.YES_OPTION) {
-                        return;
-                    }
+                    // JOptionPane eliminado para evitar diálogos excesivos
+                    LOGGER.info("Actividad ya completada, no se actualiza progreso");
+                    mostrarMensajeExito("¡Actividad ya completada anteriormente!");
+                    
+                    // Regresar a la unidad sin actualizar progreso
+                    SwingUtilities.invokeLater(() -> {
+                        navegarAUnidad1();
+                    });
+                    return;
                 }
 
                 // Actualizar progreso solo si es necesario
@@ -494,14 +684,9 @@ public class Controlador_Actv3U1 {
      * @param mensaje Mensaje de error a mostrar
      */
     private void mostrarError(String mensaje) {
-        SwingUtilities.invokeLater(() -> {
-            JOptionPane.showMessageDialog(
-                    vista,
-                    mensaje,
-                    "Error",
-                    JOptionPane.ERROR_MESSAGE
-            );
-        });
+        // JOptionPane eliminado para evitar diálogos excesivos
+        LOGGER.severe("Error en Actividad 3: " + mensaje);
+        // El error se muestra en los logs, no en diálogos
     }
 
     /**
@@ -510,13 +695,10 @@ public class Controlador_Actv3U1 {
      * @param mensaje Mensaje de éxito a mostrar
      */
     private void mostrarMensajeExito(String mensaje) {
-        SwingUtilities.invokeLater(() -> {
-            JOptionPane.showMessageDialog(
-                    vista,
-                    mensaje,
-                    "Éxito",
-                    JOptionPane.INFORMATION_MESSAGE
-            );
-        });
+        // JOptionPane eliminado para evitar diálogos excesivos
+        LOGGER.info("Éxito en Actividad 3: " + mensaje);
+        // El éxito se refleja en la interfaz, no en diálogos
     }
+    
+    // Método de instrucciones eliminado - las instrucciones se muestran solo en la bienvenida de la unidad
 }

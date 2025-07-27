@@ -152,82 +152,65 @@ public class Vista_EvaluacionU1 extends javax.swing.JPanel {
         jButtonSIGUIENTE = new javax.swing.JButton();
         jButtonFINALIZARUNIDAD = new javax.swing.JButton();
         jLabelProgresoDePregunta = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(1190, 660));
         setMinimumSize(new java.awt.Dimension(1190, 660));
         setPreferredSize(new java.awt.Dimension(1190, 660));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane1.setToolTipText("");
 
         jTextAreaPregunta.setColumns(20);
+        jTextAreaPregunta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextAreaPregunta.setRows(5);
+        jTextAreaPregunta.setToolTipText("");
+        jTextAreaPregunta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jScrollPane1.setViewportView(jTextAreaPregunta);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 627, 30));
+
         buttonGroup1.add(jRadioButtonA);
+        jRadioButtonA.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jRadioButtonA.setText("jRadioButton1");
+        add(jRadioButtonA, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 440, -1, -1));
 
         buttonGroup1.add(jRadioButtonB);
+        jRadioButtonB.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jRadioButtonB.setText("jRadioButton2");
+        add(jRadioButtonB, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 490, -1, -1));
 
         buttonGroup1.add(jRadioButtonC);
+        jRadioButtonC.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jRadioButtonC.setText("jRadioButton3");
+        add(jRadioButtonC, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 540, -1, -1));
 
         jLabelImagen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLabelImagen.setPreferredSize(new java.awt.Dimension(200, 200));
+        add(jLabelImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 150, 280, 260));
 
+        jButtonSIGUIENTE.setBackground(new java.awt.Color(255, 153, 51));
+        jButtonSIGUIENTE.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButtonSIGUIENTE.setText("SIGUIENTE");
+        jButtonSIGUIENTE.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        add(jButtonSIGUIENTE, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 590, 110, 48));
 
+        jButtonFINALIZARUNIDAD.setBackground(new java.awt.Color(255, 153, 51));
+        jButtonFINALIZARUNIDAD.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButtonFINALIZARUNIDAD.setText("FINALIZAR");
+        add(jButtonFINALIZARUNIDAD, new org.netbeans.lib.awtextra.AbsoluteConstraints(1006, 588, 137, 48));
 
+        jLabelProgresoDePregunta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabelProgresoDePregunta.setText("jLabel2");
+        add(jLabelProgresoDePregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 150, 230, 43));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(439, 439, 439)
-                        .addComponent(jLabelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabelProgresoDePregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(481, 481, 481)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jRadioButtonB)
-                            .addComponent(jRadioButtonA)
-                            .addComponent(jRadioButtonC)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(262, 262, 262)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(301, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButtonSIGUIENTE, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77)
-                .addComponent(jButtonFINALIZARUNIDAD, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelProgresoDePregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButtonA)
-                .addGap(29, 29, 29)
-                .addComponent(jRadioButtonB)
-                .addGap(31, 31, 31)
-                .addComponent(jRadioButtonC)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonSIGUIENTE, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonFINALIZARUNIDAD, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24))
-        );
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel2.setText("RESPONDE LAS 10 PREGUNTAS CORRECTAMENTE");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 870, 40));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad1/Fondo1U1.jpg"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 660));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -235,6 +218,8 @@ public class Vista_EvaluacionU1 extends javax.swing.JPanel {
     private javax.swing.ButtonGroup buttonGroup1;
     public javax.swing.JButton jButtonFINALIZARUNIDAD;
     public javax.swing.JButton jButtonSIGUIENTE;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     public javax.swing.JLabel jLabelImagen;
     public javax.swing.JLabel jLabelProgresoDePregunta;
     public javax.swing.JRadioButton jRadioButtonA;

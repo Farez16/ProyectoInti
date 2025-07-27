@@ -84,6 +84,8 @@ public class Vista_Actividad3U1 extends javax.swing.JPanel {
         btn5 = new javax.swing.JButton();
         btn6 = new javax.swing.JButton();
         btnVerificar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1190, 660));
 
@@ -91,46 +93,79 @@ public class Vista_Actividad3U1 extends javax.swing.JPanel {
         jPanel1.setPreferredSize(new java.awt.Dimension(1190, 660));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btn1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(255, 153, 51), new java.awt.Color(255, 153, 51), new java.awt.Color(255, 153, 51), new java.awt.Color(255, 153, 51)));
         btn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn1ActionPerformed(evt);
             }
         });
-        jPanel1.add(btn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 520, 90, 30));
+        jPanel1.add(btn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 510, 200, 50));
 
-        LblRespuesta.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        LblRespuesta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         LblRespuesta.setText("Respuestas:");
-        jPanel1.add(LblRespuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 480, -1, -1));
+        jPanel1.add(LblRespuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, -1, -1));
 
+        Lblimagen2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Lblimagen2.setMaximumSize(new java.awt.Dimension(400, 400));
         Lblimagen2.setMinimumSize(new java.awt.Dimension(400, 400));
         Lblimagen2.setPreferredSize(new java.awt.Dimension(200, 200));
-        jPanel1.add(Lblimagen2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, -1, -1));
+        jPanel1.add(Lblimagen2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, -1, -1));
 
+        Lblimagen1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Lblimagen1.setMaximumSize(new java.awt.Dimension(400, 400));
         Lblimagen1.setMinimumSize(new java.awt.Dimension(400, 400));
         Lblimagen1.setPreferredSize(new java.awt.Dimension(200, 200));
-        jPanel1.add(Lblimagen1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, -1, -1));
+        jPanel1.add(Lblimagen1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 150, -1, -1));
 
+        Lblimagen3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Lblimagen3.setMaximumSize(new java.awt.Dimension(400, 400));
         Lblimagen3.setMinimumSize(new java.awt.Dimension(400, 400));
         Lblimagen3.setPreferredSize(new java.awt.Dimension(200, 200));
-        jPanel1.add(Lblimagen3, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 60, -1, -1));
-        jPanel1.add(btn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 590, 90, 30));
-        jPanel1.add(btn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 520, 90, 30));
-        jPanel1.add(btn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 590, 90, 30));
-        jPanel1.add(btn5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 520, 90, 30));
+        jPanel1.add(Lblimagen3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 150, -1, -1));
 
+        btn2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btn2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(255, 153, 51), new java.awt.Color(255, 153, 51), new java.awt.Color(255, 153, 51), new java.awt.Color(255, 153, 51)));
+        jPanel1.add(btn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 590, 200, 50));
+
+        btn3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btn3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(255, 153, 51), new java.awt.Color(255, 153, 51), new java.awt.Color(255, 153, 51), new java.awt.Color(255, 153, 51)));
+        jPanel1.add(btn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 510, 200, 50));
+
+        btn4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btn4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(255, 153, 51), new java.awt.Color(255, 153, 51), new java.awt.Color(255, 153, 51), new java.awt.Color(255, 153, 51)));
+        jPanel1.add(btn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 590, 200, 50));
+
+        btn5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btn5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(255, 153, 51), new java.awt.Color(255, 153, 51), new java.awt.Color(255, 153, 51), new java.awt.Color(255, 153, 51)));
+        btn5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn5ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn5, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 510, 200, 50));
+
+        btn6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btn6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(255, 153, 51), new java.awt.Color(255, 153, 51), new java.awt.Color(255, 153, 51), new java.awt.Color(255, 153, 51)));
         btn6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn6ActionPerformed(evt);
             }
         });
-        jPanel1.add(btn6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 590, 90, 30));
+        jPanel1.add(btn6, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 580, 200, 50));
 
+        btnVerificar.setBackground(new java.awt.Color(255, 153, 51));
+        btnVerificar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnVerificar.setText("Completar ");
-        jPanel1.add(btnVerificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 530, 140, 40));
+        btnVerificar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(btnVerificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 600, 140, 40));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel2.setText("ELIGE LA PALABRA PARA CADA IMAGEN");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, 460, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad1/Fondo1U1.jpg"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 660));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -152,6 +187,10 @@ public class Vista_Actividad3U1 extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn6ActionPerformed
 
+    private void btn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn5ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel LblRespuesta;
@@ -165,6 +204,8 @@ public class Vista_Actividad3U1 extends javax.swing.JPanel {
     public javax.swing.JButton btn5;
     public javax.swing.JButton btn6;
     public javax.swing.JButton btnVerificar;
+    public javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel2;
     public javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
