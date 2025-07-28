@@ -73,7 +73,7 @@ public class ControladorLeccionPartesCuerpo {
                     throw new Exception("No se pudo crear el registro de progreso");
                 }
                 mostrarMensajeExito();
-            } else if (progreso.getLeccionesCompletadas() == 0) {
+            } else if (progreso.getLeccionesCompletadas() == 1) {
                 // Solo actualizar si no hay lecciones completadas
                 progreso.setLeccionesCompletadas(1);
                 progreso.setFechaActualizacion(LocalDateTime.now());

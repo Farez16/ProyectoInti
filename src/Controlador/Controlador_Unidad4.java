@@ -1,17 +1,14 @@
 package Controlador;
 
 import Vista.Estudiante.Dashboard;
-import VistasUnidad3.Vista_Actividad_Familia;
 import Modelo.Usuario;
 import Modelo.Modelo_Progreso_Usuario;
 import java.sql.Connection;
 import java.time.LocalDateTime;
 import java.util.Objects;
-import VistasUnidad3.Vista_Actividad_Vestimenta;
 import VistasUnidad3.Vista_EvaluacionU3;
-import VistasUnidad3.Vista_Leccion_Familia;
-import VistasUnidad3.Vista_Leccion_Vestimenta;
-import VistasUnidad3.Vista_Leccion_Vestimenta1;
+import VistasUnidad4.Vista_Actividad_Colores;
+import VistasUnidad4.Vista_Actividad_PartesCuerpo;
 import VistasUnidad4.Vista_Leccion_Colores;
 import VistasUnidad4.Vista_Leccion_PartesCuerpo;
 import VistasUnidad4.Vista_Unidad4;
@@ -66,7 +63,7 @@ public class Controlador_Unidad4 {
         vista.jButtonFamilia.setEnabled(true); // Siempre disponible
         vista.jButtonActFamilia.setEnabled(progreso.getLeccionesCompletadas() >= 1);
         vista.jButtonVestimenta.setEnabled(progreso.getActividadesCompletadas() >= 1);
-        vista.jButtonActVestimenta.setEnabled(progreso.getLeccionesCompletadas() >= 3);
+        vista.jButtonActVestimenta.setEnabled(progreso.getLeccionesCompletadas() >= 1);
         vista.jButtonEvaluacion.setEnabled(progreso.getActividadesCompletadas() >= 2);
         vista.jButtonFINALIZARUNIDAD1.setEnabled(progreso.isEvaluacionAprobada());
     }
@@ -117,8 +114,8 @@ public class Controlador_Unidad4 {
     }
 
     private void abrirActividadFamilia() {
-        Vista_Actividad_Familia vistaActividad = new Vista_Actividad_Familia();
-        new ControladorActividadFamiliaU3(
+        Vista_Actividad_Colores vistaActividad = new Vista_Actividad_Colores();
+        new ControladorActividadColores(
                 vistaActividad,
                 dashboard,
                 conn,
@@ -141,8 +138,8 @@ public class Controlador_Unidad4 {
     }
 
     private void abrirActividadVestimenta() {
-        Vista_Actividad_Vestimenta vistaActividad = new Vista_Actividad_Vestimenta();
-        new ControladorActividadVestimentaU3(
+        Vista_Actividad_PartesCuerpo vistaActividad = new Vista_Actividad_PartesCuerpo();
+        new ControladorActividadPartesCuerpo(
                 vistaActividad,
                 dashboard,
                 conn,
