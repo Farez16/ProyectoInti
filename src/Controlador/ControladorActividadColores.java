@@ -113,41 +113,53 @@ public class ControladorActividadColores {
     }
 
     private void registrarProgresoActividad() {
-        try {
-            int idUsuario = Usuario.obtenerIdPorCorreo(correoUsuario);
-            Modelo_Progreso_Usuario progreso = Modelo_Progreso_Usuario.obtenerProgreso(idUsuario, ID_UNIDAD);
+    try {
+        int idUsuario = Usuario.obtenerIdPorCorreo(correoUsuario);
+        Modelo_Progreso_Usuario progreso = Modelo_Progreso_Usuario.obtenerProgreso(idUsuario, ID_UNIDAD);
 
-            if (progreso == null) {
-                progreso = new Modelo_Progreso_Usuario(0, idUsuario, ID_UNIDAD, 0, 1, false, 0, LocalDateTime.now());
-                if (!Modelo_Progreso_Usuario.crearProgreso(progreso)) {
-                    throw new Exception("Error al crear registro de progreso");
-                }
-            } else {
-                progreso.setActividadesCompletadas(progreso.getActividadesCompletadas() + 1);
-                progreso.setFechaActualizacion(LocalDateTime.now());
-                if (!Modelo_Progreso_Usuario.actualizarProgreso(progreso)) {
-                    throw new Exception("Error al actualizar progreso");
-                }
+        if (progreso == null) {
+            // Crear nuevo registro si no existe
+            progreso = new Modelo_Progreso_Usuario(0, idUsuario, ID_UNIDAD, 0, 1, false, 0, LocalDateTime.now());
+            if (!Modelo_Progreso_Usuario.crearProgreso(progreso)) {
+                throw new Exception("Error al crear registro de progreso");
             }
-
+        } else if (progreso.getActividadesCompletadas() == 0) {
+            // Solo actualizar si no hay actividades completadas
+            progreso.setActividadesCompletadas(1);
+            progreso.setFechaActualizacion(LocalDateTime.now());
+            if (!Modelo_Progreso_Usuario.actualizarProgreso(progreso)) {
+                throw new Exception("Error al actualizar progreso");
+            }
+        } else {
+            // Mostrar mensaje si ya había actividades completadas
             JOptionPane.showMessageDialog(
                 vista,
-                "¡Actividad sobre colores completada correctamente!",
-                "Éxito",
+                "Ya has completado actividades previamente en esta unidad.",
+                "Información",
                 JOptionPane.INFORMATION_MESSAGE
             );
-            
             navegarAUnidad4();
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(
-                vista,
-                "Error al guardar progreso: " + e.getMessage(),
-                "Error",
-                JOptionPane.ERROR_MESSAGE
-            );
+            return;
         }
+
+        JOptionPane.showMessageDialog(
+            vista,
+            "¡Actividad sobre colores completada correctamente!",
+            "Éxito",
+            JOptionPane.INFORMATION_MESSAGE
+        );
+        
+        navegarAUnidad4();
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(
+            vista,
+            "Error al guardar progreso: " + e.getMessage(),
+            "Error",
+            JOptionPane.ERROR_MESSAGE
+        );
     }
+}
 
     private void navegarAUnidad4() {
         Vista_Unidad4 vistaUnidad4 = new Vista_Unidad4();
