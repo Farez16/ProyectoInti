@@ -58,7 +58,12 @@ public class Controlador_Unidad3 {
                 progreso.getActividadesCompletadas(),
                 progreso.isEvaluacionAprobada()
         );
-        vista.jProgressBarUNIDAD1.setValue(progresoTotal);
+        vista.jProgressBarUNIDAD3.setValue(progresoTotal);
+        
+        // Sincronizar con la barra de progreso del panel de unidades
+        if (controladorUnidades != null) {
+            controladorUnidades.actualizarProgresoUnidad(3, progresoTotal);
+        }
 
         // Habilitar botones según progreso
         vista.jButtonFamilia.setEnabled(true); // Siempre disponible
@@ -89,22 +94,8 @@ public class Controlador_Unidad3 {
     }
 
     private int calcularProgreso(int lecciones, int actividades, boolean evaluacion) {
-        if (evaluacion) {
-            return 100;
-        }
-        if (actividades >= 2) {
-            return 80;
-        }
-        if (actividades >= 1) {
-            return 60;
-        }
-        if (lecciones >= 1) {
-            return 40;
-        }
-        if (lecciones >= 2) {
-            return 20;
-        }
-        return 0;
+        // Usar la clase centralizada CalculadorProgreso para consistencia
+        return CalculadorProgreso.calcularProgreso(lecciones, actividades, evaluacion);
     }
 
     private void abrirLeccionFamilia() {
@@ -197,7 +188,55 @@ public class Controlador_Unidad3 {
         }
     }
 
+    /**
+     * Método para actualizar la vista cuando se completa una actividad o lección
+     */
     public void actualizarVista() {
-        inicializarVista();
+        Modelo_Progreso_Usuario progreso = Modelo_Progreso_Usuario.obtenerProgreso(idUsuario, ID_UNIDAD);
+        if (progreso != null) {
+            // Habilitar botones según progreso
+            vista.jButtonFamilia.setEnabled(true); // Siempre disponible
+            vista.jButtonActFamilia.setEnabled(progreso.getLeccionesCompletadas() >= 1);
+            vista.jButtonVestimenta.setEnabled(progreso.getActividadesCompletadas() >= 1);
+            vista.jButtonVestimenta1.setEnabled(progreso.getLeccionesCompletadas() >= 2);
+            vista.jButtonActVestimenta.setEnabled(progreso.getLeccionesCompletadas() >= 3);
+            vista.jButtonEvaluacion.setEnabled(progreso.getActividadesCompletadas() >= 2);
+            vista.jButtonFINALIZARUNIDAD1.setEnabled(progreso.isEvaluacionAprobada());
+            
+            int progresoTotal = calcularProgreso(
+                progreso.getLeccionesCompletadas(),
+                progreso.getActividadesCompletadas(),
+                progreso.isEvaluacionAprobada()
+            );
+            configurarBarraProgreso(progresoTotal);
+        }
+    }
+    
+    /**
+     * Configura la barra de progreso con el porcentaje especificado
+     * @param porcentaje Porcentaje de progreso (0-100)
+     */
+    private void configurarBarraProgreso(int porcentaje) {
+        if (vista != null && vista.jProgressBarUNIDAD3 != null) {
+            vista.jProgressBarUNIDAD3.setValue(porcentaje);
+            vista.jProgressBarUNIDAD3.setString(porcentaje + "%");
+            
+            // Cambiar color según el progreso
+            if (porcentaje < 30) {
+                vista.jProgressBarUNIDAD3.setForeground(new java.awt.Color(220, 53, 69)); // Rojo
+            } else if (porcentaje < 70) {
+                vista.jProgressBarUNIDAD3.setForeground(new java.awt.Color(255, 193, 7)); // Amarillo
+            } else {
+                vista.jProgressBarUNIDAD3.setForeground(new java.awt.Color(40, 167, 69)); // Verde
+            }
+            
+            // Sincronizar con la barra de progreso del panel de unidades
+            // Usar el valor EXACTO de la barra, no el parámetro calculado
+            if (controladorUnidades != null) {
+                int valorExactoBarra = vista.jProgressBarUNIDAD3.getValue();
+                controladorUnidades.actualizarProgresoUnidad(3, valorExactoBarra);
+                System.out.println("Unidad 3: Sincronizando valor exacto de barra: " + valorExactoBarra + "%");
+            }
+        }
     }
 }

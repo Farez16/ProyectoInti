@@ -63,7 +63,7 @@ public class Vista_Unidad3 extends javax.swing.JPanel {
     }
 
     public JProgressBar getjProgressBarUNIDAD1() {
-        return jProgressBarUNIDAD1;
+        return jProgressBarUNIDAD3;
     }
 
 
@@ -76,7 +76,7 @@ public class Vista_Unidad3 extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jProgressBarUNIDAD1 = new javax.swing.JProgressBar();
+        jProgressBarUNIDAD3 = new javax.swing.JProgressBar();
         jButtonFINALIZARUNIDAD1 = new javax.swing.JButton();
         jButtonFamilia = new javax.swing.JButton();
         jButtonActFamilia = new javax.swing.JButton();
@@ -94,12 +94,12 @@ public class Vista_Unidad3 extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1190, 660));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jProgressBarUNIDAD1.setBackground(new java.awt.Color(204, 204, 204));
-        jProgressBarUNIDAD1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jProgressBarUNIDAD1.setForeground(new java.awt.Color(0, 204, 204));
-        jProgressBarUNIDAD1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        jProgressBarUNIDAD1.setStringPainted(true);
-        add(jProgressBarUNIDAD1, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 10, 260, 30));
+        jProgressBarUNIDAD3.setBackground(new java.awt.Color(204, 204, 204));
+        jProgressBarUNIDAD3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jProgressBarUNIDAD3.setForeground(new java.awt.Color(0, 204, 204));
+        jProgressBarUNIDAD3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jProgressBarUNIDAD3.setStringPainted(true);
+        add(jProgressBarUNIDAD3, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 10, 260, 30));
 
         jButtonFINALIZARUNIDAD1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BtnFinalizarU1.png"))); // NOI18N
         add(jButtonFINALIZARUNIDAD1, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 600, 200, 40));
@@ -186,6 +186,6 @@ public class Vista_Unidad3 extends javax.swing.JPanel {
     public javax.swing.JButton jButtonREINICIARU1;
     public javax.swing.JButton jButtonVestimenta;
     public javax.swing.JButton jButtonVestimenta1;
-    public javax.swing.JProgressBar jProgressBarUNIDAD1;
+    public javax.swing.JProgressBar jProgressBarUNIDAD3;
     // End of variables declaration//GEN-END:variables
 }

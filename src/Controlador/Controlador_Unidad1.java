@@ -275,32 +275,8 @@ public class Controlador_Unidad1 {
     }
 
     private int calcularProgreso(int lecciones, int actividades, boolean evaluacion) {
-        int progreso = 0;
-
-        // Nuevo flujo: fonología(15), actividad1(30), saludos(45), actividad2(60), pronombres(75), actividad3(90), evaluación(100)
-        if (lecciones >= 1) {  // Fonología completada
-            progreso = 15;
-        }
-        if (actividades >= 1) {  // Actividad 1 completada
-            progreso = 30;
-        }
-        if (lecciones >= 2) {  // Saludos completados
-            progreso = 45;
-        }
-        if (actividades >= 2) {  // Actividad 2 completada
-            progreso = 60;
-        }
-        if (lecciones >= 3) {  // Pronombres completados
-            progreso = 75;
-        }
-        if (actividades >= 3) {  // Actividad 3 completada
-            progreso = 90;
-        }
-        if (evaluacion) {  // Evaluación completada
-            progreso = 100;
-        }
-
-        return progreso;
+        // Usar la clase centralizada CalculadorProgreso para consistencia
+        return CalculadorProgreso.calcularProgreso(lecciones, actividades, evaluacion);
     }
 
     private void abrirLeccionFonetica() {
@@ -484,6 +460,14 @@ public class Controlador_Unidad1 {
                 vista.jProgressBarUNIDAD1.setForeground(new java.awt.Color(255, 193, 7)); // Amarillo
             } else {
                 vista.jProgressBarUNIDAD1.setForeground(new java.awt.Color(40, 167, 69)); // Verde
+            }
+            
+            // Sincronizar con la barra de progreso del panel de unidades
+            // Usar el valor EXACTO de la barra, no el parámetro calculado
+            if (controladorUnidades != null) {
+                int valorExactoBarra = vista.jProgressBarUNIDAD1.getValue();
+                controladorUnidades.actualizarProgresoUnidad(1, valorExactoBarra);
+                System.out.println("Unidad 1: Sincronizando valor exacto de barra: " + valorExactoBarra + "%");
             }
         }
     }

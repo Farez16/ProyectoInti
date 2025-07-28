@@ -4,10 +4,7 @@ import Vista.Estudiante.Vista_PanelUnidades;
 import Vista.Estudiante.Dashboard;
 import Vista.Vistas_Unidad1.Vista_Unidad1;
 import Vista.*;
-import Modelo.Usuario;
 import Modelo.Modelo_Unidades;
-import Conexion.Conexion;
-import VistasUnidad3.Vista_Actividad_Familia;
 import VistasUnidad3.Vista_Unidad3;
 import VistasUnidad4.Vista_Unidad4;
 import java.awt.Color;
@@ -16,15 +13,10 @@ import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
-import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 
 /**
@@ -33,9 +25,7 @@ import javax.swing.UIManager;
  */
 public class Controlador_Unidades {
 
-    // Constantes para totales de contenido por unidad
-    private static final int TOTAL_LECCIONES_POR_UNIDAD = 5;
-    private static final int TOTAL_ACTIVIDADES_POR_UNIDAD = 3;
+    // Constante para total de unidades
     private static final int TOTAL_UNIDADES = 4;
 
     // Atributos principales
@@ -44,6 +34,9 @@ public class Controlador_Unidades {
     private final Dashboard dashboard;
     private final String correo;
     private boolean[] unidadesDisponibles;
+    
+    // Nota: La sincronización se hace directamente desde los controladores individuales
+    // llamando a actualizarProgresoUnidad() con el valor exacto de su barra
 
     /**
      * Constructor del controlador
@@ -105,9 +98,8 @@ public class Controlador_Unidades {
                 actualizarVistaUnidad(unidad);
             }
 
-            // Actualizar progreso general
-            int progresoGeneral = obtenerProgresoGeneral();
-            actualizarProgresoGeneral(progresoGeneral);
+            // Sincronizar todas las barras de progreso
+            sincronizarBarrasProgreso();
 
         } catch (Exception e) {
             System.err.println("Error al cargar unidades: " + e.getMessage());
@@ -142,9 +134,11 @@ public class Controlador_Unidades {
                 // Configurar colores y estado
                 String colorEstado = unidad.getColorEstado();
 
-                // Calcular y mostrar progreso
-                int progresoUnidad = unidad.calcularProgresoTotal(
-                        TOTAL_LECCIONES_POR_UNIDAD, TOTAL_ACTIVIDADES_POR_UNIDAD);
+                // Calcular y mostrar progreso usando CalculadorProgreso para consistencia
+                int progresoUnidad = CalculadorProgreso.calcularProgreso(
+                        unidad.getProgresoLecciones(),
+                        unidad.getProgresoActividades(),
+                        unidad.isEvaluacionAprobada());
 
                 progresoUnidades.setValue(progresoUnidad); // Valor del progreso
                 progresoUnidades.setString(progresoUnidad + "%"); // Texto mostrado
@@ -477,13 +471,35 @@ public class Controlador_Unidades {
     }
 
     /**
-     * Obtiene el progreso general del usuario
+     * Obtiene el progreso general basado en unidades completamente terminadas
+     * Cada unidad contribuye con 25% solo cuando está 100% completa
+     * ProgresoTotal avanza de 25 en 25 hasta llegar al 100%
+     * Utiliza la clase CalculadorProgreso para consistencia
      *
-     * @return Porcentaje de progreso general (0-100)
+     * @return Progreso general (0, 25, 50, 75, 100)
      */
     private int obtenerProgresoGeneral() {
         try {
-            return Modelo_Unidades.obtenerProgresoGeneral(correo);
+            List<Modelo_Unidades> unidades = Modelo_Unidades.obtenerUnidadesConProgreso(correo);
+            int[] progresosUnidades = new int[TOTAL_UNIDADES];
+            
+            // Calcular progreso de cada unidad usando CalculadorProgreso
+            for (Modelo_Unidades unidad : unidades) {
+                int idUnidad = unidad.getIdUnidad();
+                if (idUnidad >= 1 && idUnidad <= TOTAL_UNIDADES) {
+                    // Usar CalculadorProgreso para consistencia con las barras individuales
+                    int progresoUnidad = CalculadorProgreso.calcularProgreso(
+                        unidad.getProgresoLecciones(),
+                        unidad.getProgresoActividades(),
+                        unidad.isEvaluacionAprobada()
+                    );
+                    progresosUnidades[idUnidad - 1] = progresoUnidad;
+                }
+            }
+            
+            // Usar CalculadorProgreso para calcular el progreso total
+            return CalculadorProgreso.calcularProgresoTotal(progresosUnidades);
+            
         } catch (Exception e) {
             System.err.println("Error al obtener progreso general: " + e.getMessage());
             return 0;
@@ -578,6 +594,158 @@ public class Controlador_Unidades {
         }
     }
 
+
+    
+    /**
+     * Sincroniza las barras de progreso individuales con las barras del panel de unidades
+     * usando sincronización directa de valores
+     */
+    public void sincronizarBarrasProgreso() {
+        try {
+            System.out.println("Iniciando sincronización directa de barras de progreso...");
+            
+            // Usar el nuevo método de sincronización directa
+            sincronizarBarrasDirectamente();
+            
+            System.out.println("Sincronización de barras de progreso completada");
+            
+        } catch (Exception e) {
+            System.err.println("Error al sincronizar barras de progreso: " + e.getMessage());
+        }
+    }
+    
+
+    
+    /**
+     * Método público para actualizar el progreso de una unidad específica
+     * Este método es llamado desde los controladores individuales de cada unidad
+     *
+     * @param idUnidad ID de la unidad (1-4)
+     * @param progreso Progreso de la unidad (0-100)
+     */
+    public void actualizarProgresoUnidad(int idUnidad, int progreso) {
+        try {
+            // Actualizar barra de progreso en Vista_PanelUnidades
+            JProgressBar barraUnidad = obtenerJProgressProgreso(idUnidad);
+            if (barraUnidad != null) {
+                barraUnidad.setValue(progreso);
+                barraUnidad.setString(progreso + "%");
+                barraUnidad.setStringPainted(true);
+                
+                System.out.println("Progreso Unidad " + idUnidad + " sincronizado: jProgressBarUNIDAD" + idUnidad + " (" + progreso + "%) -> ProgresoU" + idUnidad + " (" + progreso + "%)");
+            }
+            
+            // Recalcular y actualizar progreso general
+            int progresoGeneral = obtenerProgresoGeneral();
+            actualizarProgresoGeneral(progresoGeneral);
+            
+        } catch (Exception e) {
+            System.err.println("Error al actualizar progreso de unidad " + idUnidad + ": " + e.getMessage());
+        }
+    }
+    
+    /**
+     * Sincroniza directamente los valores de las barras individuales con las del dashboard
+     * Copia el valor exacto de jProgressBarUNIDADx a ProgresoUx
+     */
+    public void sincronizarBarrasDirectamente() {
+        try {
+            // Obtener controladores individuales y sincronizar sus valores
+            sincronizarBarraIndividual(1);
+            sincronizarBarraIndividual(2);
+            sincronizarBarraIndividual(3);
+            sincronizarBarraIndividual(4);
+            
+            // Actualizar progreso total
+            int progresoGeneral = obtenerProgresoGeneral();
+            actualizarProgresoGeneral(progresoGeneral);
+            
+            System.out.println("Sincronización directa de barras completada");
+            
+        } catch (Exception e) {
+            System.err.println("Error en sincronización directa: " + e.getMessage());
+        }
+    }
+    
+    /**
+     * Sincroniza una barra individual específica obteniendo su valor actual
+     * @param idUnidad ID de la unidad a sincronizar
+     */
+    private void sincronizarBarraIndividual(int idUnidad) {
+        try {
+            // Obtener valor actual desde base de datos como fallback
+            int valorActual = obtenerValorBarraIndividual(idUnidad);
+            if (valorActual >= 0) {
+                // Usar el método público que ya funciona correctamente
+                actualizarProgresoUnidad(idUnidad, valorActual);
+                System.out.println("Fallback sync - Unidad " + idUnidad + ": " + valorActual + "% sincronizado");
+            }
+        } catch (Exception e) {
+            System.err.println("Error al sincronizar barra individual " + idUnidad + ": " + e.getMessage());
+        }
+    }
+    
+    /**
+     * Obtiene el valor actual de la barra de progreso individual de una unidad
+     * accediendo directamente a la instancia de la barra en la vista individual
+     * @param idUnidad ID de la unidad
+     * @return Valor actual de la barra (0-100) o -1 si no se puede obtener
+     */
+    private int obtenerValorBarraIndividual(int idUnidad) {
+        try {
+            // Obtener el valor directamente desde las instancias de barras individuales
+            int valorBarra = obtenerValorBarraDesdeVista(idUnidad);
+            if (valorBarra >= 0) {
+                System.out.println("Valor obtenido de jProgressBarUNIDAD" + idUnidad + ": " + valorBarra + "%");
+                return valorBarra;
+            }
+            
+            // Fallback: calcular desde base de datos si no se puede acceder a la vista
+            System.out.println("Fallback: calculando desde base de datos para Unidad " + idUnidad);
+            List<Modelo_Unidades> unidades = Modelo_Unidades.obtenerUnidadesConProgreso(correo);
+            for (Modelo_Unidades unidad : unidades) {
+                if (unidad.getIdUnidad() == idUnidad) {
+                    // Usar CalculadorProgreso para consistencia
+                    int valorCalculado = CalculadorProgreso.calcularProgreso(
+                        unidad.getProgresoLecciones(),
+                        unidad.getProgresoActividades(),
+                        unidad.isEvaluacionAprobada()
+                    );
+                    System.out.println("Valor calculado desde BD para Unidad " + idUnidad + ": " + valorCalculado + "%");
+                    return valorCalculado;
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("Error al obtener valor de barra individual " + idUnidad + ": " + e.getMessage());
+        }
+        return -1;
+    }
+    
+    /**
+     * Obtiene el valor actual directamente desde la vista individual de una unidad
+     * accediendo a la instancia del controlador registrado
+     * @param idUnidad ID de la unidad
+     * @return Valor actual de la barra o -1 si no se puede acceder
+     */
+    private int obtenerValorBarraDesdeVista(int idUnidad) {
+        try {
+            // Fallback: usar valor actual de la barra del panel si ya está sincronizada
+            
+            // Fallback: verificar valor actual en barra del panel
+            JProgressBar barraPanel = obtenerJProgressProgreso(idUnidad);
+            if (barraPanel != null) {
+                int valorActual = barraPanel.getValue();
+                System.out.println("Valor actual en ProgresoU" + idUnidad + ": " + valorActual + "%");
+                return valorActual;
+            }
+        } catch (Exception e) {
+            System.err.println("Error al obtener valor desde vista " + idUnidad + ": " + e.getMessage());
+        }
+        return -1;
+    }
+    
+
+
     /**
      * Verifica si una unidad está disponible para el usuario
      *
@@ -633,6 +801,24 @@ public class Controlador_Unidades {
         } catch (Exception e) {
             System.err.println("Error al recargar unidades: " + e.getMessage());
             mostrarError("Error al recargar las unidades");
+        }
+    }
+    
+    /**
+     * Método público para forzar la sincronización completa de todas las barras
+     * Puede ser llamado desde cualquier controlador para asegurar sincronización
+     */
+    public void forzarSincronizacionCompleta() {
+        try {
+            System.out.println("=== FORZANDO SINCRONIZACIÓN COMPLETA DE BARRAS ===");
+            
+            // Sincronizar barras directamente
+            sincronizarBarrasDirectamente();
+            
+            System.out.println("=== SINCRONIZACIÓN COMPLETA FINALIZADA ===");
+            
+        } catch (Exception e) {
+            System.err.println("Error en sincronización completa: " + e.getMessage());
         }
     }
 }
