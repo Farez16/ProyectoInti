@@ -6,7 +6,7 @@ import Modelo.Modelo_Progreso_Usuario;
 import java.sql.Connection;
 import java.time.LocalDateTime;
 import java.util.Objects;
-import VistasUnidad3.Vista_EvaluacionU3;
+import VistasUnidad4.Vista_EvaluacionU4;
 import VistasUnidad4.Vista_Actividad_Colores;
 import VistasUnidad4.Vista_Actividad_PartesCuerpo;
 import VistasUnidad4.Vista_Leccion_Colores;
@@ -57,7 +57,12 @@ public class Controlador_Unidad4 {
                 progreso.getActividadesCompletadas(),
                 progreso.isEvaluacionAprobada()
         );
-        vista.jProgressBarUNIDAD1.setValue(progresoTotal);
+        vista.jProgressBarUNIDAD4.setValue(progresoTotal);
+        
+        // Sincronizar con la barra de progreso del panel de unidades
+        if (controladorUnidades != null) {
+            controladorUnidades.actualizarProgresoUnidad(4, progresoTotal);
+        }
 
         // Habilitar botones según progreso
         vista.jButtonFamilia.setEnabled(true); // Siempre disponible
@@ -74,7 +79,7 @@ public class Controlador_Unidad4 {
         vista.jButtonVestimenta.addActionListener(e -> abrirLeccionVestimenta());
         vista.jButtonActVestimenta.addActionListener(e -> abrirActividadVestimenta());
         vista.jButtonEvaluacion.addActionListener(e -> abrirEvaluacion());
-        vista.jButtonREINICIARU1.addActionListener(e -> reiniciarProgresoUnidad3());
+        vista.jButtonREINICIARU1.addActionListener(e -> reiniciarProgresoUnidad4());
 
         vista.jButtonBack.addActionListener(e -> {
             dashboard.mostrarVista(controladorDashboard.getPanelUnidades());
@@ -85,20 +90,9 @@ public class Controlador_Unidad4 {
         });
     }
 
-    private int calcularProgreso(int lecciones, int actividades, boolean evaluacion) {
-        if (evaluacion) {
-            return 100;
-        }
-        if (actividades >= 2) {
-            return 80;
-        }
-        if (actividades >= 1) {
-            return 60;
-        }
-        if (lecciones >= 1) {
-            return 40;
-        }
-        return 0;
+   private int calcularProgreso(int lecciones, int actividades, boolean evaluacion) {
+        // Usar la clase centralizada CalculadorProgreso para consistencia
+        return CalculadorProgreso.calcularProgreso(lecciones, actividades, evaluacion);
     }
 
     private void abrirLeccionFamilia() {
@@ -150,15 +144,15 @@ public class Controlador_Unidad4 {
     }
 
     private void abrirEvaluacion() {
-        Vista_EvaluacionU3 vistaEvaluacion = new Vista_EvaluacionU3();
-        new Controlador_EvaluacionU3(vistaEvaluacion, controladorDashboard, conn, correo, controladorUnidades);
+        Vista_EvaluacionU4 vistaEvaluacion = new Vista_EvaluacionU4();
+        new Controlador_EvaluacionU4(vistaEvaluacion, controladorDashboard, conn, correo, controladorUnidades);
         dashboard.mostrarVista(vistaEvaluacion);
     }
 
-    private void reiniciarProgresoUnidad3() {
+    private void reiniciarProgresoUnidad4() {
         int confirmacion = JOptionPane.showConfirmDialog(
                 vista,
-                "¿Estás seguro de que deseas reiniciar tu progreso en la Unidad 3?\nEsta acción no se puede deshacer.",
+                "¿Estás seguro de que deseas reiniciar tu progreso en la Unidad 4?\nEsta acción no se puede deshacer.",
                 "Confirmar reinicio",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.WARNING_MESSAGE
@@ -179,7 +173,54 @@ public class Controlador_Unidad4 {
         }
     }
 
+    /**
+     * Método para actualizar la vista cuando se completa una actividad o lección
+     */
     public void actualizarVista() {
-        inicializarVista();
+        Modelo_Progreso_Usuario progreso = Modelo_Progreso_Usuario.obtenerProgreso(idUsuario, ID_UNIDAD);
+        if (progreso != null) {
+            // Habilitar botones según progreso
+            vista.jButtonFamilia.setEnabled(true); // Siempre disponible
+            vista.jButtonActFamilia.setEnabled(progreso.getLeccionesCompletadas() >= 1);
+            vista.jButtonVestimenta.setEnabled(progreso.getActividadesCompletadas() >= 1);
+            vista.jButtonActVestimenta.setEnabled(progreso.getLeccionesCompletadas() >= 1);
+            vista.jButtonEvaluacion.setEnabled(progreso.getActividadesCompletadas() >= 2);
+            vista.jButtonFINALIZARUNIDAD1.setEnabled(progreso.isEvaluacionAprobada());
+            
+            int progresoTotal = calcularProgreso(
+                progreso.getLeccionesCompletadas(),
+                progreso.getActividadesCompletadas(),
+                progreso.isEvaluacionAprobada()
+            );
+            configurarBarraProgreso(progresoTotal);
+        }
+    }
+    
+    /**
+     * Configura la barra de progreso con el porcentaje especificado
+     * @param porcentaje Porcentaje de progreso (0-100)
+     */
+    private void configurarBarraProgreso(int porcentaje) {
+        if (vista != null && vista.jProgressBarUNIDAD4 != null) {
+            vista.jProgressBarUNIDAD4.setValue(porcentaje);
+            vista.jProgressBarUNIDAD4.setString(porcentaje + "%");
+            
+            // Cambiar color según el progreso
+            if (porcentaje < 30) {
+                vista.jProgressBarUNIDAD4.setForeground(new java.awt.Color(220, 53, 69)); // Rojo
+            } else if (porcentaje < 70) {
+                vista.jProgressBarUNIDAD4.setForeground(new java.awt.Color(255, 193, 7)); // Amarillo
+            } else {
+                vista.jProgressBarUNIDAD4.setForeground(new java.awt.Color(40, 167, 69)); // Verde
+            }
+            
+            // Sincronizar con la barra de progreso del panel de unidades
+            // Usar el valor EXACTO de la barra, no el parámetro calculado
+            if (controladorUnidades != null) {
+                int valorExactoBarra = vista.jProgressBarUNIDAD4.getValue();
+                controladorUnidades.actualizarProgresoUnidad(4, valorExactoBarra);
+                System.out.println("Unidad 4: Sincronizando valor exacto de barra: " + valorExactoBarra + "%");
+            }
+        }
     }
 }
