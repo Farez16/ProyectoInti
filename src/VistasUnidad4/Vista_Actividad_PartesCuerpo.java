@@ -2,6 +2,9 @@ package VistasUnidad4;
 
 import VistasUnidad3.*;
 import Vista.*;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -16,6 +19,59 @@ public class Vista_Actividad_PartesCuerpo extends javax.swing.JPanel {
         initComponents();
     }
 
+    public JButton getCompletarActividad() {
+        return CompletarActividad;
+    }
+
+    public JTextField getCabeza() {
+        return cabeza;
+    }
+
+    public JTextField getCuello() {
+        return cuello;
+    }
+
+    public JTextField getEstomago() {
+        return estomago;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public JLabel getjLabel2debeaparecer1() {
+        return jLabel2debeaparecer1;
+    }
+
+    public JTextField getMano() {
+        return mano;
+    }
+
+    public JTextField getMejilla() {
+        return mejilla;
+    }
+
+    public JTextField getPecho() {
+        return pecho;
+    }
+
+    public JTextField getPie() {
+        return pie;
+    }
+
+    public JTextField getPierna() {
+        return pierna;
+    }
+
+    public JTextField getRodilla() {
+        return rodilla;
+    }
+
+    public JTextField getTobillo() {
+        return tobillo;
+    }
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,14 +82,18 @@ public class Vista_Actividad_PartesCuerpo extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel2debeaparecer1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jLabel2debeaparecer2 = new javax.swing.JLabel();
-        Zapatos = new javax.swing.JTextField();
-        Camiseta = new javax.swing.JTextField();
-        Pantalon = new javax.swing.JTextField();
-        Falda = new javax.swing.JTextField();
-        Blusa = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
+        CompletarActividad = new javax.swing.JButton();
+        mejilla = new javax.swing.JTextField();
+        cabeza = new javax.swing.JTextField();
+        cuello = new javax.swing.JTextField();
+        mano = new javax.swing.JTextField();
+        rodilla = new javax.swing.JTextField();
+        pie = new javax.swing.JTextField();
+        tobillo = new javax.swing.JTextField();
+        pierna = new javax.swing.JTextField();
+        estomago = new javax.swing.JTextField();
+        pecho = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(1190, 660));
@@ -42,49 +102,54 @@ public class Vista_Actividad_PartesCuerpo extends javax.swing.JPanel {
 
         jLabel2debeaparecer1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2debeaparecer1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2debeaparecer1.setText("Escribe como son estas prendas en kiwcha");
-        add(jLabel2debeaparecer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, -1, -1));
+        jLabel2debeaparecer1.setText("Escribe como se escriben estas partes del cuerpo en kiwcha");
+        add(jLabel2debeaparecer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(255, 102, 0));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("<html><center>COMPLETAR<br>ACTIVIDAD<center></html>");
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 600, 180, -1));
+        CompletarActividad.setBackground(new java.awt.Color(255, 102, 0));
+        CompletarActividad.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        CompletarActividad.setForeground(new java.awt.Color(255, 255, 255));
+        CompletarActividad.setText("<html><center>COMPLETAR<br>ACTIVIDAD<center></html>");
+        add(CompletarActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 600, 180, -1));
+        add(mejilla, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 150, 220, 40));
 
-        jLabel2debeaparecer2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel2debeaparecer2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2debeaparecer2.setText("VESTIMENTA (CHURANAKUNA)");
-        add(jLabel2debeaparecer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, -1, -1));
-        add(Zapatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 570, 170, 30));
-        add(Camiseta, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 170, 30));
-
-        Pantalon.addActionListener(new java.awt.event.ActionListener() {
+        cabeza.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        cabeza.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PantalonActionPerformed(evt);
+                cabezaActionPerformed(evt);
             }
         });
-        add(Pantalon, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 450, 170, 30));
-        add(Falda, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 420, 170, 30));
-        add(Blusa, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 300, 170, 30));
+        add(cabeza, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 150, 220, 40));
+        add(cuello, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 220, 40));
+        add(mano, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, 220, 40));
+        add(rodilla, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 400, 220, 40));
+        add(pie, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 480, 220, 40));
+        add(tobillo, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 480, 220, 40));
+        add(pierna, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 400, 220, 40));
+        add(estomago, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 310, 220, 40));
+        add(pecho, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 230, 220, 40));
 
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Lecciones/actividad vestimenta.jpg"))); // NOI18N
-        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 830, 470));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Lecciones/partesCuerpo.jpg"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 800, 457));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void PantalonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PantalonActionPerformed
+    private void cabezaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cabezaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_PantalonActionPerformed
+    }//GEN-LAST:event_cabezaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JTextField Blusa;
-    public javax.swing.JTextField Camiseta;
-    public javax.swing.JTextField Falda;
-    public javax.swing.JTextField Pantalon;
-    public javax.swing.JTextField Zapatos;
-    public javax.swing.JButton jButton1;
-    public javax.swing.JLabel jLabel11;
+    public javax.swing.JButton CompletarActividad;
+    public javax.swing.JTextField cabeza;
+    public javax.swing.JTextField cuello;
+    public javax.swing.JTextField estomago;
+    public javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel2debeaparecer1;
-    public javax.swing.JLabel jLabel2debeaparecer2;
+    public javax.swing.JTextField mano;
+    public javax.swing.JTextField mejilla;
+    public javax.swing.JTextField pecho;
+    public javax.swing.JTextField pie;
+    public javax.swing.JTextField pierna;
+    public javax.swing.JTextField rodilla;
+    public javax.swing.JTextField tobillo;
     // End of variables declaration//GEN-END:variables
 }

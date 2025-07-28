@@ -9,6 +9,7 @@ import Modelo.Modelo_Unidades;
 import Conexion.Conexion;
 import VistasUnidad3.Vista_Actividad_Familia;
 import VistasUnidad3.Vista_Unidad3;
+import VistasUnidad4.Vista_Unidad4;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
@@ -308,7 +309,7 @@ public class Controlador_Unidades {
                 case 3:
                     abrirunidad3();
                 case 4:
-                    mostrarUnidadEnDesarrollo(idUnidad, nombreUnidad);
+                    abrirUnidad4();
                     break;
                 default:
                     System.err.println("ID de unidad no válido: " + idUnidad);
@@ -335,40 +336,40 @@ public class Controlador_Unidades {
             // 2. Obtener la conexión a la base de datos
             Connection conn = (Connection) controladorDashboard.getConnection();
             System.out.println("Connection obtenida: " + (conn != null));
-            
+
             // 3. Validar referencias
             if (controladorDashboard == null) {
                 throw new IllegalStateException("ControladorDashboard no puede ser nulo");
             }
-            
+
             if (dashboard == null) {
                 throw new IllegalStateException("Dashboard no puede ser nulo");
             }
-            
+
             // 4. Configurar la vista en el dashboard ANTES de crear el controlador
             dashboard.mostrarVista(unidad1);
-            
+
             // 5. Forzar la actualización de la interfaz
             unidad1.revalidate();
             unidad1.repaint();
-            
+
             // 6. Crear el controlador (esto inicializará la vista)
             Controlador_Unidad1 controlador = new Controlador_Unidad1(
-                unidad1, 
-                conn,
-                controladorDashboard, 
-                correo, 
-                this
+                    unidad1,
+                    conn,
+                    controladorDashboard,
+                    correo,
+                    this
             );
-            
+
             System.out.println("Controlador_Unidad1 creado: " + (controlador != null));
             System.out.println("=== DEBUG: abrirUnidad1() completado ===");
-            
+
         } catch (Exception e) {
             System.err.println("Error al abrir unidad 1: " + e.getMessage());
             e.printStackTrace();
             mostrarError("Error al abrir la unidad 1. Por favor, intenta de nuevo.");
-            
+
             // Intentar regresar al dashboard en caso de error
             try {
                 if (dashboard != null) {
@@ -389,42 +390,49 @@ public class Controlador_Unidades {
     }
 
     private void abrirunidad3() {
-    try {
-        Vista_Unidad3 unidad3 = new Vista_Unidad3();
-        Connection conn = (Connection) controladorDashboard.getConnection();
-        
-        // Crear el controlador pasando todos los parámetros necesarios
-        Controlador_Unidad3 controlador = new Controlador_Unidad3(
-            unidad3, 
-            conn,
-            controladorDashboard,
-            correo,
-            this  // Pasar esta instancia de Controlador_Unidades
-        );
-        
-        dashboard.mostrarVista(unidad3);
-    } catch (Exception e) {
-        System.err.println("Error al abrir unidad 3: " + e.getMessage());
-        e.printStackTrace();
-        mostrarError("Error al abrir la unidad 3. Por favor, intenta de nuevo.");
+        try {
+            Vista_Unidad3 unidad3 = new Vista_Unidad3();
+            Connection conn = (Connection) controladorDashboard.getConnection();
+
+            // Crear el controlador pasando todos los parámetros necesarios
+            Controlador_Unidad3 controlador = new Controlador_Unidad3(
+                    unidad3,
+                    conn,
+                    controladorDashboard,
+                    correo,
+                    this // Pasar esta instancia de Controlador_Unidades
+            );
+
+            dashboard.mostrarVista(unidad3);
+        } catch (Exception e) {
+            System.err.println("Error al abrir unidad 3: " + e.getMessage());
+            e.printStackTrace();
+            mostrarError("Error al abrir la unidad 3. Por favor, intenta de nuevo.");
+        }
+
     }
-}
 
-    /**
-     * Muestra mensaje para unidades en desarrollo
-     *
-     * @param idUnidad ID de la unidad
-     * @param nombreUnidad Nombre de la unidad
-     */
-    private void mostrarUnidadEnDesarrollo(int idUnidad, String nombreUnidad) {
-        String mensaje = "La unidad " + idUnidad + ": " + nombreUnidad
-                + " está en desarrollo.\n\n"
-                + "Pronto estará disponible con contenido nuevo y emocionante.\n"
-                + "¡Mantente atento a las actualizaciones!";
+    private void abrirUnidad4() {
+        try {
+            Vista_Unidad4 unidad4 = new Vista_Unidad4();
+            Connection conn = (Connection) controladorDashboard.getConnection();
 
-        JOptionPane.showMessageDialog(vista, mensaje,
-                "Unidad en Desarrollo",
-                JOptionPane.INFORMATION_MESSAGE);
+            // Crear el controlador pasando todos los parámetros necesarios
+            Controlador_Unidad4 controlador = new Controlador_Unidad4(
+                    unidad4,
+                    conn,
+                    controladorDashboard,
+                    correo,
+                    this // Pasar esta instancia de Controlador_Unidades
+            );
+
+            dashboard.mostrarVista(unidad4);
+        } catch (Exception e) {
+            System.err.println("Error al abrir unidad 3: " + e.getMessage());
+            e.printStackTrace();
+            mostrarError("Error al abrir la unidad 3. Por favor, intenta de nuevo.");
+        }
+
     }
 
     /**

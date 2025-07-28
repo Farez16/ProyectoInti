@@ -59,10 +59,6 @@ public class Vista_Unidad4 extends javax.swing.JPanel {
         return jButtonVestimenta;
     }
 
-    public JButton getjButtonVestimenta1() {
-        return jButtonVestimenta1;
-    }
-
     public JProgressBar getjProgressBarUNIDAD1() {
         return jProgressBarUNIDAD1;
     }
@@ -87,7 +83,6 @@ public class Vista_Unidad4 extends javax.swing.JPanel {
         jButtonREINICIARU1 = new javax.swing.JButton();
         jButtonBack = new javax.swing.JButton();
         jButtonHistorial = new javax.swing.JButton();
-        jButtonVestimenta1 = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(1190, 660));
@@ -121,10 +116,10 @@ public class Vista_Unidad4 extends javax.swing.JPanel {
         jButtonActFamilia.setMaximumSize(new java.awt.Dimension(120, 70));
         jButtonActFamilia.setMinimumSize(new java.awt.Dimension(120, 70));
         jButtonActFamilia.setPreferredSize(new java.awt.Dimension(120, 70));
-        add(jButtonActFamilia, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 120, 70));
+        add(jButtonActFamilia, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, 120, 70));
 
         jButtonVestimenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PronombresU1.png"))); // NOI18N
-        add(jButtonVestimenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 120, 70));
+        add(jButtonVestimenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 320, 120, 70));
 
         jButtonActVestimenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ActividadU1.png"))); // NOI18N
         add(jButtonActVestimenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 310, 120, 70));
@@ -150,13 +145,6 @@ public class Vista_Unidad4 extends javax.swing.JPanel {
 
         jButtonHistorial.setText("Ver Historial");
         add(jButtonHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 180, 100, 40));
-
-        jButtonVestimenta1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fonologia.png"))); // NOI18N
-        jButtonVestimenta1.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jButtonVestimenta1.setMaximumSize(new java.awt.Dimension(120, 70));
-        jButtonVestimenta1.setMinimumSize(new java.awt.Dimension(120, 70));
-        jButtonVestimenta1.setPreferredSize(new java.awt.Dimension(120, 70));
-        add(jButtonVestimenta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 320, 120, 70));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoUnidad1.jpg"))); // NOI18N
         add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 660));
@@ -186,7 +174,6 @@ public class Vista_Unidad4 extends javax.swing.JPanel {
     public javax.swing.JButton jButtonHistorial;
     public javax.swing.JButton jButtonREINICIARU1;
     public javax.swing.JButton jButtonVestimenta;
-    public javax.swing.JButton jButtonVestimenta1;
     public javax.swing.JProgressBar jProgressBarUNIDAD1;
     // End of variables declaration//GEN-END:variables
 }

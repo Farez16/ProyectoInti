@@ -1,4 +1,3 @@
-
 package VistasUnidad4;
 
 import VistasUnidad3.*;
@@ -6,10 +5,7 @@ import Vista.*;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-/**
- *
- * @author Jhony Espinoza
- */
+
 public class Vista_Leccion_Colores extends javax.swing.JPanel {
 
     /**

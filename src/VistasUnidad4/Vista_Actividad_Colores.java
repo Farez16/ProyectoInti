@@ -1,6 +1,9 @@
 package VistasUnidad4;
 
 import VistasUnidad3.*;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 
 /**
@@ -16,6 +19,47 @@ public class Vista_Actividad_Colores extends javax.swing.JPanel {
         initComponents();
     }
 
+    public JTextField getAmarillo() {
+        return amarillo;
+    }
+
+    public JButton getjButton1() {
+        return jButton1;
+    }
+
+    public JLabel getjLabel11() {
+        return jLabel11;
+    }
+
+    public JLabel getjLabel12() {
+        return jLabel12;
+    }
+
+    public JLabel getjLabel2debeaparecer1() {
+        return jLabel2debeaparecer1;
+    }
+
+    public JTextField getMorado() {
+        return morado;
+    }
+
+    public JTextField getNaranja() {
+        return naranja;
+    }
+
+    public JTextField getNaranjaz() {
+        return naranjaz;
+    }
+
+    public JTextField getRojo() {
+        return rojo;
+    }
+
+    public JTextField getVerde() {
+        return verde;
+    }
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,38 +70,14 @@ public class Vista_Actividad_Colores extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel2debeaparecer1 = new javax.swing.JLabel();
-        abuela = new javax.swing.JLabel();
-        mama = new javax.swing.JLabel();
-        papa = new javax.swing.JLabel();
-        hijo = new javax.swing.JLabel();
-        abuelo = new javax.swing.JLabel();
-        hija = new javax.swing.JLabel();
-        hermano = new javax.swing.JLabel();
-        hermana = new javax.swing.JLabel();
-        tia = new javax.swing.JLabel();
-        tio = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jLabel2debeaparecer2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        amarillo = new javax.swing.JTextField();
+        rojo = new javax.swing.JTextField();
+        naranjaz = new javax.swing.JTextField();
+        naranja = new javax.swing.JTextField();
+        verde = new javax.swing.JTextField();
+        morado = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -67,190 +87,57 @@ public class Vista_Actividad_Colores extends javax.swing.JPanel {
 
         jLabel2debeaparecer1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2debeaparecer1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2debeaparecer1.setText("Escriba como se dicen estos miembros de la familia en kiwcha.");
-        add(jLabel2debeaparecer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, -1, -1));
-
-        abuela.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        abuela.setForeground(new java.awt.Color(0, 0, 0));
-        abuela.setText("<html><center>ABUELA<center></html>");
-        abuela.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        abuela.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        add(abuela, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 60, -1));
-
-        mama.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        mama.setForeground(new java.awt.Color(0, 0, 0));
-        mama.setText("MAMÁ");
-        add(mama, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 260, -1, -1));
-
-        papa.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        papa.setForeground(new java.awt.Color(0, 0, 0));
-        papa.setText("PAPÁ");
-        add(papa, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 260, -1, -1));
-
-        hijo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        hijo.setForeground(new java.awt.Color(0, 0, 0));
-        hijo.setText("HIJO");
-        add(hijo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 260, -1, -1));
-
-        abuelo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        abuelo.setForeground(new java.awt.Color(0, 0, 0));
-        abuelo.setText("ABUELO");
-        add(abuelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, -1, -1));
-
-        hija.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        hija.setForeground(new java.awt.Color(0, 0, 0));
-        hija.setText("HIJA");
-        add(hija, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, -1, -1));
-
-        hermano.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        hermano.setForeground(new java.awt.Color(0, 0, 0));
-        hermano.setText("HERMANO");
-        add(hermano, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 430, -1, -1));
-
-        hermana.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        hermana.setForeground(new java.awt.Color(0, 0, 0));
-        hermana.setText("HERMANA");
-        add(hermana, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 430, -1, -1));
-
-        tia.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        tia.setForeground(new java.awt.Color(0, 0, 0));
-        tia.setText("TIA");
-        add(tia, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 430, -1, -1));
-
-        tio.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        tio.setForeground(new java.awt.Color(0, 0, 0));
-        tio.setText("TIO");
-        add(tio, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 430, -1, -1));
+        jLabel2debeaparecer1.setText("Escriba como los colores principales de estas frutas.");
+        add(jLabel2debeaparecer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, -1, -1));
 
         jButton1.setBackground(new java.awt.Color(255, 102, 0));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("<html><center>COMPLETAR<br>ACTIVIDAD<center></html>");
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 560, 180, -1));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 600, 180, -1));
 
-        jLabel2debeaparecer2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel2debeaparecer2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2debeaparecer2.setText("AYLLU ( FAMILIA )");
-        add(jLabel2debeaparecer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 30, -1, -1));
+        amarillo.setBackground(new java.awt.Color(227, 242, 253));
+        amarillo.setForeground(new java.awt.Color(51, 51, 51));
+        add(amarillo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, 140, -1));
 
-        jTextField1.setBackground(new java.awt.Color(227, 242, 253));
-        jTextField1.setForeground(new java.awt.Color(51, 51, 51));
-        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 450, 140, -1));
+        rojo.setBackground(new java.awt.Color(227, 242, 253));
+        rojo.setForeground(new java.awt.Color(51, 51, 51));
+        add(rojo, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 290, 140, -1));
 
-        jTextField2.setBackground(new java.awt.Color(227, 242, 253));
-        jTextField2.setForeground(new java.awt.Color(51, 51, 51));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-        add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 140, -1));
+        naranjaz.setBackground(new java.awt.Color(227, 242, 253));
+        naranjaz.setForeground(new java.awt.Color(51, 51, 51));
+        add(naranjaz, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 290, 140, -1));
 
-        jTextField3.setBackground(new java.awt.Color(227, 242, 253));
-        jTextField3.setForeground(new java.awt.Color(51, 51, 51));
-        add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, 140, -1));
+        naranja.setBackground(new java.awt.Color(227, 242, 253));
+        naranja.setForeground(new java.awt.Color(51, 51, 51));
+        add(naranja, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 540, 140, -1));
 
-        jTextField4.setBackground(new java.awt.Color(227, 242, 253));
-        jTextField4.setForeground(new java.awt.Color(51, 51, 51));
-        add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 280, 140, -1));
+        verde.setBackground(new java.awt.Color(227, 242, 253));
+        verde.setForeground(new java.awt.Color(51, 51, 51));
+        add(verde, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 540, 140, -1));
 
-        jTextField5.setBackground(new java.awt.Color(227, 242, 253));
-        jTextField5.setForeground(new java.awt.Color(51, 51, 51));
-        add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 280, 140, -1));
+        morado.setBackground(new java.awt.Color(227, 242, 253));
+        morado.setForeground(new java.awt.Color(51, 51, 51));
+        add(morado, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 540, 140, -1));
 
-        jTextField6.setBackground(new java.awt.Color(227, 242, 253));
-        jTextField6.setForeground(new java.awt.Color(51, 51, 51));
-        add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 280, 140, -1));
-
-        jTextField7.setBackground(new java.awt.Color(227, 242, 253));
-        jTextField7.setForeground(new java.awt.Color(51, 51, 51));
-        add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, 140, -1));
-
-        jTextField8.setBackground(new java.awt.Color(227, 242, 253));
-        jTextField8.setForeground(new java.awt.Color(51, 51, 51));
-        add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 450, 140, -1));
-
-        jTextField9.setBackground(new java.awt.Color(227, 242, 253));
-        jTextField9.setForeground(new java.awt.Color(51, 51, 51));
-        add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 450, 140, -1));
-
-        jTextField10.setBackground(new java.awt.Color(227, 242, 253));
-        jTextField10.setForeground(new java.awt.Color(51, 51, 51));
-        add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 450, 140, -1));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Lecciones/tio.png"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 330, 100, 100));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Lecciones/Abuelo.png"))); // NOI18N
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 160, 100, 100));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Lecciones/abuela.png"))); // NOI18N
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 100, 100));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Lecciones/mama.png"))); // NOI18N
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 160, 100, 100));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Lecciones/papa.png"))); // NOI18N
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 160, 100, 100));
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Lecciones/hijo.png"))); // NOI18N
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, 100, 100));
-
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Lecciones/hijo.png"))); // NOI18N
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 160, 100, 100));
-
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Lecciones/hija.png"))); // NOI18N
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 100, 100));
-
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Lecciones/hija.png"))); // NOI18N
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 330, 100, 100));
-
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Lecciones/tia.png"))); // NOI18N
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 330, 100, 100));
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Lecciones/ActividadColores.jpg"))); // NOI18N
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 900, 500));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lbl.jpg"))); // NOI18N
         add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 660));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JLabel abuela;
-    public javax.swing.JLabel abuelo;
-    public javax.swing.JLabel hermana;
-    public javax.swing.JLabel hermano;
-    public javax.swing.JLabel hija;
-    public javax.swing.JLabel hijo;
+    public javax.swing.JTextField amarillo;
     public javax.swing.JButton jButton1;
-    public javax.swing.JLabel jLabel1;
-    public javax.swing.JLabel jLabel10;
     public javax.swing.JLabel jLabel11;
-    public javax.swing.JLabel jLabel2;
+    public javax.swing.JLabel jLabel12;
     public javax.swing.JLabel jLabel2debeaparecer1;
-    public javax.swing.JLabel jLabel2debeaparecer2;
-    public javax.swing.JLabel jLabel3;
-    public javax.swing.JLabel jLabel4;
-    public javax.swing.JLabel jLabel5;
-    public javax.swing.JLabel jLabel6;
-    public javax.swing.JLabel jLabel7;
-    public javax.swing.JLabel jLabel8;
-    public javax.swing.JLabel jLabel9;
-    public javax.swing.JTextField jTextField1;
-    public javax.swing.JTextField jTextField10;
-    public javax.swing.JTextField jTextField2;
-    public javax.swing.JTextField jTextField3;
-    public javax.swing.JTextField jTextField4;
-    public javax.swing.JTextField jTextField5;
-    public javax.swing.JTextField jTextField6;
-    public javax.swing.JTextField jTextField7;
-    public javax.swing.JTextField jTextField8;
-    public javax.swing.JTextField jTextField9;
-    public javax.swing.JLabel mama;
-    public javax.swing.JLabel papa;
-    public javax.swing.JLabel tia;
-    public javax.swing.JLabel tio;
+    public javax.swing.JTextField morado;
+    public javax.swing.JTextField naranja;
+    public javax.swing.JTextField naranjaz;
+    public javax.swing.JTextField rojo;
+    public javax.swing.JTextField verde;
     // End of variables declaration//GEN-END:variables
 }
