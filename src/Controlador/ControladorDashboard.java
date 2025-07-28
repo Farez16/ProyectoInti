@@ -82,6 +82,7 @@ public class ControladorDashboard {
         vista.btnDashboard.addActionListener(e -> {
             VideoManager.getInstance().detenerTodosLosVideos();
             abrirPanelUnidades();
+            controladorUnidades.actualizarVista();
         });
 
         vista.btnCuenta.addActionListener(e -> abrirCuenta());

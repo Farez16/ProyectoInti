@@ -69,7 +69,7 @@ public class Controlador_Unidad4 {
         vista.jButtonActFamilia.setEnabled(progreso.getLeccionesCompletadas() >= 1);
         vista.jButtonVestimenta.setEnabled(progreso.getActividadesCompletadas() >= 1);
         vista.jButtonActVestimenta.setEnabled(progreso.getLeccionesCompletadas() >= 1);
-        vista.jButtonEvaluacion.setEnabled(progreso.getActividadesCompletadas() >= 2);
+        vista.jButtonEvaluacion.setEnabled(progreso.getActividadesCompletadas() >= 2 && progreso.getLeccionesCompletadas() >=2);
         vista.jButtonFINALIZARUNIDAD1.setEnabled(progreso.isEvaluacionAprobada());
     }
 

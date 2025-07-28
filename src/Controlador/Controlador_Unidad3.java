@@ -86,6 +86,7 @@ public class Controlador_Unidad3 {
 
         vista.jButtonBack.addActionListener(e -> {
             dashboard.mostrarVista(controladorDashboard.getPanelUnidades());
+            
         });
 
         vista.jButtonFINALIZARUNIDAD1.addActionListener(e -> {

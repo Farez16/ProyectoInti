@@ -15,15 +15,13 @@ import Vista.Vistas_Unidad1.Vista_LeccionSALUDOS;
 import Modelo.Usuario;
 import Modelo.Modelo_Progreso_Usuario;
 
-// Imports de Controlador (sin prefijo Controlador. ya que están en el mismo paquete)
-// Las clases del mismo paquete no necesitan import explícito
-
 // Imports de Java
 import java.sql.Connection;
 import java.time.LocalDateTime;
 import javax.swing.JOptionPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Color; // Importar Color para la barra de progreso
 
 public class Controlador_Unidad1 {
 
@@ -40,10 +38,9 @@ public class Controlador_Unidad1 {
 
     private final ControladorDashboard controladorDashboard;
     private final Dashboard dashboard;
-    private final String correo;  // Cambié de cedula a correo
+    private final String correo;
     private final Controlador_Unidades controladorUnidades;
 
-    // Modificar la validación en el constructor de Controlador_Unidad1:
     public Controlador_Unidad1(Vista_Unidad1 vista, Connection conn, ControladorDashboard controladorDashboard, String correo, Controlador_Unidades controladorUnidades) {
         // Validaciones más detalladas
         if (vista == null) {
@@ -91,90 +88,35 @@ public class Controlador_Unidad1 {
         try {
             System.out.println("[DEBUG] Iniciando inicializarVista() para Unidad 1");
             
-            // 1. NO sobrescribir el layout - la vista ya tiene su configuración correcta
-            // El layout AbsoluteLayout ya está configurado en Vista_Unidad1.initComponents()
-            
-            // 2. Obtener o crear el progreso del usuario
+            // 1. Obtener o crear el progreso del usuario
             Modelo_Progreso_Usuario progreso = Modelo_Progreso_Usuario.obtenerProgreso(idUsuario, ID_UNIDAD);
             if (progreso == null) {
                 progreso = new Modelo_Progreso_Usuario(0, idUsuario, ID_UNIDAD, 0, 0, false, 0, LocalDateTime.now());
                 Modelo_Progreso_Usuario.guardarProgreso(progreso);
             }
 
-            // 3. Calcular el progreso total básico
+            // 2. Calcular el progreso total
             int leccionesCompletadas = progreso.getLeccionesCompletadas();
             int actividadesCompletadas = progreso.getActividadesCompletadas();
             boolean evaluacionAprobada = progreso.isEvaluacionAprobada();
             
-            // Cálculo simple de progreso (sin dependencias externas)
-            int totalElementos = 7; // 3 lecciones + 3 actividades + 1 evaluación
-            int elementosCompletados = leccionesCompletadas + actividadesCompletadas + (evaluacionAprobada ? 1 : 0);
-            int progresoTotal = (elementosCompletados * 100) / totalElementos;
+            // Usar la clase centralizada CalculadorProgreso para consistencia
+            int progresoTotal = CalculadorProgreso.calcularProgreso(leccionesCompletadas, actividadesCompletadas, evaluacionAprobada);
             
-            // 4. Configurar la barra de progreso
+            // 3. Configurar la barra de progreso
             configurarBarraProgreso(progresoTotal);
             
-            // 5. Configurar los botones según el progreso
+            // 4. Configurar los botones según el progreso
             configurarBotonesSegunProgreso(progreso);
             
-            // 6. Configurar los eventos de los botones
-            configurarEventosBotones();
-            
-            // 7. Configurar el botón de reinicio
+            // 5. Configurar el botón de reinicio
             vista.jButtonREINICIARU1.addActionListener(e -> reiniciarProgreso());
             
-            // 8. Configurar el botón de finalizar unidad
+            // 6. Configurar el botón de finalizar unidad
             vista.jButtonFINALIZARUNIDAD1.addActionListener(e -> finalizarUnidad());
             
-            // 9. Sistema de habilitación secuencial básico:
-            // Fonología → Actividad 1 → Saludos → Actividad 2 → Pronombres → Actividad 3 → Evaluación
+            // El resto de la lógica de habilitación secuencial ya está cubierta en configurarBotonesSegunProgreso
             
-            // Inicialmente deshabilitar todos los botones
-            vista.jButtonLECCIONFONOLOGIA.setEnabled(false);
-            vista.jButtonLECCIONSALUDOS.setEnabled(false);
-            vista.jButtonLECCIONPRONOMBRES.setEnabled(false);
-            vista.jButtonACTIIVIDAD1.setEnabled(false);
-            vista.jButtonACTIVIDAD2.setEnabled(false);
-            vista.jButtonAtividad3.setEnabled(false);
-            vista.jButtonEVALUACION.setEnabled(false);
-            
-            // PASO 1: Lección Fonología - Siempre disponible
-            vista.jButtonLECCIONFONOLOGIA.setEnabled(true);
-
-            // PASO 2: Actividad 1 - Requiere Fonología completada (lección 1)
-            if (leccionesCompletadas >= 1) {
-                vista.jButtonACTIIVIDAD1.setEnabled(true);
-            }
-
-            // PASO 3: Lección Saludos - Requiere Fonología + Actividad 1 completadas (lección 1 + actividad 1)
-            if (leccionesCompletadas >= 1 && actividadesCompletadas >= 1) {
-                vista.jButtonLECCIONSALUDOS.setEnabled(true);
-            }
-
-            // PASO 4: Actividad 2 - Requiere Saludos completada (lección 2)
-            if (leccionesCompletadas >= 2) {
-                vista.jButtonACTIVIDAD2.setEnabled(true);
-            }
-
-            // PASO 5: Lección Pronombres - Requiere Saludos + Actividad 2 completadas (lección 2 + actividad 2)
-            if (leccionesCompletadas >= 2 && actividadesCompletadas >= 2) {
-                vista.jButtonLECCIONPRONOMBRES.setEnabled(true);
-            }
-
-            // PASO 6: Actividad 3 - Requiere Pronombres completada (lección 3)
-            if (leccionesCompletadas >= 3) {
-                vista.jButtonAtividad3.setEnabled(true);
-            }
-
-            // PASO 7: Evaluación - Requiere todas las lecciones y actividades completadas
-            if (leccionesCompletadas >= 3 && actividadesCompletadas >= 3) {
-                vista.jButtonEVALUACION.setEnabled(true);
-            }
-
-            // Finalizar unidad - Solo si todo está completado (100%)
-            vista.jButtonFINALIZARUNIDAD1.setEnabled(progresoTotal == 100);
-            
-            // 10. Logging de estado de componentes
             System.out.println("[DEBUG] Componentes configurados:");
             System.out.println("  - jButtonLECCIONFONOLOGIA habilitado: " + vista.jButtonLECCIONFONOLOGIA.isEnabled());
             System.out.println("  - jButtonACTIIVIDAD1 habilitado: " + vista.jButtonACTIIVIDAD1.isEnabled());
@@ -183,11 +125,11 @@ public class Controlador_Unidad1 {
             System.out.println("  - Vista visible: " + vista.isVisible());
             System.out.println("  - Vista tamaño: " + vista.getSize());
             
-            // 11. Asegurar que la vista esté visible y configurada
+            // Asegurar que la vista esté visible y configurada
             vista.setVisible(true);
             vista.setOpaque(true);
             
-            // 12. Forzar actualización de la interfaz
+            // Forzar actualización de la interfaz
             vista.revalidate();
             vista.repaint();
             
@@ -208,7 +150,6 @@ public class Controlador_Unidad1 {
         }
     }
 
-    // Reemplazar los listeners en agregarListeners() para manejar null:
     private void agregarListeners() {
         System.out.println("[DEBUG Unidad1] Registrando listeners para los botones de la unidad 1...");
         vista.jButtonLECCIONSALUDOS.addActionListener(e -> abrirLeccionSaludos());
@@ -272,11 +213,6 @@ public class Controlador_Unidad1 {
                 "Instrucciones - Unidad 1: Fundamentos del Kichwa",
                 JOptionPane.INFORMATION_MESSAGE
         );
-    }
-
-    private int calcularProgreso(int lecciones, int actividades, boolean evaluacion) {
-        // Usar la clase centralizada CalculadorProgreso para consistencia
-        return CalculadorProgreso.calcularProgreso(lecciones, actividades, evaluacion);
     }
 
     private void abrirLeccionFonetica() {
@@ -435,7 +371,7 @@ public class Controlador_Unidad1 {
         Modelo_Progreso_Usuario progreso = Modelo_Progreso_Usuario.obtenerProgreso(idUsuario, ID_UNIDAD);
         if (progreso != null) {
             configurarBotonesSegunProgreso(progreso);
-            int progresoTotal = ControladorProgresoUsuario.calcularProgreso(
+            int progresoTotal = CalculadorProgreso.calcularProgreso(
                 progreso.getLeccionesCompletadas(),
                 progreso.getActividadesCompletadas(),
                 progreso.isEvaluacionAprobada()
@@ -452,31 +388,23 @@ public class Controlador_Unidad1 {
         if (vista != null && vista.jProgressBarUNIDAD1 != null) {
             vista.jProgressBarUNIDAD1.setValue(porcentaje);
             vista.jProgressBarUNIDAD1.setString(porcentaje + "%");
-            
+            vista.jProgressBarUNIDAD1.setStringPainted(true); // Asegúrate de que el texto se muestre
+
             // Cambiar color según el progreso
             if (porcentaje < 30) {
-                vista.jProgressBarUNIDAD1.setForeground(new java.awt.Color(220, 53, 69)); // Rojo
+                vista.jProgressBarUNIDAD1.setForeground(new Color(220, 53, 69)); // Rojo
             } else if (porcentaje < 70) {
-                vista.jProgressBarUNIDAD1.setForeground(new java.awt.Color(255, 193, 7)); // Amarillo
+                vista.jProgressBarUNIDAD1.setForeground(new Color(255, 193, 7)); // Amarillo
             } else {
-                vista.jProgressBarUNIDAD1.setForeground(new java.awt.Color(40, 167, 69)); // Verde
+                vista.jProgressBarUNIDAD1.setForeground(new Color(40, 167, 69)); // Verde
             }
             
             // Sincronizar con la barra de progreso del panel de unidades
-            // Usar el valor EXACTO de la barra, no el parámetro calculado
             if (controladorUnidades != null) {
-                int valorExactoBarra = vista.jProgressBarUNIDAD1.getValue();
-                controladorUnidades.actualizarProgresoUnidad(1, valorExactoBarra);
-                System.out.println("Unidad 1: Sincronizando valor exacto de barra: " + valorExactoBarra + "%");
+                controladorUnidades.actualizarProgresoUnidad(ID_UNIDAD, porcentaje); // Pasa el ID_UNIDAD correcto
+                System.out.println("Unidad 1: Sincronizando valor exacto de barra: " + porcentaje + "%");
             }
         }
-    }
-
-    /**
-     * Configura los eventos de los botones
-     */
-    private void configurarEventosBotones() {
-        // Los eventos ya están configurados en agregarListeners()
     }
 
     /**
@@ -525,6 +453,7 @@ public class Controlador_Unidad1 {
             vista.jButtonACTIVIDAD2.setEnabled(false);
             vista.jButtonAtividad3.setEnabled(false);
             vista.jButtonEVALUACION.setEnabled(false);
+            vista.jButtonFINALIZARUNIDAD1.setEnabled(false); // Deshabilitar por defecto
 
             // Habilitar siempre la primera lección
             vista.jButtonLECCIONFONOLOGIA.setEnabled(true);
@@ -534,25 +463,43 @@ public class Controlador_Unidad1 {
             int actividadesCompletadas = progreso.getActividadesCompletadas();
             boolean evaluacionAprobada = progreso.isEvaluacionAprobada();
 
-            // Lógica de habilitación de botones según progreso
+            // Lógica de habilitación secuencial: Fonología → Actividad 1 → Saludos → Actividad 2 → Pronombres → Actividad 3 → Evaluación
+            
+            // Paso 2: Actividad 1 - Requiere Fonología completada (lección 1)
             if (leccionesCompletadas >= 1) {
+                vista.jButtonACTIIVIDAD1.setEnabled(true);
+            }
+
+            // Paso 3: Lección Saludos - Requiere Actividad 1 completada
+            if (actividadesCompletadas >= 1) {
                 vista.jButtonLECCIONSALUDOS.setEnabled(true);
             }
+
+            // Paso 4: Actividad 2 - Requiere Saludos completada (lección 2)
             if (leccionesCompletadas >= 2) {
+                vista.jButtonACTIVIDAD2.setEnabled(true);
+            }
+
+            // Paso 5: Lección Pronombres - Requiere Actividad 2 completada
+            if (actividadesCompletadas >= 2) {
                 vista.jButtonLECCIONPRONOMBRES.setEnabled(true);
             }
-            
-            // Habilitar actividades si se completaron las lecciones necesarias
+
+            // Paso 6: Actividad 3 - Requiere Pronombres completada (lección 3)
             if (leccionesCompletadas >= 3) {
-                vista.jButtonACTIIVIDAD1.setEnabled(true);
-                vista.jButtonACTIVIDAD2.setEnabled(true);
                 vista.jButtonAtividad3.setEnabled(true);
             }
-            
-            // Habilitar evaluación si se completaron las actividades
-            if (actividadesCompletadas >= 2) {
+
+            // Paso 7: Evaluación - Requiere Actividad 3 completada
+            if (actividadesCompletadas >= 3) {
                 vista.jButtonEVALUACION.setEnabled(true);
             }
+            
+            // Habilitar el botón de finalizar unidad si la evaluación está aprobada (unidad 100% completa)
+            if (evaluacionAprobada) {
+                vista.jButtonFINALIZARUNIDAD1.setEnabled(true);
+            }
+
         } catch (Exception e) {
             System.err.println("Error al configurar botones: " + e.getMessage());
             e.printStackTrace();
