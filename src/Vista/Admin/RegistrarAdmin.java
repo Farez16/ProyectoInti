@@ -92,7 +92,7 @@ public void deshabilitarCampos() {
 
         setPreferredSize(new java.awt.Dimension(1190, 660));
 
-        PanelRegistrarAdmin.setBackground(new java.awt.Color(247, 249, 252));
+        PanelRegistrarAdmin.setBackground(new java.awt.Color(204, 221, 255));
         PanelRegistrarAdmin.setMinimumSize(new java.awt.Dimension(1190, 660));
         PanelRegistrarAdmin.setPreferredSize(new java.awt.Dimension(1190, 660));
 

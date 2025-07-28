@@ -86,7 +86,7 @@ public class Graficos extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(235, 243, 250));
+        setBackground(new java.awt.Color(204, 221, 255));
 
         PanelGraficos.setBackground(new java.awt.Color(255, 255, 255));
         PanelGraficos.setMaximumSize(new java.awt.Dimension(1190, 600));

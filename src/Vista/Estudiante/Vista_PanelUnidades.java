@@ -161,12 +161,11 @@ public class Vista_PanelUnidades extends javax.swing.JPanel {
         LbliconoPalabra = new javax.swing.JLabel();
         ProgresoTotal = new javax.swing.JProgressBar();
 
-        PanelVistas.setBackground(new java.awt.Color(235, 243, 250));
+        PanelVistas.setBackground(new java.awt.Color(180, 210, 255));
         PanelVistas.setPreferredSize(new java.awt.Dimension(1190, 660));
         PanelVistas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         LblTituloUnidades.setFont(new java.awt.Font("Montserrat", 1, 24)); // NOI18N
-        LblTituloUnidades.setForeground(new java.awt.Color(55, 65, 81));
         LblTituloUnidades.setText("Mis Unidades");
         PanelVistas.add(LblTituloUnidades, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
 
@@ -284,7 +283,7 @@ public class Vista_PanelUnidades extends javax.swing.JPanel {
         LblTituloPalabraDia.setText("Palabra del Día");
 
         LblPalabraKichwa.setFont(new java.awt.Font("Montserrat", 1, 16)); // NOI18N
-        LblPalabraKichwa.setForeground(new java.awt.Color(255, 122, 0));
+        LblPalabraKichwa.setForeground(new java.awt.Color(218, 111, 43));
         LblPalabraKichwa.setText("Tukuy");
 
         LblOracionKichwa.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
@@ -293,7 +292,7 @@ public class Vista_PanelUnidades extends javax.swing.JPanel {
         LblOracionEspañol.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         LblOracionEspañol.setText("Te amo todo el tiempo");
 
-        LbliconoPalabra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-el-intercambio-de-conocimientos-80.png"))); // NOI18N
+        LbliconoPalabra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IconEstu/icons8-libros-64r.png"))); // NOI18N
 
         javax.swing.GroupLayout PanelPalabraDiariaLayout = new javax.swing.GroupLayout(PanelPalabraDiaria);
         PanelPalabraDiaria.setLayout(PanelPalabraDiariaLayout);

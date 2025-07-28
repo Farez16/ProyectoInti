@@ -39,6 +39,10 @@ public class DashboardAdmin extends javax.swing.JPanel {
         btnSalir1.setOpaque(false);
         btnSalir1.setContentAreaFilled(false);
         btnSalir1.setBorderPainted(false);
+        
+        btnReportes.setOpaque(false);
+        btnReportes.setContentAreaFilled(false);
+        btnReportes.setBorderPainted(false);
     }
 
     public String getCorreoUsuario() {
@@ -181,7 +185,7 @@ public class DashboardAdmin extends javax.swing.JPanel {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        PanelVistas.setBackground(new java.awt.Color(235, 243, 250));
+        PanelVistas.setBackground(new java.awt.Color(204, 221, 255));
         PanelVistas.setPreferredSize(new java.awt.Dimension(1190, 660));
         PanelVistas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(PanelVistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 1190, 660));
@@ -201,10 +205,9 @@ public class DashboardAdmin extends javax.swing.JPanel {
         LblRol.setForeground(new java.awt.Color(55, 65, 81));
         jPanel1.add(LblRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 60, 130, 30));
 
-        btnMenu1.setBackground(new java.awt.Color(255, 122, 0));
         btnMenu1.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         btnMenu1.setForeground(new java.awt.Color(55, 65, 81));
-        btnMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Menuadmin.png"))); // NOI18N
+        btnMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IconAdmin/icons8-menú-principal.png"))); // NOI18N
         btnMenu1.setBorder(null);
         btnMenu1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnMenu1.setOpaque(true);
@@ -215,10 +218,9 @@ public class DashboardAdmin extends javax.swing.JPanel {
         });
         jPanel1.add(btnMenu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 160, 42));
 
-        btnCuenta1.setBackground(new java.awt.Color(255, 122, 0));
         btnCuenta1.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         btnCuenta1.setForeground(new java.awt.Color(55, 65, 81));
-        btnCuenta1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cuentaadmin.png"))); // NOI18N
+        btnCuenta1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IconAdmin/icons8-profileN.png"))); // NOI18N
         btnCuenta1.setBorder(null);
         btnCuenta1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnCuenta1.setOpaque(true);
@@ -229,19 +231,17 @@ public class DashboardAdmin extends javax.swing.JPanel {
         });
         jPanel1.add(btnCuenta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 160, 42));
 
-        btnGraficos1.setBackground(new java.awt.Color(255, 122, 0));
         btnGraficos1.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         btnGraficos1.setForeground(new java.awt.Color(55, 65, 81));
-        btnGraficos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Estaadmin.png"))); // NOI18N
+        btnGraficos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IconAdmin/icons8-estadísticasN.png"))); // NOI18N
         btnGraficos1.setBorder(null);
         btnGraficos1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnGraficos1.setOpaque(true);
         jPanel1.add(btnGraficos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 160, 42));
 
-        btnCrearAdmin.setBackground(new java.awt.Color(255, 122, 0));
         btnCrearAdmin.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         btnCrearAdmin.setForeground(new java.awt.Color(55, 65, 81));
-        btnCrearAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AñadirAdmin.png"))); // NOI18N
+        btnCrearAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IconAdmin/icons8-agregar-administradorN.png"))); // NOI18N
         btnCrearAdmin.setBorder(null);
         btnCrearAdmin.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnCrearAdmin.setOpaque(true);
@@ -256,10 +256,10 @@ public class DashboardAdmin extends javax.swing.JPanel {
         LblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Logo135x132.png"))); // NOI18N
         jPanel1.add(LblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 23, -1, -1));
 
-        btnSalir1.setBackground(new java.awt.Color(255, 122, 0));
+        btnSalir1.setBackground(new java.awt.Color(153, 204, 255));
         btnSalir1.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         btnSalir1.setForeground(new java.awt.Color(55, 65, 81));
-        btnSalir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/SalirAdmin.png"))); // NOI18N
+        btnSalir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IconAdmin/icons8-cierre-de-sesión-redondeado-hacia-la-izquierdaN.png"))); // NOI18N
         btnSalir1.setToolTipText("");
         btnSalir1.setBorder(null);
         btnSalir1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -271,10 +271,9 @@ public class DashboardAdmin extends javax.swing.JPanel {
         });
         jPanel1.add(btnSalir1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 681, 160, 42));
 
-        btnReportes.setBackground(new java.awt.Color(255, 122, 0));
         btnReportes.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         btnReportes.setForeground(new java.awt.Color(55, 65, 81));
-        btnReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AñadirAdmin.png"))); // NOI18N
+        btnReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IconAdmin/icons8-flyer-promotionN.png"))); // NOI18N
         btnReportes.setBorder(null);
         btnReportes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnReportes.setOpaque(true);

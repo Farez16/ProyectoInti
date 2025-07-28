@@ -104,12 +104,14 @@ public void setFechaFin(Date fecha) {
         jDateChooserHasta = new com.toedter.calendar.JDateChooser();
         jDateChooserDesde = new com.toedter.calendar.JDateChooser();
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(204, 221, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1190, 660));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         LblTitulo.setText("Reportes");
         jPanel1.add(LblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 28, -1, -1));
+
+        PanelProgresoGeneral.setBackground(new java.awt.Color(255, 255, 255));
 
         btnProgresoGeneral.setText("Progreso General");
 
@@ -132,6 +134,8 @@ public void setFechaFin(Date fecha) {
 
         jPanel1.add(PanelProgresoGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 279, -1, -1));
 
+        PanelRendimientoUnidad.setBackground(new java.awt.Color(255, 255, 255));
+
         btnRendimientoUnidad.setText("Rendimiento Unidad");
 
         javax.swing.GroupLayout PanelRendimientoUnidadLayout = new javax.swing.GroupLayout(PanelRendimientoUnidad);
@@ -152,6 +156,8 @@ public void setFechaFin(Date fecha) {
         );
 
         jPanel1.add(PanelRendimientoUnidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 290, -1, -1));
+
+        PanelUltimaActividad.setBackground(new java.awt.Color(255, 255, 255));
 
         btnUltimaActividad.setText("Ultima Actividad");
 
