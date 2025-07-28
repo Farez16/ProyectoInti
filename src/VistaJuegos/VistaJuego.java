@@ -1,5 +1,8 @@
-package Vista.Estudiante;
+package VistaJuegos;
 
+
+
+import Vista.Estudiante.*;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -115,6 +118,7 @@ public class VistaJuego extends javax.swing.JPanel {
         btn7 = new javax.swing.JButton();
         btn8 = new javax.swing.JButton();
         btnVerificar = new javax.swing.JButton();
+        jButton1Regresaralavistaselecciondejuegos = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1190, 660));
 
@@ -152,6 +156,9 @@ public class VistaJuego extends javax.swing.JPanel {
         btnVerificar.setText("Verificar");
         jPanel1.add(btnVerificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 530, -1, -1));
 
+        jButton1Regresaralavistaselecciondejuegos.setText("REGRESAR");
+        jPanel1.add(jButton1Regresaralavistaselecciondejuegos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 640, 140, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -188,6 +195,7 @@ public class VistaJuego extends javax.swing.JPanel {
     public javax.swing.JButton btn7;
     public javax.swing.JButton btn8;
     public javax.swing.JButton btnVerificar;
+    public javax.swing.JButton jButton1Regresaralavistaselecciondejuegos;
     public javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
