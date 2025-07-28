@@ -1,7 +1,8 @@
 package Controlador;
 
+import VistaJuegos.VistaJuego;
+import VistaJuegos.Vista_SelecciondeJuegos;
 import Conexion.Conexion;
-import Vista.Estudiante.VistaJuego;
 import java.awt.event.ActionEvent;
 import Vista.Estudiante.Dashboard;
 import Modelo.Juego;
@@ -12,6 +13,7 @@ import Vista.Admin.Cuenta;
 import Vista.Login.Login;
 import Vista.Vista_Certificado;
 import Vista.Estudiante.Vista_PanelUnidades;
+import VistaJuegos.Vista_SelecciondeJuegos;
 import java.awt.Graphics2D;
 import java.awt.event.ActionListener;
 import java.awt.geom.Ellipse2D;
@@ -70,29 +72,25 @@ public class ControladorDashboard {
         return conn;
     }
 
+ 
     private void agregarEventos() {
         vista.btnJuegos.addActionListener((ActionEvent e) -> {
-            // Detener todos los videos antes de cambiar de vista
             VideoManager.getInstance().detenerTodosLosVideos();
-            abrirVistaJuego();
+            abrirSeleccionJuegos();
         });
+        
         vista.btnDashboard.addActionListener(e -> {
-            // Detener todos los videos antes de cambiar de vista
             VideoManager.getInstance().detenerTodosLosVideos();
             abrirPanelUnidades();
         });
 
         vista.btnCuenta.addActionListener(e -> abrirCuenta());
-        
         vista.btnCertificado.addActionListener(e -> abrirCertificado());
 
         vista.btnSalir.addActionListener(e -> {
             int confirm = JOptionPane.showConfirmDialog(null, "¿Deseas salir?", "Cerrar sesión", JOptionPane.YES_NO_OPTION);
             if (confirm == JOptionPane.YES_OPTION) {
-                // Detener todos los videos antes de salir
                 VideoManager.getInstance().detenerTodosLosVideos();
-                
-                // Detener el timer del saludo antes de salir
                 if (controladorSaludo != null) {
                     controladorSaludo.detener();
                 }
@@ -101,25 +99,25 @@ public class ControladorDashboard {
             }
         });
     }
+    
+      private void abrirSeleccionJuegos() {
+        Vista_SelecciondeJuegos seleccionJuegos = new Vista_SelecciondeJuegos();
+        new ControladorSeleccionJuegos(seleccionJuegos, vista);
+        vista.mostrarVista(seleccionJuegos);
+    }
 
     private void abrirPanelUnidades() {
     // Usar la instancia existente que ya tiene su controlador
     vista.mostrarVista(panelUnidades);
 }
   private void abrirCertificado() {
-        // Detener todos los videos antes de cambiar de vista
-        VideoManager.getInstance().detenerTodosLosVideos();
-        
-        Vista_Certificado certificadoPanel = new Vista_Certificado();
-        new Controlador_Certificado(certificadoPanel, vista);
-        vista.mostrarVista(certificadoPanel);
+    Vista_Certificado certificadoPanel = new Vista_Certificado();
+    new Controlador_Certificado(certificadoPanel, vista);
+    vista.mostrarVista(certificadoPanel);
 }
     private void abrirCuenta() {
         System.out.println("Intentando abrir panel de cuenta...");
         try {
-            // Detener todos los videos antes de cambiar de vista
-            VideoManager.getInstance().detenerTodosLosVideos();
-            
             Cuenta cuentaPanel = new Cuenta();
             System.out.println("Componentes en cuentaPanel:");
             System.out.println("btnSubirImagenURL: " + (cuentaPanel.btnSubirImagenURL != null ? "Existe" : "NULL"));
