@@ -87,7 +87,7 @@ public class ControladorLogin implements ActionListener {
         vista.mostrarPanelEnPanel1(panelCambio);
 
         // Modificar el controlador para que no dependa del JDialog
-        new ControladorCrearUsuario(panelCambio, correo, null, vista);
+        new ControladorCrearUsuario(panelCambio, correo, vista); // solo pasas vista y login
     }
 
     private void abrirDashboard(String correo) {

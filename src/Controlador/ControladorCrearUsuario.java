@@ -13,12 +13,10 @@ import javax.swing.JOptionPane;
 public class ControladorCrearUsuario {
 
     private final CrearUsuario vista;
-    private final JDialog dialog;
     private final Login login;
 
-    public ControladorCrearUsuario(CrearUsuario vista, String correoUsuario, JDialog dialog, Login login) {
+    public ControladorCrearUsuario(CrearUsuario vista, String correoUsuario, Login login) {
         this.vista = vista;
-        this.dialog = dialog;
         this.login = login;
 
         bloquearCamposRegistro();
@@ -36,12 +34,8 @@ public class ControladorCrearUsuario {
     }
 
     private void regresarALogin() {
-        if (dialog != null) {
-            dialog.dispose(); // Si venía de un diálogo
-        } else {
             login.mostrarPanelEnPanel1(login.getPanelLoginOriginal()); // Si está en Panel1
         }
-    }
 
     private void bloquearCamposRegistro() {
         vista.getTextFieldIngresarNuevaContraseña().setEnabled(false);
@@ -129,13 +123,14 @@ public class ControladorCrearUsuario {
                 String mensaje = "Bienvenido/a " + nombre + ",\n\n"
                         + "Tu registro fue exitoso. Puedes iniciar sesión con:\n"
                         + "Usuario: " + correoUsuario + "\n"
-                        + "Correo: " + correoUsuario + "\n"
                         + "Contraseña: " + nuevaContrasena + "\n\n"
                         + "¡Gracias por registrarte en nuestra app!";
                 EmailSender.enviarCorreo(correoUsuario, asunto, mensaje);
 
                 JOptionPane.showMessageDialog(vista, "Registro exitoso. Revisa tu correo y disfruta nuestra app.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                dialog.dispose();
+                {
+                    login.mostrarPanelEnPanel1(login.getPanelLoginOriginal()); // Si estaba dentro del Panel1
+                }
 
                 int rol = Usuario.obtenerRolUsuario(correoUsuario);
                 if (rol == 2) {
@@ -147,6 +142,7 @@ public class ControladorCrearUsuario {
                     ControladorDashboard controladorDashboard = new ControladorDashboard(dashPanel, login);
                     login.mostrarPanelEnPanel1(dashPanel);
                 }
+
             } else {
                 JOptionPane.showMessageDialog(vista, "No se pudo actualizar la contraseña.", "Error", JOptionPane.ERROR_MESSAGE);
             }
