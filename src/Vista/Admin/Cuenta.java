@@ -52,10 +52,6 @@ public class Cuenta extends JPanel {
         return LabelPerfildelUsuario;
     }
 
-    public JLabel getLblSaludo() {
-        return LblSaludo;
-    }
-
     public JLabel getLblimagen() {
         return Lblimagen;
     }
@@ -133,9 +129,6 @@ public class Cuenta extends JPanel {
         this.LabelPerfildelUsuario = LabelPerfildelUsuario;
     }
 
-    public void setLblSaludo(JLabel LblSaludo) {
-        this.LblSaludo = LblSaludo;
-    }
 
     public void setLblimagen(JLabel Lblimagen) {
         this.Lblimagen = Lblimagen;
@@ -194,27 +187,28 @@ public class Cuenta extends JPanel {
         jLabel1FechayHora1 = new javax.swing.JLabel();
         jLabel1Contra1 = new javax.swing.JLabel();
         jTextField1Contraseña1 = new javax.swing.JTextField();
-        LblimagenFondo = new javax.swing.JLabel();
-        LblSaludo = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         LabelPerfildelUsuario = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1190, 660));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        PanelVistas.setBackground(new java.awt.Color(255, 255, 255));
+        PanelVistas.setBackground(new java.awt.Color(200, 225, 255));
         PanelVistas.setPreferredSize(new java.awt.Dimension(1190, 660));
         PanelVistas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1Usuario.setFont(new java.awt.Font("Montserrat", 1, 15)); // NOI18N
-        jLabel1Usuario.setForeground(new java.awt.Color(55, 65, 81));
+        jLabel1Usuario.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1Usuario.setText("Usuario:");
-        PanelVistas.add(jLabel1Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, -1, -1));
+        PanelVistas.add(jLabel1Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 230, -1, -1));
 
         jTextField1MostrarUsuario.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
-        PanelVistas.add(jTextField1MostrarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 210, 210, 30));
+        PanelVistas.add(jTextField1MostrarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 270, 210, 30));
 
         Lblimagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Users.png"))); // NOI18N
-        PanelVistas.add(Lblimagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 100, 100));
+        PanelVistas.add(Lblimagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 100, 100));
 
         jButton1SubirImagen.setBackground(new java.awt.Color(255, 122, 0));
         jButton1SubirImagen.setFont(new java.awt.Font("Montserrat", 1, 16)); // NOI18N
@@ -225,46 +219,55 @@ public class Cuenta extends JPanel {
                 jButton1SubirImagenActionPerformed(evt);
             }
         });
-        PanelVistas.add(jButton1SubirImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 180, 40));
+        PanelVistas.add(jButton1SubirImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 380, 180, 40));
 
         jButton1CambiarContraseña.setBackground(new java.awt.Color(255, 122, 0));
         jButton1CambiarContraseña.setFont(new java.awt.Font("Montserrat", 1, 16)); // NOI18N
         jButton1CambiarContraseña.setForeground(new java.awt.Color(255, 255, 255));
         jButton1CambiarContraseña.setText("Cambiar Contraseña");
         jButton1CambiarContraseña.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        PanelVistas.add(jButton1CambiarContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 380, 210, 40));
+        PanelVistas.add(jButton1CambiarContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 420, 210, 40));
 
         jLabel1loginactivity.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1loginactivity.setForeground(new java.awt.Color(55, 65, 81));
-        jLabel1loginactivity.setText("<html>\n    <span style=\"font-size:14px; font-family:Montserrat; color:#000000;\"><b>Actividad de la cuenta</b></span><br><br>\n    <span style=\"font-size:13px; font-family:Montserrat; color:#000000;\"><b>Primer acceso al sitio</b></span><br>\n    <span style=\"font-size:13px; font-family:Montserrat;\">Monday, 22 May 2023, 9:54 PM <i>(2 years 42 days)</i></span><br><br>\n    <span style=\"font-size:13px; font-family:Montserrat; color:#000000;\"><b>Último acceso al sitio</b></span><br>\n    <span style=\"font-size:13px; font-family:Montserrat;\">Thursday, 3 July 2025, 12:11 AM <i>(now)</i></span>\n</html>");
-        PanelVistas.add(jLabel1loginactivity, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 470, 430, -1));
+        jLabel1loginactivity.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1loginactivity.setText("<html>\n    <span style=\"font-size:14px; font-family:Montserrat; color:#FFFFFF;\"><b>Actividad de la cuenta</b></span><br><br>\n    <span style=\"font-size:13px; font-family:Montserrat; color:#FFFFFF;\"><b>Primer acceso al sitio</b></span><br>\n    <span style=\"font-size:13px; font-family:Montserrat;\">Monday, 22 May 2023, 9:54 PM <i>(2 years 42 days)</i></span><br><br>\n    <span style=\"font-size:13px; font-family:Montserrat; color:#FFFFFF;\"><b>Último acceso al sitio</b></span><br>\n    <span style=\"font-size:13px; font-family:Montserrat;\">Thursday, 3 July 2025, 12:11 AM <i>(now)</i></span>\n</html>");
+        PanelVistas.add(jLabel1loginactivity, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 660, 170));
 
+        jLabel1FechayHora1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1FechayHora1.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
-        jLabel1FechayHora1.setForeground(new java.awt.Color(55, 65, 81));
-        jLabel1FechayHora1.setText("<html>     <span style=\"font-size:14px; font-family:Montserrat; color:#000000;\">         <b>Fecha y Hora:</b><br>         <span style=\"color:rgb(55,65,81);\">02 de julio de 2025 - 18:45:30</span>     </span> </html>");
-        PanelVistas.add(jLabel1FechayHora1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 20, 280, -1));
+        jLabel1FechayHora1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1FechayHora1.setText("<html>     <span style=\"font-size:14px; font-family:Montserrat; color:#FFFFFF;\">         <b>Fecha y Hora:</b><br>         <span style=\"color:rgb(255,255,255);\">02 de julio de 2025 - 18:45:30</span>     </span> </html> ");
+        PanelVistas.add(jLabel1FechayHora1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 50, 280, -1));
 
         jLabel1Contra1.setFont(new java.awt.Font("Montserrat", 1, 15)); // NOI18N
-        jLabel1Contra1.setForeground(new java.awt.Color(55, 65, 81));
+        jLabel1Contra1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1Contra1.setText("Contraseña: ");
-        PanelVistas.add(jLabel1Contra1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 270, -1, -1));
+        PanelVistas.add(jLabel1Contra1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 320, -1, -1));
 
         jTextField1Contraseña1.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
-        PanelVistas.add(jTextField1Contraseña1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, 210, 30));
+        PanelVistas.add(jTextField1Contraseña1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 360, 210, 30));
 
-        LblimagenFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lbl.jpg"))); // NOI18N
-        PanelVistas.add(LblimagenFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jLabel1.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("<html>\n  <div style='font-family: Montserrat; font-size: 14pt; font-weight: bold; margin-bottom: 10px; text-align: center;'>\n    Para modificar tu contraseña, haz clic en el botón \n  </div>\n <div style='font-family: Montserrat; font-size: 15pt; font-weight: bold;margin-bottom: 10px; text-align: center;'>\n    \"Cambiar Contraseña\".\n  </div>\n</html>");
+        jLabel1.setPreferredSize(new java.awt.Dimension(545, 63));
+        PanelVistas.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 120, 270, 100));
+
+        jLabel2.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("<html>\n  <div style='font-family: Montserrat; font-size: 14pt; font-weight: bold; margin-bottom: 10px; text-align: center;'>\n    Para actualizar tu foto de perfil o subir una nueva imagen, utiliza el botón\n  </div>\n <div style='font-family: Montserrat; font-size: 15pt; font-weight: bold;margin-bottom: 10px; text-align: center;'>\n    \"Subir Imagen\".\n  </div>\n</html>");
+        PanelVistas.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 270, 100));
+
+        LabelPerfildelUsuario.setFont(new java.awt.Font("Montserrat", 1, 24)); // NOI18N
+        LabelPerfildelUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        LabelPerfildelUsuario.setText("Perfil del Usuario");
+        PanelVistas.add(LabelPerfildelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 30, -1, 40));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoooo12.jpg"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        PanelVistas.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jPanel1.add(PanelVistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 660));
-
-        LblSaludo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        LblSaludo.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(LblSaludo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 219, 24));
-
-        LabelPerfildelUsuario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        LabelPerfildelUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        LabelPerfildelUsuario.setText("<html>     <span style=\"font-size:16px; font-family:Segoe UI; color:#2a4365;\"><b>PERFIL DEL USUARIO</b></span> </html> ");
-        jPanel1.add(LabelPerfildelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, -1, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -285,16 +288,17 @@ public class Cuenta extends JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel LabelPerfildelUsuario;
-    public javax.swing.JLabel LblSaludo;
     public javax.swing.JLabel Lblimagen;
-    public javax.swing.JLabel LblimagenFondo;
     public javax.swing.JPanel PanelVistas;
     public javax.swing.JButton jButton1CambiarContraseña;
     public javax.swing.JButton jButton1SubirImagen;
+    public javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel1Contra1;
     public javax.swing.JLabel jLabel1FechayHora1;
     public javax.swing.JLabel jLabel1Usuario;
     public javax.swing.JLabel jLabel1loginactivity;
+    public javax.swing.JLabel jLabel2;
+    public javax.swing.JLabel jLabel3;
     public javax.swing.JPanel jPanel1;
     public javax.swing.JTextField jTextField1Contraseña1;
     public javax.swing.JTextField jTextField1MostrarUsuario;

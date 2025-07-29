@@ -95,115 +95,108 @@ public void setFechaFin(Date fecha) {
         LblTitulo = new javax.swing.JLabel();
         PanelProgresoGeneral = new javax.swing.JPanel();
         btnProgresoGeneral = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         PanelRendimientoUnidad = new javax.swing.JPanel();
         btnRendimientoUnidad = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         PanelUltimaActividad = new javax.swing.JPanel();
         btnUltimaActividad = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         LblHasta = new javax.swing.JLabel();
         LblDesde = new javax.swing.JLabel();
         jDateChooserHasta = new com.toedter.calendar.JDateChooser();
         jDateChooserDesde = new com.toedter.calendar.JDateChooser();
+        jLabel1 = new javax.swing.JLabel();
 
-        jPanel1.setBackground(new java.awt.Color(204, 221, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(200, 225, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1190, 660));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        LblTitulo.setFont(new java.awt.Font("Montserrat", 1, 24)); // NOI18N
+        LblTitulo.setForeground(new java.awt.Color(255, 255, 255));
         LblTitulo.setText("Reportes");
         jPanel1.add(LblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 28, -1, -1));
 
         PanelProgresoGeneral.setBackground(new java.awt.Color(255, 255, 255));
+        PanelProgresoGeneral.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        PanelProgresoGeneral.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnProgresoGeneral.setText("Progreso General");
+        btnProgresoGeneral.setBackground(new java.awt.Color(255, 102, 0));
+        btnProgresoGeneral.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
+        btnProgresoGeneral.setForeground(new java.awt.Color(255, 255, 255));
+        btnProgresoGeneral.setText("Generar Reporte");
+        PanelProgresoGeneral.add(btnProgresoGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 305, -1, -1));
 
-        javax.swing.GroupLayout PanelProgresoGeneralLayout = new javax.swing.GroupLayout(PanelProgresoGeneral);
-        PanelProgresoGeneral.setLayout(PanelProgresoGeneralLayout);
-        PanelProgresoGeneralLayout.setHorizontalGroup(
-            PanelProgresoGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelProgresoGeneralLayout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(btnProgresoGeneral)
-                .addContainerGap(57, Short.MAX_VALUE))
-        );
-        PanelProgresoGeneralLayout.setVerticalGroup(
-            PanelProgresoGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelProgresoGeneralLayout.createSequentialGroup()
-                .addContainerGap(178, Short.MAX_VALUE)
-                .addComponent(btnProgresoGeneral)
-                .addGap(18, 18, 18))
-        );
+        jLabel2.setText("<html> \n  <div style=\"font-family: Montserrat; font-size: 13pt; font-weight: bold; margin-bottom: 10px; text-align: center;\">\n    Progreso General\n  </div>\n  <div style=\"font-family: Montserrat; font-size: 10pt; font-weight: normal;\">\n    Muestra el avance individual de los estudiantes en las unidades del curso, incluyendo porcentaje y última actividad.\n  </div>\n</html>");
+        PanelProgresoGeneral.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 240, 80));
 
-        jPanel1.add(PanelProgresoGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 279, -1, -1));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/g1.jpg"))); // NOI18N
+        jLabel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        PanelProgresoGeneral.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
+
+        jPanel1.add(PanelProgresoGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 190, 260, 350));
 
         PanelRendimientoUnidad.setBackground(new java.awt.Color(255, 255, 255));
+        PanelRendimientoUnidad.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        PanelRendimientoUnidad.setPreferredSize(new java.awt.Dimension(260, 350));
+        PanelRendimientoUnidad.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnRendimientoUnidad.setText("Rendimiento Unidad");
+        btnRendimientoUnidad.setBackground(new java.awt.Color(255, 102, 0));
+        btnRendimientoUnidad.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
+        btnRendimientoUnidad.setForeground(new java.awt.Color(255, 255, 255));
+        btnRendimientoUnidad.setText("Generar Reporte");
+        PanelRendimientoUnidad.add(btnRendimientoUnidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 305, -1, -1));
 
-        javax.swing.GroupLayout PanelRendimientoUnidadLayout = new javax.swing.GroupLayout(PanelRendimientoUnidad);
-        PanelRendimientoUnidad.setLayout(PanelRendimientoUnidadLayout);
-        PanelRendimientoUnidadLayout.setHorizontalGroup(
-            PanelRendimientoUnidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelRendimientoUnidadLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnRendimientoUnidad)
-                .addGap(51, 51, 51))
-        );
-        PanelRendimientoUnidadLayout.setVerticalGroup(
-            PanelRendimientoUnidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelRendimientoUnidadLayout.createSequentialGroup()
-                .addContainerGap(182, Short.MAX_VALUE)
-                .addComponent(btnRendimientoUnidad)
-                .addGap(24, 24, 24))
-        );
+        jLabel3.setText("<html> \n  <div style=\"font-family: Montserrat; font-size: 13pt; font-weight: bold; margin-bottom: 10px; text-align: center;\">\n    Rendimiento Unidad\n  </div>\n  <div style=\"font-family: Montserrat; font-size: 10pt; font-weight: normal;\">\n    Resume el rendimiento promedio de los estudiantes en cada unidad del curso, con calificaciones y tiempo promedio.\n  </div>\n</html>");
+        PanelRendimientoUnidad.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 240, 80));
 
-        jPanel1.add(PanelRendimientoUnidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 290, -1, -1));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/g2.jpg"))); // NOI18N
+        jLabel8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        PanelRendimientoUnidad.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
+
+        jPanel1.add(PanelRendimientoUnidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(466, 190, 260, 350));
 
         PanelUltimaActividad.setBackground(new java.awt.Color(255, 255, 255));
+        PanelUltimaActividad.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        PanelUltimaActividad.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnUltimaActividad.setText("Ultima Actividad");
+        btnUltimaActividad.setBackground(new java.awt.Color(255, 102, 0));
+        btnUltimaActividad.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
+        btnUltimaActividad.setForeground(new java.awt.Color(255, 255, 255));
+        btnUltimaActividad.setText("Generar Reporte");
+        PanelUltimaActividad.add(btnUltimaActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 305, -1, -1));
 
-        javax.swing.GroupLayout PanelUltimaActividadLayout = new javax.swing.GroupLayout(PanelUltimaActividad);
-        PanelUltimaActividad.setLayout(PanelUltimaActividadLayout);
-        PanelUltimaActividadLayout.setHorizontalGroup(
-            PanelUltimaActividadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelUltimaActividadLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(btnUltimaActividad)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        PanelUltimaActividadLayout.setVerticalGroup(
-            PanelUltimaActividadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelUltimaActividadLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnUltimaActividad)
-                .addGap(18, 18, 18))
-        );
+        jLabel4.setText("<html> \n  <div style=\"font-family: Montserrat; font-size: 13pt; font-weight: bold; margin-bottom: 10px; text-align: center;\">\n    Última Actividad\n  </div>\n  <div style=\"font-family: Montserrat; font-size: 10pt; font-weight: normal;\">\n    Lista completa de usuarios registrados con fecha de último acceso y estado actual.\n  </div>\n</html>");
+        PanelUltimaActividad.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 240, 80));
 
-        jPanel1.add(PanelUltimaActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 270, -1, 229));
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/g3.jpg"))); // NOI18N
+        jLabel9.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        PanelUltimaActividad.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
 
-        LblHasta.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
+        jPanel1.add(PanelUltimaActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(829, 190, 260, 350));
+
+        LblHasta.setFont(new java.awt.Font("Montserrat", 1, 16)); // NOI18N
+        LblHasta.setForeground(new java.awt.Color(255, 255, 255));
         LblHasta.setText("Hasta:");
         jPanel1.add(LblHasta, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 80, -1, -1));
 
-        LblDesde.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
+        LblDesde.setFont(new java.awt.Font("Montserrat", 1, 16)); // NOI18N
+        LblDesde.setForeground(new java.awt.Color(255, 255, 255));
         LblDesde.setText("Filtrar por fecha desde:");
-        jPanel1.add(LblDesde, new org.netbeans.lib.awtextra.AbsoluteConstraints(267, 78, -1, -1));
+        jPanel1.add(LblDesde, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, -1, -1));
         jPanel1.add(jDateChooserHasta, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 80, 150, -1));
-        jPanel1.add(jDateChooserDesde, new org.netbeans.lib.awtextra.AbsoluteConstraints(465, 78, 150, -1));
+        jPanel1.add(jDateChooserDesde, new org.netbeans.lib.awtextra.AbsoluteConstraints(465, 80, 150, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoooo12.jpg"))); // NOI18N
+        jLabel1.setPreferredSize(new java.awt.Dimension(1190, 660));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 660));
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -219,6 +212,13 @@ public void setFechaFin(Date fecha) {
     public javax.swing.JButton btnUltimaActividad;
     public com.toedter.calendar.JDateChooser jDateChooserDesde;
     public com.toedter.calendar.JDateChooser jDateChooserHasta;
+    public javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel2;
+    public javax.swing.JLabel jLabel3;
+    public javax.swing.JLabel jLabel4;
+    public javax.swing.JLabel jLabel5;
+    public javax.swing.JLabel jLabel8;
+    public javax.swing.JLabel jLabel9;
     public javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

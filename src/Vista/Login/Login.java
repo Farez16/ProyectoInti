@@ -147,14 +147,13 @@ public class Login extends javax.swing.JFrame {
 
         panelFormularioLogin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(249, 250, 251));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         TxtUsuario.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
-        TxtUsuario.setForeground(new java.awt.Color(102, 102, 102));
         TxtUsuario.setText(" Usuario");
-        TxtUsuario.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
-        jPanel1.add(TxtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 300, 210, 30));
+        TxtUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 122, 0)));
+        jPanel1.add(TxtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 300, 260, 30));
 
         btnCodigo.setBackground(new java.awt.Color(255, 122, 0));
         btnCodigo.setFont(new java.awt.Font("Montserrat", 1, 16)); // NOI18N
@@ -189,10 +188,9 @@ public class Login extends javax.swing.JFrame {
         jPanel1.add(LblSlogan, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 225, 273, 23));
 
         TxtContraseña.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
-        TxtContraseña.setForeground(new java.awt.Color(102, 102, 102));
         TxtContraseña.setText("Contraseña");
-        TxtContraseña.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
-        jPanel1.add(TxtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 370, 210, 30));
+        TxtContraseña.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 122, 0)));
+        jPanel1.add(TxtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 370, 260, 30));
 
         LblQr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/qr1.png"))); // NOI18N
         jPanel1.add(LblQr, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 570, -1, -1));

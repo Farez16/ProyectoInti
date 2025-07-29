@@ -185,7 +185,7 @@ public class DashboardAdmin extends javax.swing.JPanel {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        PanelVistas.setBackground(new java.awt.Color(204, 221, 255));
+        PanelVistas.setBackground(new java.awt.Color(200, 225, 255));
         PanelVistas.setPreferredSize(new java.awt.Dimension(1190, 660));
         PanelVistas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(PanelVistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 1190, 660));
@@ -197,13 +197,13 @@ public class DashboardAdmin extends javax.swing.JPanel {
         LblimagenPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Users.png"))); // NOI18N
         jPanel1.add(LblimagenPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 10, 90, 90));
 
-        lblNombre.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        lblNombre.setFont(new java.awt.Font("Montserrat", 1, 15)); // NOI18N
         lblNombre.setForeground(new java.awt.Color(55, 65, 81));
-        jPanel1.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 20, 130, 40));
+        jPanel1.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 20, 130, 30));
 
-        LblRol.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        LblRol.setFont(new java.awt.Font("Montserrat", 1, 15)); // NOI18N
         LblRol.setForeground(new java.awt.Color(55, 65, 81));
-        jPanel1.add(LblRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 60, 130, 30));
+        jPanel1.add(LblRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 60, 130, 30));
 
         btnMenu1.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         btnMenu1.setForeground(new java.awt.Color(55, 65, 81));
@@ -284,7 +284,7 @@ public class DashboardAdmin extends javax.swing.JPanel {
         });
         jPanel1.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, 160, 42));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(249, 250, 251));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
