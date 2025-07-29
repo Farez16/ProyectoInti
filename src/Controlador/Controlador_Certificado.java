@@ -146,7 +146,6 @@ public class Controlador_Certificado {
 }
 
 
-
     private boolean verificarCompletitudCurso() {
         String correo = dashboard.getCorreoUsuario();
         int idUsuario = Modelo_Progreso_Usuario.obtenerIdUsuarioPorCorreo(correo);
@@ -194,7 +193,7 @@ public class Controlador_Certificado {
                 }
             }
             // Bloquear/desbloquear imagen según estado
-            vista.getjLabel2().setEnabled(todasCompletas);
+            vista.getjLabel2() .setEnabled(todasCompletas);
         }
     }
 }
