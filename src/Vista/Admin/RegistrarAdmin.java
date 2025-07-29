@@ -89,117 +89,74 @@ public void deshabilitarCampos() {
         LblCodigoOTP = new javax.swing.JLabel();
         TxtCodigoOTP = new javax.swing.JTextField();
         btnVerificarCodigo = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1190, 660));
 
-        PanelRegistrarAdmin.setBackground(new java.awt.Color(204, 221, 255));
+        PanelRegistrarAdmin.setBackground(new java.awt.Color(200, 225, 255));
         PanelRegistrarAdmin.setMinimumSize(new java.awt.Dimension(1190, 660));
         PanelRegistrarAdmin.setPreferredSize(new java.awt.Dimension(1190, 660));
+        PanelRegistrarAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         LblTitulo.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        LblTitulo.setForeground(new java.awt.Color(255, 255, 255));
         LblTitulo.setText("Registrar Administrador");
+        PanelRegistrarAdmin.add(LblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 90, -1, -1));
 
         LblNombre.setFont(new java.awt.Font("Montserrat", 1, 15)); // NOI18N
+        LblNombre.setForeground(new java.awt.Color(255, 255, 255));
         LblNombre.setText("Nombre:");
+        PanelRegistrarAdmin.add(LblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 260, -1, -1));
 
         LblCorreo.setFont(new java.awt.Font("Montserrat", 1, 15)); // NOI18N
+        LblCorreo.setForeground(new java.awt.Color(255, 255, 255));
         LblCorreo.setText("Correo:");
+        PanelRegistrarAdmin.add(LblCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, -1, -1));
 
         TxtCorreo.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
+        PanelRegistrarAdmin.add(TxtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 170, 210, 30));
 
         TxtNombre.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
+        PanelRegistrarAdmin.add(TxtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 260, 210, 30));
 
         LblContraseña.setBackground(new java.awt.Color(0, 0, 0));
         LblContraseña.setFont(new java.awt.Font("Montserrat", 1, 15)); // NOI18N
+        LblContraseña.setForeground(new java.awt.Color(255, 255, 255));
         LblContraseña.setText("Contraseña:");
+        PanelRegistrarAdmin.add(LblContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 310, -1, -1));
 
         jPassword.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
+        PanelRegistrarAdmin.add(jPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, 210, 30));
 
         btnRegistrarAd.setBackground(new java.awt.Color(255, 122, 0));
         btnRegistrarAd.setFont(new java.awt.Font("Montserrat", 1, 16)); // NOI18N
         btnRegistrarAd.setForeground(new java.awt.Color(255, 255, 255));
         btnRegistrarAd.setText("Registrar");
+        PanelRegistrarAdmin.add(btnRegistrarAd, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 400, 180, 40));
 
         btnEnviarCodigo.setBackground(new java.awt.Color(255, 122, 0));
         btnEnviarCodigo.setFont(new java.awt.Font("Montserrat", 1, 15)); // NOI18N
         btnEnviarCodigo.setForeground(new java.awt.Color(255, 255, 255));
         btnEnviarCodigo.setText("Enviar Codigo");
+        PanelRegistrarAdmin.add(btnEnviarCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 170, 169, 30));
 
         LblCodigoOTP.setFont(new java.awt.Font("Montserrat", 1, 15)); // NOI18N
+        LblCodigoOTP.setForeground(new java.awt.Color(255, 255, 255));
         LblCodigoOTP.setText("Codigo OTP:");
+        PanelRegistrarAdmin.add(LblCodigoOTP, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, -1, -1));
 
         TxtCodigoOTP.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
+        PanelRegistrarAdmin.add(TxtCodigoOTP, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 210, 210, 30));
 
         btnVerificarCodigo.setBackground(new java.awt.Color(255, 122, 0));
         btnVerificarCodigo.setFont(new java.awt.Font("Montserrat", 1, 15)); // NOI18N
         btnVerificarCodigo.setForeground(new java.awt.Color(255, 255, 255));
         btnVerificarCodigo.setText("Verificar Codigo");
+        PanelRegistrarAdmin.add(btnVerificarCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 220, 169, 30));
 
-        javax.swing.GroupLayout PanelRegistrarAdminLayout = new javax.swing.GroupLayout(PanelRegistrarAdmin);
-        PanelRegistrarAdmin.setLayout(PanelRegistrarAdminLayout);
-        PanelRegistrarAdminLayout.setHorizontalGroup(
-            PanelRegistrarAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelRegistrarAdminLayout.createSequentialGroup()
-                .addGap(490, 490, 490)
-                .addComponent(LblTitulo))
-            .addGroup(PanelRegistrarAdminLayout.createSequentialGroup()
-                .addGap(373, 373, 373)
-                .addComponent(LblCorreo)
-                .addGap(61, 61, 61)
-                .addComponent(TxtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
-                .addComponent(btnEnviarCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(PanelRegistrarAdminLayout.createSequentialGroup()
-                .addGap(380, 380, 380)
-                .addComponent(LblCodigoOTP)
-                .addGap(12, 12, 12)
-                .addComponent(TxtCodigoOTP, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
-                .addComponent(btnVerificarCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(PanelRegistrarAdminLayout.createSequentialGroup()
-                .addGap(380, 380, 380)
-                .addComponent(LblNombre)
-                .addGap(43, 43, 43)
-                .addComponent(TxtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(PanelRegistrarAdminLayout.createSequentialGroup()
-                .addGap(380, 380, 380)
-                .addComponent(LblContraseña)
-                .addGap(17, 17, 17)
-                .addComponent(jPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(PanelRegistrarAdminLayout.createSequentialGroup()
-                .addGap(510, 510, 510)
-                .addComponent(btnRegistrarAd, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        PanelRegistrarAdminLayout.setVerticalGroup(
-            PanelRegistrarAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelRegistrarAdminLayout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addComponent(LblTitulo)
-                .addGap(57, 57, 57)
-                .addGroup(PanelRegistrarAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelRegistrarAdminLayout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(LblCorreo))
-                    .addComponent(TxtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEnviarCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(PanelRegistrarAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LblCodigoOTP)
-                    .addComponent(TxtCodigoOTP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(PanelRegistrarAdminLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(btnVerificarCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(10, 10, 10)
-                .addGroup(PanelRegistrarAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LblNombre)
-                    .addComponent(TxtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(PanelRegistrarAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LblContraseña)
-                    .addComponent(jPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60)
-                .addComponent(btnRegistrarAd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoooo12.jpg"))); // NOI18N
+        jLabel1.setPreferredSize(new java.awt.Dimension(1190, 110));
+        PanelRegistrarAdmin.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 660));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -227,6 +184,7 @@ public void deshabilitarCampos() {
     public javax.swing.JButton btnEnviarCodigo;
     public javax.swing.JButton btnRegistrarAd;
     public javax.swing.JButton btnVerificarCodigo;
+    public javax.swing.JLabel jLabel1;
     public javax.swing.JPasswordField jPassword;
     // End of variables declaration//GEN-END:variables
 }

@@ -119,6 +119,7 @@ public class VistaJuego extends javax.swing.JPanel {
         btn8 = new javax.swing.JButton();
         btnVerificar = new javax.swing.JButton();
         jButton1Regresaralavistaselecciondejuegos = new javax.swing.JButton();
+        LblFondo = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1190, 660));
 
@@ -132,11 +133,12 @@ public class VistaJuego extends javax.swing.JPanel {
                 btn1ActionPerformed(evt);
             }
         });
-        jPanel1.add(btn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 520, 90, 30));
+        jPanel1.add(btn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, 90, 30));
 
-        LblRespuesta.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        LblRespuesta.setFont(new java.awt.Font("Montserrat", 1, 16)); // NOI18N
+        LblRespuesta.setForeground(new java.awt.Color(255, 255, 255));
         LblRespuesta.setText("Respuestas:");
-        jPanel1.add(LblRespuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 480, -1, -1));
+        jPanel1.add(LblRespuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, -1, -1));
         jPanel1.add(Lblimagen2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, -1, -1));
         jPanel1.add(Lblimagen1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
         jPanel1.add(Lblimagen3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, -1, -1));
@@ -145,19 +147,28 @@ public class VistaJuego extends javax.swing.JPanel {
         jPanel1.add(Lblimagen6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, -1, -1));
         jPanel1.add(Lblimagen7, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 260, -1, -1));
         jPanel1.add(Lblimagen8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-        jPanel1.add(btn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 590, 90, 30));
-        jPanel1.add(btn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 520, 90, 30));
-        jPanel1.add(btn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 590, 90, 30));
-        jPanel1.add(btn5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 520, 90, 30));
-        jPanel1.add(btn6, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 580, 90, 30));
-        jPanel1.add(btn7, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 520, 90, 30));
-        jPanel1.add(btn8, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 580, 90, 30));
+        jPanel1.add(btn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, 90, 30));
+        jPanel1.add(btn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 430, 90, 30));
+        jPanel1.add(btn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 510, 90, 30));
+        jPanel1.add(btn5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 420, 90, 30));
+        jPanel1.add(btn6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 510, 90, 30));
+        jPanel1.add(btn7, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 420, 90, 30));
+        jPanel1.add(btn8, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 500, 90, 30));
 
-        btnVerificar.setText("Verificar");
-        jPanel1.add(btnVerificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 530, -1, -1));
+        btnVerificar.setBackground(new java.awt.Color(255, 122, 0));
+        btnVerificar.setFont(new java.awt.Font("Montserrat", 1, 16)); // NOI18N
+        btnVerificar.setForeground(new java.awt.Color(255, 255, 255));
+        btnVerificar.setText("VERIFICAR");
+        jPanel1.add(btnVerificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 590, 210, 40));
 
+        jButton1Regresaralavistaselecciondejuegos.setBackground(new java.awt.Color(255, 122, 0));
+        jButton1Regresaralavistaselecciondejuegos.setFont(new java.awt.Font("Montserrat", 1, 16)); // NOI18N
+        jButton1Regresaralavistaselecciondejuegos.setForeground(new java.awt.Color(255, 255, 255));
         jButton1Regresaralavistaselecciondejuegos.setText("REGRESAR");
-        jPanel1.add(jButton1Regresaralavistaselecciondejuegos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 640, 140, -1));
+        jPanel1.add(jButton1Regresaralavistaselecciondejuegos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 590, 210, 40));
+
+        LblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoooo12.jpg"))); // NOI18N
+        jPanel1.add(LblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -177,6 +188,7 @@ public class VistaJuego extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JLabel LblFondo;
     public javax.swing.JLabel LblRespuesta;
     public javax.swing.JLabel Lblimagen1;
     public javax.swing.JLabel Lblimagen2;

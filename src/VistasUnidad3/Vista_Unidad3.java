@@ -87,6 +87,12 @@ public class Vista_Unidad3 extends javax.swing.JPanel {
         jButtonBack = new javax.swing.JButton();
         jButtonHistorial = new javax.swing.JButton();
         jButtonVestimenta1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(1190, 660));
@@ -99,65 +105,101 @@ public class Vista_Unidad3 extends javax.swing.JPanel {
         jProgressBarUNIDAD3.setForeground(new java.awt.Color(0, 204, 204));
         jProgressBarUNIDAD3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jProgressBarUNIDAD3.setStringPainted(true);
-        add(jProgressBarUNIDAD3, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 10, 260, 30));
+        add(jProgressBarUNIDAD3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 600, 850, 20));
 
-        jButtonFINALIZARUNIDAD1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BtnFinalizarU1.png"))); // NOI18N
-        add(jButtonFINALIZARUNIDAD1, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 600, 200, 40));
+        jButtonFINALIZARUNIDAD1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad1/Finalizar.png"))); // NOI18N
+        jButtonFINALIZARUNIDAD1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+        add(jButtonFINALIZARUNIDAD1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 570, 140, 70));
 
-        jButtonFamilia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/SaludosUnidad1.png"))); // NOI18N
-        jButtonFamilia.setMaximumSize(new java.awt.Dimension(80, 20));
-        jButtonFamilia.setMinimumSize(new java.awt.Dimension(80, 20));
-        jButtonFamilia.setPreferredSize(new java.awt.Dimension(80, 20));
+        jButtonFamilia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad1/CFAMI2.png"))); // NOI18N
+        jButtonFamilia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+        jButtonFamilia.setMaximumSize(new java.awt.Dimension(150, 200));
+        jButtonFamilia.setMinimumSize(new java.awt.Dimension(150, 200));
+        jButtonFamilia.setPreferredSize(new java.awt.Dimension(150, 200));
         jButtonFamilia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonFamiliaActionPerformed(evt);
             }
         });
-        add(jButtonFamilia, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 110, 70));
+        add(jButtonFamilia, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 150, 200));
 
-        jButtonActFamilia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fonologia.png"))); // NOI18N
+        jButtonActFamilia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad1/ACTIVIDAD1.png"))); // NOI18N
+        jButtonActFamilia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
         jButtonActFamilia.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jButtonActFamilia.setMaximumSize(new java.awt.Dimension(120, 70));
-        jButtonActFamilia.setMinimumSize(new java.awt.Dimension(120, 70));
-        jButtonActFamilia.setPreferredSize(new java.awt.Dimension(120, 70));
-        add(jButtonActFamilia, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 120, 70));
+        jButtonActFamilia.setMaximumSize(new java.awt.Dimension(150, 200));
+        jButtonActFamilia.setMinimumSize(new java.awt.Dimension(150, 200));
+        jButtonActFamilia.setPreferredSize(new java.awt.Dimension(150, 200));
+        add(jButtonActFamilia, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 330, 150, 200));
 
-        jButtonVestimenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PronombresU1.png"))); // NOI18N
-        add(jButtonVestimenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 120, 70));
+        jButtonVestimenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad1/CVESTRA2.png"))); // NOI18N
+        jButtonVestimenta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+        jButtonVestimenta.setMaximumSize(new java.awt.Dimension(150, 200));
+        jButtonVestimenta.setMinimumSize(new java.awt.Dimension(150, 200));
+        jButtonVestimenta.setPreferredSize(new java.awt.Dimension(150, 200));
+        add(jButtonVestimenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, 150, 200));
 
-        jButtonActVestimenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ActividadU1.png"))); // NOI18N
-        add(jButtonActVestimenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 310, 120, 70));
+        jButtonActVestimenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad1/ACTIVIDAD2 .png"))); // NOI18N
+        jButtonActVestimenta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+        jButtonActVestimenta.setMaximumSize(new java.awt.Dimension(150, 200));
+        jButtonActVestimenta.setMinimumSize(new java.awt.Dimension(150, 200));
+        jButtonActVestimenta.setPreferredSize(new java.awt.Dimension(150, 200));
+        add(jButtonActVestimenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 100, 150, 200));
 
-        jButtonEvaluacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ActividadU1.png"))); // NOI18N
+        jButtonEvaluacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad1/EVALUACION.png"))); // NOI18N
+        jButtonEvaluacion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+        jButtonEvaluacion.setMaximumSize(new java.awt.Dimension(150, 200));
+        jButtonEvaluacion.setMinimumSize(new java.awt.Dimension(150, 200));
+        jButtonEvaluacion.setPreferredSize(new java.awt.Dimension(150, 200));
         jButtonEvaluacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEvaluacionActionPerformed(evt);
             }
         });
-        add(jButtonEvaluacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 470, 120, 70));
+        add(jButtonEvaluacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 300, 150, 200));
 
         jButtonREINICIARU1.setText("Reiniciar");
-        add(jButtonREINICIARU1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 60, 100, 50));
+        add(jButtonREINICIARU1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 30, 150, 60));
 
         jButtonBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Flechaback.png"))); // NOI18N
+        jButtonBack.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
         jButtonBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBackActionPerformed(evt);
             }
         });
-        add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, 150, 50));
+        add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 590, 130, 50));
 
         jButtonHistorial.setText("Ver Historial");
-        add(jButtonHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 180, 100, 40));
+        add(jButtonHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 110, 100, 40));
 
-        jButtonVestimenta1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fonologia.png"))); // NOI18N
+        jButtonVestimenta1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad1/CVESCOM3.png"))); // NOI18N
+        jButtonVestimenta1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
         jButtonVestimenta1.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jButtonVestimenta1.setMaximumSize(new java.awt.Dimension(120, 70));
-        jButtonVestimenta1.setMinimumSize(new java.awt.Dimension(120, 70));
-        jButtonVestimenta1.setPreferredSize(new java.awt.Dimension(120, 70));
-        add(jButtonVestimenta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 320, 120, 70));
+        jButtonVestimenta1.setMaximumSize(new java.awt.Dimension(150, 200));
+        jButtonVestimenta1.setMinimumSize(new java.awt.Dimension(150, 200));
+        jButtonVestimenta1.setPreferredSize(new java.awt.Dimension(150, 200));
+        add(jButtonVestimenta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 330, 150, 200));
 
-        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoUnidad1.jpg"))); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel1.setText("UNIDAD 3");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad1/flecha-curva-hacia-abajo (1).png"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 190, 80, 100));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad1/flecha-curva-hacia-abajo (1).png"))); // NOI18N
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 160, 80, 120));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad1/flecha-curva-hacia-abajo (1).png"))); // NOI18N
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 70, 110));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad1/flecha-curva-hacia-arriba(1).png"))); // NOI18N
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 320, 80, 120));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad1/flecha-curva-hacia-arriba(1).png"))); // NOI18N
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 320, 80, 110));
+
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad1/Fondo1U1.jpg"))); // NOI18N
         add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 660));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -186,6 +228,12 @@ public class Vista_Unidad3 extends javax.swing.JPanel {
     public javax.swing.JButton jButtonREINICIARU1;
     public javax.swing.JButton jButtonVestimenta;
     public javax.swing.JButton jButtonVestimenta1;
+    public javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel2;
+    public javax.swing.JLabel jLabel3;
+    public javax.swing.JLabel jLabel4;
+    public javax.swing.JLabel jLabel6;
+    public javax.swing.JLabel jLabel7;
     public javax.swing.JProgressBar jProgressBarUNIDAD3;
     // End of variables declaration//GEN-END:variables
 }

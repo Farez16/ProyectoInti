@@ -70,7 +70,7 @@ public class Vista_Certificado extends javax.swing.JPanel {
         jButton1DescargarCertificado1 = new javax.swing.JButton();
         jButton1REENVIARCERTIFICADOALCORREO1 = new javax.swing.JButton();
         jButton1VisualizarCertificado = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        LblFondo = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(1190, 660));
@@ -82,34 +82,37 @@ public class Vista_Certificado extends javax.swing.JPanel {
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 18, -1, -1));
 
         jButton1REENVIARCERTIFICADOALCORREO.setBackground(new java.awt.Color(255, 122, 0));
-        jButton1REENVIARCERTIFICADOALCORREO.setFont(new java.awt.Font("Modern No. 20", 0, 18)); // NOI18N
+        jButton1REENVIARCERTIFICADOALCORREO.setFont(new java.awt.Font("Montserrat", 1, 16)); // NOI18N
+        jButton1REENVIARCERTIFICADOALCORREO.setForeground(new java.awt.Color(255, 255, 255));
         jButton1REENVIARCERTIFICADOALCORREO.setText("REENVIAR CERTIFICADO");
-        add(jButton1REENVIARCERTIFICADOALCORREO, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 610, -1, -1));
+        add(jButton1REENVIARCERTIFICADOALCORREO, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 600, -1, 40));
 
         jButton1DescargarCertificado1.setBackground(new java.awt.Color(255, 122, 0));
-        jButton1DescargarCertificado1.setFont(new java.awt.Font("Modern No. 20", 0, 18)); // NOI18N
+        jButton1DescargarCertificado1.setFont(new java.awt.Font("Montserrat", 1, 16)); // NOI18N
+        jButton1DescargarCertificado1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1DescargarCertificado1.setText("DESCARGAR CERTIFICADO");
-        add(jButton1DescargarCertificado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 610, -1, -1));
+        add(jButton1DescargarCertificado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 600, -1, 40));
 
         jButton1REENVIARCERTIFICADOALCORREO1.setBackground(new java.awt.Color(255, 122, 0));
-        jButton1REENVIARCERTIFICADOALCORREO1.setFont(new java.awt.Font("Modern No. 20", 0, 18)); // NOI18N
+        jButton1REENVIARCERTIFICADOALCORREO1.setFont(new java.awt.Font("Montserrat", 1, 16)); // NOI18N
+        jButton1REENVIARCERTIFICADOALCORREO1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1REENVIARCERTIFICADOALCORREO1.setText("ENVIAR CERTIFICADO");
-        add(jButton1REENVIARCERTIFICADOALCORREO1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 610, -1, -1));
+        add(jButton1REENVIARCERTIFICADOALCORREO1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 600, -1, 40));
 
         jButton1VisualizarCertificado.setText("jButton1");
         add(jButton1VisualizarCertificado, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 23, 800, 560));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad2/Fondo.png"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-22, -84, 1230, 750));
+        LblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoooo12.jpg"))); // NOI18N
+        add(LblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1DescargarCertificado1;
-    private javax.swing.JButton jButton1REENVIARCERTIFICADOALCORREO;
-    private javax.swing.JButton jButton1REENVIARCERTIFICADOALCORREO1;
-    private javax.swing.JButton jButton1VisualizarCertificado;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    public javax.swing.JLabel LblFondo;
+    public javax.swing.JButton jButton1DescargarCertificado1;
+    public javax.swing.JButton jButton1REENVIARCERTIFICADOALCORREO;
+    public javax.swing.JButton jButton1REENVIARCERTIFICADOALCORREO1;
+    public javax.swing.JButton jButton1VisualizarCertificado;
+    public javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

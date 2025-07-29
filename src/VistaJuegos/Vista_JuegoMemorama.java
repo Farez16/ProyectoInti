@@ -187,6 +187,7 @@ public class Vista_JuegoMemorama extends javax.swing.JPanel {
         jLabelImagen6 = new javax.swing.JLabel();
         jButton1ComprobarRespuestas = new javax.swing.JButton();
         jButton1Regresaralavistaselecciondejuegos = new javax.swing.JButton();
+        LblFondo = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1190, 660));
 
@@ -194,63 +195,75 @@ public class Vista_JuegoMemorama extends javax.swing.JPanel {
         jPanel1.setPreferredSize(new java.awt.Dimension(1190, 660));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        LblTexto.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        LblTexto.setBackground(new java.awt.Color(255, 255, 255));
+        LblTexto.setFont(new java.awt.Font("Montserrat", 1, 24)); // NOI18N
+        LblTexto.setForeground(new java.awt.Color(255, 255, 255));
         LblTexto.setText("SELECCIONE UN JUEGO");
         jPanel1.add(LblTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, -1, -1));
 
-        jLabelImagen1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabelImagen1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabelImagen1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jLabelImagen1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 300, 140, 160));
 
-        jLabel2ImagenIgual1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel2ImagenIgual1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabel2ImagenIgual1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jLabel2ImagenIgual1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 140, 160));
 
-        jLabel2ImagenIgual2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel2ImagenIgual2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabel2ImagenIgual2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jLabel2ImagenIgual2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, 140, 160));
 
-        jLabel2ImagenIgual3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel2ImagenIgual3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabel2ImagenIgual3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jLabel2ImagenIgual3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 300, 140, 160));
 
-        jLabel2ImagenIgual4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel2ImagenIgual4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabel2ImagenIgual4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jLabel2ImagenIgual4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 140, 160));
 
-        jLabelImagen2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabelImagen2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabelImagen2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jLabelImagen2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 100, 140, 160));
 
-        jLabelImagen3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabelImagen3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabelImagen3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jLabelImagen3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 300, 140, 160));
 
-        jLabelImagen4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabelImagen4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabelImagen4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jLabelImagen4, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 300, 140, 160));
 
-        jLabel2ImagenIgual5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel2ImagenIgual5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabel2ImagenIgual5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jLabel2ImagenIgual5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, 140, 160));
 
-        jLabel2ImagenIgual6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel2ImagenIgual6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabel2ImagenIgual6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jLabel2ImagenIgual6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 140, 160));
 
-        jLabelImagen5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabelImagen5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabelImagen5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jLabelImagen5, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 100, 140, 160));
 
-        jLabelImagen6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabelImagen6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabelImagen6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jLabelImagen6, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 100, 140, 160));
 
+        jButton1ComprobarRespuestas.setBackground(new java.awt.Color(255, 122, 0));
+        jButton1ComprobarRespuestas.setFont(new java.awt.Font("Montserrat", 1, 16)); // NOI18N
+        jButton1ComprobarRespuestas.setForeground(new java.awt.Color(255, 255, 255));
         jButton1ComprobarRespuestas.setText("COMPROBAR");
-        jPanel1.add(jButton1ComprobarRespuestas, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 520, -1, -1));
+        jPanel1.add(jButton1ComprobarRespuestas, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 540, 180, 40));
 
+        jButton1Regresaralavistaselecciondejuegos.setBackground(new java.awt.Color(255, 122, 0));
+        jButton1Regresaralavistaselecciondejuegos.setFont(new java.awt.Font("Montserrat", 1, 16)); // NOI18N
+        jButton1Regresaralavistaselecciondejuegos.setForeground(new java.awt.Color(255, 255, 255));
         jButton1Regresaralavistaselecciondejuegos.setText("REGRESAR");
-        jPanel1.add(jButton1Regresaralavistaselecciondejuegos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 610, -1, -1));
+        jPanel1.add(jButton1Regresaralavistaselecciondejuegos, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 540, 180, 40));
+
+        LblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoooo12.jpg"))); // NOI18N
+        LblFondo.setRequestFocusEnabled(false);
+        jPanel1.add(LblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -266,6 +279,7 @@ public class Vista_JuegoMemorama extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JLabel LblFondo;
     public javax.swing.JLabel LblTexto;
     public javax.swing.JButton jButton1ComprobarRespuestas;
     public javax.swing.JButton jButton1Regresaralavistaselecciondejuegos;

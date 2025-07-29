@@ -81,6 +81,7 @@ public class Vista_SelecciondeJuegos extends javax.swing.JPanel {
         jButton1Memorama = new javax.swing.JButton();
         jLabel2Seleccionalosanimales = new javax.swing.JLabel();
         jButton2Animales = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1190, 660));
 
@@ -88,25 +89,35 @@ public class Vista_SelecciondeJuegos extends javax.swing.JPanel {
         jPanel1.setPreferredSize(new java.awt.Dimension(1190, 660));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        LblTexto.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        LblTexto.setFont(new java.awt.Font("Montserrat", 1, 24)); // NOI18N
+        LblTexto.setForeground(new java.awt.Color(255, 255, 255));
         LblTexto.setText("SELECCIONE UN JUEGO");
         jPanel1.add(LblTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, -1, -1));
 
         jLabel1Memorama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad2/Memorama.png"))); // NOI18N
-        jLabel1Memorama.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel1Memorama.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabel1Memorama.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jLabel1Memorama, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 100, 140, 160));
+        jPanel1.add(jLabel1Memorama, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 90, 260, 310));
 
+        jButton1Memorama.setBackground(new java.awt.Color(255, 122, 0));
+        jButton1Memorama.setFont(new java.awt.Font("Montserrat", 1, 16)); // NOI18N
+        jButton1Memorama.setForeground(new java.awt.Color(255, 255, 255));
         jButton1Memorama.setText("MEMORAMA");
-        jPanel1.add(jButton1Memorama, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 260, 140, -1));
+        jPanel1.add(jButton1Memorama, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 450, 180, 40));
 
         jLabel2Seleccionalosanimales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad2/Animales.png"))); // NOI18N
-        jLabel2Seleccionalosanimales.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel2Seleccionalosanimales.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabel2Seleccionalosanimales.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jLabel2Seleccionalosanimales, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, 140, 160));
+        jPanel1.add(jLabel2Seleccionalosanimales, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 260, 310));
 
+        jButton2Animales.setBackground(new java.awt.Color(255, 122, 0));
+        jButton2Animales.setFont(new java.awt.Font("Montserrat", 1, 16)); // NOI18N
+        jButton2Animales.setForeground(new java.awt.Color(255, 255, 255));
         jButton2Animales.setText("ANIMALES");
-        jPanel1.add(jButton2Animales, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 140, -1));
+        jPanel1.add(jButton2Animales, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 450, 180, 40));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoooo12.jpg"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -125,6 +136,7 @@ public class Vista_SelecciondeJuegos extends javax.swing.JPanel {
     public javax.swing.JLabel LblTexto;
     public javax.swing.JButton jButton1Memorama;
     public javax.swing.JButton jButton2Animales;
+    public javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel1Memorama;
     public javax.swing.JLabel jLabel2Seleccionalosanimales;
     public javax.swing.JPanel jPanel1;
