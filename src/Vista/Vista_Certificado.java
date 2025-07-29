@@ -65,12 +65,17 @@ public class Vista_Certificado extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1REENVIARCERTIFICADOALCORREO1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jButton1REENVIARCERTIFICADOALCORREO = new javax.swing.JButton();
         jButton1DescargarCertificado1 = new javax.swing.JButton();
-        jButton1REENVIARCERTIFICADOALCORREO1 = new javax.swing.JButton();
         jButton1VisualizarCertificado = new javax.swing.JButton();
         LblFondo = new javax.swing.JLabel();
+
+        jButton1REENVIARCERTIFICADOALCORREO1.setBackground(new java.awt.Color(255, 122, 0));
+        jButton1REENVIARCERTIFICADOALCORREO1.setFont(new java.awt.Font("Montserrat", 1, 16)); // NOI18N
+        jButton1REENVIARCERTIFICADOALCORREO1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1REENVIARCERTIFICADOALCORREO1.setText("ENVIAR CERTIFICADO");
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(1190, 660));
@@ -84,20 +89,14 @@ public class Vista_Certificado extends javax.swing.JPanel {
         jButton1REENVIARCERTIFICADOALCORREO.setBackground(new java.awt.Color(255, 122, 0));
         jButton1REENVIARCERTIFICADOALCORREO.setFont(new java.awt.Font("Montserrat", 1, 16)); // NOI18N
         jButton1REENVIARCERTIFICADOALCORREO.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1REENVIARCERTIFICADOALCORREO.setText("REENVIAR CERTIFICADO");
-        add(jButton1REENVIARCERTIFICADOALCORREO, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 600, -1, 40));
+        jButton1REENVIARCERTIFICADOALCORREO.setText("ENVIAR CERTIFICADO");
+        add(jButton1REENVIARCERTIFICADOALCORREO, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 600, -1, 40));
 
         jButton1DescargarCertificado1.setBackground(new java.awt.Color(255, 122, 0));
         jButton1DescargarCertificado1.setFont(new java.awt.Font("Montserrat", 1, 16)); // NOI18N
         jButton1DescargarCertificado1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1DescargarCertificado1.setText("DESCARGAR CERTIFICADO");
         add(jButton1DescargarCertificado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 600, -1, 40));
-
-        jButton1REENVIARCERTIFICADOALCORREO1.setBackground(new java.awt.Color(255, 122, 0));
-        jButton1REENVIARCERTIFICADOALCORREO1.setFont(new java.awt.Font("Montserrat", 1, 16)); // NOI18N
-        jButton1REENVIARCERTIFICADOALCORREO1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1REENVIARCERTIFICADOALCORREO1.setText("ENVIAR CERTIFICADO");
-        add(jButton1REENVIARCERTIFICADOALCORREO1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 600, -1, 40));
 
         jButton1VisualizarCertificado.setText("jButton1");
         add(jButton1VisualizarCertificado, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 23, 800, 560));

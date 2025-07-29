@@ -281,6 +281,21 @@ public class Modelo_Progreso_Usuario {
         }
  
     }
+    public static int obtenerIdUsuarioPorCorreo(String correo) {
+    String sql = "SELECT id_usuario FROM usuarios WHERE correo = ?";
+    try (Connection conn = Conexion.conectar();
+         PreparedStatement ps = conn.prepareStatement(sql)) {
+        ps.setString(1, correo);
+        try (ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                return rs.getInt("id_usuario");
+            }
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return -1; // not found
+}
     public static void incrementarLecciones(int idUsuario, int idUnidad) throws SQLException {
     // Implementación para incrementar lecciones
 }

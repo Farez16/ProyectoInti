@@ -1,20 +1,17 @@
 package Controlador;
 
 import Modelo.EmailSender;
-import Modelo.Modelo_ProgresoUnidad2;
+import Modelo.Modelo_Progreso_Usuario;
 import Vista.Estudiante.Dashboard;
 import Vista.Vista_Certificado;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
-
 import java.awt.Desktop;
 import java.io.*;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Font;
-
-
 
 public class Controlador_Certificado {
 
@@ -26,6 +23,7 @@ public class Controlador_Certificado {
         this.vista = vista;
         this.dashboard = dashboard;
         agregarEventos();
+        verificarBloqueoImagen(); // Verificar estado inicial de la imagen
     }
 
     private void agregarEventos() {
@@ -55,6 +53,7 @@ public class Controlador_Certificado {
 
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setSelectedFile(new File("Certificado_Kwichua.pdf"));
+        fileChooser.setDialogTitle("Guardar certificado en su escritorio");
         int result = fileChooser.showSaveDialog(vista);
         if (result == JFileChooser.APPROVE_OPTION) {
             File destino = fileChooser.getSelectedFile();
@@ -64,7 +63,7 @@ public class Controlador_Certificado {
                         destino.toPath(),
                         java.nio.file.StandardCopyOption.REPLACE_EXISTING
                 );
-                JOptionPane.showMessageDialog(vista, "Certificado descargado en: " + destino.getAbsolutePath());
+                JOptionPane.showMessageDialog(vista, "Certificado guardado en: " + destino.getAbsolutePath());
             } catch (IOException ex) {
                 ex.printStackTrace();
                 JOptionPane.showMessageDialog(vista, "Error al guardar: " + ex.getMessage());
@@ -105,65 +104,72 @@ public class Controlador_Certificado {
     }
 
     private void generarCertificado() {
-        if (!verificarCompletitudCurso()) return;
+    if (!verificarCompletitudCurso()) return;
 
-        try {
-            String nombreUsuario = dashboard.getLblNombre().getText();
-            if (nombreUsuario == null || nombreUsuario.isEmpty()) {
-                nombreUsuario = "Estudiante Destacado";
-            }
-
-            certificadoGenerado = File.createTempFile("certificado", ".pdf");
-
-            Document document = new Document(PageSize.A4);
-            PdfWriter.getInstance(document, new FileOutputStream(certificadoGenerado));
-            document.open();
-
-            // Título
-            Font tituloFont = new Font(Font.FontFamily.HELVETICA, 24, Font.BOLD);
-            Paragraph titulo = new Paragraph("CERTIFICADO DE FINALIZACIÓN", tituloFont);
-            titulo.setAlignment(Element.ALIGN_CENTER);
-            document.add(titulo);
-
-            document.add(Chunk.NEWLINE);
-
-            // Subtítulo
-            Font subFont = new Font(Font.FontFamily.HELVETICA, 16, Font.NORMAL);
-            Paragraph subtitulo = new Paragraph("Se otorga el presente certificado a:", subFont);
-            subtitulo.setAlignment(Element.ALIGN_CENTER);
-            document.add(subtitulo);
-
-            document.add(Chunk.NEWLINE);
-
-            // Nombre usuario
-            Font nombreFont = new Font(Font.FontFamily.HELVETICA, 22, Font.BOLD, BaseColor.BLUE);
-            Paragraph nombre = new Paragraph(nombreUsuario, nombreFont);
-            nombre.setAlignment(Element.ALIGN_CENTER);
-            document.add(nombre);
-
-            document.add(Chunk.NEWLINE);
-
-            // Texto final
-            Paragraph texto = new Paragraph("Por haber completado exitosamente el curso de Kwichua Básico.", subFont);
-            texto.setAlignment(Element.ALIGN_CENTER);
-            document.add(texto);
-
-            document.close();
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(vista, "Error al generar certificado: " + ex.getMessage());
+    try {
+        // Pedimos el nombre del usuario
+        String nombreUsuario = JOptionPane.showInputDialog(vista, "Ingresa tus nombres completos:");
+        if (nombreUsuario == null || nombreUsuario.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(vista, "Debes ingresar un nombre válido.");
+            return;
         }
+
+        // Ruta del certificado base en horizontal
+        String rutaBase = "C:\\Users\\diego\\Desktop\\ProyectoInti\\src\\Certificado\\Certificado Kwichua.pdf";
+        certificadoGenerado = File.createTempFile("certificado_personalizado_", ".pdf");
+
+        // Leer el PDF original
+        PdfReader reader = new PdfReader(rutaBase);
+        PdfStamper stamper = new PdfStamper(reader, new FileOutputStream(certificadoGenerado));
+        PdfContentByte over = stamper.getOverContent(1);
+
+        // Configurar fuente y estilo
+        BaseFont fuente = BaseFont.createFont(BaseFont.HELVETICA_BOLD, BaseFont.WINANSI, BaseFont.EMBEDDED);
+        over.beginText();
+        over.setFontAndSize(fuente, 28);
+        over.setColorFill(BaseColor.BLACK);
+
+        // Centrar texto en PDF horizontal (A4 Landscape)
+        float x = 842 / 2f;  // centro horizontal exacto
+        float y = 595 / 2f;  // centro vertical exacto
+
+        over.showTextAligned(Element.ALIGN_CENTER, nombreUsuario, x, y, 0);
+        over.endText();
+
+        stamper.close();
+        reader.close();
+
+    } catch (Exception ex) {
+        ex.printStackTrace();
+        JOptionPane.showMessageDialog(vista, "Error al generar certificado personalizado: " + ex.getMessage());
     }
+}
+
+
 
     private boolean verificarCompletitudCurso() {
         String correo = dashboard.getCorreoUsuario();
-        int progreso = Modelo_ProgresoUnidad2.obtenerProgreso(correo);
+        int idUsuario = Modelo_Progreso_Usuario.obtenerIdUsuarioPorCorreo(correo);
+        
+        if (idUsuario <= 0) {
+            JOptionPane.showMessageDialog(vista, "Usuario no encontrado");
+            return false;
+        }
+        
+        // Verificar si todas las unidades están completas
+        boolean[] unidadesCompletas = new boolean[4];
+        for (int i = 1; i <= 4; i++) {
+            Modelo_Progreso_Usuario progreso = Modelo_Progreso_Usuario.obtenerProgreso(idUsuario, i);
+            unidadesCompletas[i-1] = (progreso != null && progreso.isEvaluacionAprobada());
+        }
 
-        if (progreso < 100) {
+        boolean cursoCompleto = unidadesCompletas[0] && unidadesCompletas[1] && 
+                               unidadesCompletas[2] && unidadesCompletas[3];
+
+        if (!cursoCompleto) {
             JOptionPane.showMessageDialog(vista,
-                    "⚠️ Aún no has completado el curso\n" +
-                            "Completa todas las unidades para obtener tu certificado",
+                    "⚠️ Aún no has completado todas las unidades del curso\n" +
+                    "Completa todas las unidades para obtener tu certificado",
                     "Curso Incompleto",
                     JOptionPane.WARNING_MESSAGE
             );
@@ -172,4 +178,23 @@ public class Controlador_Certificado {
         return true;
     }
     
+    // Verificar si se debe bloquear la imagen
+    private void verificarBloqueoImagen() {
+        String correo = dashboard.getCorreoUsuario();
+        int idUsuario = Modelo_Progreso_Usuario.obtenerIdUsuarioPorCorreo(correo);
+        
+        if (idUsuario > 0) {
+            // Verificar si todas las unidades están completas
+            boolean todasCompletas = true;
+            for (int i = 1; i <= 4; i++) {
+                Modelo_Progreso_Usuario progreso = Modelo_Progreso_Usuario.obtenerProgreso(idUsuario, i);
+                if (progreso == null || !progreso.isEvaluacionAprobada()) {
+                    todasCompletas = false;
+                    break;
+                }
+            }
+            // Bloquear/desbloquear imagen según estado
+            vista.getjLabel2().setEnabled(todasCompletas);
+        }
+    }
 }
