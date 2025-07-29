@@ -75,7 +75,7 @@ public class ControladorLeccionPartesCuerpo {
                 mostrarMensajeExito();
             } else if (progreso.getLeccionesCompletadas() == 1) {
                 // Solo actualizar si no hay lecciones completadas
-                progreso.setLeccionesCompletadas(1);
+                progreso.setLeccionesCompletadas(2);
                 progreso.setFechaActualizacion(LocalDateTime.now());
                 if (!Modelo_Progreso_Usuario.actualizarProgreso(progreso)) {
                     throw new Exception("No se pudo actualizar el progreso");
