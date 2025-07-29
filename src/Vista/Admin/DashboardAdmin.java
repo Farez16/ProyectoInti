@@ -1,9 +1,5 @@
 package Vista.Admin;
 
-import Controlador.ControladorBotones;
-import Modelo.TextoBotones;
-import java.util.HashMap;
-import java.util.Map;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -14,11 +10,11 @@ import javax.swing.JTextField;
 public class DashboardAdmin extends javax.swing.JPanel {
 
     private String correoUsuario;
-    private ControladorBotones controladorBotones;
+    // private ControladorBotones controladorBotones; // ELIMINADO: Se maneja desde ControladorDashboardAdmin
 
     public DashboardAdmin(String correoUsuario) {
         initComponents();
-        iniciarEfectosBotones();
+        // iniciarEfectosBotones(); // ELIMINADO: Se maneja desde ControladorDashboardAdmin para evitar duplicación
         this.correoUsuario = correoUsuario;
         btnMenu1.setOpaque(false);
         btnMenu1.setContentAreaFilled(false);
@@ -147,20 +143,7 @@ public class DashboardAdmin extends javax.swing.JPanel {
         return lblNombre.getText(); // Directamente del JLabel que ya tiene el nombre
     }
 
-private void iniciarEfectosBotones() {
-    Map<String, JButton> botonesMap = new HashMap<>();
-    botonesMap.put("btnMenu1", btnMenu1);
-    botonesMap.put("btnCuenta1", btnCuenta1);
-    botonesMap.put("btnGraficos1", btnGraficos1);
-    botonesMap.put("btnCrearAdmin", btnCrearAdmin);
-    botonesMap.put("btnReportes", btnReportes);
-    botonesMap.put("btnSalir1", btnSalir1);
-
-    TextoBotones modeloTextos = new TextoBotones();
-    // Agrega el tercer parámetro para vista ADMIN
-    controladorBotones = new ControladorBotones(botonesMap, modeloTextos, "ADMIN");
-    controladorBotones.iniciar();
-}
+// MÉTODO ELIMINADO: iniciarEfectosBotones() - La gestión de botones animados se maneja desde ControladorDashboardAdmin
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

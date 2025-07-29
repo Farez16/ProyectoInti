@@ -1,15 +1,11 @@
 package Vista.Estudiante;
 
-import Controlador.ControladorBotones;
 import Controlador.ControladorDashboard;
-import Modelo.TextoBotones;
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -19,13 +15,13 @@ import javax.swing.JPanel;
 public class Dashboard extends javax.swing.JPanel {
 
     private String correoUsuario;
-    private ControladorBotones controladorBotones;
+    // private ControladorBotones controladorBotones; // ELIMINADO: Se maneja desde ControladorDashboard
     private int idUsuario;
     private ControladorDashboard controladorDashboard;
 
     public Dashboard(String correoUsuario) {
         initComponents();
-        iniciarEfectosBotones();
+        // iniciarEfectosBotones(); // ELIMINADO: Se maneja desde ControladorDashboard para evitar duplicación
         this.correoUsuario = correoUsuario;
         btnDashboard.setOpaque(false);
         btnDashboard.setContentAreaFilled(false);
@@ -164,26 +160,7 @@ public class Dashboard extends javax.swing.JPanel {
     public void setControladorDashboard(ControladorDashboard controladorDashboard) {
         this.controladorDashboard = controladorDashboard;
     }
-private void iniciarEfectosBotones() {
-    // 1. Crear el mapa de botones usando las referencias directas
-    Map<String, JButton> botonesMap = new HashMap<>();
-    botonesMap.put("btnDashboard", btnDashboard);
-    botonesMap.put("btnCuenta", btnCuenta);
-    botonesMap.put("btnCertificado", btnCertificado);
-    botonesMap.put("btnJuegos", btnJuegos);
-    botonesMap.put("btnSalir", btnSalir);
-
-    // Debug: Verificar el mapeo
-    System.out.println("=== Mapeo de Botones Estudiante ===");
-    botonesMap.forEach((key, value) -> {
-        System.out.println(key + " -> " + value.getText());
-    });
-
-    // 2. Inicializar el controlador
-    TextoBotones modeloTextos = new TextoBotones();
-    controladorBotones = new ControladorBotones(botonesMap, modeloTextos, "ESTUDIANTE");
-    controladorBotones.iniciar();
-}
+// MÉTODO ELIMINADO: iniciarEfectosBotones() - La gestión de botones animados se maneja desde ControladorDashboard
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
