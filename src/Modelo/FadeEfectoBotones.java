@@ -6,13 +6,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class FadeEfectoBotones {
-public static void applyFadeEffect(JButton button, String newText) {
+    private static Timer fadeOutTimer;
+    private static Timer fadeInTimer;
+    
+    public static void applyFadeEffect(JButton button, String newText) {
+        // Cancelar animaciones previas si existen
+        if (fadeOutTimer != null && fadeOutTimer.isRunning()) {
+            fadeOutTimer.stop();
+        }
+        if (fadeInTimer != null && fadeInTimer.isRunning()) {
+            fadeInTimer.stop();
+        }
+        
         // Guardar los valores originales
         Color originalForeground = button.getForeground();
         Font originalFont = button.getFont();
         
         // Crear timer para el fade out
-        Timer fadeOutTimer = new Timer(30, new ActionListener() {
+        fadeOutTimer = new Timer(40, new ActionListener() {
             private float opacity = 1.0f;
             
             @Override
@@ -21,11 +32,11 @@ public static void applyFadeEffect(JButton button, String newText) {
                 
                 if (opacity <= 0) {
                     opacity = 0;
-                    button.setText(newText); // Cambiar el texto cuando está completamente transparente
-                    ((Timer)e.getSource()).stop();
+                    button.setText(newText);
+                    fadeOutTimer.stop();
                     
                     // Iniciar el fade in
-                    Timer fadeInTimer = new Timer(30, new ActionListener() {
+                    fadeInTimer = new Timer(40, new ActionListener() {
                         private float fadeInOpacity = 0.0f;
                         
                         @Override
@@ -34,10 +45,12 @@ public static void applyFadeEffect(JButton button, String newText) {
                             
                             if (fadeInOpacity >= 1) {
                                 fadeInOpacity = 1;
-                                ((Timer)evt.getSource()).stop();
+                                fadeInTimer.stop();
+                                // Restaurar color original completamente
+                                button.setForeground(originalForeground);
+                                return;
                             }
                             
-                            // Aplicar la nueva opacidad
                             button.setForeground(new Color(
                                 originalForeground.getRed(),
                                 originalForeground.getGreen(),
@@ -48,7 +61,6 @@ public static void applyFadeEffect(JButton button, String newText) {
                     });
                     fadeInTimer.start();
                 } else {
-                    // Aplicar la opacidad decreciente
                     button.setForeground(new Color(
                         originalForeground.getRed(),
                         originalForeground.getGreen(),
@@ -60,5 +72,9 @@ public static void applyFadeEffect(JButton button, String newText) {
         });
         fadeOutTimer.start();
     }
+    
+    public static void cancelAllAnimations() {
+        if (fadeOutTimer != null) fadeOutTimer.stop();
+        if (fadeInTimer != null) fadeInTimer.stop();
+    }
 }
-

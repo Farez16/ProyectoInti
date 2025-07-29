@@ -67,12 +67,18 @@ public class ControladorDashboardAdmin {
         // Botón Salir (igual que en Dashboard)
         vista.btnSalir1.addActionListener(e -> {
 
-            int confirm = JOptionPane.showConfirmDialog(
+            Object[] opciones = {"Sí", "No"};
+            int confirm = JOptionPane.showOptionDialog(
                     null,
                     "¿Deseas cerrar sesión?",
                     "Confirmar",
-                    JOptionPane.YES_NO_OPTION
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    opciones,
+                    opciones[0]
             );
+
             if (confirm == JOptionPane.YES_OPTION) {
                 limpiarControladorSaludo();
                 loginFrame.mostrarPanelEnPanel1(loginFrame.getPanelLoginOriginal());
@@ -113,11 +119,12 @@ public class ControladorDashboardAdmin {
         vista.mostrarVista(va);
     }
 
-private void abrirReportes() {
-    Vista_Reportes vistaReportes = new Vista_Reportes();
-    ControladorReportes controlador = new ControladorReportes(vistaReportes,vista);
-    vista.mostrarVista(vistaReportes);
-}
+    private void abrirReportes() {
+        Vista_Reportes vistaReportes = new Vista_Reportes();
+        ControladorReportes controlador = new ControladorReportes(vistaReportes, vista);
+        vista.mostrarVista(vistaReportes);
+    }
+
     private void abrirCuenta() {
         System.out.println("Intentando abrir panel de cuenta...");
         try {
@@ -198,14 +205,16 @@ private void abrirReportes() {
 
     private void configurarBotonesAnimados() {
         Map<String, JButton> botonesAdmin = new HashMap<>();
-        botonesAdmin.put("btnMenu1", vista.getBtnCuenta1());
+        botonesAdmin.put("btnMenu1", vista.getBtnMenu1());  // Corregido: getBtnMenu1() en lugar de getBtnCuenta1()
         botonesAdmin.put("btnCuenta1", vista.getBtnCuenta1());
         botonesAdmin.put("btnGraficos1", vista.getBtnGraficos1());
         botonesAdmin.put("btnCrearAdmin", vista.getBtnCrearAdmin());
+        botonesAdmin.put("btnReportes", vista.getBtnReportes());  // Añadido el botón de reportes
         botonesAdmin.put("btnSalir1", vista.getBtnSalir1());
 
         TextoBotones textos = new TextoBotones();
-        ControladorBotones controlBotones = new ControladorBotones(botonesAdmin, textos);
+        // Añade el tercer parámetro "ADMIN" para identificar la vista
+        ControladorBotones controlBotones = new ControladorBotones(botonesAdmin, textos, "ADMIN");
         controlBotones.iniciar();
     }
 }

@@ -39,7 +39,7 @@ public class DashboardAdmin extends javax.swing.JPanel {
         btnSalir1.setOpaque(false);
         btnSalir1.setContentAreaFilled(false);
         btnSalir1.setBorderPainted(false);
-        
+
         btnReportes.setOpaque(false);
         btnReportes.setContentAreaFilled(false);
         btnReportes.setBorderPainted(false);
@@ -142,27 +142,25 @@ public class DashboardAdmin extends javax.swing.JPanel {
     public JButton getBtnReportes() {
         return btnReportes;
     }
+
     public String getNombreUsuario() {
         return lblNombre.getText(); // Directamente del JLabel que ya tiene el nombre
     }
 
-    private void iniciarEfectosBotones() {
-        // 1. Crear el mapa de botones
-        Map<String, JButton> botonesMap = new HashMap<>();
-        botonesMap.put("btnMenu1", btnMenu1);
-        botonesMap.put("btnCuenta1", btnCuenta1);
-        botonesMap.put("btnGraficos1", btnGraficos1);
-        botonesMap.put("btnCrearAdmin", btnCrearAdmin);
-        botonesMap.put("btnSalir1", btnSalir1);
-        botonesMap.put("btnReportes", btnReportes);
+private void iniciarEfectosBotones() {
+    Map<String, JButton> botonesMap = new HashMap<>();
+    botonesMap.put("btnMenu1", btnMenu1);
+    botonesMap.put("btnCuenta1", btnCuenta1);
+    botonesMap.put("btnGraficos1", btnGraficos1);
+    botonesMap.put("btnCrearAdmin", btnCrearAdmin);
+    botonesMap.put("btnReportes", btnReportes);
+    botonesMap.put("btnSalir1", btnSalir1);
 
-        // 2. Pasar el mapa al controlador
-        TextoBotones modeloTextos = new TextoBotones();
-        System.out.println("ModeloTextos creado: " + modeloTextos); // Debug
-        controladorBotones = new ControladorBotones(botonesMap, modeloTextos);
-        controladorBotones.iniciar();
-    }
-
+    TextoBotones modeloTextos = new TextoBotones();
+    // Agrega el tercer parámetro para vista ADMIN
+    controladorBotones = new ControladorBotones(botonesMap, modeloTextos, "ADMIN");
+    controladorBotones.iniciar();
+}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

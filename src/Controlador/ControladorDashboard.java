@@ -28,7 +28,6 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import java.sql.Connection;
 
-
 public class ControladorDashboard {
 
     private Dashboard vista;
@@ -37,14 +36,13 @@ public class ControladorDashboard {
 
     private Vista_PanelUnidades panelUnidades;
     private Controlador_Unidades controladorUnidades;
-     private Connection conn;
+    private Connection conn;
 
     public ControladorDashboard(Dashboard vista, Login loginFrame) {
         this.vista = vista;
         this.loginFrame = loginFrame;
 
         // Inicializar la conexión aquí:
-        
         this.conn = Conexion.conectar();
         if (this.conn == null) {
             System.err.println("Error: No se pudo establecer conexión con la base de datos");
@@ -72,13 +70,12 @@ public class ControladorDashboard {
         return conn;
     }
 
- 
     private void agregarEventos() {
         vista.btnJuegos.addActionListener((ActionEvent e) -> {
             VideoManager.getInstance().detenerTodosLosVideos();
             abrirSeleccionJuegos();
         });
-        
+
         vista.btnDashboard.addActionListener(e -> {
             VideoManager.getInstance().detenerTodosLosVideos();
             abrirPanelUnidades();
@@ -89,33 +86,43 @@ public class ControladorDashboard {
         vista.btnCertificado.addActionListener(e -> abrirCertificado());
 
         vista.btnSalir.addActionListener(e -> {
-            int confirm = JOptionPane.showConfirmDialog(null, "¿Deseas salir?", "Cerrar sesión", JOptionPane.YES_NO_OPTION);
+            Object[] opciones = {"Sí", "No"};
+            int confirm = JOptionPane.showOptionDialog(
+                    null,
+                    "¿Deseas cerrar sesión?",
+                    "Confirmar",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    opciones,
+                    opciones[0]
+            );
+
             if (confirm == JOptionPane.YES_OPTION) {
-                VideoManager.getInstance().detenerTodosLosVideos();
-                if (controladorSaludo != null) {
-                    controladorSaludo.detener();
-                }
+                limpiarControladorSaludo();
                 loginFrame.mostrarPanelEnPanel1(loginFrame.getPanelLoginOriginal());
                 loginFrame.limpiarCampos();
             }
         });
     }
-    
-      private void abrirSeleccionJuegos() {
+
+    private void abrirSeleccionJuegos() {
         Vista_SelecciondeJuegos seleccionJuegos = new Vista_SelecciondeJuegos();
         new ControladorSeleccionJuegos(seleccionJuegos, vista);
         vista.mostrarVista(seleccionJuegos);
     }
 
     private void abrirPanelUnidades() {
-    // Usar la instancia existente que ya tiene su controlador
-    vista.mostrarVista(panelUnidades);
-}
-  private void abrirCertificado() {
-    Vista_Certificado certificadoPanel = new Vista_Certificado();
-    new Controlador_Certificado(certificadoPanel, vista);
-    vista.mostrarVista(certificadoPanel);
-}
+        // Usar la instancia existente que ya tiene su controlador
+        vista.mostrarVista(panelUnidades);
+    }
+
+    private void abrirCertificado() {
+        Vista_Certificado certificadoPanel = new Vista_Certificado();
+        new Controlador_Certificado(certificadoPanel, vista);
+        vista.mostrarVista(certificadoPanel);
+    }
+
     private void abrirCuenta() {
         System.out.println("Intentando abrir panel de cuenta...");
         try {
@@ -211,10 +218,10 @@ public class ControladorDashboard {
         botonesEstudiante.put("btnCertificado", vista.getBtnCertificado());
         botonesEstudiante.put("btnJuegos", vista.getBtnJuegos());
         botonesEstudiante.put("btnSalir", vista.getBtnSalir());
-        //Todos los botones del estudiante
 
-        TextoBotones textos = new TextoBotones(); // Tu modelo con los textos
-        ControladorBotones controlBotones = new ControladorBotones(botonesEstudiante, textos);
+        TextoBotones textos = new TextoBotones();
+        // Agrega el tercer parámetro para indicar el tipo de vista
+        ControladorBotones controlBotones = new ControladorBotones(botonesEstudiante, textos, "ESTUDIANTE");
         controlBotones.iniciar();
     }
     // Getters para usar desde otros controladores
@@ -230,5 +237,5 @@ public class ControladorDashboard {
     public Dashboard getVista() {
         return vista;
     }
-   
+
 }

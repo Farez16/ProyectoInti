@@ -71,16 +71,26 @@ public class ControladorReportes {
 
     @FunctionalInterface
     private interface ConsultaReporte {
-
         ResultSet ejecutar() throws SQLException;
     }
 
     private void generarReporte(String titulo, ConsultaReporte consulta, String[] columnas, String nombreArchivo) {
         try {
+            // Validación de fechas
             if (!validarFechas()) {
                 return;
             }
-// Preguntar por la orientación
+
+            // Validar si hay datos antes de continuar
+            if (!validarExistenciaDatos(consulta)) {
+                JOptionPane.showMessageDialog(vista, 
+                    "No se encontraron datos para generar el reporte en el rango de fechas seleccionado", 
+                    "Datos no encontrados", 
+                    JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+
+            // Preguntar por la orientación
             int opcion = JOptionPane.showOptionDialog(vista,
                     "Seleccione la orientación del reporte:",
                     "Orientación del Reporte",
@@ -100,23 +110,35 @@ public class ControladorReportes {
             generarPDF(titulo, datos, columnas, archivo, vertical);
 
             JOptionPane.showMessageDialog(vista, "Reporte generado exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-            // Limpiar los campos de fecha después de generar el reporte
             limpiarCamposFecha();
         } catch (Exception e) {
             manejarError(e);
         }
     }
-    // Método para limpiar los campos de fecha
-private void limpiarCamposFecha() {
-    vista.setFechaInicio(null); // Asumiendo que tu vista tiene estos métodos
-    vista.setFechaFin(null);
-}
+
+    private boolean validarExistenciaDatos(ConsultaReporte consulta) throws SQLException {
+        try (ResultSet rs = consulta.ejecutar()) {
+            return rs.next(); // Retorna true si hay al menos un registro
+        }
+    }
 
     private boolean validarFechas() {
         if (vista.getFechaInicio() == null || vista.getFechaFin() == null) {
-            JOptionPane.showMessageDialog(vista, "Para generar un reporte necesita seleccionar una fecha de inicio y una de fin.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(vista, 
+                "Para generar un reporte necesita seleccionar una fecha de inicio y una de fin.", 
+                "Error", 
+                JOptionPane.ERROR_MESSAGE);
             return false;
         }
+
+        if (vista.getFechaInicio().after(vista.getFechaFin())) {
+            JOptionPane.showMessageDialog(vista, 
+                "La fecha de inicio no puede ser posterior a la fecha final", 
+                "Error en fechas", 
+                JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
         return true;
     }
 
@@ -248,4 +270,10 @@ private void limpiarCamposFecha() {
                 JOptionPane.ERROR_MESSAGE
         );
     }
+
+    private void limpiarCamposFecha() {
+        vista.setFechaInicio(null);
+        vista.setFechaFin(null);
+    }
 }
+
