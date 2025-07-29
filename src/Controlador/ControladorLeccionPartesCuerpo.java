@@ -74,7 +74,7 @@ public class ControladorLeccionPartesCuerpo {
                 }
                 mostrarMensajeExito();
             } else if (progreso.getLeccionesCompletadas() == 1) {
-                // Actualizar a 2 lecciones completadas (esta es la segunda lección)
+                // Solo actualizar si no hay lecciones completadas
                 progreso.setLeccionesCompletadas(2);
                 progreso.setFechaActualizacion(LocalDateTime.now());
                 if (!Modelo_Progreso_Usuario.actualizarProgreso(progreso)) {

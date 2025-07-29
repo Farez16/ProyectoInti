@@ -64,56 +64,13 @@ public class Controlador_Unidad4 {
             controladorUnidades.actualizarProgresoUnidad(4, progresoTotal);
         }
 
-        // Habilitar botones según progreso - LÓGICA SECUENCIAL COMO OTRAS UNIDADES
-        int leccionesCompletadas = progreso.getLeccionesCompletadas();
-        int actividadesCompletadas = progreso.getActividadesCompletadas();
-        boolean evaluacionAprobada = progreso.isEvaluacionAprobada();
-        
-        // Inicialmente deshabilitamos todos los botones
-        vista.jButtonFamilia.setEnabled(false);
-        vista.jButtonActFamilia.setEnabled(false);
-        vista.jButtonVestimenta.setEnabled(false);
-        vista.jButtonActVestimenta.setEnabled(false);
-        vista.jButtonEvaluacion.setEnabled(false);
-        vista.jButtonFINALIZARUNIDAD1.setEnabled(false);
-        
-        // Paso 1: Lección Familia (Colores) - Siempre disponible
-        vista.jButtonFamilia.setEnabled(true);
-        
-        // Paso 2: Actividad Familia - Requiere Lección Familia completada
-        if (leccionesCompletadas >= 1) {
-            vista.jButtonActFamilia.setEnabled(true);
-        }
-        
-        // Paso 3: Lección Vestimenta (Partes del Cuerpo) - Requiere Actividad Familia completada
-        if (actividadesCompletadas >= 1) {
-            vista.jButtonVestimenta.setEnabled(true);
-        }
-        
-        // Paso 4: Actividad Vestimenta - Requiere Lección Vestimenta completada
-        if (leccionesCompletadas >= 2) {
-            vista.jButtonActVestimenta.setEnabled(true);
-        }
-        
-        // Paso 5: Evaluación - Requiere Actividad Vestimenta completada
-        if (actividadesCompletadas >= 2) {
-            vista.jButtonEvaluacion.setEnabled(true);
-        }
-        
-        // Paso 6: Finalizar Unidad - Requiere Evaluación aprobada
-        if (evaluacionAprobada) {
-            vista.jButtonFINALIZARUNIDAD1.setEnabled(true);
-        }
-        
-        // Logging detallado para debugging
-        System.out.println("[Unidad4] Progreso actual - Lecciones: " + leccionesCompletadas + ", Actividades: " + actividadesCompletadas + ", Evaluación: " + evaluacionAprobada);
-        System.out.println("[Unidad4] Flujo de desbloqueo:");
-        System.out.println("  1. Familia (Colores): " + vista.jButtonFamilia.isEnabled() + " (siempre disponible)");
-        System.out.println("  2. ActFamilia: " + vista.jButtonActFamilia.isEnabled() + " (requiere 1 lección)");
-        System.out.println("  3. Vestimenta (Partes): " + vista.jButtonVestimenta.isEnabled() + " (requiere 1 actividad)");
-        System.out.println("  4. ActVestimenta: " + vista.jButtonActVestimenta.isEnabled() + " (requiere 2 lecciones)");
-        System.out.println("  5. Evaluación: " + vista.jButtonEvaluacion.isEnabled() + " (requiere 2 actividades)");
-        System.out.println("  6. Finalizar: " + vista.jButtonFINALIZARUNIDAD1.isEnabled() + " (requiere evaluación aprobada)");
+        // Habilitar botones según progreso
+        vista.jButtonFamilia.setEnabled(true); // Siempre disponible
+        vista.jButtonActFamilia.setEnabled(progreso.getLeccionesCompletadas() >= 1);
+        vista.jButtonVestimenta.setEnabled(progreso.getActividadesCompletadas() >= 1);
+        vista.jButtonActVestimenta.setEnabled(progreso.getLeccionesCompletadas() >= 2 && progreso.getActividadesCompletadas() >= 1);
+        vista.jButtonEvaluacion.setEnabled(progreso.getActividadesCompletadas() >= 2 && progreso.getLeccionesCompletadas() >=2);
+        vista.jButtonFINALIZARUNIDAD1.setEnabled(progreso.isEvaluacionAprobada());
     }
 
     private void agregarListeners() {
