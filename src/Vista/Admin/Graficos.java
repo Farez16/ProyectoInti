@@ -84,107 +84,64 @@ public class Graficos extends javax.swing.JPanel {
         jDateChooserDesde = new com.toedter.calendar.JDateChooser();
         jDateChooserHasta = new com.toedter.calendar.JDateChooser();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 221, 255));
+        setBackground(new java.awt.Color(200, 225, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         PanelGraficos.setBackground(new java.awt.Color(255, 255, 255));
         PanelGraficos.setMaximumSize(new java.awt.Dimension(1190, 600));
         PanelGraficos.setMinimumSize(new java.awt.Dimension(1190, 600));
-
-        javax.swing.GroupLayout PanelGraficosLayout = new javax.swing.GroupLayout(PanelGraficos);
-        PanelGraficos.setLayout(PanelGraficosLayout);
-        PanelGraficosLayout.setHorizontalGroup(
-            PanelGraficosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        PanelGraficosLayout.setVerticalGroup(
-            PanelGraficosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        PanelGraficos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        add(PanelGraficos, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 110, 1150, 525));
 
         comboBoxFiltro.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         comboBoxFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Registros de usuarios", "Actividad por unidad", "Progreso completado", "Resultados de evaluaciones", "Usuarios inactivos" }));
+        add(comboBoxFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 20, 374, -1));
 
         jLabel1.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Filtrar por:");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 21, -1, -1));
 
         buttonGroup1.add(rdBarras);
         rdBarras.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        rdBarras.setForeground(new java.awt.Color(255, 255, 255));
         rdBarras.setText("Barras");
+        add(rdBarras, new org.netbeans.lib.awtextra.AbsoluteConstraints(875, 21, -1, -1));
 
         buttonGroup1.add(rdPastel);
         rdPastel.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        rdPastel.setForeground(new java.awt.Color(255, 255, 255));
         rdPastel.setText("Pastel");
+        add(rdPastel, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 21, -1, -1));
 
         buttonGroup1.add(rdAreas);
         rdAreas.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        rdAreas.setForeground(new java.awt.Color(255, 255, 255));
         rdAreas.setText("Areas");
+        add(rdAreas, new org.netbeans.lib.awtextra.AbsoluteConstraints(1059, 21, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Tipo de grafico:");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(755, 21, -1, -1));
+        add(jDateChooserDesde, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 69, 150, -1));
+        add(jDateChooserHasta, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 69, 150, -1));
 
         jLabel3.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Filtrar por fecha desde:");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 69, -1, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoooo12.jpg"))); // NOI18N
+        jLabel4.setPreferredSize(new java.awt.Dimension(1190, 110));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 660));
 
         jLabel5.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
         jLabel5.setText("Hasta:");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(PanelGraficos, javax.swing.GroupLayout.PREFERRED_SIZE, 1150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(142, 142, 142)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(comboBoxFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(150, 150, 150)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rdBarras)
-                        .addGap(33, 33, 33)
-                        .addComponent(rdPastel)
-                        .addGap(29, 29, 29)
-                        .addComponent(rdAreas)))
-                .addContainerGap(24, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jDateChooserDesde, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jDateChooserHasta, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(336, 336, 336))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 20, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(comboBoxFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(rdBarras)
-                    .addComponent(rdPastel)
-                    .addComponent(rdAreas)
-                    .addComponent(jLabel2))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateChooserHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jDateChooserDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(19, 19, 19)
-                .addComponent(PanelGraficos, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
-        );
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(652, 69, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -197,6 +154,7 @@ public class Graficos extends javax.swing.JPanel {
     public javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel2;
     public javax.swing.JLabel jLabel3;
+    public javax.swing.JLabel jLabel4;
     public javax.swing.JLabel jLabel5;
     public javax.swing.JRadioButton rdAreas;
     public javax.swing.JRadioButton rdBarras;

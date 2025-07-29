@@ -1,5 +1,6 @@
 package Controlador;
 
+import ControladoresU2.ControladorUnidad2;
 import Vista.Estudiante.Vista_PanelUnidades;
 import Vista.Estudiante.Dashboard;
 import Vista.Vistas_Unidad1.Vista_Unidad1;
@@ -298,16 +299,42 @@ public class Controlador_Unidades {
         }
     }
 
-    private void abrirUnidad2() {
-        try {
-            Vista_Unidad2 unidad2 = new Vista_Unidad2();
-            new ControladorUnidad2(unidad2, dashboard);
-            dashboard.mostrarVista(unidad2);
-        } catch (Exception e) {
-            System.err.println("Error al abrir unidad 2: " + e.getMessage());
-            mostrarError("Error al abrir la unidad 2. Por favor, intenta de nuevo.");
+private void abrirUnidad2() {
+    try {
+        Vista_Unidad2 unidad2 = new Vista_Unidad2();
+        Connection conn = (Connection) controladorDashboard.getConnection();
+
+        // Crear controlador y pasar referencias
+        ControladorUnidad2 controladorUnidad2 = new ControladorUnidad2(
+            unidad2,
+            conn,
+            controladorDashboard,
+            correo,
+            this
+        );
+
+        // Calcular y enviar el progreso
+        List<Modelo_Unidades> unidades = Modelo_Unidades.obtenerUnidadesConProgreso(correo);
+        for (Modelo_Unidades unidad : unidades) {
+            if (unidad.getIdUnidad() == 2) {
+                int progreso = CalculadorProgreso.calcularProgreso(
+                    unidad.getProgresoLecciones(),
+                    unidad.getProgresoActividades(),
+                    unidad.isEvaluacionAprobada()
+                );
+                controladorUnidad2.actualizarBarraProgresoUnidad(progreso);
+                break;
+            }
         }
+
+        dashboard.mostrarVista(unidad2);
+    } catch (Exception e) {
+        System.err.println("Error al abrir unidad 2: " + e.getMessage());
+        mostrarError("Error al abrir la unidad 2. Por favor, intenta de nuevo.");
     }
+}
+
+
 
     private void abrirUnidad3() {
         try {
@@ -552,4 +579,38 @@ public class Controlador_Unidades {
             System.err.println("Error en sincronización completa: " + e.getMessage());
         }
     }
+    // En la clase Controlador_Unidades
+public void marcarUnidadComoCompletada(int idUnidad) {
+    try {
+        // 1. Actualizar en la base de datos
+        Modelo_Unidades.marcarUnidadComoCompletada(idUnidad, this.correo);
+        
+        // 2. Actualizar la barra de progreso al 100%
+        JProgressBar barraProgreso = obtenerJProgressProgreso(idUnidad);
+        if (barraProgreso != null) {
+            barraProgreso.setValue(100);
+            barraProgreso.setString("100%");
+            barraProgreso.setForeground(Color.GREEN);
+        }
+        
+        // 3. Habilitar la siguiente unidad si existe
+        if (idUnidad < TOTAL_UNIDADES) {
+            unidadesDisponibles[idUnidad + 1] = true;
+            JButton btnSiguienteUnidad = obtenerBotonUnidad(idUnidad + 1);
+            if (btnSiguienteUnidad != null) {
+                btnSiguienteUnidad.setEnabled(true);
+                btnSiguienteUnidad.setForeground(new Color(0, 153, 51)); // Verde oscuro
+            }
+        }
+        
+        // 4. Actualizar progreso general
+        int progresoGeneral = obtenerProgresoGeneral();
+        actualizarProgresoGeneral(progresoGeneral);
+        
+        System.out.println("Unidad " + idUnidad + " marcada como completada para " + this.correo);
+    } catch (Exception e) {
+        System.err.println("Error al marcar unidad como completada: " + e.getMessage());
+        mostrarError("Error al guardar el progreso. Intente nuevamente.");
+    }
+}
 }

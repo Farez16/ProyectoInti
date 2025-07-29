@@ -45,18 +45,23 @@ public class VistaMostrarAdmin extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaDatos = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1190, 660));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        PanelVistas.setBackground(new java.awt.Color(204, 221, 255));
+        PanelVistas.setBackground(new java.awt.Color(200, 225, 255));
         PanelVistas.setPreferredSize(new java.awt.Dimension(1190, 660));
+        PanelVistas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         TxtBuscar.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
+        PanelVistas.add(TxtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 30, 200, 35));
 
         btnBuscar.setBackground(new java.awt.Color(255, 102, 0));
         btnBuscar.setFont(new java.awt.Font("Montserrat", 1, 16)); // NOI18N
         btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscar.setText("Buscar");
+        PanelVistas.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 30, 130, 35));
 
         TablaDatos.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
         TablaDatos.setModel(new javax.swing.table.DefaultTableModel(
@@ -72,51 +77,18 @@ public class VistaMostrarAdmin extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(TablaDatos);
 
+        PanelVistas.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 110, 1094, 510));
+
         jLabel1.setFont(new java.awt.Font("Montserrat", 1, 15)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Ingrese un correo para Buscar:");
+        PanelVistas.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, -1, -1));
 
-        javax.swing.GroupLayout PanelVistasLayout = new javax.swing.GroupLayout(PanelVistas);
-        PanelVistas.setLayout(PanelVistasLayout);
-        PanelVistasLayout.setHorizontalGroup(
-            PanelVistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelVistasLayout.createSequentialGroup()
-                .addGroup(PanelVistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelVistasLayout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(jLabel1)
-                        .addGap(75, 75, 75)
-                        .addComponent(TxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(70, 70, 70)
-                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelVistasLayout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1094, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(35, 35, 35))
-        );
-        PanelVistasLayout.setVerticalGroup(
-            PanelVistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelVistasLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(PanelVistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelVistasLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel1))
-                    .addComponent(TxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoooo12.jpg"))); // NOI18N
+        jLabel2.setPreferredSize(new java.awt.Dimension(1190, 660));
+        PanelVistas.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 660));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelVistas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelVistas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        add(PanelVistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -126,6 +98,7 @@ public class VistaMostrarAdmin extends javax.swing.JPanel {
     public javax.swing.JTextField TxtBuscar;
     public javax.swing.JButton btnBuscar;
     public javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel2;
     public javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

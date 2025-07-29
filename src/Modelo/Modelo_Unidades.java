@@ -8,8 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class Modelo_Unidades {
+
     private int idUnidad;
     private String nombreUnidad;
     private String descripcion;
@@ -18,12 +18,13 @@ public class Modelo_Unidades {
     private int progresoActividades;
     private boolean evaluacionAprobada;
     private int calificacion;
-    
- private Connection conn;
+
+    private Connection conn;
 
     public Modelo_Unidades(Connection conn) {
         this.conn = conn;
     }
+
     // Constructores
     public Modelo_Unidades() {
         this.disponible = false;
@@ -32,7 +33,6 @@ public class Modelo_Unidades {
         this.evaluacionAprobada = false;
         this.calificacion = 0;
     }
-    
 
     public Modelo_Unidades(int idUnidad, String nombreUnidad, String descripcion) {
         this();
@@ -41,9 +41,9 @@ public class Modelo_Unidades {
         this.descripcion = descripcion;
     }
 
-    public Modelo_Unidades(int idUnidad, String nombreUnidad, String descripcion, 
-                          boolean disponible, int progresoLecciones, int progresoActividades,
-                          boolean evaluacionAprobada, int calificacion) {
+    public Modelo_Unidades(int idUnidad, String nombreUnidad, String descripcion,
+            boolean disponible, int progresoLecciones, int progresoActividades,
+            boolean evaluacionAprobada, int calificacion) {
         this.idUnidad = idUnidad;
         this.nombreUnidad = nombreUnidad;
         this.descripcion = descripcion;
@@ -120,48 +120,49 @@ public class Modelo_Unidades {
     }
 
     // ========================= MÉTODOS DAO =========================
-
     /**
      * Obtiene todas las unidades disponibles
+     *
      * @return Lista de unidades
      */
     public static List<Modelo_Unidades> obtenerTodasLasUnidades() {
         List<Modelo_Unidades> unidades = new ArrayList<>();
-        
+
         try {
             Connection conn = Conexion.conectar();
             String sql = "SELECT id_unidad, nombre_unidad, descripcion FROM unidades ORDER BY id_unidad";
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
-            
+
             while (rs.next()) {
                 Modelo_Unidades unidad = new Modelo_Unidades(
-                    rs.getInt("id_unidad"),
-                    rs.getString("nombre_unidad"),
-                    rs.getString("descripcion")
+                        rs.getInt("id_unidad"),
+                        rs.getString("nombre_unidad"),
+                        rs.getString("descripcion")
                 );
                 unidades.add(unidad);
             }
-            
+
             rs.close();
             pst.close();
             conn.close();
-            
+
         } catch (SQLException e) {
             System.err.println("Error al obtener unidades: " + e.getMessage());
         }
-        
+
         return unidades;
     }
 
     /**
      * Obtiene el progreso de un usuario para todas las unidades
+     *
      * @param correo Correo del usuario
      * @return Lista de unidades con progreso
      */
     public static List<Modelo_Unidades> obtenerUnidadesConProgreso(String correo) {
         List<Modelo_Unidades> unidades = new ArrayList<>();
-        
+
         try {
             Connection conn = Conexion.conectar();
             String sql = """
@@ -175,45 +176,47 @@ public class Modelo_Unidades {
                     AND pu.id_usuario = (SELECT id_usuario FROM usuarios WHERE correo = ?)
                 ORDER BY u.id_unidad
             """;
-            
+
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1, correo);
             ResultSet rs = pst.executeQuery();
-            
+
             while (rs.next()) {
                 Modelo_Unidades unidad = new Modelo_Unidades(
-                    rs.getInt("id_unidad"),
-                    rs.getString("nombre_unidad"),
-                    rs.getString("descripcion"),
-                    false, // Se calcula después
-                    rs.getInt("lecciones_completadas"),
-                    rs.getInt("actividades_completadas"),
-                    rs.getBoolean("evaluacion_aprobada"),
-                    rs.getInt("calificacion")
+                        rs.getInt("id_unidad"),
+                        rs.getString("nombre_unidad"),
+                        rs.getString("descripcion"),
+                        false, // Se calcula después
+                        rs.getInt("lecciones_completadas"),
+                        rs.getInt("actividades_completadas"),
+                        rs.getBoolean("evaluacion_aprobada"),
+                        rs.getInt("calificacion")
                 );
                 unidades.add(unidad);
             }
-            
+
             rs.close();
             pst.close();
             conn.close();
-            
+
         } catch (SQLException e) {
             System.err.println("Error al obtener unidades con progreso: " + e.getMessage());
         }
-        
+
         return unidades;
     }
 
     /**
      * Verifica si una unidad está disponible para el usuario
+     *
      * @param idUnidad ID de la unidad
      * @param correo Correo del usuario
      * @return true si está disponible
      */
     public static boolean verificarDisponibilidadUnidad(int idUnidad, String correo) {
-        if (idUnidad == 1) return true; // Unidad 1 siempre disponible
-        
+        if (idUnidad == 1) {
+            return true; // Unidad 1 siempre disponible
+        }
         try {
             Connection conn = Conexion.conectar();
             String sql = """
@@ -222,23 +225,23 @@ public class Modelo_Unidades {
                 JOIN usuarios u ON pu.id_usuario = u.id_usuario
                 WHERE u.correo = ? AND pu.id_unidad = ?
             """;
-            
+
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1, correo);
             pst.setInt(2, idUnidad - 1); // Verificar unidad anterior
             ResultSet rs = pst.executeQuery();
-            
+
             boolean disponible = false;
             if (rs.next()) {
                 disponible = rs.getBoolean("evaluacion_aprobada");
             }
-            
+
             rs.close();
             pst.close();
             conn.close();
-            
+
             return disponible;
-            
+
         } catch (SQLException e) {
             System.err.println("Error al verificar disponibilidad: " + e.getMessage());
             return false;
@@ -247,13 +250,14 @@ public class Modelo_Unidades {
 
     /**
      * Obtiene el array de disponibilidad de todas las unidades para un usuario
+     *
      * @param correo Correo del usuario
      * @return Array boolean con disponibilidad [0=no usado, 1-4=unidades]
      */
     public static boolean[] obtenerDisponibilidadUnidades(String correo) {
         boolean[] disponibles = new boolean[5]; // índice 0 no usado, 1-4 para unidades
         disponibles[1] = true; // Unidad 1 siempre disponible
-        
+
         try {
             Connection conn = Conexion.conectar();
             String sql = """
@@ -264,33 +268,34 @@ public class Modelo_Unidades {
                     AND pu.id_usuario = (SELECT id_usuario FROM usuarios WHERE correo = ?)
                 ORDER BY u.id_unidad
             """;
-            
+
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1, correo);
             ResultSet rs = pst.executeQuery();
-            
+
             while (rs.next()) {
                 int idUnidad = rs.getInt("id_unidad");
                 boolean evaluacionAprobada = rs.getBoolean("evaluacion_aprobada");
-                
+
                 if (evaluacionAprobada && idUnidad < 4) {
                     disponibles[idUnidad + 1] = true; // Habilitar siguiente unidad
                 }
             }
-            
+
             rs.close();
             pst.close();
             conn.close();
-            
+
         } catch (SQLException e) {
             System.err.println("Error al obtener disponibilidad: " + e.getMessage());
         }
-        
+
         return disponibles;
     }
 
     /**
      * Registra o actualiza el progreso de visualización de una unidad
+     *
      * @param idUnidad ID de la unidad
      * @param correo Correo del usuario
      * @return true si se registró correctamente
@@ -298,7 +303,7 @@ public class Modelo_Unidades {
     public static boolean registrarVisualizacionUnidad(int idUnidad, String correo) {
         try {
             Connection conn = Conexion.conectar();
-            
+
             // Verificar si ya existe un registro de progreso
             String sqlVerificar = """
                 SELECT COUNT(*) as existe 
@@ -306,20 +311,20 @@ public class Modelo_Unidades {
                 JOIN usuarios u ON pu.id_usuario = u.id_usuario
                 WHERE u.correo = ? AND pu.id_unidad = ?
             """;
-            
+
             PreparedStatement pstVerificar = conn.prepareStatement(sqlVerificar);
             pstVerificar.setString(1, correo);
             pstVerificar.setInt(2, idUnidad);
             ResultSet rsVerificar = pstVerificar.executeQuery();
-            
+
             boolean existe = false;
             if (rsVerificar.next()) {
                 existe = rsVerificar.getInt("existe") > 0;
             }
-            
+
             rsVerificar.close();
             pstVerificar.close();
-            
+
             if (!existe) {
                 // Crear nuevo registro de progreso
                 String sqlInsertar = """
@@ -328,20 +333,20 @@ public class Modelo_Unidades {
                     SELECT u.id_usuario, ?, 0, 0, 0, 0
                     FROM usuarios u WHERE u.correo = ?
                 """;
-                
+
                 PreparedStatement pstInsertar = conn.prepareStatement(sqlInsertar);
                 pstInsertar.setInt(1, idUnidad);
                 pstInsertar.setString(2, correo);
                 int filasAfectadas = pstInsertar.executeUpdate();
                 pstInsertar.close();
-                
+
                 conn.close();
                 return filasAfectadas > 0;
             }
-            
+
             conn.close();
             return true;
-            
+
         } catch (SQLException e) {
             System.err.println("Error al registrar visualización: " + e.getMessage());
             return false;
@@ -349,7 +354,9 @@ public class Modelo_Unidades {
     }
 
     /**
-     * Obtiene el progreso general del usuario (porcentaje de unidades completadas)
+     * Obtiene el progreso general del usuario (porcentaje de unidades
+     * completadas)
+     *
      * @param correo Correo del usuario
      * @return Porcentaje de progreso (0-100)
      */
@@ -364,11 +371,11 @@ public class Modelo_Unidades {
                 LEFT JOIN progreso_usuario pu ON u.id_unidad = pu.id_unidad
                     AND pu.id_usuario = (SELECT id_usuario FROM usuarios WHERE correo = ?)
             """;
-            
+
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1, correo);
             ResultSet rs = pst.executeQuery();
-            
+
             int progreso = 0;
             if (rs.next()) {
                 int total = rs.getInt("total_unidades");
@@ -377,13 +384,13 @@ public class Modelo_Unidades {
                     progreso = (completadas * 100) / total;
                 }
             }
-            
+
             rs.close();
             pst.close();
             conn.close();
-            
+
             return progreso;
-            
+
         } catch (SQLException e) {
             System.err.println("Error al obtener progreso general: " + e.getMessage());
             return 0;
@@ -392,6 +399,7 @@ public class Modelo_Unidades {
 
     /**
      * Actualiza el progreso de lecciones completadas
+     *
      * @param idUnidad ID de la unidad
      * @param correo Correo del usuario
      * @param leccionesCompletadas Número de lecciones completadas
@@ -406,19 +414,19 @@ public class Modelo_Unidades {
                 SET pu.lecciones_completadas = ?
                 WHERE u.correo = ? AND pu.id_unidad = ?
             """;
-            
+
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setInt(1, leccionesCompletadas);
             pst.setString(2, correo);
             pst.setInt(3, idUnidad);
-            
+
             int filasAfectadas = pst.executeUpdate();
-            
+
             pst.close();
             conn.close();
-            
+
             return filasAfectadas > 0;
-            
+
         } catch (SQLException e) {
             System.err.println("Error al actualizar progreso lecciones: " + e.getMessage());
             return false;
@@ -427,6 +435,7 @@ public class Modelo_Unidades {
 
     /**
      * Actualiza el progreso de actividades completadas
+     *
      * @param idUnidad ID de la unidad
      * @param correo Correo del usuario
      * @param actividadesCompletadas Número de actividades completadas
@@ -441,19 +450,19 @@ public class Modelo_Unidades {
                 SET pu.actividades_completadas = ?
                 WHERE u.correo = ? AND pu.id_unidad = ?
             """;
-            
+
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setInt(1, actividadesCompletadas);
             pst.setString(2, correo);
             pst.setInt(3, idUnidad);
-            
+
             int filasAfectadas = pst.executeUpdate();
-            
+
             pst.close();
             conn.close();
-            
+
             return filasAfectadas > 0;
-            
+
         } catch (SQLException e) {
             System.err.println("Error al actualizar progreso actividades: " + e.getMessage());
             return false;
@@ -462,6 +471,7 @@ public class Modelo_Unidades {
 
     /**
      * Registra la aprobación de una evaluación
+     *
      * @param idUnidad ID de la unidad
      * @param correo Correo del usuario
      * @param calificacion Calificación obtenida
@@ -476,19 +486,19 @@ public class Modelo_Unidades {
                 SET pu.evaluacion_aprobada = 1, pu.calificacion = ?
                 WHERE u.correo = ? AND pu.id_unidad = ?
             """;
-            
+
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setInt(1, calificacion);
             pst.setString(2, correo);
             pst.setInt(3, idUnidad);
-            
+
             int filasAfectadas = pst.executeUpdate();
-            
+
             pst.close();
             conn.close();
-            
+
             return filasAfectadas > 0;
-            
+
         } catch (SQLException e) {
             System.err.println("Error al registrar evaluación aprobada: " + e.getMessage());
             return false;
@@ -496,9 +506,9 @@ public class Modelo_Unidades {
     }
 
     // ========================= MÉTODOS UTILITARIOS =========================
-
     /**
      * Calcula el progreso total de la unidad como porcentaje
+     *
      * @param totalLecciones Total de lecciones en la unidad
      * @param totalActividades Total de actividades en la unidad
      * @return Porcentaje de progreso (0-100)
@@ -507,27 +517,29 @@ public class Modelo_Unidades {
         if (totalLecciones == 0 && totalActividades == 0) {
             return 0;
         }
-        
+
         int total = totalLecciones + totalActividades;
         int completadas = progresoLecciones + progresoActividades;
-        
+
         return (completadas * 100) / total;
     }
 
     /**
      * Verifica si la unidad está completamente terminada
+     *
      * @param totalLecciones Total de lecciones en la unidad
      * @param totalActividades Total de actividades en la unidad
      * @return true si está completamente terminada
      */
     public boolean estaCompletada(int totalLecciones, int totalActividades) {
-        return progresoLecciones >= totalLecciones && 
-               progresoActividades >= totalActividades && 
-               evaluacionAprobada;
+        return progresoLecciones >= totalLecciones
+                && progresoActividades >= totalActividades
+                && evaluacionAprobada;
     }
 
     /**
      * Obtiene el estado de la unidad como texto
+     *
      * @return Estado de la unidad
      */
     public String getEstadoTexto() {
@@ -544,6 +556,7 @@ public class Modelo_Unidades {
 
     /**
      * Obtiene el color asociado al estado de la unidad
+     *
      * @return Color como string hexadecimal
      */
     public String getColorEstado() {
@@ -565,9 +578,13 @@ public class Modelo_Unidades {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+
         Modelo_Unidades unidad = (Modelo_Unidades) obj;
         return idUnidad == unidad.idUnidad;
     }
@@ -576,37 +593,197 @@ public class Modelo_Unidades {
     public int hashCode() {
         return Integer.hashCode(idUnidad);
     }
+
     public static void registrarActividadCompletadaUnidad2(String correo) {
-try (Connection conn = Conexion.conectar()) {
-String queryUsuario = "SELECT id_usuario FROM usuarios WHERE correo = ?";
-PreparedStatement stmtUsuario = conn.prepareStatement(queryUsuario);
-stmtUsuario.setString(1, correo);
-ResultSet rs = stmtUsuario.executeQuery();
-    if (rs.next()) {
-        int idUsuario = rs.getInt("id_usuario");
+        try (Connection conn = Conexion.conectar()) {
+            String queryUsuario = "SELECT id_usuario FROM usuarios WHERE correo = ?";
+            PreparedStatement stmtUsuario = conn.prepareStatement(queryUsuario);
+            stmtUsuario.setString(1, correo);
+            ResultSet rs = stmtUsuario.executeQuery();
+            if (rs.next()) {
+                int idUsuario = rs.getInt("id_usuario");
 
-        // Verificar si ya existe progreso para unidad 2
-        String checkSql = "SELECT * FROM progreso_usuario WHERE id_usuario = ? AND id_unidad = 2";
-        PreparedStatement checkStmt = conn.prepareStatement(checkSql);
-        checkStmt.setInt(1, idUsuario);
-        ResultSet checkRs = checkStmt.executeQuery();
+                // Verificar si ya existe progreso para unidad 2
+                String checkSql = "SELECT * FROM progreso_usuario WHERE id_usuario = ? AND id_unidad = 2";
+                PreparedStatement checkStmt = conn.prepareStatement(checkSql);
+                checkStmt.setInt(1, idUsuario);
+                ResultSet checkRs = checkStmt.executeQuery();
 
-        if (checkRs.next()) {
-            // Ya existe, actualizar
-            String updateSql = "UPDATE progreso_usuario SET actividades_completadas = 1, fecha_actualizacion = NOW() WHERE id_usuario = ? AND id_unidad = 2";
-            PreparedStatement updateStmt = conn.prepareStatement(updateSql);
-            updateStmt.setInt(1, idUsuario);
-            updateStmt.executeUpdate();
-        } else {
-            // No existe, insertar
-            String insertSql = "INSERT INTO progreso_usuario (id_usuario, id_unidad, actividades_completadas) VALUES (?, 2, 1)";
-            PreparedStatement insertStmt = conn.prepareStatement(insertSql);
-            insertStmt.setInt(1, idUsuario);
-            insertStmt.executeUpdate();
+                if (checkRs.next()) {
+                    // Ya existe, actualizar
+                    String updateSql = "UPDATE progreso_usuario SET actividades_completadas = 1, fecha_actualizacion = NOW() WHERE id_usuario = ? AND id_unidad = 2";
+                    PreparedStatement updateStmt = conn.prepareStatement(updateSql);
+                    updateStmt.setInt(1, idUsuario);
+                    updateStmt.executeUpdate();
+                } else {
+                    // No existe, insertar
+                    String insertSql = "INSERT INTO progreso_usuario (id_usuario, id_unidad, actividades_completadas) VALUES (?, 2, 1)";
+                    PreparedStatement insertStmt = conn.prepareStatement(insertSql);
+                    insertStmt.setInt(1, idUsuario);
+                    insertStmt.executeUpdate();
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("❌ Error al registrar actividad unidad 2: " + e.getMessage());
         }
     }
-} catch (SQLException e) {
-    System.err.println("❌ Error al registrar actividad unidad 2: " + e.getMessage());
-}
+
+    /**
+     * Marca una unidad como completada en la base de datos
+     *
+     * @param idUnidad ID de la unidad a marcar como completada
+     * @param correo Correo del estudiante
+     * @return true si se actualizó correctamente
+     * @throws SQLException Si ocurre un error de base de datos
+     */
+    public static boolean marcarUnidadComoCompletada(int idUnidad, String correo) throws SQLException {
+        try (Connection conn = Conexion.conectar()) {
+            // 1. Marcar la evaluación como aprobada
+            String sqlEvaluacion = """
+            UPDATE progreso_usuario pu
+            JOIN usuarios u ON pu.id_usuario = u.id_usuario
+            SET pu.evaluacion_aprobada = 1, 
+                pu.fecha_completado = NOW()
+            WHERE u.correo = ? AND pu.id_unidad = ?
+        """;
+
+            try (PreparedStatement pst = conn.prepareStatement(sqlEvaluacion)) {
+                pst.setString(1, correo);
+                pst.setInt(2, idUnidad);
+                int filasAfectadas = pst.executeUpdate();
+
+                if (filasAfectadas == 0) {
+                    // Si no existe registro, crear uno nuevo
+                    String sqlInsert = """
+                    INSERT INTO progreso_usuario 
+                    (id_usuario, id_unidad, lecciones_completadas, 
+                     actividades_completadas, evaluacion_aprobada, fecha_completado)
+                    SELECT id_usuario, ?, 1, 1, 1, NOW()
+                    FROM usuarios WHERE correo = ?
+                """;
+
+                    try (PreparedStatement pstInsert = conn.prepareStatement(sqlInsert)) {
+                        pstInsert.setInt(1, idUnidad);
+                        pstInsert.setString(2, correo);
+                        filasAfectadas = pstInsert.executeUpdate();
+                    }
+                }
+
+                // 2. Habilitar la siguiente unidad si existe
+                if (filasAfectadas > 0 && idUnidad < 4) {
+                    habilitarSiguienteUnidad(conn, correo, idUnidad);
+                }
+
+                return filasAfectadas > 0;
+            }
+        }
+    }
+
+    /**
+     * Habilita la siguiente unidad para el estudiante
+     *
+     * @param conn Conexión a la base de datos
+     * @param correo Correo del estudiante
+     * @param idUnidadActual ID de la unidad actual
+     * @throws SQLException Si ocurre un error de base de datos
+     */
+    private static void habilitarSiguienteUnidad(Connection conn, String correo, int idUnidadActual) throws SQLException {
+        int siguienteUnidad = idUnidadActual + 1;
+
+        // Verificar si ya existe registro para la siguiente unidad
+        String sqlCheck = """
+        SELECT COUNT(*) FROM progreso_usuario pu
+        JOIN usuarios u ON pu.id_usuario = u.id_usuario
+        WHERE u.correo = ? AND pu.id_unidad = ?
+    """;
+
+        try (PreparedStatement pstCheck = conn.prepareStatement(sqlCheck)) {
+            pstCheck.setString(1, correo);
+            pstCheck.setInt(2, siguienteUnidad);
+            ResultSet rs = pstCheck.executeQuery();
+
+            if (rs.next() && rs.getInt(1) == 0) {
+                // Crear registro inicial para la siguiente unidad
+                String sqlInsert = """
+                INSERT INTO progreso_usuario 
+                (id_usuario, id_unidad, lecciones_completadas, 
+                 actividades_completadas, evaluacion_aprobada)
+                SELECT id_usuario, ?, 0, 0, 0
+                FROM usuarios WHERE correo = ?
+            """;
+
+                try (PreparedStatement pstInsert = conn.prepareStatement(sqlInsert)) {
+                    pstInsert.setInt(1, siguienteUnidad);
+                    pstInsert.setString(2, correo);
+                    pstInsert.executeUpdate();
+                }
+            }
+        }
+    }
+
+    /**
+     * Obtiene el progreso específico de la Unidad 2
+     *
+     * @param correo Correo del estudiante
+     * @return Porcentaje de progreso (0-100)
+     */
+    public static int obtenerProgresoUnidad2(String correo) {
+        try (Connection conn = Conexion.conectar()) {
+            String sql = """
+            SELECT 
+                COALESCE(lecciones_completadas, 0) as lecciones,
+                COALESCE(actividades_completadas, 0) as actividades,
+                COALESCE(evaluacion_aprobada, 0) as evaluacion
+            FROM progreso_usuario pu
+            JOIN usuarios u ON pu.id_usuario = u.id_usuario
+            WHERE u.correo = ? AND pu.id_unidad = 2
+        """;
+
+            try (PreparedStatement pst = conn.prepareStatement(sql)) {
+                pst.setString(1, correo);
+                ResultSet rs = pst.executeQuery();
+
+                if (rs.next()) {
+                    int lecciones = rs.getInt("lecciones");
+                    int actividades = rs.getInt("actividades");
+                    boolean evaluacion = rs.getBoolean("evaluacion");
+
+                    // Calcular progreso total (40% lecciones, 40% actividades, 20% evaluación)
+                    int progreso = (int) ((lecciones * 0.4) + (actividades * 0.4) + (evaluacion ? 20 : 0));
+                    return Math.min(100, progreso);
+                }
+                return 0;
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al obtener progreso Unidad 2: " + e.getMessage());
+            return 0;
+        }
+    }
+
+    /**
+     * Actualiza el progreso de actividades de la Unidad 2
+     *
+     * @param correo Correo del estudiante
+     * @param actividadesCompletadas Número de actividades completadas
+     * @return true si se actualizó correctamente
+     */
+    public static boolean actualizarActividadesUnidad2(String correo, int actividadesCompletadas) {
+        try (Connection conn = Conexion.conectar()) {
+            String sql = """
+            UPDATE progreso_usuario pu
+            JOIN usuarios u ON pu.id_usuario = u.id_usuario
+            SET pu.actividades_completadas = ?
+            WHERE u.correo = ? AND pu.id_unidad = 2
+        """;
+
+            try (PreparedStatement pst = conn.prepareStatement(sql)) {
+                pst.setInt(1, actividadesCompletadas);
+                pst.setString(2, correo);
+                return pst.executeUpdate() > 0;
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al actualizar actividades Unidad 2: " + e.getMessage());
+            return false;
+        }
     }
 }

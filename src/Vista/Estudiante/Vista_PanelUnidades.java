@@ -160,16 +160,21 @@ public class Vista_PanelUnidades extends javax.swing.JPanel {
         LblOracionEspañol = new javax.swing.JLabel();
         LbliconoPalabra = new javax.swing.JLabel();
         ProgresoTotal = new javax.swing.JProgressBar();
+        LblProgreso = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
-        PanelVistas.setBackground(new java.awt.Color(180, 210, 255));
+        setPreferredSize(new java.awt.Dimension(1190, 660));
+
+        PanelVistas.setBackground(new java.awt.Color(200, 225, 255));
         PanelVistas.setPreferredSize(new java.awt.Dimension(1190, 660));
         PanelVistas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         LblTituloUnidades.setFont(new java.awt.Font("Montserrat", 1, 24)); // NOI18N
+        LblTituloUnidades.setForeground(new java.awt.Color(255, 255, 255));
         LblTituloUnidades.setText("Mis Unidades");
         PanelVistas.add(LblTituloUnidades, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
 
-        PanelUnidad1.setBackground(new java.awt.Color(253, 253, 253));
+        PanelUnidad1.setBackground(new java.awt.Color(249, 250, 251));
         PanelUnidad1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.white, null, null));
         PanelUnidad1.setPreferredSize(new java.awt.Dimension(260, 310));
         PanelUnidad1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -197,7 +202,7 @@ public class Vista_PanelUnidades extends javax.swing.JPanel {
 
         PanelVistas.add(PanelUnidad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
-        PanelUnidad2.setBackground(new java.awt.Color(253, 253, 253));
+        PanelUnidad2.setBackground(new java.awt.Color(249, 250, 251));
         PanelUnidad2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         PanelUnidad2.setPreferredSize(new java.awt.Dimension(260, 310));
         PanelUnidad2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -223,7 +228,7 @@ public class Vista_PanelUnidades extends javax.swing.JPanel {
 
         PanelVistas.add(PanelUnidad2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 80, -1, -1));
 
-        PanelUnidad3.setBackground(new java.awt.Color(253, 253, 253));
+        PanelUnidad3.setBackground(new java.awt.Color(249, 250, 251));
         PanelUnidad3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         PanelUnidad3.setPreferredSize(new java.awt.Dimension(260, 310));
         PanelUnidad3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -249,7 +254,7 @@ public class Vista_PanelUnidades extends javax.swing.JPanel {
 
         PanelVistas.add(PanelUnidad3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 80, -1, -1));
 
-        PanelUnidad4.setBackground(new java.awt.Color(253, 253, 253));
+        PanelUnidad4.setBackground(new java.awt.Color(249, 250, 251));
         PanelUnidad4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         PanelUnidad4.setPreferredSize(new java.awt.Dimension(260, 310));
         PanelUnidad4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -275,7 +280,7 @@ public class Vista_PanelUnidades extends javax.swing.JPanel {
 
         PanelVistas.add(PanelUnidad4, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 80, -1, -1));
 
-        PanelPalabraDiaria.setBackground(new java.awt.Color(253, 253, 253));
+        PanelPalabraDiaria.setBackground(new java.awt.Color(249, 250, 251));
         PanelPalabraDiaria.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         PanelPalabraDiaria.setPreferredSize(new java.awt.Dimension(531, 182));
 
@@ -332,17 +337,26 @@ public class Vista_PanelUnidades extends javax.swing.JPanel {
 
         PanelVistas.add(PanelPalabraDiaria, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 440, -1, -1));
 
-        ProgresoTotal.setBackground(new java.awt.Color(52, 211, 153));
+        ProgresoTotal.setBackground(new java.awt.Color(255, 102, 0));
         ProgresoTotal.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
         ProgresoTotal.setToolTipText("Progreso General");
         ProgresoTotal.setStringPainted(true);
-        PanelVistas.add(ProgresoTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 30, 209, 20));
+        PanelVistas.add(ProgresoTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 30, 209, 20));
+
+        LblProgreso.setFont(new java.awt.Font("Montserrat", 1, 13)); // NOI18N
+        LblProgreso.setForeground(new java.awt.Color(255, 255, 255));
+        LblProgreso.setText("Progreso General");
+        PanelVistas.add(LblProgreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 10, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoooo12.jpg"))); // NOI18N
+        jLabel1.setPreferredSize(new java.awt.Dimension(1190, 660));
+        PanelVistas.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelVistas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(PanelVistas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -355,6 +369,7 @@ public class Vista_PanelUnidades extends javax.swing.JPanel {
     public javax.swing.JLabel LblOracionEspañol;
     public javax.swing.JLabel LblOracionKichwa;
     public javax.swing.JLabel LblPalabraKichwa;
+    public javax.swing.JLabel LblProgreso;
     public javax.swing.JLabel LblTituloPalabraDia;
     public javax.swing.JLabel LblTituloUnidades;
     public javax.swing.JLabel LblU1Foto;
@@ -381,5 +396,6 @@ public class Vista_PanelUnidades extends javax.swing.JPanel {
     public javax.swing.JButton btnUnidad2;
     public javax.swing.JButton btnUnidad3;
     public javax.swing.JButton btnUnidad4;
+    public javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
