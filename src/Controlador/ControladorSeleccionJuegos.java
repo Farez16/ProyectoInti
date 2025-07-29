@@ -47,9 +47,48 @@ public class ControladorSeleccionJuegos {
         dashboard.mostrarVista(memorama);
     }
     private void abrirJuegoAnimales() {
-    VistaJuego juegoAnimales = new VistaJuego();
-    Juego modelo = new Juego(Conexion.conectar());
-    new ControladorJuego(juegoAnimales, modelo); // Asegúrate de que este constructor exista y funcione
-    dashboard.mostrarVista(juegoAnimales);
+    System.out.println(" Iniciando juego de animales...");
+    
+    try {
+        // Crear vista del juego
+        VistaJuego juegoAnimales = new VistaJuego();
+        System.out.println(" Vista del juego creada");
+        
+        // Crear modelo con conexión a BD
+        Juego modelo = new Juego(Conexion.conectar());
+        System.out.println(" Modelo del juego creado");
+        
+        // Crear controlador (parámetros: vista, modelo)
+        new ControladorJuego(juegoAnimales, modelo);
+        System.out.println(" Controlador del juego creado");
+        
+        System.out.println(" Juego inicializado correctamente");
+        
+        // Mostrar la vista en el dashboard
+        if (dashboard != null) {
+            dashboard.mostrarVista(juegoAnimales);
+            System.out.println(" Vista del juego mostrada en dashboard");
+        } else {
+            System.err.println(" Error: Dashboard es null");
+        }
+        
+    } catch (Exception e) {
+        System.err.println(" Error al abrir juego de animales: " + e.getMessage());
+        e.printStackTrace();
+        
+        // Mostrar mensaje de error al usuario si es posible
+        if (dashboard != null) {
+            javax.swing.JOptionPane.showMessageDialog(
+                null,
+                "<html><div style='text-align: center;'>" +
+                "<h3> Error al Cargar Juego</h3>" +
+                "<p>No se pudo inicializar el juego de asociación.</p>" +
+                "<p>Error: " + e.getMessage() + "</p>" +
+                "</div></html>",
+                "Error de Juego",
+                javax.swing.JOptionPane.ERROR_MESSAGE
+            );
+        }
+    }
 }
 }

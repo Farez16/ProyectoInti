@@ -12,30 +12,56 @@ public class Modelo_DragDrop {
         this.conn = conn;
     }
 
-    public List<DragDropItem> obtenerItemsPorActividad(int idActividad) {
-        List<DragDropItem> items = new ArrayList<>();
-        String sql = "SELECT * FROM drag_drop_items WHERE id_actividad = ?";
+ public List<DragDropItem> obtenerItemsPorRangoActividad(int desdeId, int hastaId) {
+    List<DragDropItem> items = new ArrayList<>();
+    String sql = "SELECT * FROM actividades WHERE tipo = 'drag_drop' AND id_actividad BETWEEN ? AND ?";
 
-        try (PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setInt(1, idActividad);
-            ResultSet rs = ps.executeQuery();
+    try (PreparedStatement ps = conn.prepareStatement(sql)) {
+        ps.setInt(1, desdeId);
+        ps.setInt(2, hastaId);
+        ResultSet rs = ps.executeQuery();
 
-            while (rs.next()) {
-                DragDropItem item = new DragDropItem(
-                    rs.getInt("id_drag_drop"),
-                    rs.getInt("id_actividad"),
-                    rs.getString("texto"),
-                    rs.getString("recurso_url"),
-                    rs.getString("posicion_destino")
-                );
-                items.add(item);
+        while (rs.next()) {
+            int idActividad = rs.getInt("id_actividad");
+            String opcionA = rs.getString("opcion_a");
+            String opcionB = rs.getString("opcion_b");
+            String opcionC = rs.getString("opcion_c");
+            String correcta = rs.getString("respuesta_correcta"); // 'A','B','C'
+
+            if (opcionA != null && !opcionA.isEmpty()) {
+                items.add(new DragDropItem(0, idActividad, opcionA, null, correcta.equalsIgnoreCase("A") ? "correcta" : "incorrecta"));
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+            if (opcionB != null && !opcionB.isEmpty()) {
+                items.add(new DragDropItem(0, idActividad, opcionB, null, correcta.equalsIgnoreCase("B") ? "correcta" : "incorrecta"));
+            }
+            if (opcionC != null && !opcionC.isEmpty()) {
+                items.add(new DragDropItem(0, idActividad, opcionC, null, correcta.equalsIgnoreCase("C") ? "correcta" : "incorrecta"));
+            }
         }
-
-        return items;
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
+    return items;
+}
+ 
+ public String obtenerPreguntaPorId(int idActividad) {
+    String pregunta = null;
+    String sql = "SELECT pregunta FROM actividades WHERE id_actividad = ?";
+
+    try (PreparedStatement ps = conn.prepareStatement(sql)) {
+        ps.setInt(1, idActividad);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            pregunta = rs.getString("pregunta");
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return pregunta;
+}
+
+
+
 
     // Clase interna o pública para representar el item
     public static class DragDropItem {

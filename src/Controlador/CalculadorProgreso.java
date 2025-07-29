@@ -53,6 +53,45 @@ public class CalculadorProgreso {
     }
     
     /**
+     * Calcula el progreso específico para la Unidad 4 (Familia y Vestimenta)
+     * 
+     * Flujo de progreso para Unidad 4:
+     * - Lección Familia (Colores): 20%
+     * - Actividad Familia: 40%
+     * - Lección Vestimenta (Partes del Cuerpo): 60%
+     * - Actividad Vestimenta: 80%
+     * - Evaluación: 100%
+     * 
+     * @param lecciones Número de lecciones completadas (máximo 2)
+     * @param actividades Número de actividades completadas (máximo 2)
+     * @param evaluacion Si la evaluación está completada
+     * @return Progreso de la Unidad 4 (0-100)
+     */
+    public static int calcularProgresoUnidad4(int lecciones, int actividades, boolean evaluacion) {
+        int progreso = 0;
+
+        // Flujo específico para Unidad 4: familia(20), actFamilia(40), vestimenta(60), actVestimenta(80), evaluación(100)
+        if (lecciones >= 1) {  // Lección Familia completada
+            progreso = 20;
+        }
+        if (actividades >= 1) {  // Actividad Familia completada
+            progreso = 40;
+        }
+        if (lecciones >= 2) {  // Lección Vestimenta completada
+            progreso = 60;
+        }
+        if (actividades >= 2) {  // Actividad Vestimenta completada
+            progreso = 80;
+        }
+        if (evaluacion) {  // Evaluación completada
+            progreso = 100;
+        }
+
+        System.out.println("[CalculadorProgreso] Unidad 4 - Lecciones: " + lecciones + ", Actividades: " + actividades + ", Evaluación: " + evaluacion + " -> Progreso: " + progreso + "%");
+        return progreso;
+    }
+    
+    /**
      * Calcula el progreso total del sistema basado en unidades completadas
      * Solo cuenta unidades que están al 100% completadas
      * Cada unidad completada contribuye con 25% al total

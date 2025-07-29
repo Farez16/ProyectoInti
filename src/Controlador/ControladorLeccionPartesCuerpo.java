@@ -74,8 +74,8 @@ public class ControladorLeccionPartesCuerpo {
                 }
                 mostrarMensajeExito();
             } else if (progreso.getLeccionesCompletadas() == 1) {
-                // Solo actualizar si no hay lecciones completadas
-                progreso.setLeccionesCompletadas(1);
+                // Actualizar a 2 lecciones completadas (esta es la segunda lección)
+                progreso.setLeccionesCompletadas(2);
                 progreso.setFechaActualizacion(LocalDateTime.now());
                 if (!Modelo_Progreso_Usuario.actualizarProgreso(progreso)) {
                     throw new Exception("No se pudo actualizar el progreso");
@@ -123,14 +123,9 @@ public class ControladorLeccionPartesCuerpo {
     }
 
     private void navegarAUnidad4() {
-        Vista_Unidad4 vistaUnidad4 = new Vista_Unidad4();
-        new Controlador_Unidad4(
-            vistaUnidad4,
-            this.connection,
-            this.controladorDashboard,
-            this.correoUsuario,
-            null
-        );
-        dashboard.mostrarVista(vistaUnidad4);
+        // Regresar al panel de unidades para que se actualice la vista existente
+        // Esto permite que el controlador de unidades actualice el progreso automáticamente
+        System.out.println("[ControladorLeccionPartesCuerpo] Navegando de vuelta al panel de unidades tras completar lección");
+        dashboard.mostrarVista(controladorDashboard.getPanelUnidades());
     }
 }

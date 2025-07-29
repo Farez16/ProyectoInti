@@ -88,6 +88,9 @@ public class Controlador_Unidad1 {
         try {
             System.out.println("[DEBUG] Iniciando inicializarVista() para Unidad 1");
             
+            // IMPORTANTE: NO modificar el layout de la vista - respeta la configuración original
+            // La vista ya tiene AbsoluteLayout configurado correctamente en initComponents()
+            
             // 1. Obtener o crear el progreso del usuario
             Modelo_Progreso_Usuario progreso = Modelo_Progreso_Usuario.obtenerProgreso(idUsuario, ID_UNIDAD);
             if (progreso == null) {
@@ -115,7 +118,8 @@ public class Controlador_Unidad1 {
             // 6. Configurar el botón de finalizar unidad
             vista.jButtonFINALIZARUNIDAD1.addActionListener(e -> finalizarUnidad());
             
-            // El resto de la lógica de habilitación secuencial ya está cubierta en configurarBotonesSegunProgreso
+            // 7. Verificar que todos los componentes estén en sus posiciones correctas
+            verificarPosicionesComponentes();
             
             System.out.println("[DEBUG] Componentes configurados:");
             System.out.println("  - jButtonLECCIONFONOLOGIA habilitado: " + vista.jButtonLECCIONFONOLOGIA.isEnabled());
@@ -125,15 +129,15 @@ public class Controlador_Unidad1 {
             System.out.println("  - Vista visible: " + vista.isVisible());
             System.out.println("  - Vista tamaño: " + vista.getSize());
             
-            // Asegurar que la vista esté visible y configurada
+            // 8. Configuración final de visibilidad sin interferir con el layout
             vista.setVisible(true);
             vista.setOpaque(true);
             
-            // Forzar actualización de la interfaz
+            // 9. Forzar actualización de la interfaz manteniendo el layout original
             vista.revalidate();
             vista.repaint();
             
-            System.out.println("[DEBUG] inicializarVista() completado exitosamente");
+            System.out.println("[DEBUG] inicializarVista() completado exitosamente - Layout original preservado");
             
         } catch (Exception e) {
             System.err.println("Error al inicializar la vista de la Unidad 1: " + e.getMessage());
@@ -326,13 +330,13 @@ public class Controlador_Unidad1 {
         controladorDashboard.getVista().mostrarVista(vistaActividad);
     }
 
-    private void abrirActividad3() {
-        int idActividad = 3;
-        Vista_Actividad3U1 vistaActividad = new Vista_Actividad3U1();
-        Controlador_Actv3U1 controladorAct3 = new Controlador_Actv3U1(vistaActividad, controladorDashboard, conn, correo, idActividad, this);
-        controladorAct3.cargarActividad();
-        controladorDashboard.getVista().mostrarVista(vistaActividad);
-    }
+ private void abrirActividad3() {
+    int idActividad = 3;
+    Vista_Actividad3U1 vistaActividad = new Vista_Actividad3U1();
+    Controlador_Actv3U1 controladorAct3 = new Controlador_Actv3U1(vistaActividad, controladorDashboard, conn, correo, idActividad, this);
+    controladorAct3.cargarActividad();
+    controladorDashboard.getVista().mostrarVista(vistaActividad);
+}
 
     private void abrirEvaluacion() {
         Vista_EvaluacionU1 vistaEvaluacion = new Vista_EvaluacionU1();
@@ -504,10 +508,53 @@ public class Controlador_Unidad1 {
             System.err.println("Error al configurar botones: " + e.getMessage());
             e.printStackTrace();
         }
-        
-        // También actualizar el controlador de unidades si es necesario
-        if (controladorUnidades != null) {
-            controladorUnidades.actualizarVista();
+    }
+    
+    /**
+     * Verifica que todos los componentes estén en sus posiciones correctas
+     * y sean visibles para diagnosticar problemas de layout
+     */
+    private void verificarPosicionesComponentes() {
+        try {
+            System.out.println("[DEBUG] Verificando posiciones de componentes:");
+            
+            // Verificar botones principales
+            System.out.println("  - jButtonLECCIONFONOLOGIA: " + vista.jButtonLECCIONFONOLOGIA.getBounds() + ", visible: " + vista.jButtonLECCIONFONOLOGIA.isVisible());
+            System.out.println("  - jButtonLECCIONSALUDOS: " + vista.jButtonLECCIONSALUDOS.getBounds() + ", visible: " + vista.jButtonLECCIONSALUDOS.isVisible());
+            System.out.println("  - jButtonLECCIONPRONOMBRES: " + vista.jButtonLECCIONPRONOMBRES.getBounds() + ", visible: " + vista.jButtonLECCIONPRONOMBRES.isVisible());
+            System.out.println("  - jButtonACTIIVIDAD1: " + vista.jButtonACTIIVIDAD1.getBounds() + ", visible: " + vista.jButtonACTIIVIDAD1.isVisible());
+            System.out.println("  - jButtonACTIVIDAD2: " + vista.jButtonACTIVIDAD2.getBounds() + ", visible: " + vista.jButtonACTIVIDAD2.isVisible());
+            System.out.println("  - jButtonAtividad3: " + vista.jButtonAtividad3.getBounds() + ", visible: " + vista.jButtonAtividad3.isVisible());
+            System.out.println("  - jButtonEVALUACION: " + vista.jButtonEVALUACION.getBounds() + ", visible: " + vista.jButtonEVALUACION.isVisible());
+            
+            // Verificar barra de progreso
+            System.out.println("  - jProgressBarUNIDAD1: " + vista.jProgressBarUNIDAD1.getBounds() + ", visible: " + vista.jProgressBarUNIDAD1.isVisible());
+            
+            // Verificar fondo
+            System.out.println("  - Fondo: " + vista.Fondo.getBounds() + ", visible: " + vista.Fondo.isVisible());
+            
+            // Verificar que el layout sea AbsoluteLayout
+            System.out.println("  - Layout actual: " + vista.getLayout().getClass().getSimpleName());
+            
+            // Asegurar que todos los componentes sean visibles
+            vista.jButtonLECCIONFONOLOGIA.setVisible(true);
+            vista.jButtonLECCIONSALUDOS.setVisible(true);
+            vista.jButtonLECCIONPRONOMBRES.setVisible(true);
+            vista.jButtonACTIIVIDAD1.setVisible(true);
+            vista.jButtonACTIVIDAD2.setVisible(true);
+            vista.jButtonAtividad3.setVisible(true);
+            vista.jButtonEVALUACION.setVisible(true);
+            vista.jProgressBarUNIDAD1.setVisible(true);
+            vista.jButtonREINICIARU1.setVisible(true);
+            vista.jButtonFINALIZARUNIDAD1.setVisible(true);
+            vista.jLabelFinalizar.setVisible(true);
+            vista.Fondo.setVisible(true);
+            
+            System.out.println("[DEBUG] Verificación de componentes completada - Todos los componentes configurados como visibles");
+            
+        } catch (Exception e) {
+            System.err.println("Error al verificar posiciones de componentes: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }

@@ -72,7 +72,7 @@ public class Vista_LeccionSALUDOS extends JPanel {
         jButtonSiguientePag.setBackground(new java.awt.Color(255, 153, 51));
         jButtonSiguientePag.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButtonSiguientePag.setText("Siguiente");
-        jPanelPag1.add(jButtonSiguientePag, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 610, 110, 40));
+        jPanelPag1.add(jButtonSiguientePag, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 610, 160, 40));
 
         jButtonPlay.setBackground(new java.awt.Color(255, 153, 51));
         jButtonPlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad1/Play.png"))); // NOI18N

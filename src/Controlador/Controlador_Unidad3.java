@@ -160,9 +160,90 @@ public class Controlador_Unidad3 {
     }
 
     private void abrirEvaluacion() {
-        Vista_EvaluacionU3 vistaEvaluacion = new Vista_EvaluacionU3();
-        new Controlador_EvaluacionU3(vistaEvaluacion, controladorDashboard, conn, correo, controladorUnidades);
-        dashboard.mostrarVista(vistaEvaluacion);
+        try {
+            System.out.println("[DEBUG] Iniciando apertura de evaluación Unidad 3");
+            
+            // Verificar que el botón esté habilitado
+            if (!vista.jButtonEvaluacion.isEnabled()) {
+                System.err.println("[ERROR] El botón de evaluación no está habilitado");
+                JOptionPane.showMessageDialog(vista, 
+                    "<html><body style='width: 300px; text-align: center;'>" +
+                    "<h3>🚫 Evaluación no disponible</h3>" +
+                    "<p>Debes completar todas las lecciones y actividades antes de acceder a la evaluación.</p>" +
+                    "</body></html>", 
+                    "Acceso denegado", 
+                    JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            
+            // Verificar progreso del usuario
+            Modelo_Progreso_Usuario progreso = Modelo_Progreso_Usuario.obtenerProgreso(idUsuario, ID_UNIDAD);
+            if (progreso == null) {
+                System.err.println("[ERROR] No se pudo obtener el progreso del usuario");
+                JOptionPane.showMessageDialog(vista, 
+                    "Error al verificar el progreso. Intente nuevamente.", 
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+            System.out.println("[DEBUG] Progreso verificado - Lecciones: " + progreso.getLeccionesCompletadas() + 
+                             ", Actividades: " + progreso.getActividadesCompletadas());
+            
+            // Crear la vista de evaluación
+            System.out.println("[DEBUG] Creando vista de evaluación U3");
+            Vista_EvaluacionU3 vistaEvaluacion = new Vista_EvaluacionU3();
+            
+            if (vistaEvaluacion == null) {
+                System.err.println("[ERROR] No se pudo crear la vista de evaluación");
+                JOptionPane.showMessageDialog(vista, 
+                    "Error al cargar la evaluación. Intente nuevamente.", 
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+            // Crear el controlador de evaluación
+            System.out.println("[DEBUG] Creando controlador de evaluación U3");
+            Controlador_EvaluacionU3 controladorEvaluacion = new Controlador_EvaluacionU3(
+                vistaEvaluacion, controladorDashboard, conn, correo, controladorUnidades
+            );
+            
+            if (controladorEvaluacion == null) {
+                System.err.println("[ERROR] No se pudo crear el controlador de evaluación");
+                JOptionPane.showMessageDialog(vista, 
+                    "Error al inicializar la evaluación. Intente nuevamente.", 
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+            // Mostrar la vista en el dashboard
+            System.out.println("[DEBUG] Mostrando vista de evaluación en dashboard");
+            if (dashboard != null) {
+                dashboard.mostrarVista(vistaEvaluacion);
+                System.out.println("[DEBUG] Evaluación U3 abierta exitosamente");
+            } else {
+                System.err.println("[ERROR] Dashboard es null, no se puede mostrar la vista");
+                JOptionPane.showMessageDialog(vista, 
+                    "Error en la navegación. Intente nuevamente.", 
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE);
+            }
+            
+        } catch (Exception e) {
+            System.err.println("[ERROR] Excepción al abrir evaluación U3: " + e.getMessage());
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(vista, 
+                "<html><body style='width: 300px; text-align: center;'>" +
+                "<h3>❌ Error inesperado</h3>" +
+                "<p>Ocurrió un error al abrir la evaluación.</p>" +
+                "<p><b>Detalles:</b> " + e.getMessage() + "</p>" +
+                "<p>Por favor, intente nuevamente o contacte al administrador.</p>" +
+                "</body></html>", 
+                "Error", 
+                JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     private void reiniciarProgresoUnidad3() {
