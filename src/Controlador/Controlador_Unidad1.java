@@ -200,7 +200,7 @@ public class Controlador_Unidad1 {
                 + "</ol>"
                 + "<div style='background-color: #E8F5E8; padding: 12px; border-radius: 8px; margin-top: 15px;'>"
                 + "<p style='font-size: 13px; margin: 0; color: #1E6B3E;'>"
-                + "<b>⚠️ Importante:</b> Debes completar cada paso en orden para desbloquear el siguiente. "
+                + "<b>⚠ Importante:</b> Debes completar cada paso en orden para desbloquear el siguiente. "
                 + "Solo cuando completes toda la unidad (100%) podrás avanzar a la Unidad 2.</p>"
                 + "</div>"
                 + "<p style='text-align: center; margin-top: 15px; font-size: 14px; color: #2E8B57;'>"
