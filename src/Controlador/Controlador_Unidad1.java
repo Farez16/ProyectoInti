@@ -322,18 +322,32 @@ public class Controlador_Unidad1 {
         controladorDashboard.getVista().mostrarVista(vistaActividad);
     }
 
-    private void abrirActividad2() {
-        int idActividad = 2;
-        Vista_Actividad2U1 vistaActividad = new Vista_Actividad2U1();
-        Controlador_Actividades controladorAct = new Controlador_Actividades(vistaActividad, controladorDashboard, conn, correo, idActividad, this); // <-- PASA "this"
-        controladorAct.cargarActividad();
-        controladorDashboard.getVista().mostrarVista(vistaActividad);
-    }
+  private void abrirActividad2() {
+    int idActividad = 112; // Cambia 2 por un ID válido (ej. 112)
+    Vista_Actividad2U1 vistaActividad = new Vista_Actividad2U1();
+    Controlador_Actividades controladorAct = new Controlador_Actividades(
+        vistaActividad, 
+        controladorDashboard, 
+        conn, 
+        correo, 
+        idActividad, 
+        this
+    );
+    controladorAct.cargarActividad();
+    controladorDashboard.getVista().mostrarVista(vistaActividad);
+}
 
- private void abrirActividad3() {
-    int idActividad = 3;
+private void abrirActividad3() {
+    int idActividad = 113; // Cambia 3 por un ID válido (ej. 113)
     Vista_Actividad3U1 vistaActividad = new Vista_Actividad3U1();
-    Controlador_Actv3U1 controladorAct3 = new Controlador_Actv3U1(vistaActividad, controladorDashboard, conn, correo, idActividad, this);
+    Controlador_Actv3U1 controladorAct3 = new Controlador_Actv3U1(
+        vistaActividad, 
+        controladorDashboard, 
+        conn, 
+        correo, 
+        idActividad, 
+        this
+    );
     controladorAct3.cargarActividad();
     controladorDashboard.getVista().mostrarVista(vistaActividad);
 }
