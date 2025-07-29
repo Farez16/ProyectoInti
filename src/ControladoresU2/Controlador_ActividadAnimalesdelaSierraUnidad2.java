@@ -1,9 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package Controlador;
+package ControladoresU2;
 
+import Controlador.ControladorDashboard;
+import Controlador.Controlador_Unidades;
+import ControladoresU2.ControladorUnidad2;
 import Modelo.Modelo_AnimacionTextoUnidad2;
 import Modelo.Modelo_AnimalesUnidad2;
 import Modelo.Modelo_ProgresoUnidad2;
@@ -15,6 +14,7 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
+import java.sql.Connection;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,6 +29,9 @@ public class Controlador_ActividadAnimalesdelaSierraUnidad2 {
     private final Vista_AnimalesdelaSierrainformacion2Unidad2 vistaInfo;
     private final Vista_ActividadAnimalesdelaSierraUnidad2 vistaActividad;
     private final Map<JLabel, Modelo_AnimalesUnidad2.Animal> asignaciones = new HashMap<>();
+    private final Connection conexion;
+    private final ControladorDashboard controladorDashboard;
+    private final Controlador_Unidades controladorUnidades;
     private JButton botonSeleccionado = null;
 
     // Rutas corregidas para imágenes
@@ -37,8 +40,13 @@ public class Controlador_ActividadAnimalesdelaSierraUnidad2 {
     private static final String RUTA_IMAGENES = RUTA_BASE_PROYECTO + DIRECTORIO_IMAGENES;
     private static final String IMAGEN_DEFAULT = "default.png";
 
-    public Controlador_ActividadAnimalesdelaSierraUnidad2(Dashboard dashboard, boolean ignorar) {
+    public Controlador_ActividadAnimalesdelaSierraUnidad2(Dashboard dashboard, boolean ignorar, 
+            Connection conexion, ControladorDashboard controladorDashboard,
+            Controlador_Unidades controladorUnidades) {
         this.dashboard = dashboard;
+        this.conexion = conexion;
+        this.controladorDashboard = controladorDashboard;
+        this.controladorUnidades = controladorUnidades;
         this.vistaIntro = new Vista_AnimalesdelaSierraUnidad2();
         this.vistaInfo = new Vista_AnimalesdelaSierrainformacion2Unidad2();
         this.vistaActividad = new Vista_ActividadAnimalesdelaSierraUnidad2();
@@ -46,19 +54,39 @@ public class Controlador_ActividadAnimalesdelaSierraUnidad2 {
         iniciarAnimacionEntrada();
         dashboard.mostrarVista(vistaIntro);
 
+        configurarEventos();
+        configurarActividad();
+    }
+
+    private void configurarEventos() {
         vistaIntro.getjButton1().addActionListener(e -> dashboard.mostrarVista(vistaInfo));
         vistaInfo.getjButton1Continuar().addActionListener(e -> dashboard.mostrarVista(vistaActividad));
         vistaActividad.getjButton1ComprobarAudios().addActionListener(e -> verificarRespuestas());
+        
         vistaActividad.getjButton1CONTINUAR().addActionListener(e -> {
-            JOptionPane.showMessageDialog(dashboard, "¡Actividad completada con éxito!");
-            Modelo_ProgresoUnidad2.incrementarProgreso(dashboard.getCorreoUsuario(), 20);
-            Vista_Unidad2 panelUnidad2 = new Vista_Unidad2();
-            ControladorUnidad2 controladorUnidad2 = new ControladorUnidad2(panelUnidad2, dashboard);
-            dashboard.mostrarVista(panelUnidad2);
- 
+            try {
+                // Marcar actividad como completada
+                Modelo_ProgresoUnidad2.incrementarProgreso(dashboard.getCorreoUsuario(), 20);
+                
+                // Crear y mostrar la vista de la unidad 2
+                Vista_Unidad2 vistaUnidad2 = new Vista_Unidad2();
+                new ControladorUnidad2(
+                    vistaUnidad2,
+                    conexion,
+                    controladorDashboard,
+                    dashboard.getCorreoUsuario(),
+                    controladorUnidades
+                );
+                
+                dashboard.mostrarVista(vistaUnidad2);
+                JOptionPane.showMessageDialog(dashboard, "¡Actividad completada con éxito!");
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(dashboard, 
+                    "Error al completar la actividad: " + ex.getMessage(),
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            }
         });
-
-        configurarActividad();
     }
 
     private void iniciarAnimacionEntrada() {
@@ -90,7 +118,7 @@ public class Controlador_ActividadAnimalesdelaSierraUnidad2 {
         seleccionados.addAll(animalesSilv.subList(0, Math.min(3, animalesSilv.size())));
         Collections.shuffle(seleccionados);
 
-        // Labels
+        // Configuración de labels y botones
         List<JLabel> labels = Arrays.asList(
             vistaActividad.getjLabel1animalesdomesticosimagen1(),
             vistaActividad.getjLabel1animalesdomesticosimagen3(),
@@ -100,7 +128,6 @@ public class Controlador_ActividadAnimalesdelaSierraUnidad2 {
             vistaActividad.getjLabel1animalessilvestres6()
         );
 
-        // Botones funcionales
         List<JButton> botones = Arrays.asList(
             vistaActividad.getjButton1animaldomestico1(),
             vistaActividad.getjButton1animaldomestico2(),
@@ -110,60 +137,64 @@ public class Controlador_ActividadAnimalesdelaSierraUnidad2 {
             vistaActividad.getjButton1animaldomestico6()
         );
 
-        // Desactivar botones sobrantes
+        // Desactivar botones no utilizados
         vistaActividad.getjButton1animaldomestico7().setEnabled(false);
         vistaActividad.getjButton1animalessilvestres1().setEnabled(false);
         vistaActividad.getjButton1animalessilvestres2().setEnabled(false);
         vistaActividad.getjButton1animalessilvestres3().setEnabled(false);
 
+        // Configurar cada par label-botón
         for (int i = 0; i < 6; i++) {
             Modelo_AnimalesUnidad2.Animal animal = seleccionados.get(i);
             JLabel label = labels.get(i);
             JButton boton = botones.get(i);
 
-            // Construir ruta de imagen
-            String rutaCompleta = RUTA_IMAGENES + animal.rutaImagen;
-            File archivo = new File(rutaCompleta);
-            
-            ImageIcon icon;
-            if (archivo.exists()) {
-                icon = new ImageIcon(rutaCompleta);
-            } else {
-                // Usar imagen por defecto si no se encuentra
-                String rutaDefault = RUTA_IMAGENES + IMAGEN_DEFAULT;
-                System.err.println("⚠️ Imagen no encontrada: " + rutaCompleta);
-                System.err.println("   Usando imagen por defecto: " + rutaDefault);
-                icon = new ImageIcon(rutaDefault);
-            }
-            
-            // Escalar imagen
-            Image img = icon.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
-            label.setIcon(new ImageIcon(img));
-            label.setText("");
-
-            label.setName(animal.nombreEsp);
-            asignaciones.put(label, animal);
-
-            boton.setText(animal.nombreKichwa);
-            boton.setEnabled(true);
-
-            boton.addActionListener(e -> botonSeleccionado = boton);
-
-            label.setBorder(BorderFactory.createEmptyBorder());
-            label.addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseClicked(MouseEvent e) {
-                    if (botonSeleccionado != null) {
-                        if (botonSeleccionado.getText().equalsIgnoreCase(animal.nombreKichwa)) {
-                            label.setBorder(BorderFactory.createLineBorder(Color.GREEN, 3));
-                        } else {
-                            label.setBorder(BorderFactory.createLineBorder(Color.RED, 3));
-                        }
-                        botonSeleccionado = null;
-                    }
-                }
-            });
+            configurarImagenAnimal(label, animal);
+            configurarBotonAnimal(boton, animal, label);
         }
+    }
+
+    private void configurarImagenAnimal(JLabel label, Modelo_AnimalesUnidad2.Animal animal) {
+        String rutaCompleta = RUTA_IMAGENES + animal.rutaImagen;
+        File archivo = new File(rutaCompleta);
+        
+        ImageIcon icon;
+        if (archivo.exists()) {
+            icon = new ImageIcon(rutaCompleta);
+        } else {
+            String rutaDefault = RUTA_IMAGENES + IMAGEN_DEFAULT;
+            System.err.println("⚠️ Imagen no encontrada: " + rutaCompleta);
+            System.err.println("   Usando imagen por defecto: " + rutaDefault);
+            icon = new ImageIcon(rutaDefault);
+        }
+        
+        Image img = icon.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
+        label.setIcon(new ImageIcon(img));
+        label.setText("");
+        label.setName(animal.nombreEsp);
+        asignaciones.put(label, animal);
+    }
+
+    private void configurarBotonAnimal(JButton boton, Modelo_AnimalesUnidad2.Animal animal, JLabel label) {
+        boton.setText(animal.nombreKichwa);
+        boton.setEnabled(true);
+
+        boton.addActionListener(e -> botonSeleccionado = boton);
+
+        label.setBorder(BorderFactory.createEmptyBorder());
+        label.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (botonSeleccionado != null) {
+                    if (botonSeleccionado.getText().equalsIgnoreCase(animal.nombreKichwa)) {
+                        label.setBorder(BorderFactory.createLineBorder(Color.GREEN, 3));
+                    } else {
+                        label.setBorder(BorderFactory.createLineBorder(Color.RED, 3));
+                    }
+                    botonSeleccionado = null;
+                }
+            }
+        });
     }
 
     private void verificarRespuestas() {

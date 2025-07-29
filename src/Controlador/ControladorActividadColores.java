@@ -162,14 +162,9 @@ public class ControladorActividadColores {
 }
 
     private void navegarAUnidad4() {
-        Vista_Unidad4 vistaUnidad4 = new Vista_Unidad4();
-        new Controlador_Unidad4(
-            vistaUnidad4,
-            connection,
-            controladorDashboard,
-            correoUsuario,
-            null
-        );
-        dashboard.mostrarVista(vistaUnidad4);
+        // Regresar al panel de unidades para que se actualice la vista existente
+        // Esto permite que el controlador de unidades actualice el progreso automáticamente
+        System.out.println("[ControladorActividadColores] Navegando de vuelta al panel de unidades tras completar actividad");
+        dashboard.mostrarVista(controladorDashboard.getPanelUnidades());
     }
 }

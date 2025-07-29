@@ -133,6 +133,11 @@ public class Vista_Unidad4 extends javax.swing.JPanel {
         jButtonVestimenta.setMaximumSize(new java.awt.Dimension(150, 200));
         jButtonVestimenta.setMinimumSize(new java.awt.Dimension(150, 200));
         jButtonVestimenta.setPreferredSize(new java.awt.Dimension(150, 200));
+        jButtonVestimenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVestimentaActionPerformed(evt);
+            }
+        });
         add(jButtonVestimenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, -1, 200));
 
         jButtonActVestimenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesUnidad1/ACTIVIDAD2 .png"))); // NOI18N
@@ -188,6 +193,10 @@ public class Vista_Unidad4 extends javax.swing.JPanel {
     private void jButtonFamiliaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFamiliaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonFamiliaActionPerformed
+
+    private void jButtonVestimentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVestimentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonVestimentaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

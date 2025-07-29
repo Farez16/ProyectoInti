@@ -68,7 +68,7 @@ public class Controlador_Unidad4 {
         vista.jButtonFamilia.setEnabled(true); // Siempre disponible
         vista.jButtonActFamilia.setEnabled(progreso.getLeccionesCompletadas() >= 1);
         vista.jButtonVestimenta.setEnabled(progreso.getActividadesCompletadas() >= 1);
-        vista.jButtonActVestimenta.setEnabled(progreso.getLeccionesCompletadas() == 2);
+        vista.jButtonActVestimenta.setEnabled(progreso.getLeccionesCompletadas() >= 2 && progreso.getActividadesCompletadas() >= 1);
         vista.jButtonEvaluacion.setEnabled(progreso.getActividadesCompletadas() >= 2 && progreso.getLeccionesCompletadas() >=2);
         vista.jButtonFINALIZARUNIDAD1.setEnabled(progreso.isEvaluacionAprobada());
     }
@@ -91,9 +91,9 @@ public class Controlador_Unidad4 {
     }
 
    private int calcularProgreso(int lecciones, int actividades, boolean evaluacion) {
-        // Usar la clase centralizada CalculadorProgreso para consistencia
-        return CalculadorProgreso.calcularProgreso(lecciones, actividades, evaluacion);
-    }
+     // Usar la lógica específica para Unidad 4 (2 lecciones + 2 actividades + evaluación)
+     return CalculadorProgreso.calcularProgresoUnidad4(lecciones, actividades, evaluacion);
+ }
 
     private void abrirLeccionFamilia() {
         Vista_Leccion_Colores vistaLeccionColores = new Vista_Leccion_Colores();
@@ -144,9 +144,90 @@ public class Controlador_Unidad4 {
     }
 
     private void abrirEvaluacion() {
-        Vista_EvaluacionU4 vistaEvaluacion = new Vista_EvaluacionU4();
-        new Controlador_EvaluacionU4(vistaEvaluacion, controladorDashboard, conn, correo, controladorUnidades);
-        dashboard.mostrarVista(vistaEvaluacion);
+        try {
+            System.out.println("[DEBUG] Iniciando apertura de evaluación Unidad 4");
+            
+            // Verificar que el botón esté habilitado
+            if (!vista.jButtonEvaluacion.isEnabled()) {
+                System.err.println("[ERROR] El botón de evaluación no está habilitado");
+                JOptionPane.showMessageDialog(vista, 
+                    "<html><body style='width: 300px; text-align: center;'>" +
+                    "<h3>🚫 Evaluación no disponible</h3>" +
+                    "<p>Debes completar todas las lecciones y actividades antes de acceder a la evaluación.</p>" +
+                    "</body></html>", 
+                    "Acceso denegado", 
+                    JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            
+            // Verificar progreso del usuario
+            Modelo_Progreso_Usuario progreso = Modelo_Progreso_Usuario.obtenerProgreso(idUsuario, ID_UNIDAD);
+            if (progreso == null) {
+                System.err.println("[ERROR] No se pudo obtener el progreso del usuario");
+                JOptionPane.showMessageDialog(vista, 
+                    "Error al verificar el progreso. Intente nuevamente.", 
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+            System.out.println("[DEBUG] Progreso verificado - Lecciones: " + progreso.getLeccionesCompletadas() + 
+                             ", Actividades: " + progreso.getActividadesCompletadas());
+            
+            // Crear la vista de evaluación
+            System.out.println("[DEBUG] Creando vista de evaluación U4");
+            Vista_EvaluacionU4 vistaEvaluacion = new Vista_EvaluacionU4();
+            
+            if (vistaEvaluacion == null) {
+                System.err.println("[ERROR] No se pudo crear la vista de evaluación");
+                JOptionPane.showMessageDialog(vista, 
+                    "Error al cargar la evaluación. Intente nuevamente.", 
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+            // Crear el controlador de evaluación
+            System.out.println("[DEBUG] Creando controlador de evaluación U4");
+            Controlador_EvaluacionU4 controladorEvaluacion = new Controlador_EvaluacionU4(
+                vistaEvaluacion, controladorDashboard, conn, correo, controladorUnidades
+            );
+            
+            if (controladorEvaluacion == null) {
+                System.err.println("[ERROR] No se pudo crear el controlador de evaluación");
+                JOptionPane.showMessageDialog(vista, 
+                    "Error al inicializar la evaluación. Intente nuevamente.", 
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+            // Mostrar la vista en el dashboard
+            System.out.println("[DEBUG] Mostrando vista de evaluación en dashboard");
+            if (dashboard != null) {
+                dashboard.mostrarVista(vistaEvaluacion);
+                System.out.println("[DEBUG] Evaluación U4 abierta exitosamente");
+            } else {
+                System.err.println("[ERROR] Dashboard es null, no se puede mostrar la vista");
+                JOptionPane.showMessageDialog(vista, 
+                    "Error en la navegación. Intente nuevamente.", 
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE);
+            }
+            
+        } catch (Exception e) {
+            System.err.println("[ERROR] Excepción al abrir evaluación U4: " + e.getMessage());
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(vista, 
+                "<html><body style='width: 300px; text-align: center;'>" +
+                "<h3>❌ Error inesperado</h3>" +
+                "<p>Ocurrió un error al abrir la evaluación.</p>" +
+                "<p><b>Detalles:</b> " + e.getMessage() + "</p>" +
+                "<p>Por favor, intente nuevamente o contacte al administrador.</p>" +
+                "</body></html>", 
+                "Error", 
+                JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     private void reiniciarProgresoUnidad4() {
@@ -179,13 +260,50 @@ public class Controlador_Unidad4 {
     public void actualizarVista() {
         Modelo_Progreso_Usuario progreso = Modelo_Progreso_Usuario.obtenerProgreso(idUsuario, ID_UNIDAD);
         if (progreso != null) {
-            // Habilitar botones según progreso
-            vista.jButtonFamilia.setEnabled(true); // Siempre disponible
-            vista.jButtonActFamilia.setEnabled(progreso.getLeccionesCompletadas() >= 1);
-            vista.jButtonVestimenta.setEnabled(progreso.getActividadesCompletadas() >= 1);
-            vista.jButtonActVestimenta.setEnabled(progreso.getLeccionesCompletadas() >= 1);
-            vista.jButtonEvaluacion.setEnabled(progreso.getActividadesCompletadas() >= 2);
-            vista.jButtonFINALIZARUNIDAD1.setEnabled(progreso.isEvaluacionAprobada());
+            // Habilitar botones según progreso - LÓGICA SECUENCIAL UNIFICADA CON inicializarVista()
+            int leccionesCompletadas = progreso.getLeccionesCompletadas();
+            int actividadesCompletadas = progreso.getActividadesCompletadas();
+            boolean evaluacionAprobada = progreso.isEvaluacionAprobada();
+            
+            // Inicialmente deshabilitamos todos los botones
+            vista.jButtonFamilia.setEnabled(false);
+            vista.jButtonActFamilia.setEnabled(false);
+            vista.jButtonVestimenta.setEnabled(false);
+            vista.jButtonActVestimenta.setEnabled(false);
+            vista.jButtonEvaluacion.setEnabled(false);
+            vista.jButtonFINALIZARUNIDAD1.setEnabled(false);
+            
+            // Paso 1: Lección Familia (Colores) - Siempre disponible
+            vista.jButtonFamilia.setEnabled(true);
+            
+            // Paso 2: Actividad Familia - Requiere Lección Familia completada
+            if (leccionesCompletadas >= 1) {
+                vista.jButtonActFamilia.setEnabled(true);
+            }
+            
+            // Paso 3: Lección Vestimenta (Partes del Cuerpo) - Requiere Actividad Familia completada
+            if (actividadesCompletadas >= 1) {
+                vista.jButtonVestimenta.setEnabled(true);
+            }
+            
+            // Paso 4: Actividad Vestimenta - Requiere Lección Vestimenta completada
+            if (leccionesCompletadas >= 2) {
+                vista.jButtonActVestimenta.setEnabled(true);
+            }
+            
+            // Paso 5: Evaluación - Requiere Actividad Vestimenta completada
+            if (actividadesCompletadas >= 2) {
+                vista.jButtonEvaluacion.setEnabled(true);
+            }
+            
+            // Paso 6: Finalizar Unidad - Requiere Evaluación aprobada
+            if (evaluacionAprobada) {
+                vista.jButtonFINALIZARUNIDAD1.setEnabled(true);
+            }
+            
+            // Logging para debugging en actualización
+            System.out.println("[Unidad4-Update] Progreso actualizado - Lecciones: " + leccionesCompletadas + ", Actividades: " + actividadesCompletadas + ", Evaluación: " + evaluacionAprobada);
+            System.out.println("[Unidad4-Update] Botones actualizados según flujo secuencial");
             
             int progresoTotal = calcularProgreso(
                 progreso.getLeccionesCompletadas(),

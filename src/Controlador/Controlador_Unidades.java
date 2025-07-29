@@ -1,5 +1,6 @@
 package Controlador;
 
+import ControladoresU2.ControladorUnidad2;
 import Vista.Estudiante.Vista_PanelUnidades;
 import Vista.Estudiante.Dashboard;
 import Vista.Vistas_Unidad1.Vista_Unidad1;
@@ -236,39 +237,104 @@ public class Controlador_Unidades {
 
     private void abrirUnidad1() {
         try {
+            System.out.println("[DEBUG] Iniciando apertura de Unidad 1");
+            
+            // 1. Crear la vista de la Unidad 1
             Vista_Unidad1 unidad1 = new Vista_Unidad1();
+            if (unidad1 == null) {
+                throw new RuntimeException("No se pudo crear la vista de la Unidad 1");
+            }
+            
+            // 2. Obtener la conexión
             Connection conn = (Connection) controladorDashboard.getConnection();
-
-            dashboard.mostrarVista(unidad1);
-            unidad1.revalidate();
-            unidad1.repaint();
-
-            new Controlador_Unidad1(
+            if (conn == null) {
+                throw new RuntimeException("No se pudo obtener la conexión a la base de datos");
+            }
+            
+            System.out.println("[DEBUG] Vista y conexión creadas exitosamente");
+            
+            // 3. IMPORTANTE: Crear el controlador ANTES de mostrar la vista
+            // Esto asegura que la vista esté completamente inicializada
+            Controlador_Unidad1 controlador = new Controlador_Unidad1(
                     unidad1,
                     conn,
                     controladorDashboard,
                     correo,
                     this
             );
-        } catch (Exception e) {
-            System.err.println("Error al abrir unidad 1: " + e.getMessage());
-            mostrarError("Error al abrir la unidad 1. Por favor, intenta de nuevo.");
+            
+            if (controlador == null) {
+                throw new RuntimeException("No se pudo crear el controlador de la Unidad 1");
+            }
+            
+            System.out.println("[DEBUG] Controlador creado exitosamente");
+            
+            // 4. Ahora mostrar la vista ya inicializada
             if (dashboard != null) {
-                dashboard.mostrarVista(dashboard);
+                dashboard.mostrarVista(unidad1);
+                System.out.println("[DEBUG] Vista mostrada en dashboard");
+                
+                // 5. Forzar actualización de la interfaz
+                unidad1.revalidate();
+                unidad1.repaint();
+                
+                System.out.println("[DEBUG] Unidad 1 abierta exitosamente");
+            } else {
+                throw new RuntimeException("Dashboard es null, no se puede mostrar la vista");
+            }
+            
+        } catch (Exception e) {
+            System.err.println("[ERROR] Error al abrir unidad 1: " + e.getMessage());
+            e.printStackTrace();
+            mostrarError("Error al abrir la unidad 1. Por favor, intenta de nuevo.\nDetalles: " + e.getMessage());
+            
+            // Intentar regresar al dashboard principal en caso de error
+            if (dashboard != null) {
+                try {
+                    dashboard.mostrarVista(controladorDashboard.getPanelUnidades());
+                } catch (Exception ex) {
+                    System.err.println("[ERROR] No se pudo regresar al panel de unidades: " + ex.getMessage());
+                }
             }
         }
     }
 
-    private void abrirUnidad2() {
-        try {
-            Vista_Unidad2 unidad2 = new Vista_Unidad2();
-            new ControladorUnidad2(unidad2, dashboard);
-            dashboard.mostrarVista(unidad2);
-        } catch (Exception e) {
-            System.err.println("Error al abrir unidad 2: " + e.getMessage());
-            mostrarError("Error al abrir la unidad 2. Por favor, intenta de nuevo.");
+private void abrirUnidad2() {
+    try {
+        Vista_Unidad2 unidad2 = new Vista_Unidad2();
+        Connection conn = (Connection) controladorDashboard.getConnection();
+
+        // Crear controlador y pasar referencias
+        ControladorUnidad2 controladorUnidad2 = new ControladorUnidad2(
+            unidad2,
+            conn,
+            controladorDashboard,
+            correo,
+            this
+        );
+
+        // Calcular y enviar el progreso
+        List<Modelo_Unidades> unidades = Modelo_Unidades.obtenerUnidadesConProgreso(correo);
+        for (Modelo_Unidades unidad : unidades) {
+            if (unidad.getIdUnidad() == 2) {
+                int progreso = CalculadorProgreso.calcularProgreso(
+                    unidad.getProgresoLecciones(),
+                    unidad.getProgresoActividades(),
+                    unidad.isEvaluacionAprobada()
+                );
+                controladorUnidad2.actualizarBarraProgresoUnidad(progreso);
+                break;
+            }
         }
+
+        dashboard.mostrarVista(unidad2);
+    } catch (Exception e) {
+        System.err.println("Error al abrir unidad 2: " + e.getMessage());
+        mostrarError("Error al abrir la unidad 2. Por favor, intenta de nuevo.");
     }
+}
+
+
 
     private void abrirUnidad3() {
         try {
@@ -513,4 +579,38 @@ public class Controlador_Unidades {
             System.err.println("Error en sincronización completa: " + e.getMessage());
         }
     }
+    // En la clase Controlador_Unidades
+public void marcarUnidadComoCompletada(int idUnidad) {
+    try {
+        // 1. Actualizar en la base de datos
+        Modelo_Unidades.marcarUnidadComoCompletada(idUnidad, this.correo);
+        
+        // 2. Actualizar la barra de progreso al 100%
+        JProgressBar barraProgreso = obtenerJProgressProgreso(idUnidad);
+        if (barraProgreso != null) {
+            barraProgreso.setValue(100);
+            barraProgreso.setString("100%");
+            barraProgreso.setForeground(Color.GREEN);
+        }
+        
+        // 3. Habilitar la siguiente unidad si existe
+        if (idUnidad < TOTAL_UNIDADES) {
+            unidadesDisponibles[idUnidad + 1] = true;
+            JButton btnSiguienteUnidad = obtenerBotonUnidad(idUnidad + 1);
+            if (btnSiguienteUnidad != null) {
+                btnSiguienteUnidad.setEnabled(true);
+                btnSiguienteUnidad.setForeground(new Color(0, 153, 51)); // Verde oscuro
+            }
+        }
+        
+        // 4. Actualizar progreso general
+        int progresoGeneral = obtenerProgresoGeneral();
+        actualizarProgresoGeneral(progresoGeneral);
+        
+        System.out.println("Unidad " + idUnidad + " marcada como completada para " + this.correo);
+    } catch (Exception e) {
+        System.err.println("Error al marcar unidad como completada: " + e.getMessage());
+        mostrarError("Error al guardar el progreso. Intente nuevamente.");
+    }
+}
 }

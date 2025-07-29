@@ -64,17 +64,11 @@ public class Vista_Unidad2 extends javax.swing.JPanel {
     public JProgressBar getjProgressBarUNIDAD1() {
         return jProgressBarUNIDAD2;
     }
-    // Actualizar progreso al cargar la vista
-    public void actualizarProgreso(int porcentaje) {
-    jProgressBarUNIDAD2.setValue(porcentaje);
-    jProgressBarUNIDAD2.setString(porcentaje + "%");
-    
-    // Actualizar estado de botones
-    jButtonOperaciones.setEnabled(porcentaje >= 20);
-    jButtonAnimales.setEnabled(porcentaje >= 40);
-    jButtonMorfemas.setEnabled(porcentaje >= 60);
-    jButtonEvaluacion.setEnabled(porcentaje >= 80);
+
+    public JProgressBar getjProgressBarUNIDAD2() {
+        return jProgressBarUNIDAD2;
     }
+    
     
 
     /**

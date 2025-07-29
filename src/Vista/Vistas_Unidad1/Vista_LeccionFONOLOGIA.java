@@ -81,7 +81,7 @@ private String rutaAudio;
         jButtonCompletarLeccionFonologia.setBackground(new java.awt.Color(255, 153, 51));
         jButtonCompletarLeccionFonologia.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButtonCompletarLeccionFonologia.setText("COMPLETAR");
-        jPanelPag1F.add(jButtonCompletarLeccionFonologia, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 600, 160, 50));
+        jPanelPag1F.add(jButtonCompletarLeccionFonologia, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 600, 240, 50));
         jPanelPag1F.add(jSliderTiempoVideo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 560, 990, -1));
 
         jLabelTiempoVP.setText("jLabel2");

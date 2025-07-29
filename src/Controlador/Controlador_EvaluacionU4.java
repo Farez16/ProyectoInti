@@ -8,7 +8,6 @@ import Modelo.Modelo_Evaluaciones;
 import Modelo.Modelo_Progreso_Usuario;
 import Modelo.Usuario;
 import VistasUnidad4.Vista_EvaluacionU4;
-import VistasUnidad4.Vista_Unidad4;
 import java.awt.Image;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
@@ -90,7 +89,7 @@ public class Controlador_EvaluacionU4 {
         int idUsuario = Usuario.obtenerIdPorCorreo(correo);
         Modelo_Progreso_Usuario progreso = Modelo_Progreso_Usuario.obtenerProgreso(idUsuario, idUnidad);
         
-        // Para Unidad 4: requiere 2 lecciones y 2 actividades completadas (ajustar según la estructura real)
+        // Para Unidad 4: requiere 2 lecciones y 2 actividades completadas
         int leccionesRequeridas = 2;
         int actividadesRequeridas = 2;
         
@@ -139,7 +138,7 @@ public class Controlador_EvaluacionU4 {
      */
     private void mostrarPreguntaActual() {
         if (indicePreguntaActual >= preguntas.size()) {
-            finalizarEvaluacion();
+            mostrarResultadosFinales();
             return;
         }
 
@@ -288,7 +287,10 @@ public class Controlador_EvaluacionU4 {
         System.out.println("📊 Evaluación completada - Respuestas correctas: " + respuestasCorrectas + "/" + preguntas.size() + " (" + String.format("%.1f", porcentaje) + "%)");
 
         if (respuestasCorrectas >= minimoAprobacion) {
-            // Evaluación aprobada
+            // Evaluación aprobada - Actualizar progreso primero
+            actualizarProgresoUsuario(true);
+            
+            // Mostrar mensaje de éxito
             JOptionPane.showMessageDialog(vista, 
                 "<html><body style='width: 350px;'>" +
                 "<h2>🎉 ¡Felicidades!</h2>" +
@@ -300,11 +302,13 @@ public class Controlador_EvaluacionU4 {
                 "<li>Porcentaje: <strong>" + String.format("%.1f", porcentaje) + "%</strong></li>" +
                 "</ul>" +
                 "<p>🏆 Has completado exitosamente el aprendizaje sobre <strong>Colores y Cuerpo Humano en Kichwa</strong>.</p>" +
+                "<p>✅ <strong>Ahora puedes hacer clic en 'Finalizar' para regresar a la unidad.</strong></p>" +
                 "</body></html>",
                 "Evaluación Aprobada", 
                 JOptionPane.INFORMATION_MESSAGE);
-
-            actualizarProgresoUsuario(true);
+            
+            // NO ejecutar ninguna acción automática - dejar que el usuario haga clic en Finalizar
+            System.out.println("✅ Evaluación aprobada - Esperando que el usuario haga clic en Finalizar");
         } else {
             // Evaluación no aprobada
             JOptionPane.showMessageDialog(vista, 
@@ -374,8 +378,9 @@ public class Controlador_EvaluacionU4 {
      * Navega de regreso a la vista de Unidad 4
      */
     private void irAUnidad4() {
-        Vista_Unidad4 vistaUnidad4 = new Vista_Unidad4();
-        new Controlador_Unidad4(vistaUnidad4, conn, controladorDashboard, correo, controladorUnidades);
-        controladorDashboard.getVista().mostrarVista(vistaUnidad4);
+        // Regresar al panel de unidades para que se actualice la vista existente
+        // Esto permite que el controlador de unidades actualice el progreso automáticamente
+        System.out.println("[Controlador_EvaluacionU4] Navegando de vuelta al panel de unidades tras finalizar evaluación");
+        controladorDashboard.getVista().mostrarVista(controladorDashboard.getPanelUnidades());
     }
 }

@@ -279,5 +279,17 @@ public class Modelo_Progreso_Usuario {
             System.err.println("Error al crear progreso: " + e.getMessage());
             return false;
         }
+ 
     }
+    public static void incrementarLecciones(int idUsuario, int idUnidad) throws SQLException {
+    // Implementación para incrementar lecciones
+}
+
+public static void incrementarActividades(int idUsuario, int idUnidad) throws SQLException {
+    // Implementación para incrementar actividades
+}
+
+public static void marcarEvaluacionAprobada(int idUsuario, int idUnidad, int calificacion) throws SQLException {
+    // Implementación para marcar evaluación como aprobada
+}
 }

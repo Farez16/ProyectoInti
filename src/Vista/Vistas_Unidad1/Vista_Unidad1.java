@@ -63,7 +63,8 @@ public class Vista_Unidad1 extends javax.swing.JPanel {
         jProgressBarUNIDAD1.setValue(80);
         jProgressBarUNIDAD1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jProgressBarUNIDAD1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jProgressBarUNIDAD1.setDebugGraphicsOptions(javax.swing.DebugGraphics.LOG_OPTION);
+        // CORREGIDO: Eliminada línea setDebugGraphicsOptions que causaba ClassCastException con FlatLaf
+        // jProgressBarUNIDAD1.setDebugGraphicsOptions(javax.swing.DebugGraphics.LOG_OPTION);
         jProgressBarUNIDAD1.setFocusCycleRoot(true);
         jProgressBarUNIDAD1.setFocusTraversalPolicyProvider(true);
         jProgressBarUNIDAD1.setStringPainted(true);
