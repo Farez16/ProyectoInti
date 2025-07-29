@@ -1,17 +1,12 @@
 package Controlador;
 
 import Modelo.Modelo_Actividades;
-import Modelo.Modelo_DragDrop;
-import Modelo.Modelo_Emparejar;
 import Modelo.Modelo_Progreso_Usuario;
 import Modelo.Usuario;
 import Vista.Vistas_Unidad1.Vista_Actividad2U1;
 import Vista.Vistas_Unidad1.Vista_Unidad1;
 import java.awt.CardLayout;
 import java.sql.Connection;
-import java.util.List;
-import java.util.Set;
-import java.util.HashSet;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 import javax.swing.SwingUtilities;
@@ -40,9 +35,7 @@ public class Controlador_Actividades {
     private Modelo_Actividades actividad;
     private final Controlador_Unidad1 controladorUnidad1;
 
-    // Datos de las actividades
-    private List<Modelo_DragDrop.DragDropItem> itemsDragDrop;
-    private List<Modelo_Emparejar.EmparejarItem> itemsEmparejar;
+    // Datos de las actividades (ahora usando datos hardcodeados)
 
     // Estados de completación
     private boolean dragDropCompletado = false;
@@ -223,140 +216,198 @@ public class Controlador_Actividades {
 
     private void cargarDatosDragDrop(Vista_Actividad2U1 act2) {
         try {
-            Modelo_DragDrop modeloDragDrop = new Modelo_DragDrop(conn);
-            // Aquí llamamos al método que extrae ítems entre 124 y 131:
-            itemsDragDrop = modeloDragDrop.obtenerItemsPorRangoActividad(124, 131);
-
-            if (itemsDragDrop != null && itemsDragDrop.size() >= 3) {
-                act2.jLabelDragDropOpcionA.setText(itemsDragDrop.get(0).texto);
-                act2.jLabelDragDropOpcionB.setText(itemsDragDrop.get(1).texto);
-                act2.jLabelDragDropOpcionC.setText(itemsDragDrop.get(2).texto);
-
-                // Cargar la pregunta dinámicamente desde la base de datos
-                cargarPreguntaDragDrop(act2);
-
-                LOGGER.info("Datos de drag drop cargados correctamente");
-            } else {
-                act2.jLabelMensajeRespuesta.setText("No hay suficientes ítems de drag drop disponibles.");
-                LOGGER.warning("Insuficientes ítems de drag drop para la actividad " + idActividad);
-            }
-        } catch (Exception e) {
-            act2.jLabelMensajeRespuesta.setText("Error al cargar datos de drag drop.");
-            LOGGER.log(Level.SEVERE, "Error al cargar datos de drag drop", e);
-        }
-    }
-
-    /**
-     * Carga la pregunta para la actividad drag-drop dinámicamente desde la base
-     * de datos
-     */
- private void cargarPreguntaDragDrop(Vista_Actividad2U1 act2) {
-    try {
-        Modelo_DragDrop modeloDragDrop = new Modelo_DragDrop(conn);
-        String pregunta = modeloDragDrop.obtenerPreguntaPorId(idActividad);
-        if (pregunta != null && !pregunta.isEmpty()) {
-            act2.jLabelPreguntaDragDrop.setText(pregunta);
-        } else {
+            LOGGER.info("Iniciando carga de datos de drag & drop con saludos en kichwa ecuatoriano");
+            
+            // Configurar la pregunta en el label correspondiente
             act2.jLabelPreguntaDragDrop.setText("Arrastra la expresión correcta para 'Buenos días' en kichwa:");
+            
+            // Configurar las opciones de drag & drop con saludos en kichwa
+            act2.jLabelDragDropOpcionA.setText("Alli puncha");     // Buenos días (CORRECTO)
+            act2.jLabelDragDropOpcionB.setText("Alli chishi");     // Buenas tardes (distractor)
+            act2.jLabelDragDropOpcionC.setText("Alli tuta");       // Buenas noches (distractor)
+            
+            // Configurar el área de destino
+            act2.jLabelDestino.setText("Arrastra aquí la respuesta correcta");
+            
+            // Limpiar mensaje de respuesta
+            act2.jLabelMensajeRespuesta.setText("");
+            
+            LOGGER.info("Datos de drag & drop cargados correctamente con saludos hardcodeados");
+            LOGGER.info("Pregunta: Buenos días en kichwa. Respuesta correcta: Alli puncha");
+            
+        } catch (Exception e) {
+            String errorMsg = "Error al cargar datos de drag & drop: " + e.getMessage();
+            act2.jLabelMensajeRespuesta.setText("Error al cargar datos de drag & drop.");
+            LOGGER.log(Level.SEVERE, errorMsg, e);
         }
-    } catch (Exception e) {
-        act2.jLabelPreguntaDragDrop.setText("Arrastra la expresión correcta:");
-        LOGGER.log(Level.WARNING, "Error al cargar pregunta de drag-drop", e);
     }
-}
-
 
 
     private void validarDragDrop(Vista_Actividad2U1 act2) {
+        if (act2 == null) {
+            LOGGER.warning("La vista de actividad es nula en validarDragDrop");
+            return;
+        }
+        
+        LOGGER.info("Iniciando validación de drag & drop con datos hardcodeados");
+        
         String textoDestino = act2.jLabelDestino.getText().trim();
-
-        boolean esCorrecto = false;
-        for (Modelo_DragDrop.DragDropItem item : itemsDragDrop) {
-            if (item.texto.equals(textoDestino) && item.posicionDestino.equalsIgnoreCase("mañana")) {
-                esCorrecto = true;
-                break;
-            }
-        }
-
+        LOGGER.info(String.format("Texto en destino: '%s'", textoDestino));
+        
+        // Validar si la respuesta correcta fue arrastrada al destino
+        // La respuesta correcta para "Buenos días" en kichwa es "Alli puncha"
+        boolean esCorrecto = textoDestino.equals("Alli puncha");
+        
         if (esCorrecto) {
-            act2.jLabelMensajeRespuesta.setText("¡Correcto!");
             dragDropCompletado = true;
+            act2.jLabelMensajeRespuesta.setText("¡Excelente! Drag & Drop completado correctamente. ¡Has terminado todas las actividades!");
+            LOGGER.info("Drag & Drop completado exitosamente");
         } else {
-            act2.jLabelMensajeRespuesta.setText("Incorrecto, intenta otra vez.");
+            dragDropCompletado = false;
+            if (textoDestino.equals("Arrastra aquí la respuesta correcta")) {
+                act2.jLabelMensajeRespuesta.setText("Arrastra una de las opciones al área de destino.");
+            } else {
+                act2.jLabelMensajeRespuesta.setText(String.format("Incorrecto. '%s' no es la traducción correcta de 'Buenos días'. Intenta otra vez.", textoDestino));
+            }
+            LOGGER.info(String.format("Respuesta incorrecta: '%s'. Se esperaba: 'Alli puncha'", textoDestino));
         }
-
+        
         actualizarEstadoBotonCompleto(act2);
     }
 
     private void cargarDatosEmparejar(Vista_Actividad2U1 act2) {
-    try {
-        // Obtienes la actividad de la base ya cargada en 'actividad'
-        if (actividad == null) {
-            act2.jLabelMensajeRespuesta.setText("Error: No se ha cargado la actividad.");
+        try {
+            LOGGER.info("Iniciando carga de datos de emparejar con saludos en kichwa ecuatoriano");
+            
+            // Configurar la pregunta principal
+            act2.jLabelPreguntaEmparejar.setText("Empareja los saludos en español con su equivalente en kichwa ecuatoriano:");
+            
+            // Limpiar las opciones actuales de los ComboBox
+            act2.jComboBoxEmparejarOpcionA.removeAllItems();
+            act2.jComboBoxEmparejarOpcionB.removeAllItems();
+            act2.jComboBoxEmparejarOpcionC.removeAllItems();
+            
+            // Configurar los saludos en español en los JLabels
+            act2.jLabelEmaprejar1.setText("Buenos días");
+            act2.jLabelEmaprejar2.setText("Buenas tardes");
+            act2.jLabelEmaprejar3.setText("¿Cómo estás?");
+            
+            // Agregar opción por defecto a todos los ComboBox
+            act2.jComboBoxEmparejarOpcionA.addItem("Selecciona una opción...");
+            act2.jComboBoxEmparejarOpcionB.addItem("Selecciona una opción...");
+            act2.jComboBoxEmparejarOpcionC.addItem("Selecciona una opción...");
+            
+            // Opciones en kichwa ecuatoriano (mezcladas para mayor dificultad)
+            String[] opcionesKichwa = {
+                "Alli puncha",      // Buenos días
+                "Alli chishi",      // Buenas tardes  
+                "Imashinalla kanki", // ¿Cómo estás?
+                "Napaykuyki",       // Hola (distractor)
+                "Alli tuta",        // Buenas noches (distractor)
+                "Tupanakama"         // Hasta luego (distractor)
+            };
+            
+            // Agregar todas las opciones a cada ComboBox (mezcladas)
+            for (String opcion : opcionesKichwa) {
+                act2.jComboBoxEmparejarOpcionA.addItem(opcion);
+                act2.jComboBoxEmparejarOpcionB.addItem(opcion);
+                act2.jComboBoxEmparejarOpcionC.addItem(opcion);
+            }
+            
+            // Limpiar mensaje de respuesta
+            act2.jLabelMensajeRespuesta.setText("");
+            
+            LOGGER.info("Carga de datos de emparejar completada exitosamente con saludos hardcodeados");
+            LOGGER.info("Configurado: Buenos días -> Alli puncha, Buenas tardes -> Alli chishi, ¿Cómo estás? -> Imashinalla kanki");
+            
+        } catch (Exception e) {
+            String errorMsg = "Error al cargar datos de emparejar: " + e.getMessage();
+            act2.jLabelMensajeRespuesta.setText("Error al cargar datos de emparejar.");
+            LOGGER.log(Level.SEVERE, errorMsg, e);
+        }
+    }
+
+private void validarEmparejar(Vista_Actividad2U1 act2) {
+        if (act2 == null) {
+            LOGGER.warning("La vista de actividad es nula en validarEmparejar");
+            return;
+        }
+        
+        LOGGER.info("Iniciando validación de emparejar con datos hardcodeados");
+
+        String palabraA = act2.jLabelEmaprejar1.getText();
+        String palabraB = act2.jLabelEmaprejar2.getText();
+        String palabraC = act2.jLabelEmaprejar3.getText();
+
+        String respuestaA = (String) act2.jComboBoxEmparejarOpcionA.getSelectedItem();
+        String respuestaB = (String) act2.jComboBoxEmparejarOpcionB.getSelectedItem();
+        String respuestaC = (String) act2.jComboBoxEmparejarOpcionC.getSelectedItem();
+
+        // Validar que se hayan seleccionado opciones válidas (no la opción por defecto)
+        if (respuestaA == null || respuestaB == null || respuestaC == null ||
+            respuestaA.equals("Selecciona una opción...") ||
+            respuestaB.equals("Selecciona una opción...") ||
+            respuestaC.equals("Selecciona una opción...")) {
+            act2.jLabelMensajeRespuesta.setText("Selecciona todas las opciones correctamente.");
             return;
         }
 
-        // Setear la pregunta
-        act2.jLabelPreguntaEmparejar.setText(actividad.getPregunta());
+        LOGGER.info(String.format("Validando emparejamientos: A='%s'->'%s', B='%s'->'%s', C='%s'->'%s'", 
+                palabraA, respuestaA, palabraB, respuestaB, palabraC, respuestaC));
 
-        // Limpiar las opciones actuales del combo
-        act2.jComboBoxEmparejarOpcionA.removeAllItems();
-        act2.jComboBoxEmparejarOpcionB.removeAllItems();
-        act2.jComboBoxEmparejarOpcionC.removeAllItems();
+        boolean correctoA = esEmparejamientoCorrecto(palabraA, respuestaA);
+        boolean correctoB = esEmparejamientoCorrecto(palabraB, respuestaB);
+        boolean correctoC = esEmparejamientoCorrecto(palabraC, respuestaC);
+        
+        int aciertos = 0;
+        if (correctoA) aciertos++;
+        if (correctoB) aciertos++;
+        if (correctoC) aciertos++;
+        
+        LOGGER.info(String.format("Resultados de validación: A=%b, B=%b, C=%b. Aciertos: %d/3", 
+                correctoA, correctoB, correctoC, aciertos));
 
-        // Agregar las opciones al JComboBox
-        act2.jComboBoxEmparejarOpcionA.addItem(actividad.getOpcionA());
-        act2.jComboBoxEmparejarOpcionB.addItem(actividad.getOpcionB());
-        act2.jComboBoxEmparejarOpcionC.addItem(actividad.getOpcionC());
-
-    } catch (Exception e) {
-        act2.jLabelMensajeRespuesta.setText("Error al cargar datos de emparejar.");
-        LOGGER.log(Level.SEVERE, "Error al cargar datos de emparejar", e);
+        if (correctoA && correctoB && correctoC) {
+            emparejarCompletado = true;
+            act2.jLabelMensajeRespuesta.setText("¡Excelente! Emparejar completado correctamente. Ahora completa el Drag & Drop.");
+            LOGGER.info("Actividad de emparejar completada exitosamente");
+            cargarDatosDragDrop(act2);
+            mostrarSubPanel(PANEL_DRAGDROP);
+        } else {
+            emparejarCompletado = false;
+            act2.jLabelMensajeRespuesta.setText(String.format("Tienes %d/3 respuestas correctas. Revisa tus selecciones e intenta nuevamente.", aciertos));
+            LOGGER.info(String.format("Actividad de emparejar incompleta: %d/3 aciertos", aciertos));
+        }
     }
-}
-
-private void validarEmparejar(Vista_Actividad2U1 act2) {
-    if (act2 == null) {
-        LOGGER.warning("La vista de actividad es nula en validarEmparejar");
-        return;
-    }
-
-    String palabraA = act2.jLabelEmaprejar1.getText();
-    String palabraB = act2.jLabelEmaprejar2.getText();
-    String palabraC = act2.jLabelEmaprejar3.getText();
-
-    String respuestaA = (String) act2.jComboBoxEmparejarOpcionA.getSelectedItem();
-    String respuestaB = (String) act2.jComboBoxEmparejarOpcionB.getSelectedItem();
-    String respuestaC = (String) act2.jComboBoxEmparejarOpcionC.getSelectedItem();
-
-    if (respuestaA == null || respuestaB == null || respuestaC == null) {
-        act2.jLabelMensajeRespuesta.setText("Selecciona todas las opciones.");
-        return;
-    }
-
-    boolean correctoA = esEmparejamientoCorrecto(palabraA, respuestaA);
-    boolean correctoB = esEmparejamientoCorrecto(palabraB, respuestaB);
-    boolean correctoC = esEmparejamientoCorrecto(palabraC, respuestaC);
-
-    if (correctoA && correctoB && correctoC) {
-        emparejarCompletado = true;
-        act2.jLabelMensajeRespuesta.setText("¡Correcto en Emparejar! Ahora completa el DragDrop.");
-        cargarDatosDragDrop(act2);
-        mostrarSubPanel(PANEL_DRAGDROP);
-    } else {
-        emparejarCompletado = false;
-        act2.jLabelMensajeRespuesta.setText("Incorrecto en emparejar, revisa tus selecciones.");
-    }
-}
 private boolean esEmparejamientoCorrecto(String palabra, String respuesta) {
-    if (actividad == null) return false;
-
-    // Comparar contra las opciones correctas de la actividad actual
-    return (palabra.equals(actividad.getPregunta()) && (
-            respuesta.equals(actividad.getOpcionA()) ||
-            respuesta.equals(actividad.getOpcionB()) ||
-            respuesta.equals(actividad.getOpcionC())));
-}
+        // Validar emparejamientos con datos hardcodeados de saludos en kichwa ecuatoriano
+        boolean esCorrecta = false;
+        String respuestaEsperada = "";
+        
+        // Definir las correspondencias correctas
+        switch (palabra) {
+            case "Buenos días":
+                respuestaEsperada = "Alli puncha";
+                esCorrecta = respuesta.equals("Alli puncha");
+                break;
+            case "Buenas tardes":
+                respuestaEsperada = "Alli chishi";
+                esCorrecta = respuesta.equals("Alli chishi");
+                break;
+            case "¿Cómo estás?":
+                respuestaEsperada = "Imashinalla kanki";
+                esCorrecta = respuesta.equals("Imashinalla kanki");
+                break;
+            default:
+                LOGGER.warning(String.format("Palabra no reconocida: '%s'", palabra));
+                return false;
+        }
+        
+        LOGGER.info(String.format("Validando '%s' -> '%s': %s (esperado: '%s')", 
+                palabra, respuesta, esCorrecta ? "CORRECTO" : "INCORRECTO", respuestaEsperada));
+        
+        return esCorrecta;
+    }
 
 
 
