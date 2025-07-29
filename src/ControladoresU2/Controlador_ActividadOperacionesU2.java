@@ -1,13 +1,16 @@
-package Controlador;
+package ControladoresU2;
 
+import Controlador.ControladorDashboard;
+import Controlador.Controlador_Unidades;
 import Modelo.*;
 import Vista.Estudiante.Dashboard;
 import Vista.Vista_ActividadOperacionesUnidad2;
 import Vista.Vista_Unidad2;
+import java.sql.Connection;
+
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -16,6 +19,10 @@ public class Controlador_ActividadOperacionesU2 {
 
     private final Vista_ActividadOperacionesUnidad2 vista;
     private final Dashboard dashboard;
+    private final Connection conexion;
+    private final ControladorDashboard controladorDashboard;
+    private final Controlador_Unidades controladorUnidades;
+
     private final JTextField[] campoA;
     private final JTextField[] campoB;
     private final JTextField[] operadores;
@@ -24,9 +31,18 @@ public class Controlador_ActividadOperacionesU2 {
     private static final char[] OPERADORES = {'+', '-', '*', '/'};
     private final Random random = new Random();
 
-    public Controlador_ActividadOperacionesU2(Vista_ActividadOperacionesUnidad2 vista, Dashboard dashboard) {
+    public Controlador_ActividadOperacionesU2(
+            Vista_ActividadOperacionesUnidad2 vista,
+            Dashboard dashboard,
+            Connection conexion,
+            ControladorDashboard controladorDashboard,
+            Controlador_Unidades controladorUnidades
+    ) {
         this.vista = vista;
         this.dashboard = dashboard;
+        this.conexion = conexion;
+        this.controladorDashboard = controladorDashboard;
+        this.controladorUnidades = controladorUnidades;
 
         campoA = new JTextField[]{
             vista.getjTextField1PrimerNumero1(), vista.getjTextField1Numero2(), vista.getjTextField1Numero3(),
@@ -84,32 +100,30 @@ public class Controlador_ActividadOperacionesU2 {
             int num1, num2;
             char op;
             int resultado;
-            
+
             do {
                 op = OPERADORES[random.nextInt(OPERADORES.length)];
-                
-                switch(op) {
+
+                switch (op) {
                     case '+':
-                        num1 = random.nextInt(6); // 0-5
-                        num2 = random.nextInt(11 - num1); // 0 a (10-num1)
+                        num1 = random.nextInt(6);
+                        num2 = random.nextInt(11 - num1);
                         resultado = num1 + num2;
                         break;
                     case '-':
-                        num1 = random.nextInt(11); // 0-10
-                        num2 = random.nextInt(num1 + 1); // 0 a num1
+                        num1 = random.nextInt(11);
+                        num2 = random.nextInt(num1 + 1);
                         resultado = num1 - num2;
                         break;
                     case '*':
-                        // Solo factores que den productos <= 10
                         int[] factores = {0, 1, 2, 5, 10};
                         num1 = factores[random.nextInt(factores.length)];
                         num2 = num1 == 0 ? random.nextInt(11) : random.nextInt(11 / num1 + 1);
                         resultado = num1 * num2;
                         break;
                     case '/':
-                        // Solo divisiones exactas con resultados enteros
-                        resultado = random.nextInt(6); // 0-5
-                        num2 = random.nextInt(5) + 1; // 1-5 (evitar división por cero)
+                        resultado = random.nextInt(6);
+                        num2 = random.nextInt(5) + 1;
                         num1 = resultado * num2;
                         break;
                     default:
@@ -117,12 +131,12 @@ public class Controlador_ActividadOperacionesU2 {
                         num2 = 0;
                         resultado = 0;
                 }
-            } while(resultado > 10); // Asegurar resultado <= 10
+            } while (resultado > 10);
 
             campoA[i].setText(String.valueOf(num1));
             campoB[i].setText(String.valueOf(num2));
             operadores[i].setText(String.valueOf(op));
-            
+
             campoA[i].setEditable(false);
             campoB[i].setEditable(false);
             operadores[i].setEditable(false);
@@ -141,7 +155,6 @@ public class Controlador_ActividadOperacionesU2 {
                 double esperado = Modelo_OperacionesUnidad2.calcularResultado(a, b, op);
                 int esperadoEntero = (int) Math.round(esperado);
 
-                // Solo resultados entre 0-10
                 if (esperadoEntero < 0) esperadoEntero = 0;
                 if (esperadoEntero > 10) esperadoEntero = 10;
 
@@ -154,8 +167,8 @@ public class Controlador_ActividadOperacionesU2 {
                     resultados[i].setBackground(Color.RED);
                     resultados[i].setToolTipText("⚠️ Correcto: " + correctoKichwa);
                     errores.append("🔻 Operación ").append(i + 1).append(": ")
-                          .append(a).append(" ").append(op).append(" ").append(b)
-                          .append(" = ").append(correctoKichwa).append("\n");
+                           .append(a).append(" ").append(op).append(" ").append(b)
+                           .append(" = ").append(correctoKichwa).append("\n");
                     todoCorrecto = false;
                 }
 
@@ -169,10 +182,7 @@ public class Controlador_ActividadOperacionesU2 {
         if (todoCorrecto) {
             Modelo_ProgresoUnidad2.guardarProgreso(dashboard.getCorreoUsuario(), 55);
             JOptionPane.showMessageDialog(vista, "✅ ¡Correcto! Operaciones completadas.\n🌟 Puedes continuar.");
-
-            // Activamos el botón continuar
             vista.getjButton1CONTINUAR().setEnabled(true);
-
         } else {
             JOptionPane.showMessageDialog(vista, errores.toString(), "Respuestas Incorrectas", JOptionPane.WARNING_MESSAGE);
         }
@@ -180,7 +190,13 @@ public class Controlador_ActividadOperacionesU2 {
 
     private void irAUnidad2() {
         Vista_Unidad2 panelUnidad2 = new Vista_Unidad2();
-        ControladorUnidad2 controladorUnidad2 = new ControladorUnidad2(panelUnidad2, dashboard);
+        new ControladorUnidad2(
+                panelUnidad2,
+                conexion,
+                controladorDashboard,
+                dashboard.getCorreoUsuario(),
+                controladorUnidades
+        );
         dashboard.mostrarVista(panelUnidad2);
     }
 }
