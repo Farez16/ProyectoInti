@@ -192,7 +192,7 @@ public class Login extends javax.swing.JFrame {
         TxtContraseña.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 122, 0)));
         jPanel1.add(TxtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 370, 260, 30));
 
-        LblQr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/qr1.png"))); // NOI18N
+        LblQr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/QR12.png"))); // NOI18N
         jPanel1.add(LblQr, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 570, -1, -1));
 
         panelFormularioLogin.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 0, 540, 770));
